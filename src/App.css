@@ -2,5 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 
-// Importation des polices
-@import './style/fonts.scss';
+/* Importation des polices */
+@import './style/fonts.css';
