@@ -4,3 +4,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+nav a {
+  color: red;
+  margin: 1rem;
+}
+
+.outlet {
+  margin: 2rem;
+}
