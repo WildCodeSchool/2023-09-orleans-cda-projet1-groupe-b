@@ -1,4 +1,5 @@
 import './App.css';
+import GameShow from './components/gameshow/GameShow';
 
 export default function App() {
   return (
@@ -9,14 +10,12 @@ export default function App() {
       </section>
 
       <main className="flex flex-row flex-nowrap h-screen">
-        <nav className="lg:w-1/3 xl:w-1/4">
+        <nav className="lg:w-2/6 xl:w-1/4 bg-secondary">
           {/* // TODO import NavBar component */}
         </nav>
-        <section className="w-full">
-          {/* // TODO import content */}
-          <h1 className="space-x-40 text-dark text-4xl">Hello Word !</h1>
-        </section>
-        <aside className="lg:w-1/3 xl:w-1/4"></aside>
+        {/* // TODO import content */}
+        <GameShow />
+        <aside className="lg:w-2/6 xl:w-1/4 bg-secondary"></aside>
       </main>
 
       {/* Footer */}
