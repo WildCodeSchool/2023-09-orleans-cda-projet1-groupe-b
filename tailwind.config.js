@@ -22,7 +22,7 @@ export default {
       background: 'url(./images/background.jpg)',
     },
     screens: {
-      xsm: '576px',
+      xs: '576px',
     },
   },
   plugins: [],
