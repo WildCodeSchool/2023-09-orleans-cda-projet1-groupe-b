@@ -1,19 +1,19 @@
 @font-face {
   font-family: 'GalakPro-Bold';
-  src: url('../fonts/GalakPro-Bold.otf');
+  src: url('/public/fonts/GalakPro-Bold.otf');
 }
 
 @font-face {
   font-family: 'GalakPro-Heavy';
-  src: url('../fonts/GalakPro-Heavy.otf');
+  src: url('/public/fonts/GalakPro-Heavy.otf');
 }
 
 @font-face {
   font-family: 'GalakPro-Light';
-  src: url('../fonts/GalakPro-Light.otf');
+  src: url('/public/fonts/GalakPro-Light.otf');
 }
 
 @font-face {
   font-family: 'GalakPro-Medium';
-  src: url('../fonts/GalakPro-Medium.otf');
+  src: url('/public/fonts/GalakPro-Medium.otf');
 }

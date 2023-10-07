@@ -1,28 +1,34 @@
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+
 import './App.css';
+import GameShow from './templates/gameshow/GameShow';
 
 export default function App() {
   return (
-    <>
-      {/* Search nar */}
+    <div className="bg-background">
+      {/* Search bar */}
       <section className="fixed top-0 left-0 right-0 h-14">
-        {/* // TODO import SearchBar component */}
+        {/* TODO: Import SearchBar component */}
       </section>
 
-      <main className="flex flex-row flex-nowrap h-screen">
+      <main className="flex flex-row flex-nowrap h-screen bg-primary">
         <nav className="lg:w-1/3 xl:w-1/4">
-          {/* // TODO import NavBar component */}
+          {/* TODO: Import NavBar component */}
         </nav>
-        <section className="w-full">
-          {/* // TODO import content */}
-          <h1 className="space-x-40 text-dark text-4xl">Hello Word !</h1>
+        <section className="w-full bg-secondary">
+          <Outlet>
+            {/* TODO: Import content */}
+            <GameShow />
+          </Outlet>
         </section>
         <aside className="lg:w-1/3 xl:w-1/4"></aside>
       </main>
 
       {/* Footer */}
-      <footer className="h-14 w-screen">
-        {/* // TODO import Footer component */}
+      <footer className="h-14 w-screen bg-tertiary">
+        {/* TODO: Import Footer component */}
       </footer>
-    </>
+    </div>
   );
 }
