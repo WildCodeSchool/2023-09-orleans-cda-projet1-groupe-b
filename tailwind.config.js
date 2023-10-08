@@ -23,6 +23,9 @@ export default {
       screens: {
         xs: '576px',
       },
+      skew: {
+        50: '50deg',
+      },
     },
   },
   plugins: [],

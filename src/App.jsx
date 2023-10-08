@@ -12,17 +12,17 @@ export default function App() {
         {/* TODO: Import SearchBar component */}
       </section>
 
-      <main className="flex flex-row flex-nowrap h-screen bg-primary">
-        <nav className="lg:w-1/3 xl:w-1/4">
+      <main className="flex flex-row flex-nowrap h-screen">
+        <nav className="lg:w-1/3 xl:w-1/4 bg-primary">
           {/* TODO: Import NavBar component */}
         </nav>
-        <section className="w-full bg-secondary">
+        <section className="w-full">
           <Outlet>
             {/* TODO: Import content */}
             <GameShow />
           </Outlet>
         </section>
-        <aside className="lg:w-1/3 xl:w-1/4"></aside>
+        <aside className="lg:w-1/3 xl:w-1/4 bg-primary"></aside>
       </main>
 
       {/* Footer */}
