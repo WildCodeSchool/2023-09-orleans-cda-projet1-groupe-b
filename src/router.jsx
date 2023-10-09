@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import './App.css';
 import Home from './Pages/Home';
 import Recommandations from './Pages/Recommandations';
