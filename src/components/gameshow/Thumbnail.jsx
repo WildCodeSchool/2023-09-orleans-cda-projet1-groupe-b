@@ -24,11 +24,11 @@ export default function Thumbnail({ images, curr, handleThumbnailClick }) {
 
   return (
     <>
-      <div className={`flex justify-center gap-1 relative`}>
+      <div className="flex justify-center gap-1 relative min-h-full xl:h-[15vw] max-h-[12vw] md:max-h-[8vw] lg:max-h-[5vw] xl:max-h-[6vw]">
         {imageThumbnail.map((image, index) => (
           <div
             key={startIndex + index}
-            className={`cursor-pointer mb-2 relative ${
+            className={`cursor-pointer mb-2 relative bg-dark w-full w-max-full ${
               startIndex + index === curr
                 ? 'outline outline-2 outline-primary'
                 : ''
@@ -41,7 +41,13 @@ export default function Thumbnail({ images, curr, handleThumbnailClick }) {
                 startIndex + index === curr ? 'block' : 'hidden'
               }`}
             />
-            <img src={image.image} alt={`Thumbnail ${startIndex + index}`} />
+            <img
+              src={image.image}
+              alt={`Thumbnail ${startIndex + index}`}
+              className={`flex-shrink-0 w-full min-h-full max-h-full ${
+                image.width < 500 ? 'object-contain' : ''
+              }`}
+            />
           </div>
         ))}
       </div>

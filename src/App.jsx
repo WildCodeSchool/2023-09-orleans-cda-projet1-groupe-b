@@ -16,7 +16,7 @@ export default function App() {
         <nav className="lg:w-1/3 xl:w-1/4 bg-primary">
           {/* TODO: Import NavBar component */}
         </nav>
-        <section className="w-full">
+        <section className="w-full px-2 xs:px-5 md:px-16 lg:px-2">
           <Outlet>
             {/* TODO: Import content */}
             <GameShow />

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 import App from './App';
 
-import Home from './templates/home/Home';
+// Importation des pages
 import GameShow from './templates/gameshow/GameShow';
 
 const router = createBrowserRouter([
@@ -15,10 +15,6 @@ const router = createBrowserRouter([
         element: <Outlet />,
         children: [
           // Ajouter les routes
-          {
-            path: '/home',
-            element: <Home />,
-          },
           {
             path: '/game/:gameId',
             element: <GameShow />,

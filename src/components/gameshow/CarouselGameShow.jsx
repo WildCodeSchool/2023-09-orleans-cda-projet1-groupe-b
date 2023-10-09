@@ -23,19 +23,22 @@ export default function CarrouselGameShow({ images }) {
 
   return (
     <>
-      <div className="overflow-hidden relative">
+      <div className="bg-dark overflow-hidden relative w-full rounded-[3px]">
         <div
-          className="flex bg-dark w-full transition-transform ease-out duration-500"
+          className="flex transition-transform ease-out duration-500 h-[60vw] md:h-[35vw] lg:h-[25vw] xl:h-[30vw]"
           style={{ transform: `translateX(-${curr * 100}%)` }}
         >
           {/* Boucle qui affiche les images du jeu vidéo */}
           {images.map((image, index) => (
-            <img
-              key={index}
-              src={image.image}
-              alt=""
-              className="object-cover"
-            />
+            <div key={index} className="w-full h-full flex flex-shrink-0">
+              <img
+                src={image.image}
+                alt={`Screenshot : ${image.id}`}
+                className={`h-full w-full m-auto ${
+                  image.width < 500 ? 'object-contain' : ''
+                }`}
+              />
+            </div>
           ))}
         </div>
 

@@ -10,6 +10,7 @@ export default function ThumbnailPagination({ totalPagination, pageId }) {
       `}
     />
   ));
+  console.log('page id :', pageId, 'index :');
 
   return (
     <>

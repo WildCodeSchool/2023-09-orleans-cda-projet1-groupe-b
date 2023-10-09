@@ -6,7 +6,7 @@ import '../../App.css';
 import CarrouselGameShow from '../../components/gameshow/CarouselGameShow';
 
 // Importation des méthodes fetch
-import { fetchGameElements } from '../../api/api-fetch';
+import { fetchGameDetails, fetchGameElements } from '../../api/api-fetch';
 
 // Importation des paramètres URL
 import { screenshotsURL } from '../../api/api-url';
@@ -14,18 +14,25 @@ import { screenshotsURL } from '../../api/api-url';
 export default function GameShow() {
   const { gameId } = useParams();
   const [images, setImages] = useState([]);
+  const [gameName, setGameName] = useState('');
 
   useEffect(() => {
+    fetchGameDetails(gameId, setGameName, 'name');
     fetchGameElements(screenshotsURL, gameId, setImages, 'results');
   }, []);
 
   return (
     <>
-      <div className="px-10">
-        <h1 className="space-x-40 text-light text-4xl font-text">
-          GameShow : {gameId}
-        </h1>
-        <CarrouselGameShow images={images} />
+      <div className="">
+        <h1 className="space-x-40 text-light text-4xl font-text">{gameName}</h1>
+        <div className="flex flex-col md:flex-row gap-3">
+          <div className="flex-1">
+            <CarrouselGameShow images={images} />
+          </div>
+          <div className="w-full md:w-52 xl:w-64">
+            {/* TODO importer le composant gameInformation */}
+          </div>
+        </div>
       </div>
     </>
   );
