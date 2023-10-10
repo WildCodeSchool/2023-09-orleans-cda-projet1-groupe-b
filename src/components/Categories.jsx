@@ -1,7 +1,7 @@
-export default function Home() {
+export default function Categories() {
   return (
     <>
-      <h1>Accueil</h1>
+      <h1>Catégories</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam libero
         vero consequatur magni asperiores excepturi quo, totam iusto, soluta

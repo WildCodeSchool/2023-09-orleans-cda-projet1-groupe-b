@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
+    'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}',
+  ],
   theme: {
     colors: {
       primary: '#31FFE6',
@@ -8,6 +12,8 @@ export default {
       tertiary: '#0F0132',
       dark: '#0D0D0D',
       light: '#F5F5F5',
+      success: '#00FF00',
+      fail: '#FFFFFF',
     },
     extend: {
       fontFamily: {
@@ -19,5 +25,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require('flowbite/plugin')],
 };

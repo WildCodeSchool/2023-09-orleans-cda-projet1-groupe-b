@@ -1,14 +1,14 @@
 import * as React from 'react';
 import './App.css';
-import Home from './Pages/Home';
-import Recommandations from './Pages/Recommandations';
-import Plateforms from './Pages/Plateforms';
-import Categories from './Pages/Categories';
-import Error404 from './Pages/Error404';
-import Navbar from './components/Navbar';
-import News from './Pages/News';
-import Offers from './Pages/Offers';
-import BestSellers from './Pages/BestSellers';
+import Home from './components/Home';
+import Recommandations from './components/Recommandations';
+import Plateforms from './components/Plateforms';
+import Categories from './components/Categories';
+import Error404 from './components/Error404';
+// import Navbar from './components/Navbar';
+import News from './components/News';
+import Offers from './components/Offers';
+import BestSellers from './components/BestSellers';
 import { Outlet, createBrowserRouter } from 'react-router-dom';
 
 const router = createBrowserRouter([
@@ -16,23 +16,14 @@ const router = createBrowserRouter([
     path: '',
     element: (
       <>
-        <Navbar />
-        <div className="outlet">
-          <Outlet />
-        </div>
+        <Home />
       </>
     ),
     children: [
       {
-        path: '',
-        element: <Home />,
-      },
-      {
         path: 'recommandations',
         element: (
           <>
-            <Recommandations />
-
             <div className="outlet">
               <Outlet />
             </div>
