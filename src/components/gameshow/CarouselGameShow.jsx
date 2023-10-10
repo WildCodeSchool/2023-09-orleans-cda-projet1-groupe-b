@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 // Importation des composants
-import ChevronRight from './ChevronRight';
-import ChevronLeft from './ChevronLeft';
-import Thumbnail from './Thumbnail';
+import NextButton from './NextButton';
+import PreviousButton from './PreviousButton';
+import Thumbnails from './Thumbnails';
 
 export default function CarrouselGameShow({ images }) {
   const [curr, setCurr] = useState(0);
@@ -25,7 +25,7 @@ export default function CarrouselGameShow({ images }) {
     <>
       <div className="bg-dark overflow-hidden relative w-full rounded-[3px]">
         <div
-          className="flex transition-transform ease-out duration-500 h-[60vw] md:h-[35vw] lg:h-[25vw] xl:h-[30vw]"
+          className="flex transition-transform ease-out duration-500 h-[57vw] md:h-[34vw] lg:h-[23vw] xl:h-[27.5vw]"
           style={{ transform: `translateX(-${curr * 100}%)` }}
         >
           {/* Boucle qui affiche les images du jeu vidéo */}
@@ -47,17 +47,21 @@ export default function CarrouselGameShow({ images }) {
             curr === 0 ? 'justify-end' : 'justify-between'
           }`}
         >
-          {curr !== 0 ? <ChevronLeft handleClickPrev={handleClickPrev} /> : ''}
+          {curr !== 0 ? (
+            <PreviousButton handleClickPrev={handleClickPrev} />
+          ) : (
+            ''
+          )}
 
           {curr !== images.length - 1 ? (
-            <ChevronRight handleClickNext={handleClickNext} />
+            <NextButton handleClickNext={handleClickNext} />
           ) : (
             ''
           )}
         </div>
       </div>
       <div className="mt-2">
-        <Thumbnail
+        <Thumbnails
           images={images}
           curr={curr}
           handleThumbnailClick={handleThumbnailClick}

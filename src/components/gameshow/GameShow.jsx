@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import '../../App.css';
 
 // Importation des composants
-import CarrouselGameShow from '../../components/gameshow/CarouselGameShow';
+import CarrouselGameShow from './CarouselGameShow';
 
 // Importation des méthodes fetch
 import { fetchGameDetails, fetchGameElements } from '../../api/api-fetch';
@@ -17,14 +16,28 @@ export default function GameShow() {
   const [gameName, setGameName] = useState('');
 
   useEffect(() => {
-    fetchGameDetails(gameId, setGameName, 'name');
-    fetchGameElements(screenshotsURL, gameId, setImages, 'results');
-  }, []);
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    fetchGameDetails(gameId, setGameName, 'name', signal);
+
+    fetchGameElements({
+      parameter: screenshotsURL,
+      gameId,
+      setter: setImages,
+      property: 'results',
+      signal,
+    });
+
+    return () => controller.abort();
+  }, [gameId]);
 
   return (
     <>
       <div className="">
-        <h1 className="space-x-40 text-light text-4xl font-text">{gameName}</h1>
+        <h1 className="space-x-40 text-light text-4xl font-title">
+          {gameName}
+        </h1>
         <div className="flex flex-col md:flex-row gap-3">
           <div className="flex-1">
             <CarrouselGameShow images={images} />

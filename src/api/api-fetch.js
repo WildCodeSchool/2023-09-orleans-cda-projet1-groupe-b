@@ -2,9 +2,11 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 const BASE_URL = 'https://api.rawg.io/api/';
 
 // Fonction de base pour fetcher une API qui prend en paramètre le lien de l'API
-const fetchData = async (url) => {
+const fetchData = async (url, signal) => {
+  console.log('Signal:', signal);
+
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, { signal });
     if (response.ok) {
       return response.json();
     } else {
@@ -118,16 +120,17 @@ export const fetchGameDetails = async (gameId, setter, property) => {
  * les trailers vidéos,
  * à partir d'un paramètre par l'ID du jeux vidéo
  **/
-export const fetchGameElements = async (
+export const fetchGameElements = async ({
   parameter,
   gameId,
   setter,
   property,
-) => {
+  signal,
+}) => {
   const url = `${BASE_URL}games/${gameId}/${parameter}?key=${API_KEY}`;
 
   try {
-    const data = await fetchData(url);
+    const data = await fetchData(url, signal);
     setter(data[property]);
   } catch (error) {
     console.error(`Unable to load elements : ${error}`);

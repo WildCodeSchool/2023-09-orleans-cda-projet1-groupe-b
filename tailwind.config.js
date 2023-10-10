@@ -1,6 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  // Génèration de classe dynamique et empêche la supression de styles pendant le processus de purge
+  safelist: [
+    {
+      pattern: /grid-cols-\d+/,
+    },
+  ],
   theme: {
     colors: {
       primary: '#31FFE6',
