@@ -1,8 +1,5 @@
 import { Link } from 'react-router-dom';
-// import Collapsible from './Collapsible';
-import React, { useState } from 'react';
-import '../App.css';
-import '../App.jsx';
+import { useState } from 'react';
 
 function Navbar() {
   const [isOpenPlatform, setIsOpenPlatform] = useState(false);
@@ -101,16 +98,7 @@ function Navbar() {
               <span className="font-bold text-light">Plateformes</span>
             </button>
           </li>
-          {/* <li className=" mb-5 gap-3 font-bold text-light">
-            {isOpenPlatform ? (
-              <Collapsible
-                isOpenPlatform={isOpenPlatform}
-                setIsOpenPlatform={setIsOpenPlatform}
-              />
-            ) : (
-              ''
-            )}
-          </li> */}
+          {/* todo imporrt component collapsible */}
           <li className=" gap-3 font-bold text-light">
             <button
               className="flex gap-3 font-text"
@@ -150,16 +138,7 @@ function Navbar() {
               <span className="font-bold text-light">Categories</span>
             </button>
           </li>
-          {/* <li className=" gap-3 font-bold text-light">
-            {isOpenCategories ? (
-              <Collapsible
-                isOpenCategories={isOpenCategories}
-                setIsOpenCategories={setIsOpenCategories}
-              />
-            ) : (
-              ''
-            )}
-          </li> */}
+          {/* todo imporrt component collapsible */}
         </ul>
       </nav>
     </>

@@ -1,13 +1,11 @@
-import * as React from 'react';
-import './App.css';
+import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
 import Home from './components/Home';
 import Recommandations from './components/Recommandations';
-import Offers from './components/Offers';
-import BestSellers from './components/BestSellers';
-import Error404 from './components/Error404';
 import News from './components/News';
-import { createBrowserRouter, Outlet, Route } from 'react-router-dom';
+import BestSellers from './components/BestSellers';
+import Offers from './components/Offers';
+import Error404 from './components/Error404';
 import GameShow from './components/gameshow/GameShow';
 
 export default createBrowserRouter([
