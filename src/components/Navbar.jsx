@@ -6,15 +6,15 @@ import '../App.jsx';
 
 function Navbar() {
   const [isOpenPlatform, setIsOpenPlatform] = useState(false);
-  const [isOpenCategories, setIsOpenCategories] = useState(false);
+  const [isOpenGenres, setIsOpenGenres] = useState(false);
 
   const handleClickCollapsePlatform = () => {
     setIsOpenPlatform(!isOpenPlatform);
     console.log(isOpenPlatform);
   };
-  const handleClickCollapseCategories = () => {
-    setIsOpenCategories(!isOpenCategories);
-    console.log(isOpenCategories);
+  const handleClickCollapseGenres = () => {
+    setIsOpenGenres(!isOpenGenres);
+    console.log(isOpenGenres);
   };
   return (
     <>
@@ -49,7 +49,7 @@ function Navbar() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <g clip-path="url(#clip0_255_2458)">
+                <g clipPath="url(#clip0_255_2458)">
                   <path
                     d="M12.5 2.36111C18.0556 2.36111 22.6389 6.94444 22.6389 12.5C22.6389 18.0556 18.0556 22.6389 12.5 22.6389C6.94444 22.6389 2.36111 18.1944 2.36111 12.5C2.36111 6.80556 6.94444 2.36111 12.5 2.36111ZM9.72222 0C4.30556 0 0 4.30556 0 9.72222V15.2778C0 20.6944 4.30556 25 9.72222 25H15.2778C20.6944 25 25 20.6944 25 15.2778V9.72222C25 4.30556 20.6944 0 15.2778 0H9.72222Z"
                     fill="white"
@@ -70,13 +70,13 @@ function Navbar() {
           </li>
           <ul className=" text-light pl-[38px] mb-5">
             <li className="py-[4px]">
-              <Link to="/news">News</Link>
+              <Link to="/recommandations/news">News</Link>
             </li>
             <li className="py-[4px]">
-              <Link to="/bestsellers">BestSellers</Link>
+              <Link to="/recommandations/bestsellers">BestSellers</Link>
             </li>
             <li className="py-[4px]">
-              <Link to="/offers">Offers</Link>
+              <Link to="/recommandations/offers">Offers</Link>
             </li>
           </ul>
           <li>
@@ -91,14 +91,14 @@ function Navbar() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <g clip-path="url(#clip0_137_3013)">
+                <g clipPath="url(#clip0_137_3013)">
                   <path
                     d="M24.5166 5.62659C24.2864 2.77647 21.791 0.0737632 19.314 0.0737632C14.756 0.0737632 15.5387 3.09096 12.6013 3.09096C9.16207 3.09096 10.5617 -0.0245169 5.8978 0.0246231C3.74771 0.0246231 0.709033 2.03937 0.570912 5.67573C0.446602 8.99268 0.0184256 17.1745 0.0184256 17.1745C0.0184256 17.1745 -0.036823 19.9263 2.27441 19.9263C5.95765 19.9263 5.95765 13.2924 12.5875 13.2924C18.9411 13.2924 18.9871 19.9755 23.0387 19.9755C24.1437 19.9755 24.9862 18.5504 24.9724 17.3219C24.931 13.1942 24.756 8.56516 24.5166 5.62659ZM9.85728 8.08359H7.29283V10.806H5.27625V8.08359H2.73021V5.93126H5.27625V3.19907H7.29283V5.93126H9.85728V8.08359ZM18.8306 2.82561C19.581 2.82561 20.1888 3.47425 20.1888 4.27524C20.1888 5.07622 19.581 5.72487 18.8306 5.72487C18.0801 5.72487 17.4724 5.07622 17.4724 4.27524C17.4724 3.47425 18.0801 2.82561 18.8306 2.82561ZM16.2984 8.42757C15.5479 8.42757 14.9402 7.77892 14.9402 6.97794C14.9402 6.17696 15.5479 5.52831 16.2984 5.52831C17.0488 5.52831 17.6565 6.17696 17.6565 6.97794C17.6565 7.77892 17.0488 8.42757 16.2984 8.42757ZM18.7845 11.1303C18.0341 11.1303 17.4263 10.4816 17.4263 9.68064C17.4263 8.87966 18.0341 8.23101 18.7845 8.23101C19.535 8.23101 20.1427 8.87966 20.1427 9.68064C20.1427 10.4816 19.535 11.1303 18.7845 11.1303ZM21.3168 8.47671C20.5663 8.47671 19.9586 7.82806 19.9586 7.02708C19.9586 6.2261 20.5663 5.57745 21.3168 5.57745C22.0672 5.57745 22.675 6.2261 22.675 7.02708C22.675 7.82806 22.0672 8.47671 21.3168 8.47671Z"
                     fill="white"
                   />
                 </g>
               </svg>
-              <span className="font-bold text-light">Plateformes</span>
+              <span className="font-bold text-light">Plateforms</span>
             </button>
           </li>
           <li className=" text-light gap-3 font-bold mb-5">
@@ -114,7 +114,7 @@ function Navbar() {
           <li className=" text-light gap-3 font-bold">
             <button
               className="font-text flex gap-3"
-              onClick={handleClickCollapseCategories}
+              onClick={handleClickCollapseGenres}
             >
               <svg
                 width="25"
@@ -123,7 +123,7 @@ function Navbar() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <g clip-path="url(#clip0_262_2569)">
+                <g clipPath="url(#clip0_262_2569)">
                   <path
                     d="M0 0.784915C0.198413 0.207506 0.613276 0 1.21753 0C4.329 0.018044 7.43146 0.00902201 10.5339 0.00902201C11.3456 0.00902201 11.7063 0.369903 11.7063 1.18188C11.7063 4.3035 11.7063 7.42512 11.7063 10.5558C11.7063 11.3677 11.3456 11.7286 10.5339 11.7286C7.43146 11.7286 4.31999 11.7196 1.21753 11.7376C0.613276 11.7376 0.198413 11.5301 0 10.9527C0 7.56045 0 4.16817 0 0.784915ZM9.74026 9.76182C9.74026 7.15446 9.74026 4.56514 9.74026 1.98484C7.13384 1.98484 4.54545 1.98484 1.96609 1.98484C1.96609 4.59221 1.96609 7.1725 1.96609 9.76182C4.56349 9.76182 7.14286 9.76182 9.74026 9.76182Z"
                     fill="white"
@@ -147,14 +147,14 @@ function Navbar() {
                   </clipPath>
                 </defs>
               </svg>
-              <span className="font-bold text-light">Categories</span>
+              <span className="font-bold text-light">Genres</span>
             </button>
           </li>
           <li className=" text-light gap-3 font-bold">
-            {isOpenCategories ? (
+            {isOpenGenres ? (
               <Collapsible
-                isOpenCategories={isOpenCategories}
-                setIsOpenCategories={setIsOpenCategories}
+                isOpenGenres={isOpenGenres}
+                setIsOpenGenres={setIsOpenGenres}
               />
             ) : (
               ''

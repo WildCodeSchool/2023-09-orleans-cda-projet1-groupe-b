@@ -1,7 +1,9 @@
-export default function Categories() {
+import React from 'react';
+
+export default function Genres() {
   return (
     <>
-      <h1>Catégories</h1>
+      <h1>Genres</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam libero
         vero consequatur magni asperiores excepturi quo, totam iusto, soluta
