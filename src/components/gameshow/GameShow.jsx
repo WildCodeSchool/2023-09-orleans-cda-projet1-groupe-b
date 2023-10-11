@@ -40,10 +40,10 @@ export default function GameShow() {
   return (
     <>
       <div className="">
-        <h1 className="space-x-40 text-light text-4xl font-title">
+        <h1 className="space-x-40 font-title text-4xl text-light">
           {gameName}
         </h1>
-        <div className="flex flex-col md:flex-row gap-3">
+        <div className="flex flex-col gap-3 md:flex-row">
           <div className="flex-1">
             <CarouselGameShow images={images} />
           </div>

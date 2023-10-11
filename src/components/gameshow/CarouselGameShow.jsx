@@ -23,18 +23,18 @@ export default function CarouselGameShow({ images }) {
 
   return (
     <>
-      <div className="bg-dark overflow-hidden relative w-full rounded-[3px]">
+      <div className="relative w-full overflow-hidden rounded-[3px] bg-dark">
         <div
-          className="flex transition-transform ease-out duration-500 h-[57vw] md:h-[34vw] lg:h-[23vw] xl:h-[27.5vw]"
+          className="flex h-[57vw] transition-transform duration-500 ease-out md:h-[34vw] lg:h-[23vw] xl:h-[27.5vw]"
           style={{ transform: `translateX(-${curr * 100}%)` }}
         >
           {/* Boucle qui affiche les images du jeu vidéo */}
           {images.map((image, index) => (
-            <div key={index} className="w-full h-full flex flex-shrink-0">
+            <div key={index} className="flex h-full w-full flex-shrink-0">
               <img
                 src={image.image}
                 alt={`Screenshot : ${image.id}`}
-                className={`h-full w-full m-auto ${
+                className={`m-auto h-full w-full ${
                   image.width < 500 ? 'object-contain' : ''
                 }`}
               />
@@ -43,7 +43,7 @@ export default function CarouselGameShow({ images }) {
         </div>
 
         <div
-          className={`absolute inset-0 p-2 flex items-center ${
+          className={`absolute inset-0 flex items-center p-2 ${
             curr === 0 ? 'justify-end' : 'justify-between'
           }`}
         >

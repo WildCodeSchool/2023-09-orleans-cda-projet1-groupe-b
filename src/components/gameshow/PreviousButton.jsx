@@ -3,7 +3,7 @@ export default function PreviousButton({ handleClickPrev }) {
     <>
       <button
         onClick={handleClickPrev}
-        className="bg-primary/[.15] flex items-center justify-center w-10 h-20 rounded backdrop-blur-sm"
+        className="flex h-20 w-10 items-center justify-center rounded bg-primary/[.15] backdrop-blur-sm"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

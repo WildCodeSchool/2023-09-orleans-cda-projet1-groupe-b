@@ -25,11 +25,11 @@ export default function Thumbnails({ images, curr, handleThumbnailClick }) {
 
   return (
     <>
-      <div className="flex justify-center gap-1 relative min-h-full xl:h-[15vw] max-h-[12vw] md:max-h-[8vw] lg:max-h-[5vw] xl:max-h-[6vw]">
+      <div className="relative flex max-h-[12vw] min-h-full justify-center gap-1 md:max-h-[8vw] lg:max-h-[5vw] xl:h-[15vw] xl:max-h-[6vw]">
         {imagesThumbnails.map((image, index) => (
           <div
             key={startIndex + index}
-            className={`cursor-pointer mb-2 relative bg-dark w-full w-max-full ${
+            className={`w-max-full relative mb-2 w-full cursor-pointer bg-dark ${
               startIndex + index === curr
                 ? 'outline outline-2 outline-primary'
                 : ''
@@ -41,7 +41,7 @@ export default function Thumbnails({ images, curr, handleThumbnailClick }) {
               fill="#31FFE6"
               version="1.1"
               viewBox="0 0 36.8 25"
-              className={`absolute left-1/2 -translate-x-1/2 -top-3 ${
+              className={`absolute -top-3 left-1/2 -translate-x-1/2 ${
                 startIndex + index === curr ? 'block' : 'hidden'
               }`}
             >
@@ -51,7 +51,7 @@ export default function Thumbnails({ images, curr, handleThumbnailClick }) {
             <img
               src={image.image}
               alt={`Thumbnail ${startIndex + index}`}
-              className={`flex-shrink-0 w-full min-h-full max-h-full ${
+              className={`max-h-full min-h-full w-full flex-shrink-0 ${
                 image.width < 500 ? 'object-contain' : ''
               }`}
             />
