@@ -1,12 +1,10 @@
 export default function ThumbnailsPaginations({ totalPagination, pageId }) {
-  const nbPages = totalPagination;
-  console.log(typeof nbPages, nbPages);
   return (
     <>
       <div
-        className={`grid grid-cols-${nbPages} -skew-x-50 rounded-[3px] bg-secondary/20 overflow-hidden`}
+        className={`grid grid-cols-${totalPagination} -skew-x-50 rounded-[3px] bg-secondary/20 overflow-hidden`}
       >
-        {Array.from({ length: nbPages }).map((_, index) => (
+        {Array.from({ length: totalPagination }).map((_, index) => (
           <div
             key={index}
             className={`bg-primary rounded ${

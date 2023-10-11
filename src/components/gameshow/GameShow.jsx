@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 // Importation des composants
-import CarrouselGameShow from './CarouselGameShow';
+import CarouselGameShow from './CarouselGameShow';
 
 // Importation des méthodes fetch
 import { fetchGameDetails, fetchGameElements } from '../../api/api-fetch';
@@ -19,7 +19,12 @@ export default function GameShow() {
     const controller = new AbortController();
     const signal = controller.signal;
 
-    fetchGameDetails(gameId, setGameName, 'name', signal);
+    fetchGameDetails({
+      gameId,
+      setter: setGameName,
+      property: 'name',
+      signal,
+    });
 
     fetchGameElements({
       parameter: screenshotsURL,
@@ -40,7 +45,7 @@ export default function GameShow() {
         </h1>
         <div className="flex flex-col md:flex-row gap-3">
           <div className="flex-1">
-            <CarrouselGameShow images={images} />
+            <CarouselGameShow images={images} />
           </div>
           <div className="w-full md:w-52 xl:w-64">
             {/* TODO importer le composant gameInformation */}

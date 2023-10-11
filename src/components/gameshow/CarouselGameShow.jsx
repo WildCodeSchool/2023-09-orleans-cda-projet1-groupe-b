@@ -5,7 +5,7 @@ import NextButton from './NextButton';
 import PreviousButton from './PreviousButton';
 import Thumbnails from './Thumbnails';
 
-export default function CarrouselGameShow({ images }) {
+export default function CarouselGameShow({ images }) {
   const [curr, setCurr] = useState(0);
 
   // Fonction qui décrémente l'index

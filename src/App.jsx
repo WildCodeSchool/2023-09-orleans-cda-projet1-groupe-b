@@ -1,4 +1,3 @@
-import React from 'react';
 import { Outlet } from 'react-router-dom';
 
 import './App.css';
@@ -17,7 +16,7 @@ export default function App() {
           {/* TODO: Import NavBar component */}
         </nav>
         <section className="w-full px-2 xs:px-5 md:px-16 lg:px-2">
-          <Outlet></Outlet>
+          <Outlet />
         </section>
         <aside className="lg:w-1/3 xl:w-1/4 bg-primary"></aside>
       </main>
