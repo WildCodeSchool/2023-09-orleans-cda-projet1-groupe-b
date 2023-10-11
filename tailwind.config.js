@@ -1,6 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  // Génèration de classe dynamique et empêche la supression de styles pendant le processus de purge
+  safelist: [
+    {
+      pattern: /grid-cols-\d+/,
+    },
+  ],
   theme: {
     colors: {
       primary: '#31FFE6',
@@ -9,20 +15,23 @@ export default {
       dark: '#0D0D0D',
       light: '#F5F5F5',
     },
-  },
-  extend: {
-    fontFamily: {
-      title: ['GalakPro-Bold', 'sans-serif'],
-      'title-bold': ['GalakPro-Heavy', 'sans-serif'],
-      'title-medium': ['GalakPro-Medium', 'sans-serif'],
-      'title-light': ['GalakPro-Light', 'sans-serif'],
-      text: ['Roboto', 'sans-serif'],
-    },
-    backgroundImage: {
-      background: 'url(./images/background.jpg)',
-    },
-    screens: {
-      xs: '576px',
+    extend: {
+      fontFamily: {
+        title: ['GalakPro-Bold', 'sans-serif'],
+        'title-bold': ['GalakPro-Heavy', 'sans-serif'],
+        'title-medium': ['GalakPro-Medium', 'sans-serif'],
+        'title-light': ['GalakPro-Light', 'sans-serif'],
+        text: ['Roboto', 'sans-serif'],
+      },
+      backgroundImage: {
+        background: 'url(/images/background.jpg)',
+      },
+      screens: {
+        xs: '576px',
+      },
+      skew: {
+        50: '50deg',
+      },
     },
   },
   plugins: [],
