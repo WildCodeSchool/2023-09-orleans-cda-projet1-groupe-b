@@ -2,9 +2,9 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 const BASE_URL = 'https://api.rawg.io/api/';
 
 // Fonction de base pour fetcher une API qui prend en paramètre le lien de l'API
-const fetchData = async (url) => {
+const fetchData = async (url, signal) => {
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, { signal });
     if (response.ok) {
       return response.json();
     } else {
@@ -23,11 +23,17 @@ const fetchData = async (url) => {
  * la liste de tous les jeux vidéos par développeur,
  * à partir d'un paramètre par page
  **/
-export const fetchGames = async (parameter, pageId, setter, property) => {
-  const url = `${BASE_URL}${parameter}?${API_KEY}&page=${pageId}`;
+export const fetchGames = async ({
+  parameter,
+  pageId,
+  setter,
+  property,
+  signal,
+}) => {
+  const url = `${BASE_URL}${parameter}?key=${API_KEY}&page=${pageId}`;
 
   try {
-    const data = await fetchData(url);
+    const data = await fetchData(url, signal);
     setter(data[property]);
   } catch (error) {
     console.error(`Unable to load video game list : ${error}`);
@@ -38,11 +44,16 @@ export const fetchGames = async (parameter, pageId, setter, property) => {
  * les détails d'une catégorie
  * à partir de l'ID de la catégorie
  **/
-export const fetchCategoryDetails = async (categoryId, setter, property) => {
-  const url = `${BASE_URL}genres/${categoryId}?${API_KEY}`;
+export const fetchCategoryDetails = async ({
+  categoryId,
+  setter,
+  property,
+  signal,
+}) => {
+  const url = `${BASE_URL}genres/${categoryId}?key=${API_KEY}`;
 
   try {
-    const data = await fetchData(url);
+    const data = await fetchData(url, signal);
     setter(data[property]);
   } catch (error) {
     console.error(`Unable to load category information : ${error}`);
@@ -53,11 +64,16 @@ export const fetchCategoryDetails = async (categoryId, setter, property) => {
  * les détails d'une platforme,
  * à partir de l'ID de la plateforme
  **/
-export const fetchPlatformDetails = async (platformId, setter, property) => {
-  const url = `${BASE_URL}platforms/${platformId}?${API_KEY}`;
+export const fetchPlatformDetails = async ({
+  platformId,
+  setter,
+  property,
+  signal,
+}) => {
+  const url = `${BASE_URL}platforms/${platformId}?key=${API_KEY}`;
 
   try {
-    const data = await fetchData(url);
+    const data = await fetchData(url, signal);
     setter(data[property]);
   } catch (error) {
     console.error(`Unable to load platform information : ${error}`);
@@ -68,11 +84,16 @@ export const fetchPlatformDetails = async (platformId, setter, property) => {
  * les détails d'une platforme,
  * à partir de l'ID de la plateforme
  **/
-export const fetchCreatorDetails = async (creatorId, setter, property) => {
-  const url = `${BASE_URL}creators/${creatorId}?${API_KEY}`;
+export const fetchCreatorDetails = async ({
+  creatorId,
+  setter,
+  property,
+  signal,
+}) => {
+  const url = `${BASE_URL}creators/${creatorId}?key=${API_KEY}`;
 
   try {
-    const data = await fetchData(url);
+    const data = await fetchData(url, signal);
     setter(data[property]);
   } catch (error) {
     console.error(`Unable to load creator information : ${error}`);
@@ -83,11 +104,16 @@ export const fetchCreatorDetails = async (creatorId, setter, property) => {
  * les détails d'un developpeur,
  * à partir de l'ID d'un developpeur
  **/
-export const fetchDeveloperDetails = async (developerId, setter, property) => {
-  const url = `${BASE_URL}creators/${developerId}?${API_KEY}`;
+export const fetchDeveloperDetails = async ({
+  developerId,
+  setter,
+  property,
+  signal,
+}) => {
+  const url = `${BASE_URL}creators/${developerId}?key=${API_KEY}`;
 
   try {
-    const data = await fetchData(url);
+    const data = await fetchData(url, signal);
     setter(data[property]);
   } catch (error) {
     console.error(`Unable to load developer information : ${error}`);
@@ -98,10 +124,15 @@ export const fetchDeveloperDetails = async (developerId, setter, property) => {
  * les détails d'un jeux vidéo,
  * à partir de l'ID d'un jeux vidéo
  **/
-export const fetchGameDetails = async (gameId, setter, property) => {
-  const url = `${BASE_URL}games/${gameId}?${API_KEY}`;
+export const fetchGameDetails = async ({
+  gameId,
+  setter,
+  property,
+  signal,
+}) => {
+  const url = `${BASE_URL}games/${gameId}?key=${API_KEY}`;
   try {
-    const data = await fetchData(url);
+    const data = await fetchData(url, signal);
     setter(data[property]);
   } catch (error) {
     console.error(`Unable to load video game information : ${error}`);
@@ -118,16 +149,17 @@ export const fetchGameDetails = async (gameId, setter, property) => {
  * les trailers vidéos,
  * à partir d'un paramètre par l'ID du jeux vidéo
  **/
-export const fetchGameElements = async (
+export const fetchGameElements = async ({
   parameter,
   gameId,
   setter,
   property,
-) => {
-  const url = `${BASE_URL}games/${gameId}/${parameter}?${API_KEY}`;
+  signal,
+}) => {
+  const url = `${BASE_URL}games/${gameId}/${parameter}?key=${API_KEY}`;
 
   try {
-    const data = await fetchData(url);
+    const data = await fetchData(url, signal);
     setter(data[property]);
   } catch (error) {
     console.error(`Unable to load elements : ${error}`);
