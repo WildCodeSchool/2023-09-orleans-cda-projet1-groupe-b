@@ -1,8 +1,34 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import { useState, useEffect } from 'react';
+import { fetchGames } from './api/api-fetch';
+import { genresURL, platformsURL } from './api/api-url';
 import './App.css';
 
 export default function App() {
+  const [genres, setGenres] = useState([]);
+  const [platforms, setPlatforms] = useState([]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+    fetchGames({
+      setter: setGenres,
+      property: 'results',
+      signal,
+      parameter: genresURL,
+      pageId: 1,
+    });
+
+    fetchGames({
+      setter: setPlatforms,
+      property: 'results',
+      signal,
+      parameter: platformsURL,
+      pageId: 1,
+    });
+  }, []);
+
   return (
     <div className="bg-background">
       {/* Search bar */}
@@ -11,8 +37,8 @@ export default function App() {
       </section>
 
       <main className="flex h-screen flex-row flex-nowrap">
-        <nav className="bg-primary lg:w-1/3 xl:w-1/4">
-          <Navbar />
+        <nav className="lg:w-1/3 xl:w-1/4">
+          <Navbar genres={genres} platforms={platforms} />
         </nav>
         <section className="w-full px-2 xs:px-5 md:px-16 lg:px-2">
           <Outlet />

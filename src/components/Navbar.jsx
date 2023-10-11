@@ -1,20 +1,19 @@
 import { Link } from 'react-router-dom';
-import Collapsible from './Collapsible';
 import React, { useState } from 'react';
 import '../App.css';
 import '../App.jsx';
+import CollapsibleGenres from './NavbarTools/CollapsibleGenres';
+import CollapsiblePlatforms from './NavbarTools/CollapsiblePlatforms';
 
-function Navbar() {
+function Navbar({ genres, platforms }) {
   const [isOpenPlatform, setIsOpenPlatform] = useState(false);
   const [isOpenGenres, setIsOpenGenres] = useState(false);
 
   const handleClickCollapsePlatform = () => {
     setIsOpenPlatform(!isOpenPlatform);
-    console.log(isOpenPlatform);
   };
   const handleClickCollapseGenres = () => {
     setIsOpenGenres(!isOpenGenres);
-    console.log(isOpenGenres);
   };
   return (
     <>
@@ -103,7 +102,8 @@ function Navbar() {
           </li>
           <li className=" mb-5 gap-3 font-bold text-light">
             {isOpenPlatform ? (
-              <Collapsible
+              <CollapsiblePlatforms
+                platforms={platforms}
                 isOpenPlatform={isOpenPlatform}
                 setIsOpenPlatform={setIsOpenPlatform}
               />
@@ -152,7 +152,8 @@ function Navbar() {
           </li>
           <li className=" gap-3 font-bold text-light">
             {isOpenGenres ? (
-              <Collapsible
+              <CollapsibleGenres
+                genres={genres}
                 isOpenGenres={isOpenGenres}
                 setIsOpenGenres={setIsOpenGenres}
               />
