@@ -9,7 +9,7 @@ export default function Collapsible({
 }) {
   return (
     <>
-      <div className="h-40 w-full bg-secondary ml-3 pl-6 p-4">
+      <div className="ml-3 h-40 w-full bg-secondary p-4 pl-6">
         Ça déroule...
       </div>
     </>

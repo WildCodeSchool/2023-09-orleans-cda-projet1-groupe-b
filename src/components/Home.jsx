@@ -11,17 +11,17 @@ export default function Home() {
   return (
     <>
       {/* Search nar */}
-      <section className="fixed top-0 left-0 right-0 h-14">
+      <section className="fixed left-0 right-0 top-0 h-14">
         {/* // TODO import SearchBar component */}
       </section>
 
-      <main className="flex flex-row flex-nowrap h-screen">
-        <nav className="lg:w-1/3 xl:w-1/4 bg-primary h-screen">
+      <main className="flex h-screen flex-row flex-nowrap">
+        <nav className="h-screen bg-primary lg:w-1/3 xl:w-1/4">
           <Navbar />
         </nav>
         <section className="w-full">
           <Outlet />
-          <h1 className="space-x-40 text-dark text-4xl">Hello World </h1>
+          <h1 className="space-x-40 text-4xl text-dark">Hello World </h1>
         </section>
         <aside className="lg:w-1/3 xl:w-1/4"></aside>
       </main>

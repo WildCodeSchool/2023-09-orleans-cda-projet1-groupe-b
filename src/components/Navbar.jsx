@@ -39,7 +39,7 @@ function Navbar() {
           </li>
           <li>
             <Link
-              className="flex items-center gap-3 mb-2"
+              className="mb-2 flex items-center gap-3"
               to="/recommandations"
             >
               <svg
@@ -68,7 +68,7 @@ function Navbar() {
               <span className="font-bold text-light">Recommandations</span>
             </Link>
           </li>
-          <ul className=" text-light pl-[38px] mb-5">
+          <ul className=" mb-5 pl-[38px] text-light">
             <li className="py-[4px]">
               <Link to="/recommandations/news">News</Link>
             </li>
@@ -81,7 +81,7 @@ function Navbar() {
           </ul>
           <li>
             <button
-              className="font-text flex gap-3"
+              className="flex gap-3 font-text"
               onClick={handleClickCollapsePlatform}
             >
               <svg
@@ -101,7 +101,7 @@ function Navbar() {
               <span className="font-bold text-light">Plateforms</span>
             </button>
           </li>
-          <li className=" text-light gap-3 font-bold mb-5">
+          <li className=" mb-5 gap-3 font-bold text-light">
             {isOpenPlatform ? (
               <Collapsible
                 isOpenPlatform={isOpenPlatform}
@@ -111,9 +111,9 @@ function Navbar() {
               ''
             )}
           </li>
-          <li className=" text-light gap-3 font-bold">
+          <li className=" gap-3 font-bold text-light">
             <button
-              className="font-text flex gap-3"
+              className="flex gap-3 font-text"
               onClick={handleClickCollapseGenres}
             >
               <svg
@@ -150,7 +150,7 @@ function Navbar() {
               <span className="font-bold text-light">Genres</span>
             </button>
           </li>
-          <li className=" text-light gap-3 font-bold">
+          <li className=" gap-3 font-bold text-light">
             {isOpenGenres ? (
               <Collapsible
                 isOpenGenres={isOpenGenres}

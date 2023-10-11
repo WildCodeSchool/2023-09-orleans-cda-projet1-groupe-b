@@ -1,34 +1,25 @@
-import * as React from 'react';
-import './App.css';
+import { createBrowserRouter } from 'react-router-dom';
+import App from './App';
 import Home from './components/Home';
 import Recommandations from './components/Recommandations';
-import Plateforms from './components/Plateforms';
-import Categories from './components/Categories';
-import Error404 from './components/Error404';
-// import Navbar from './components/Navbar';
 import News from './components/News';
-import Offers from './components/Offers';
 import BestSellers from './components/BestSellers';
-import { Outlet, createBrowserRouter } from 'react-router-dom';
+import Offers from './components/Offers';
+import Error404 from './components/Error404';
+import GameShow from './components/gameshow/GameShow';
 
-const router = createBrowserRouter([
+export default createBrowserRouter([
   {
-    path: '',
-    element: (
-      <>
-        <Home />
-      </>
-    ),
+    path: '/',
+    element: <App />,
     children: [
       {
+        path: '/',
+        element: <Home />,
+      },
+      {
         path: 'recommandations',
-        element: (
-          <>
-            <div className="outlet">
-              <Outlet />
-            </div>
-          </>
-        ),
+        element: <Recommandations />,
         children: [
           {
             path: 'news',
@@ -45,12 +36,9 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: 'plateforms',
-        element: <Plateforms />,
-      },
-      {
-        path: 'categories',
-        element: <Categories />,
+        // Ajouter les routes
+        path: '/game/:gameId',
+        element: <GameShow />,
       },
       {
         path: '*',
@@ -59,5 +47,3 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-
-export default router;

@@ -1,15 +1,15 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 export default function Recommandations() {
   return (
     <>
-      <h1>Recommandations</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam libero
-        vero consequatur magni asperiores excepturi quo, totam iusto, soluta
-        aliquam doloribus, id iste fuga natus omnis iure. Numquam, recusandae
-        optio!
-      </p>
+      <div>
+        <Link to="/bestsellers">BestSellers</Link>
+        <Link to="/home">Home</Link>
+        <Link to="/offers">Offers</Link>
+        <Outlet />
+      </div>
     </>
   );
 }
