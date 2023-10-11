@@ -9,6 +9,7 @@ import { fetchGameDetails, fetchGameElements } from '../../api/api-fetch';
 
 // Importation des paramètres URL
 import { screenshotsURL } from '../../api/api-url';
+import RightBar from './RightBar';
 
 export default function GameShow() {
   const { gameId } = useParams();
@@ -48,7 +49,7 @@ export default function GameShow() {
             <CarouselGameShow images={images} />
           </div>
           <div className="w-full md:w-52 xl:w-64">
-            {/* TODO importer le composant gameInformation */}
+            <RightBar gameId={gameId} />
           </div>
         </div>
       </div>
