@@ -1,24 +1,24 @@
-// import '../App.css';
-import { fetchGameDetails, fetchGameElements } from '../../api/api-fetch';
-import { useEffect, useState } from 'react';
-import { pegi18, pegi16, pegi12, pegi7, pegi3 } from './AgeRatingLogos';
-import storeLogo from './StoreLogos';
-import platformLogo from './PlatformLogos';
+import { fetchGameDetails } from "../../api/api-fetch";
+import { useEffect, useState } from "react";
+import ageRating from "./AgeRatingLogos";
+import { Tooltip } from "flowbite";
+import storeLogo from "./StoreLogos";
+import platformLogo from "./PlatformLogos";
+import DlcComponent from "./DlcComponent";
+import perc2color from "./MetascoreColor";
 
 export default function RightBar({ gameId }) {
-  const [name, setName] = useState('');
-  const [metascore, setMetascore] = useState('');
+  const [name, setName] = useState("");
+  const [metascore, setMetascore] = useState("");
   const [platforms, setPlatforms] = useState([]);
   const [genres, setGenres] = useState([]);
-  const [released, setReleased] = useState('');
+  const [released, setReleased] = useState("");
   const [developers, setDevelopers] = useState([]);
   const [publishers, setPublishers] = useState([]);
   const [pegi, setPegi] = useState({});
-  const [website, setWebsite] = useState('');
+  const [website, setWebsite] = useState("");
   const [stores, setStores] = useState([]);
   const [parentPlatforms, setParentPlatforms] = useState([]);
-
-  console.log(gameId);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -27,136 +27,204 @@ export default function RightBar({ gameId }) {
     fetchGameDetails({
       gameId,
       setter: setMetascore,
-      property: 'metacritic',
+      property: "metacritic",
       signal,
     });
     fetchGameDetails({
       gameId,
       setter: setPlatforms,
-      property: 'platforms',
+      property: "platforms",
       signal,
     });
     fetchGameDetails({
       gameId,
       setter: setParentPlatforms,
-      property: 'parent_platforms',
+      property: "parent_platforms",
       signal,
     });
-    fetchGameDetails({ gameId, setter: setGenres, property: 'genres', signal });
+    fetchGameDetails({ gameId, setter: setGenres, property: "genres", signal });
     fetchGameDetails({
       gameId,
       setter: setReleased,
-      property: 'released',
+      property: "released",
       signal,
     });
     fetchGameDetails({
       gameId,
       setter: setDevelopers,
-      property: 'developers',
+      property: "developers",
       signal,
     });
     fetchGameDetails({
       gameId,
       setter: setPublishers,
-      property: 'publishers',
+      property: "publishers",
       signal,
     });
     fetchGameDetails({
       gameId,
       setter: setPegi,
-      property: 'esrb_rating',
+      property: "esrb_rating",
       signal,
     });
     fetchGameDetails({
       gameId,
       setter: setWebsite,
-      property: 'website',
+      property: "website",
       signal,
     });
-    fetchGameDetails({ gameId, setter: setStores, property: 'stores', signal });
-    fetchGameDetails({ gameId, setter: setName, property: 'name', signal });
+    fetchGameDetails({ gameId, setter: setStores, property: "stores", signal });
+    fetchGameDetails({ gameId, setter: setName, property: "name", signal });
 
     return () => controller.abort();
   }, [gameId]);
 
   const platformIcons = (platformId) => {
-    return platformId === 1 ? pcLogo : platformId === 2 ? psLogo : '';
+    return platformId === 1 ? pcLogo : platformId === 2 ? psLogo : "";
   };
+
+  // set the tooltip content element
+  const targetEl = document.getElementById("tooltipContent");
+
+  // set the element that trigger the tooltip using hover or click
+  const triggerEl = document.getElementById("tooltipButton");
+
+  const options = {
+    placement: "top",
+    triggerType: "hover",
+  };
+
+  const tooltip = new Tooltip(targetEl, triggerEl, options);
+
+  const metascoreColor = perc2color(parseInt(metascore));
 
   return (
     <>
       <section className="background">
-        <div className="rightbar container w-25 border rounded-lg border-black p-4">
-          <h3 className="text-xl font-bold">Métascore</h3>
+        <div className="rightbar w-25 border-black container rounded-lg border p-4">
+          <h3 className={`text-xl font-bold`}>Métascore</h3>
           <div className="flex justify-center">
-            <span className="metascore p-5 m-3 bg-lime-500 text-white rounded-lg text-5xl font-bold">
-              <p>{metascore}</p>
-            </span>
+            <div>
+              {metascore ? (
+                <p
+                  style={{ backgroundColor: metascoreColor }}
+                  className={`m-3 rounded-lg p-5 text-5xl font-bold`}
+                >
+                  {metascore}
+                </p>
+              ) : (
+                <p className="bg-[#9e9e9e] text-white m-3 rounded-lg p-5 font-bold text-4xl">
+                  NA
+                </p>
+              )}
+            </div>
           </div>
         </div>
-        <div className="rightbar container w-25 border rounded-lg border-black p-4 mt-5">
+        <div className="rightbar w-25 border-black container mt-5 rounded-lg border p-4">
           <h3 className="text-m font-bold">Plateforme(s)</h3>
-          <div className="flex">
-            {/* {platforms.map((pf, key) => (
-              <>
-                <p key={key}>{pf.platform.name}</p>
-              </>
-            ))} */}
-            {parentPlatforms.map((ppf, key) => (
-              <>
-                <img className="pfLogo mt-1 h-7 m-auto" key={key} src={platformLogo(ppf.platform.slug)} alt={ppf.platform.slug} />
-              </>
-            ))}
+          <div className="grid">
+            <button
+              id="tooltipButton"
+              data-tooltip-target="tooltip-animation"
+              type="button"
+              className="flex flex-row"
+            >
+              {parentPlatforms.map((ppf) => (
+                <>
+                  <img
+                    className="pfLogo m-auto mt-1 h-6"
+                    key={ppf.platform.id}
+                    src={platformLogo(ppf.platform.slug)}
+                    alt={ppf.platform.slug}
+                  />
+                </>
+              ))}
+            </button>
+            <div
+              id="tooltipContent"
+              role="tooltip"
+              className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-tertiary rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
+            >
+              {platforms.map((pf) => (
+                <>
+                  <div key={pf.platform.id}>
+                    <p>{pf.platform.name}</p>
+                  </div>
+                </>
+              ))}
+            </div>
           </div>
           <h3 className="text-m font-bold">Genre(s)</h3>
-          {genres.map((g, key) => (
-            <p key={key}>{g.name}</p>
-          ))}
+          <div>
+            {genres.length > 0 ? (
+              genres.map((g) => <p key={g.id}>{g.name}</p>)
+            ) : (
+              <p>N/A</p>
+            )}
+          </div>
           <h3 className="text-m font-bold">Date de sortie</h3>
-          <p>{released}</p>
+          {released ? <p>{released}</p> : <p>N/A</p>}
           <h3 className="text-m font-bold">Développeur</h3>
-          {developers.map((dev, key) => (
-            <p key={key}>{dev.name}</p>
+          {developers.map((dev) => (
+            <div key={dev.id}>
+              <p>{dev.name}</p>
+            </div>
           ))}
           <h3 className="text-m font-bold">Éditeur</h3>
-          {publishers.map((pub, key) => (
-            <p key={key}>{pub.name}</p>
-          ))}
+          {publishers != [] ? (
+            publishers.map((pub) => <p key={pub.id}>{pub.name}</p>)
+          ) : (
+            <p>"N/A"</p>
+          )}
           <h3 className="text-m font-bold">Classement PEGI</h3>
           <div>
-            {pegi.name === ('Mature' || 'Adult')
-              ? pegi18
-              : pegi.name === 'Teen 10+'
-              ? pegi16
-              : pegi.name === 'Teen'
-              ? pegi12
-              : pegi.name === 'Everyone'
-              ? pegi3
-              : 'Unknown rating'}
+            {pegi != null ? (
+              <img
+                className="h-16 mt-1"
+                src={ageRating(pegi.name)}
+                alt={pegi.name}
+              />
+            ) : (
+              <p>N/A</p>
+            )}
           </div>
 
           <h3 className="text-m font-bold">Site Web</h3>
-          <a href={website} target="_blank">
-            {website}
-          </a>
+          {website ? (
+            <a href={website} target="_blank">
+              <p className="text-ellipsis overflow-hidden text-primary">
+                {website}
+              </p>
+            </a>
+          ) : (
+            <p>N/A</p>
+          )}
         </div>
-        <div className="rightbar container w-25 border rounded-lg border-black p-4 mt-5">
+        <div className="rightbar w-25 border-black container mt-5 rounded-lg border p-4">
           <h3 className="text-m font-bold">Acheter {name}</h3>
-          {stores.map((st, key) => (
+          {stores.map((st) => (
             <button
-              className="storeButton bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
-              key={key}
+              className="storeButton justify-center w-full text-center bg-[#0D4F61] text-light hover:bg-primary hover:bg-primary inline-flex items-center rounded my-2 font-bold transition duration-150 hover:-translate-y-0.5"
+              key={st.id}
             >
-              {st.store.name}
-              <img
-                width="25"
-                className="text-center mx-1.5"
-                src={storeLogo(st.store.name)}
-                alt={st.store.name}
-              />
+              <div className="hover:invert flex flex-row px-4 py-3 w-full justify-center">
+                {st.store.name}
+                <img
+                  width="25"
+                  className="mx-1.5 text-center"
+                  src={storeLogo(st.store.name)}
+                  alt={st.store.name}
+                />
+              </div>
             </button>
           ))}
-          <h3 className="text-m font-bold">DLC de {name}</h3>
+          <img
+            className="mt-4"
+            src="/src/assets/separator.png"
+            alt="separator"
+          />
+          <h3 className="text-m font-bold">Éditions et DLC de {name}</h3>
+          <DlcComponent gameId={gameId} />
         </div>
       </section>
     </>

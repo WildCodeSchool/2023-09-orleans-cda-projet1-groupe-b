@@ -13,3 +13,5 @@ export const screenshotsURL = 'screenshots';
 export const storesURL = 'stores';
 export const achievementsURL = 'achievements';
 export const moviesURL = 'movies';
+
+export default dlcURL;

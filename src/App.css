@@ -5,6 +5,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@utilities {
+  scrollbar {
+    width: .5rem;
+  }
+}
+
+/* * {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) var(--primary);
+} */
+
 .rightbar {
   background: rgb(60, 165, 158);
   background: radial-gradient(
@@ -21,51 +32,6 @@ h3:not(:nth-child(1)) {
   color: white 50%;
 }
 
-.metascore {
-  background-color: rgba(0, 255, 0, 0.5);
-}
-
-.storeButton {
-  align-items: center;
-  background-clip: padding-box;
-  background-color: #12606b;
-  border: 1px solid transparent;
-  border-radius: .45rem;
-  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-  box-sizing: border-box;
-  color: #fff;
-  cursor: pointer;
-  display: inline-flex;
-  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  justify-content: center;
-  margin-top: 1rem;
-  min-height: 3rem;
-  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
-  position: relative;
-  text-decoration: none;
-  transition: all 250ms;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: baseline;
-  width: 100%;
-}
-
-.storeButton:hover,
-.storeButton:focus {
-  background-color: #31FFE6;
-  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-  color: black;
-}
-
-.storeButton:hover {
-  transform: translateY(-1px);
-}
-
-.storeButton:active {
-  background-color: #c85000;
-  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
-  transform: translateY(0);
+.dlcText {
+  text-shadow: 0px 1px 5px rgb(0, 0, 0), 0 0 1em rgb(3, 3, 21), 0 0 0.2em rgb(0, 0, 0);
 }

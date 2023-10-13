@@ -11,7 +11,7 @@ export default function App() {
         {/* TODO: Import SearchBar component */}
       </section>
 
-      <main className="flex h-screen flex-row flex-nowrap">
+      <main className="flex h-full flex-row flex-nowrap">
         <nav className="bg-primary lg:w-1/3 xl:w-1/4">
           {/* TODO: Import NavBar component */}
         </nav>
