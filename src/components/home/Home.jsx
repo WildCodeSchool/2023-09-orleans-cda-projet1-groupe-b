@@ -9,10 +9,10 @@ import HeaderHome from './HeaderHome';
 const GENRES_ID = [4, 51, 3, 5, 10, 2, 40, 14, 7, 11, 83, 1, 14, 19];
 
 // Génére un index aléatoire par rapport à la longueur du tableau GENRE_ID
-const randomIndex = Math.floor(Math.random() * GENRES_ID.length);
+const RANDOM_INDEX = Math.floor(Math.random() * GENRES_ID.length);
 
 // Extrait la valeur de l'ID d'une catégorie par rapport à un index aléatoire
-const randomGenres = GENRES_ID[randomIndex];
+const RANDOM_GENRES = GENRES_ID[RANDOM_INDEX];
 
 export default function Home() {
   const [imageHeader, setImageHeader] = useState();
@@ -22,14 +22,14 @@ export default function Home() {
     const signal = controller.signal;
 
     fetchCategoryDetails({
-      categoryId: randomGenres,
+      categoryId: RANDOM_GENRES,
       setter: setImageHeader,
       property: 'image_background',
       signal,
     });
 
     return () => controller.abort();
-  }, [randomGenres]);
+  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
