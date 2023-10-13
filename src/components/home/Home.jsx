@@ -8,14 +8,14 @@ import HeaderHome from './HeaderHome';
 
 const GENRES_ID = [4, 51, 3, 5, 10, 2, 40, 14, 7, 11, 83, 1, 14, 19];
 
+// Génére un index aléatoire par rapport à la longueur du tableau GENRE_ID
+const randomIndex = Math.floor(Math.random() * GENRES_ID.length);
+
+// Extrait la valeur de l'ID d'une catégorie par rapport à un index aléatoire
+const randomGenres = GENRES_ID[randomIndex];
+
 export default function Home() {
   const [imageHeader, setImageHeader] = useState();
-
-  // Génére un index aléatoire par rapport à la longueur du tableau GENRE_ID
-  const randomIndex = Math.floor(Math.random() * GENRES_ID.length);
-
-  // Extrait la valeur de l'ID d'une catégorie par rapport à un index aléatoire
-  const randomGenres = GENRES_ID[randomIndex];
 
   useEffect(() => {
     const controller = new AbortController();
@@ -89,7 +89,7 @@ export default function Home() {
               className="mt-20 flex justify-center md:ml-5 md:justify-start"
               variants={childVariants}
             >
-              <Button str="visible all games" />
+              <Button str="Show all games" />
             </motion.div>
           </motion.div>
         </div>

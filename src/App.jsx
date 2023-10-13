@@ -11,7 +11,7 @@ export default function App() {
       </section>
 
       <main className="relative flex h-screen flex-row flex-nowrap">
-        <nav className="sticky z-10 bg-primary/10 lg:w-1/3 xl:w-1/4">
+        <nav className="sticky z-10 hidden bg-primary/10 md:block lg:w-1/3 xl:w-1/4">
           <Navbar />
         </nav>
         <Outlet />
