@@ -26,7 +26,6 @@ export default function Logo() {
         duration: 1,
         type: 'tween',
         ease: 'easeInOut',
-        duration: 1,
         delay: 0.2,
       },
     },

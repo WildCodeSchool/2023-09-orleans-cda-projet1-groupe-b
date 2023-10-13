@@ -36,7 +36,7 @@ export const fetchGames = async ({
     const data = await fetchData(url, signal);
     setter(data[property]);
   } catch (error) {
-    console.error(`Unable to load video game list : ${error}`);
+    throw new Error(`Unable to load video game list : ${error}`);
   }
 };
 
@@ -56,7 +56,7 @@ export const fetchCategoryDetails = async ({
     const data = await fetchData(url, signal);
     setter(data[property]);
   } catch (error) {
-    console.error(`Unable to load category information : ${error}`);
+    throw new Error(`Unable to load category information : ${error}`);
   }
 };
 
@@ -76,7 +76,7 @@ export const fetchPlatformDetails = async ({
     const data = await fetchData(url, signal);
     setter(data[property]);
   } catch (error) {
-    console.error(`Unable to load platform information : ${error}`);
+    throw new Error(`Unable to load platform information : ${error}`);
   }
 };
 
@@ -96,7 +96,7 @@ export const fetchCreatorDetails = async ({
     const data = await fetchData(url, signal);
     setter(data[property]);
   } catch (error) {
-    console.error(`Unable to load creator information : ${error}`);
+    throw new Error(`Unable to load creator information : ${error}`);
   }
 };
 
@@ -116,7 +116,7 @@ export const fetchDeveloperDetails = async ({
     const data = await fetchData(url, signal);
     setter(data[property]);
   } catch (error) {
-    console.error(`Unable to load developer information : ${error}`);
+    throw new Error(`Unable to load developer information : ${error}`);
   }
 };
 
@@ -135,7 +135,7 @@ export const fetchGameDetails = async ({
     const data = await fetchData(url, signal);
     setter(data[property]);
   } catch (error) {
-    console.error(`Unable to load video game information : ${error}`);
+    throw new Error(`Unable to load video game information : ${error}`);
   }
 };
 
@@ -162,6 +162,6 @@ export const fetchGameElements = async ({
     const data = await fetchData(url, signal);
     setter(data[property]);
   } catch (error) {
-    console.error(`Unable to load elements : ${error}`);
+    throw new Error(`Unable to load elements : ${error}`);
   }
 };

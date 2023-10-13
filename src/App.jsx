@@ -1,7 +1,6 @@
 import { Outlet } from 'react-router-dom';
-
+import Navbar from './components/Navbar';
 import './App.css';
-import GameShow from './components/gameshow/GameShow';
 
 export default function App() {
   return (
@@ -13,12 +12,11 @@ export default function App() {
 
       <main className="relative flex h-screen flex-row flex-nowrap">
         <nav className="sticky z-10 bg-primary/10 lg:w-1/3 xl:w-1/4">
-          {/* TODO: Import NavBar component */}
+          <Navbar />
         </nav>
         <Outlet />
         <aside className="z-10 bg-primary/10 lg:w-1/3 xl:w-1/4"></aside>
       </main>
-
       {/* Footer */}
       <footer className="h-14 w-screen bg-tertiary">
         {/* TODO: Import Footer component */}

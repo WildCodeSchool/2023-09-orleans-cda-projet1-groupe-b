@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { fetchCategoryDetails } from '../../api/api-fetch';
-import { genresURL } from '../../api/api-url';
 
 import Logo from '../Logo';
 import Button from '../Button';
@@ -27,7 +26,7 @@ export default function Home() {
       property: 'image_background',
       signal,
     });
-  }, []);
+  }, [randomGenres]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -148,7 +147,7 @@ export default function Home() {
           >
             <motion.div variants={childVariants}>
               <div className="flex justify-center md:justify-start">
-                <div class="ml-1 mt-10 h-5 w-28 -skew-x-35 bg-primary"></div>
+                <div className="ml-1 mt-10 h-5 w-28 -skew-x-35 bg-primary"></div>
               </div>
             </motion.div>
             <motion.p

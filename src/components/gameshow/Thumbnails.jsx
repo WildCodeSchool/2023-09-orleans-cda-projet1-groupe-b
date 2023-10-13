@@ -1,14 +1,9 @@
-import { useState } from 'react';
-
 // Importation des composants
 import ThumbnailsPaginations from './ThumbnailsPaginations';
 
 const NUMBER_IMAGES = 5;
 
 export default function Thumbnails({ images, curr, handleThumbnailClick }) {
-  const [nbPage, setNbPage] = useState(0);
-  const [loading, setLoading] = useState(true);
-
   const totalImages = images.length;
 
   // Calcule l'indice de départ
