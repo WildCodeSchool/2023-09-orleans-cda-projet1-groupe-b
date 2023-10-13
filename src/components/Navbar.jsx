@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
-import '../App.css';
 import '../App.jsx';
-import CollapsibleGenres from './NavbarTools/CollapsibleGenres';
-import CollapsiblePlatforms from './NavbarTools/CollapsiblePlatforms';
+import Collapsible from './NavbarTools/Collapsible';
+import Dropdown from './NavbarTools/Dropdown';
+import { motion } from 'framer-motion';
 
 function Navbar({ genres, platforms }) {
   const [isOpenPlatform, setIsOpenPlatform] = useState(false);
@@ -15,6 +15,43 @@ function Navbar({ genres, platforms }) {
   const handleClickCollapseGenres = () => {
     setIsOpenGenres(!isOpenGenres);
   };
+
+  const playStationPlatforms = [];
+
+  platforms.filter((platform) => {
+    if (platform.name.includes('Play') || platform.name.includes('PS')) {
+      playStationPlatforms.push(platform);
+    }
+  });
+  const filteredPlayStation = playStationPlatforms.sort();
+
+  const nintendoPlatforms = [];
+
+  platforms.filter((platform) => {
+    if (
+      platform.name.includes('Nin') ||
+      platform.name.includes('NES') ||
+      platform.name.includes('Game B') ||
+      platform.name.includes('Wii')
+    ) {
+      nintendoPlatforms.push(platform);
+    }
+  });
+  const filteredNintendo = nintendoPlatforms.sort((a, b) =>
+    a.name.localeCompare(b.name),
+  );
+
+  const xboxPlatforms = [];
+
+  platforms.filter((platform) => {
+    if (platform.name.includes('Xbox')) {
+      xboxPlatforms.push(platform);
+    }
+  });
+  const filteredXbox = xboxPlatforms.sort((a, b) =>
+    a.name.localeCompare(b.name),
+  );
+
   return (
     <>
       <nav className="p-5">
@@ -102,11 +139,36 @@ function Navbar({ genres, platforms }) {
           </li>
           <li className=" mb-5 gap-3 font-bold text-light">
             {isOpenPlatform ? (
-              <CollapsiblePlatforms
-                platforms={platforms}
-                isOpenPlatform={isOpenPlatform}
-                setIsOpenPlatform={setIsOpenPlatform}
-              />
+              <Collapsible>
+                <Dropdown title="PlayStation">
+                  {filteredPlayStation.map((platform, index) => (
+                    <li className="py-[4px] font-text text-light" key={index}>
+                      {platform.slug}
+                    </li>
+                  ))}
+                </Dropdown>
+                <Dropdown title="Xbox">
+                  {filteredXbox.map((platform, index) => (
+                    <li className="py-[4px] font-text text-light" key={index}>
+                      {platform.slug}
+                    </li>
+                  ))}
+                </Dropdown>
+                <Dropdown title="Nintendo">
+                  {filteredNintendo.map((platform, index) => (
+                    <li className="py-[4px] font-text text-light" key={index}>
+                      {platform.slug}
+                    </li>
+                  ))}
+                </Dropdown>
+                {platforms.map((platform, index) => (
+                  <>
+                    <Link className="py-[4px] font-text text-light" key={index}>
+                      {platform.name}
+                    </Link>
+                  </>
+                ))}
+              </Collapsible>
             ) : (
               ''
             )}
@@ -152,11 +214,15 @@ function Navbar({ genres, platforms }) {
           </li>
           <li className=" gap-3 font-bold text-light">
             {isOpenGenres ? (
-              <CollapsibleGenres
-                genres={genres}
-                isOpenGenres={isOpenGenres}
-                setIsOpenGenres={setIsOpenGenres}
-              />
+              <Collapsible genres={genres}>
+                {genres.map((genre, index) => (
+                  <>
+                    <Link className="py-[4px] font-text text-light" key={index}>
+                      {genre.name}
+                    </Link>
+                  </>
+                ))}
+              </Collapsible>
             ) : (
               ''
             )}

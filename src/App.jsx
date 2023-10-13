@@ -8,6 +8,7 @@ import './App.css';
 export default function App() {
   const [genres, setGenres] = useState([]);
   const [platforms, setPlatforms] = useState([]);
+  const [playstationModels, setPlaystationModels] = useState([]);
 
   useEffect(() => {
     const controller = new AbortController();
