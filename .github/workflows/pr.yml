@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   # Single deploy job since we're just deploying
-  deploy:
+  check-pr:
     runs-on: ubuntu-latest
 
     steps:
