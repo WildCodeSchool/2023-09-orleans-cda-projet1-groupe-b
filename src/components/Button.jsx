@@ -39,8 +39,7 @@ export default function Button({ str }) {
           >
             <polyline points="9 18 15 12 9 6"></polyline>
           </svg>
-        </div>{' '}
-        {/* Vous aviez oublié de fermer la balise <div> */}
+        </div>
       </a>
     </motion.div>
   );
