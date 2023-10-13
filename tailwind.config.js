@@ -5,6 +5,12 @@ export default {
     './src/**/*.{js,ts,jsx,tsx}',
     'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}',
   ],
+  // Génèration de classe dynamique et empêche la supression de styles pendant le processus de purge
+  safelist: [
+    {
+      pattern: /grid-cols-\d+/,
+    },
+  ],
   theme: {
     colors: {
       primary: '#31FFE6',
@@ -20,6 +26,15 @@ export default {
         'title-medium': ['GalakPro-Medium', 'sans-serif'],
         'title-light': ['GalakPro-Light', 'sans-serif'],
         text: ['Roboto', 'sans-serif'],
+      },
+      backgroundImage: {
+        background: 'url(/images/background.jpg)',
+      },
+      screens: {
+        xs: '576px',
+      },
+      skew: {
+        50: '50deg',
       },
     },
   },
