@@ -27,6 +27,8 @@ export default function Home() {
       property: 'image_background',
       signal,
     });
+
+    return () => controller.abort();
   }, [randomGenres]);
 
   const containerVariants = {
