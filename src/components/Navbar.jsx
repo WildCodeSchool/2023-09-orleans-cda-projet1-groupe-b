@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 function Navbar({ genres, platforms }) {
   const [isOpenPlatform, setIsOpenPlatform] = useState(false);
   const [isOpenGenres, setIsOpenGenres] = useState(false);
+  const [isDropedDown, setIsDropedDown] = useState(false);
 
   const handleClickCollapsePlatform = () => {
     setIsOpenPlatform(!isOpenPlatform);
@@ -143,21 +144,21 @@ function Navbar({ genres, platforms }) {
                 <Dropdown title="PlayStation">
                   {filteredPlayStation.map((platform, index) => (
                     <li className="py-[4px] font-text text-light" key={index}>
-                      {platform.slug}
+                      {platform.name}
                     </li>
                   ))}
                 </Dropdown>
                 <Dropdown title="Xbox">
                   {filteredXbox.map((platform, index) => (
                     <li className="py-[4px] font-text text-light" key={index}>
-                      {platform.slug}
+                      {platform.name}
                     </li>
                   ))}
                 </Dropdown>
                 <Dropdown title="Nintendo">
                   {filteredNintendo.map((platform, index) => (
                     <li className="py-[4px] font-text text-light" key={index}>
-                      {platform.slug}
+                      {platform.name}
                     </li>
                   ))}
                 </Dropdown>
