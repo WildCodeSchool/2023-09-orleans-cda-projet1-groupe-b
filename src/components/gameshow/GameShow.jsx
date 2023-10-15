@@ -39,7 +39,7 @@ export default function GameShow() {
 
   return (
     <>
-      <div className="">
+      <section className="w-full px-2 xs:px-5 md:px-16 lg:px-2">
         <h1 className="space-x-40 font-title text-4xl text-light">
           {gameName}
         </h1>
@@ -51,7 +51,7 @@ export default function GameShow() {
             {/* TODO importer le composant gameInformation */}
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 }

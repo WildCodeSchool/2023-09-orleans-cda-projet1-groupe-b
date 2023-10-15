@@ -1,11 +1,11 @@
-// Paramètres pour la fonction fetchAsyncGames
+// Paramètres pour la fonction fetchGames
 export const gamesURL = 'games';
 export const genresURL = 'genres';
 export const creatorsURL = 'creators';
 export const platformsURL = 'platforms';
 export const developersURL = 'developers';
 
-// Paramètres pour la fonction fetchAsyncGameElements
+// Paramètres pour la fonction fetchGameElements
 export const dlcURL = 'additions';
 export const developmentTeamURL = 'development-team';
 export const gameSeriesURL = 'game-series';
