@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   # Single deploy job since we're just deploying
-  deploy:
+  check-pr:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,8 +31,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install dependencies
+      - name: Check linting
+        run: npm run lint:check
+
+      - name: Check formating
         run: npm run format:check
 
-      - name: Install dependencies
+      - name: Build
         run: npm run build
