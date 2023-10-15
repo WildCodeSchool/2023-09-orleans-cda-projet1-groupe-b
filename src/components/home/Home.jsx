@@ -14,6 +14,33 @@ const RANDOM_INDEX = Math.floor(Math.random() * GENRES_ID.length);
 // Extrait la valeur de l'ID d'une catégorie par rapport à un index aléatoire
 const RANDOM_GENRES = GENRES_ID[RANDOM_INDEX];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: (i) => ({
+    opacity: 1,
+    transition: {
+      when: 'beforeChildren',
+      type: 'tween',
+      ease: 'easeInOut',
+      staggerChildren: 0.1,
+      duration: i,
+    },
+  }),
+};
+
+const childVariants = {
+  hidden: { opacity: 0, x: -100 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: 'tween',
+      ease: 'easeInOut',
+      duration: 0.5,
+    },
+  },
+};
+
 export default function Home() {
   const [imageHeader, setImageHeader] = useState();
 
@@ -30,33 +57,6 @@ export default function Home() {
 
     return () => controller.abort();
   }, []);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: (i) => ({
-      opacity: 1,
-      transition: {
-        when: 'beforeChildren',
-        type: 'tween',
-        ease: 'easeInOut',
-        staggerChildren: 0.1,
-        duration: i,
-      },
-    }),
-  };
-
-  const childVariants = {
-    hidden: { opacity: 0, x: -100 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        type: 'tween',
-        ease: 'easeInOut',
-        duration: 0.5,
-      },
-    },
-  };
 
   return (
     <>

@@ -1,20 +1,20 @@
 import { motion } from 'framer-motion';
 
-export default function Button({ str }) {
-  const btnVariants = {
-    visible: {
-      opacity: 0.8,
+const btnVariants = {
+  visible: {
+    opacity: 0.8,
+  },
+  hover: {
+    opacity: 1,
+    scale: 1.05,
+    transition: {
+      type: 'spring',
+      stiffness: 300,
     },
-    hover: {
-      opacity: 1,
-      scale: 1.05,
-      transition: {
-        type: 'spring',
-        stiffness: 300,
-      },
-    },
-  };
+  },
+};
 
+export default function Button({ str }) {
   return (
     <motion.div variants={btnVariants} initial="visible" whileHover="hover">
       <a
