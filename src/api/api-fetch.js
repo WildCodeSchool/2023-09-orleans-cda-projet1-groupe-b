@@ -25,16 +25,20 @@ const fetchData = async (url, signal) => {
  **/
 export const fetchGames = async ({
   parameter,
-  pageId,
   setter,
-  property,
+  loading,
   signal,
+  queryString = null,
 }) => {
-  const url = `${BASE_URL}${parameter}?key=${API_KEY}&page=${pageId}`;
+  let url = `${BASE_URL}${parameter}?key=${API_KEY}`;
+
+  if (queryString) {
+    url += `&${queryString}`;
+  }
 
   try {
     const data = await fetchData(url, signal);
-    setter(data[property]);
+    loading(true), setter(data);
   } catch (error) {
     throw new Error(`Unable to load video game list : ${error}`);
   }
@@ -47,14 +51,15 @@ export const fetchGames = async ({
 export const fetchCategoryDetails = async ({
   categoryId,
   setter,
-  property,
+  loading,
   signal,
 }) => {
   const url = `${BASE_URL}genres/${categoryId}?key=${API_KEY}`;
 
   try {
     const data = await fetchData(url, signal);
-    setter(data[property]);
+    loading(true);
+    setter(data);
   } catch (error) {
     throw new Error(`Unable to load category information : ${error}`);
   }
@@ -67,14 +72,15 @@ export const fetchCategoryDetails = async ({
 export const fetchPlatformDetails = async ({
   platformId,
   setter,
-  property,
+  loading,
   signal,
 }) => {
   const url = `${BASE_URL}platforms/${platformId}?key=${API_KEY}`;
 
   try {
     const data = await fetchData(url, signal);
-    setter(data[property]);
+    loading(true);
+    setter(data);
   } catch (error) {
     throw new Error(`Unable to load platform information : ${error}`);
   }
@@ -87,14 +93,15 @@ export const fetchPlatformDetails = async ({
 export const fetchCreatorDetails = async ({
   creatorId,
   setter,
-  property,
+  loading,
   signal,
 }) => {
   const url = `${BASE_URL}creators/${creatorId}?key=${API_KEY}`;
 
   try {
     const data = await fetchData(url, signal);
-    setter(data[property]);
+    loading(true);
+    setter(data);
   } catch (error) {
     throw new Error(`Unable to load creator information : ${error}`);
   }
@@ -107,14 +114,15 @@ export const fetchCreatorDetails = async ({
 export const fetchDeveloperDetails = async ({
   developerId,
   setter,
-  property,
+  loading,
   signal,
 }) => {
   const url = `${BASE_URL}creators/${developerId}?key=${API_KEY}`;
 
   try {
     const data = await fetchData(url, signal);
-    setter(data[property]);
+    loading(true);
+    setter(data);
   } catch (error) {
     throw new Error(`Unable to load developer information : ${error}`);
   }
@@ -124,16 +132,12 @@ export const fetchDeveloperDetails = async ({
  * les détails d'un jeux vidéo,
  * à partir de l'ID d'un jeux vidéo
  **/
-export const fetchGameDetails = async ({
-  gameId,
-  setter,
-  property,
-  signal,
-}) => {
+export const fetchGameDetails = async ({ gameId, setter, loading, signal }) => {
   const url = `${BASE_URL}games/${gameId}?key=${API_KEY}`;
   try {
     const data = await fetchData(url, signal);
-    setter(data[property]);
+    loading(true);
+    setter(data);
   } catch (error) {
     throw new Error(`Unable to load video game information : ${error}`);
   }
@@ -153,14 +157,15 @@ export const fetchGameElements = async ({
   parameter,
   gameId,
   setter,
-  property,
+  loading,
   signal,
 }) => {
   const url = `${BASE_URL}games/${gameId}/${parameter}?key=${API_KEY}`;
 
   try {
     const data = await fetchData(url, signal);
-    setter(data[property]);
+    loading(true);
+    setter(data);
   } catch (error) {
     throw new Error(`Unable to load elements : ${error}`);
   }
