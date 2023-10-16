@@ -4,3 +4,103 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.cube-container {
+  width: 500px;
+  height: 500px;
+  perspective: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0.5rem;
+  background-image: url(images/BgCube.svg);
+  background-size: cover;
+}
+
+.cube {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: spin 200s infinite linear;
+  animation-iteration-count: infinite;
+  transform: rotateX(45deg) rotateY(45deg);
+}
+
+.cube:hover {
+  animation-play-state: paused;
+}
+
+.face {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 2px solid whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.front {
+  transform: translateZ(100px);
+}
+
+.back {
+  transform: rotateY(180deg) translateZ(100px);
+}
+
+.right {
+  transform: rotateY(90deg) translateZ(100px);
+}
+
+.left {
+  transform: rotateY(-90deg) translateZ(100px);
+}
+
+.top {
+  transform: rotateX(90deg) translateZ(100px);
+}
+
+.bottom {
+  transform: rotateX(-90deg) translateZ(100px);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateX(0) rotateY(0) rotateZ(0);
+  }
+
+  100% {
+    transform: rotateX(3600deg) rotateY(3600deg) rotateZ(1deg);
+  }
+}
+
+.textBox,
+h1 {
+  transform: translateZ(2);
+  transition: transform 3s;
+  width: 100%;
+  height: auto;
+  position: relative;
+  perspective: 1800px; /* Ajustez cette valeur selon vos besoins */
+  perspective-origin: center center; /* Réglez l'origine de la perspective au centre */
+  transform: rotateY(30deg);
+  margin-left: 20px;
+}
+
+.text-content {
+  position: absolute;
+  justify-items: space-between;
+}
+
+.h1 {
+  transform: translateZ(2);
+  perspective: 1800px; /* Ajustez cette valeur selon vos besoins */
+  perspective-origin: center center; /* Réglez l'origine de la perspective au centre */
+}
+
+li:hover {
+  background-color: white;
+
+  color: black;
+}
