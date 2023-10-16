@@ -1,7 +1,7 @@
 import Carousel from './Carousel';
 import GridCard from './GridCard';
 import { useState, useEffect } from 'react';
-import { fetchGames, fetchGameDetails } from '../../api/api-fetch.js';
+import { fetchGames } from '../../api/api-fetch.js';
 import { gamesURL, genresURL } from '../../api/api-url.js';
 import { useParams } from 'react-router-dom';
 
@@ -43,10 +43,8 @@ export default function Categories() {
 
   return (
     <>
-      <div>
-        <Carousel games={genreGames} />
-        <GridCard games={genreGames} />
-      </div>
+      <Carousel games={genreGames} />
+      <GridCard games={genreGames} />
     </>
   );
 }
