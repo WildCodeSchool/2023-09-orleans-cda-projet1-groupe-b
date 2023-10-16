@@ -22,7 +22,7 @@ export default function Carousel({ games }) {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [current]);
+  }, []);
 
   return (
     <>

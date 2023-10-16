@@ -7,11 +7,9 @@ function Navbar() {
 
   const handleClickCollapsePlatform = () => {
     setIsOpenPlatform(!isOpenPlatform);
-    console.log(isOpenPlatform);
   };
   const handleClickCollapseCategories = () => {
     setIsOpenCategories(!isOpenCategories);
-    console.log(isOpenCategories);
   };
   return (
     <>
