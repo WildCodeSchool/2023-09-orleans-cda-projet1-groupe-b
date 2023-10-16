@@ -28,6 +28,7 @@ export default {
         'title-medium': ['GalakPro-Medium', 'sans-serif'],
         'title-light': ['GalakPro-Light', 'sans-serif'],
         text: ['Roboto', 'sans-serif'],
+        pixel: ['ARCADE_N', 'sans-serif'],
       },
       backgroundImage: {
         background: 'url(/images/background.jpg)',

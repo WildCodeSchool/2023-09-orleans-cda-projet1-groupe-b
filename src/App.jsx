@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import { useState, useEffect } from 'react';
 import { fetchGames } from './api/api-fetch';
@@ -6,6 +6,7 @@ import { genresURL, platformsURL } from './api/api-url';
 import './App.css';
 
 export default function App() {
+  const location = useLocation();
   const [genres, setGenres] = useState([]);
   const [platforms, setPlatforms] = useState([]);
   const [playstationModels, setPlaystationModels] = useState([]);
@@ -37,14 +38,14 @@ export default function App() {
         {/* TODO: Import SearchBar component */}
       </section>
 
-      <main className="flex h-screen flex-row flex-nowrap">
-        <nav className="lg:w-1/3 xl:w-1/4">
+      <main className="relative flex h-screen flex-row flex-nowrap">
+        <nav className="sticky z-10 lg:w-1/3 xl:w-1/4">
           <Navbar genres={genres} platforms={platforms} />
         </nav>
-        <section className="w-full px-2 xs:px-5 md:px-16 lg:px-2">
-          <Outlet />
-        </section>
-        <aside className="bg-primary lg:w-1/3 xl:w-1/4"></aside>
+        <Outlet />
+        {location.pathname !== '/' && (
+          <aside className="bg-primary lg:w-1/3 xl:w-1/4"></aside>
+        )}
       </main>
       {/* Footer */}
       <footer className="h-14 w-screen bg-tertiary">

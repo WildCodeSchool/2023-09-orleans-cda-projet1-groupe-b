@@ -5,41 +5,59 @@
 @tailwind components;
 @tailwind utilities;
 
-.cube-container {
-  width: 500px;
-  height: 500px;
+@layer utilities {
+  .perspective {
+    perspective: 1500px;
+    perspective-origin: center center;
+    transform: rotateY(25deg);
+  }
+
+  .cube-container {
+    perspective: 1000px;
+  }
+
+  .cube {
+    transform-style: preserve-3d;
+    animation: spin 200s infinite linear;
+  }
+
+  .cube:hover {
+    animation-play-state: paused;
+  }
+}
+
+/* Classe cube-container transformée en tailwind (className cube-container) */
+/* .cube-container {
   perspective: 800px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 0.5rem;
+  margin-right: 5rem;
   background-image: url(images/BgCube.svg);
-  background-size: cover;
-}
+  background-position: center;
+} */
 
-.cube {
+/* Class Cube transformée en tailwind (Cube3D className cube) */
+/* .cube {
   width: 200px;
   height: 200px;
   position: relative;
-  transform-style: preserve-3d;
   animation: spin 200s infinite linear;
-  animation-iteration-count: infinite;
-  transform: rotateX(45deg) rotateY(45deg);
-}
+} */
 
-.cube:hover {
+/* .cube:hover {
   animation-play-state: paused;
-}
+} */
 
-.face {
+/* .face {
   position: absolute;
   width: 200px;
   height: 200px;
-  border: 2px solid whitesmoke;
+  border: 1px solid #31FFE6;
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .front {
   transform: translateZ(100px);
@@ -71,36 +89,30 @@
   }
 
   100% {
-    transform: rotateX(3600deg) rotateY(3600deg) rotateZ(1deg);
+    transform: rotateX(3600deg) rotateY(3600deg) rotateZ(300deg);
   }
 }
 
-.textBox,
-h1 {
-  transform: translateZ(2);
+/* .textBox,
+.scoreTitle {
+  transform: translateZ(0);
   transition: transform 3s;
-  width: 100%;
   height: auto;
   position: relative;
-  perspective: 1800px; /* Ajustez cette valeur selon vos besoins */
-  perspective-origin: center center; /* Réglez l'origine de la perspective au centre */
-  transform: rotateY(30deg);
-  margin-left: 20px;
-}
+} */
 
-.text-content {
+/* .text-content {
   position: absolute;
   justify-items: space-between;
-}
+} */
 
-.h1 {
-  transform: translateZ(2);
-  perspective: 1800px; /* Ajustez cette valeur selon vos besoins */
-  perspective-origin: center center; /* Réglez l'origine de la perspective au centre */
-}
-
-li:hover {
+/* .text-rank > li:hover {
   background-color: white;
-
   color: black;
-}
+} */
+
+/* .enter:hover {
+  transform: translateZ(0);
+  transform: rotateY(180deg);
+  
+} */
