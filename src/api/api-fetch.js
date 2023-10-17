@@ -25,18 +25,21 @@ const fetchData = async (url, signal) => {
  **/
 export const fetchGames = async ({
   parameter,
-  pageId,
   setter,
-  property,
+  loading,
   signal,
+  queryString = null,
 }) => {
-  const url = `${BASE_URL}${parameter}?key=${API_KEY}&page=${pageId}`;
-
+  let url = `${BASE_URL}${parameter}?key=${API_KEY}`;
+  if (queryString) {
+    url += `&${queryString}`;
+  }
   try {
     const data = await fetchData(url, signal);
-    setter(data[property]);
+    loading(true);
+    setter(data);
   } catch (error) {
-    console.error(`Unable to load video game list : ${error}`);
+    throw new Error(`Unable to load video game list : ${error}`);
   }
 };
 

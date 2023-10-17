@@ -1,5 +1,5 @@
-import Cube3D from './Retro/Cube3D';
 import RetroContainer from './Retro/RetroContainer';
+// import { genresURL } from '../api/api-url';
 
 export default function Home() {
   return (
