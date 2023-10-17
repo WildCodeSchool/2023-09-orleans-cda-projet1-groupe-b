@@ -17,7 +17,7 @@ export default function GridCard({ games }) {
               />
               <div className="flex justify-end text-center">
                 {game.platforms.map((platform, index) => (
-                  <p key={index} className=" text-white">
+                  <p key={index} className=" text-light">
                     {platform.platform.name}
                   </p>
                 ))}
@@ -26,7 +26,7 @@ export default function GridCard({ games }) {
                 </p>
               </div>
               <div className="p-5">
-                <h5 className="text-white dark:text-white mb-2 text-2xl font-bold tracking-tight">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-light">
                   {game.name}
                 </h5>
               </div>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import CarouselCard from './CarouselCard';
 
 export default function Carousel({ games }) {
@@ -6,15 +6,15 @@ export default function Carousel({ games }) {
 
   let [current, setCurrent] = useState(0);
 
-  let previousSlide = () => {
+  const previousSlide = useCallback(() => {
     if (current === 0) setCurrent(games.length - 1);
     else setCurrent(current - 1);
-  };
+  }, [current, games.length]);
 
-  let nextSlide = () => {
+  const nextSlide = useCallback(() => {
     if (current === games.length - 1) setCurrent(0);
     else setCurrent(current + 1);
-  };
+  }, [current, games.length]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -22,11 +22,11 @@ export default function Carousel({ games }) {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [current, nextSlide]);
 
   return (
     <>
-      <h1 className="my-10 text-center font-title text-4xl text-dark">JEUX</h1>
+      <h1 className="my-10 text-center font-title text-4xl text-light">JEUX</h1>
       <div className="mx-auto w-[75%]">
         <div className="relative">
           <div className="absolute left-40 top-1/2 z-10 -translate-x-20 -translate-y-1/2 transform">
