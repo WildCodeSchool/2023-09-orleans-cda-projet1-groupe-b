@@ -25,7 +25,7 @@ export default function GameShow() {
     fetchGameDetails({
       gameId,
       setter: setGame,
-      loading: setIsLoaded,
+      setLoaded: setIsLoaded,
       signal,
     });
 
@@ -33,7 +33,7 @@ export default function GameShow() {
       parameter: screenshotsURL,
       gameId,
       setter: setScreenshots,
-      loading: setIsLoaded,
+      setLoaded: setIsLoaded,
       signal,
     });
 

@@ -9,7 +9,9 @@ export default function Thumbnails({
   handleThumbnailClick,
   isLoaded,
 }) {
-  if (isLoaded) {
+  if (!isLoaded) {
+    return null;
+  } else {
     const totalImages = screenshotsResults.length;
 
     // Calcule l'indice de départ

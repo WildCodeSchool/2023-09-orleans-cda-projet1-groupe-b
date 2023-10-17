@@ -52,7 +52,7 @@ export default function Home() {
     fetchCategoryDetails({
       categoryId: RANDOM_GENRES,
       setter: setImageHeader,
-      loading: setIsLoaded,
+      setLoaded: setIsLoaded,
       signal,
     });
 

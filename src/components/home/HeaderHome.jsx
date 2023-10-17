@@ -1,34 +1,36 @@
 import { motion } from 'framer-motion';
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: (i) => ({
+    opacity: 1,
+    transition: {
+      when: 'beforeChildren',
+      type: 'tween',
+      ease: 'easeInOut',
+      staggerChildren: 0.1,
+      duration: i,
+    },
+  }),
+};
+
+const imageVariants = {
+  hidden: (i) => ({ opacity: 0, y: i }),
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'tween',
+      ease: 'easeInOut',
+      duration: 0.5,
+    },
+  },
+};
+
 export default function HeaderHome({ imageHeader, isLoaded }) {
-  if (isLoaded) {
-    const containerVariants = {
-      hidden: { opacity: 0 },
-      visible: (i) => ({
-        opacity: 1,
-        transition: {
-          when: 'beforeChildren',
-          type: 'tween',
-          ease: 'easeInOut',
-          staggerChildren: 0.1,
-          duration: i,
-        },
-      }),
-    };
-
-    const imageVariants = {
-      hidden: (i) => ({ opacity: 0, y: i }),
-      visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-          type: 'tween',
-          ease: 'easeInOut',
-          duration: 0.5,
-        },
-      },
-    };
-
+  if (!isLoaded) {
+    return null;
+  } else {
     return (
       <>
         <div className="absolute h-screen w-screen overflow-hidden">
