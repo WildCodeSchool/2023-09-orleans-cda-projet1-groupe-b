@@ -19,51 +19,59 @@ export default function CarouselCard({ game }) {
   }, [game.id]);
   return (
     <>
-      <div className="flex h-full w-full flex-row rounded border border-primary">
-        <div className="h-[35rem] w-96">
+      <div className="flex h-full w-full shrink-0 flex-col overflow-hidden rounded-[3px] border border-primary bg-gradient-to-l from-primary/10 to-primary/5 lg:flex-row">
+        <div className="h-full min-h-[25vw] w-full min-w-[17vw]">
           <img
-            className="h-full w-full rounded object-cover"
+            className="h-full w-full rounded object-cover md:w-full lg:h-full xl:h-[30vw]"
             src={game.background_image}
             alt={game.name}
           />
         </div>
-        <div className="m-4 flex w-[45rem] flex-col ">
-          <div className="flex justify-between">
+        <div className="flex-col px-4 xl:w-full ">
+          <div className="">
             <div className="flex flex-col">
-              <h5 className="mb-2 mt-3 text-2xl font-bold tracking-tight text-light">
-                {game.name}
-              </h5>
-              <div className="flex flex-row">
-                {game.platforms.map((platform, index) => (
-                  <p key={index} className=" text-white">
-                    {platform.platform.name}
-                  </p>
+              <div className="flex flex-nowrap justify-between gap-4">
+                <div className="">
+                  <h5 className="clamp-title-card mt-3 font-title uppercase tracking-wide text-light">
+                    {game.name}
+                  </h5>
+                  <div className="flex">
+                    <p className="text-light">Platforms: </p>
+                    {/* {game.platforms.map((platform, index) => (
+                      <p key={index} className=" text-light">{platform.platform.name}</p>
+                    ))} */}
+                  </div>
+                </div>
+                <div className="mt-4 flex shrink-0 flex-col items-center justify-center rounded-[10px] border border-primary font-bold text-primary xl:h-[5vw] xl:w-[5vw]">
+                  <p className="score-size font-text">score</p>
+                  <p className="metascore-size font-black">{game.metacritic}</p>
+                </div>
+              </div>
+            </div>
+            <div className="mt-6 border-b border-primary/50"></div>
+          </div>{' '}
+          <div className="flex flex-col gap-4">
+            <div>
+              {/* <p className="font-text text-base text-light/80">Genres :</p> */}
+              <div className="ml-2 mt-1 flex flex-wrap gap-2">
+                {game.genres.map((genre) => (
+                  <div
+                    key={genre.id}
+                    className="text-white skew-x-[-35deg] rounded-[2px] bg-primary/50 px-4 py-1 text-xs"
+                  >
+                    <div className="skew-x-[35deg]">{genre.name}</div>
+                  </div>
                 ))}
               </div>
             </div>
-            <div className="mt-3 flex h-20 w-20 flex-col rounded border border-primary font-bold text-primary">
-              <p className="text-center">score</p>
-              <p className="mt-1 text-center text-4xl">{game.metacritic}</p>
-            </div>
-          </div>
-          <div className="border-b-slate-600 mt-5 border "></div>
-          <div className="flex flex-col">
-            <p className="text-gray-500 dark:text-gray-400 mt-3 text-3xl">
-              Date de sortie : {game.released}
-            </p>
-            <p className="mt-3 text-xl">
-              {game.genres.map((genre) => (
-                <button
-                  key={genre.id}
-                  className="bg-gray-500 text-white m-3  rounded px-4 py-2"
-                >
-                  {genre.name}
-                </button>
-              ))}
-            </p>
-            <p className="line-clamp-5">{description}</p>
-            <div className="mt-5 flex justify-end">
-              <button className="h-10 w-44 -skew-x-[30deg] rounded bg-primary">
+            <p className="mt-2 font-text text-base text-light/80">
+              Release : {game.released}
+            </p>{' '}
+            <div className="h-[9rem] overflow-auto">
+              <p className="line-clamp-4 text-light/80">{description}</p>
+            </div>{' '}
+            <div className="mr-3 mt-5 flex justify-end">
+              <button className="mb-4 h-10 w-44 -skew-x-[30deg] rounded bg-primary">
                 Showmore
               </button>
             </div>

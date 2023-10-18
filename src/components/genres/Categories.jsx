@@ -43,8 +43,12 @@ export default function Categories() {
 
   return (
     <>
-      <Carousel games={genreGames} />
-      <GridCard games={genreGames} />
+      <section className="z-50 mt-[10rem] w-full px-2 xs:px-5 md:px-16 lg:px-2">
+        <div className="mx-auto w-[80%] lg:max-w-[55vw]">
+          <Carousel games={genreGames} />
+        </div>
+        <GridCard games={genreGames} />
+      </section>
     </>
   );
 }

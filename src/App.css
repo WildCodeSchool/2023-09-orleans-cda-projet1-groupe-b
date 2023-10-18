@@ -4,3 +4,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .clamp-title-card {
+    font-size: clamp(16px, 2vw, 32px);
+  }
+  .score-size {
+    font-size: clamp(12px, 1vw, 14px);
+  }
+  .metascore-size {
+    font-size: clamp(16px, 2vw, 32px);
+  }
+}

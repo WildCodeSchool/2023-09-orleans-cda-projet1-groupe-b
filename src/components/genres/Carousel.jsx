@@ -1,5 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import CarouselCard from './CarouselCard';
+import NextButton from '../gameshow/NextButton';
+import PreviousButton from '../gameshow/PreviousButton';
 
 export default function Carousel({ games }) {
   games = games.slice(0, 10);
@@ -26,64 +28,27 @@ export default function Carousel({ games }) {
 
   return (
     <>
-      <h1 className="my-10 text-center font-title text-4xl text-light">JEUX</h1>
-      <div className="mx-auto w-[75%]">
-        <div className="relative">
-          <div className="absolute left-40 top-1/2 z-10 -translate-x-20 -translate-y-1/2 transform">
-            <button
-              onClick={previousSlide}
-              className="w-18 bg-black h-40 rounded"
-            >
-              <svg
-                className="text-gray-800 dark:text-white m-5 h-10 w-5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 8 14"
-              >
-                <path
-                  stroke="white"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M7 1 1.3 6.326a.91.91 0 0 0 0 1.348L7 13"
-                />
-              </svg>
-            </button>
-          </div>
-          <div className=" mx-auto w-[75%] overflow-hidden">
-            <div
-              className={`flex transition-transform duration-[600ms] ease-in-out`}
-              style={{
-                transform: `translateX(-${current * 100}%)`,
-              }}
-            >
+      <h1 className="my-10 text-center font-title text-4xl text-light"></h1>
+      <div className="relative">
+        <div className="absolute left-20 top-1/2 z-10 -translate-y-1/2 translate-x-[-135px] transform">
+          <PreviousButton handleClickPrev={previousSlide} />
+        </div>
+        <div className="absolute right-20 top-1/2 z-10 -translate-y-1/2 translate-x-[135px] transform">
+          <NextButton handleClickNext={nextSlide} />
+        </div>
+        <div className=" h-full w-full overflow-hidden">
+          <div
+            className="h-full w-full transition-transform duration-500 ease-out lg:h-[45vw] xl:h-full xl:max-w-[52vw] "
+            style={{ transform: `translateX(-${current * 100}%)` }}
+          >
+            <div className="flex h-full">
               {games.map((game, index) => (
                 <CarouselCard game={game} key={index} />
               ))}
             </div>
           </div>
-          <div className="absolute right-40 top-1/2 z-10 -translate-y-1/2 translate-x-20 transform">
-            <button onClick={nextSlide} className="w-18 bg-black h-36 rounded">
-              <svg
-                className="text-gray-800 dark:text-white m-5 h-10 w-5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 8 14"
-              >
-                <path
-                  stroke="white"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="m1 13 5.7-5.326a.909.909 0 0 0 0-1.348L1 1"
-                />
-              </svg>
-            </button>
-          </div>
         </div>
-        <div className="mx-auto flex w-[85%] justify-center gap-3 py-4">
+        <div className="mt-2 flex justify-center gap-2 px-1">
           {games.map((game, i) => {
             return (
               <div
@@ -91,7 +56,7 @@ export default function Carousel({ games }) {
                   setCurrent(i);
                 }}
                 key={'circle' + i}
-                className={`h-1 w-44 -skew-x-[50deg] cursor-pointer rounded ${
+                className={`h-1 w-full -skew-x-[50deg] cursor-pointer rounded ${
                   i === current ? 'bg-primary' : 'bg-secondary'
                 }`}
               ></div>
