@@ -38,7 +38,7 @@ export default createBrowserRouter([
       },
       {
         // Ajouter les routes
-        path: '/game/:gameId',
+        path: '/games/:gameId',
         element: <GameShow />,
       },
       {
