@@ -1,32 +1,36 @@
 import { motion } from 'framer-motion';
 
-export default function HeaderHome({ imageHeader }) {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: (i) => ({
-      opacity: 1,
-      transition: {
-        when: 'beforeChildren',
-        type: 'tween',
-        ease: 'easeInOut',
-        staggerChildren: 0.1,
-        duration: i,
-      },
-    }),
-  };
-
-  const imageVariants = {
-    hidden: (i) => ({ opacity: 0, y: i }),
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: 'tween',
-        ease: 'easeInOut',
-        duration: 0.5,
-      },
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: (i) => ({
+    opacity: 1,
+    transition: {
+      when: 'beforeChildren',
+      type: 'tween',
+      ease: 'easeInOut',
+      staggerChildren: 0.1,
+      duration: i,
     },
-  };
+  }),
+};
+
+const imageVariants = {
+  hidden: (i) => ({ opacity: 0, y: i }),
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'tween',
+      ease: 'easeInOut',
+      duration: 0.5,
+    },
+  },
+};
+
+export default function HeaderHome({ imageHeader, isLoaded }) {
+  if (!isLoaded) {
+    return null;
+  }
 
   return (
     <>
@@ -87,7 +91,7 @@ export default function HeaderHome({ imageHeader }) {
           {/* Affichage de l'image si en dessous de 768px */}
           <div className="block md:hidden">
             <img
-              src={imageHeader}
+              src={imageHeader.image_background}
               alt=""
               className="h-full w-full object-cover"
             />
