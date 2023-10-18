@@ -1,9 +1,11 @@
-import React from 'react';
-import Top10List from './Top10List';
-import Cube3D from './Cube3D';
 import { useState, useEffect } from 'react';
 import { fetchGames, fetchGameElements } from '../../api/api-fetch';
 import { gamesURL, screenshotsURL, moviesURL } from '../../api/api-url';
+
+import React from 'react';
+import Top10List from './Top10List';
+import Cube3D from './Cube3D';
+import Title from '../Title';
 
 export default function RetroContainer({ genres }) {
   const [games, setGames] = useState([]);
@@ -61,6 +63,7 @@ export default function RetroContainer({ genres }) {
 
   return (
     <>
+      <Title title="Oldies but goodies - vintage " />
       <div className="relative flex h-auto w-full items-center bg-dark">
         <div className="perspective ml-10 mt-10 flex w-11/12 flex-col justify-between pl-10 pt-10 text-justify text-light">
           <h1 className="perspective pb-3 font-pixel text-3xl font-bold uppercase text-yellow-200">

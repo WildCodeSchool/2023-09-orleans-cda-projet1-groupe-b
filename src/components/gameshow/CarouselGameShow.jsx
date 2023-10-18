@@ -5,7 +5,7 @@ import NextButton from './NextButton';
 import PreviousButton from './PreviousButton';
 import Thumbnails from './Thumbnails';
 
-export default function CarouselGameShow({ images }) {
+export default function CarouselGameShow({ screenshotsResults, isLoaded }) {
   const [curr, setCurr] = useState(0);
 
   // Fonction qui décrémente l'index
@@ -14,7 +14,9 @@ export default function CarouselGameShow({ images }) {
 
   // Fonction qui incrémente l'index
   const handleClickNext = () =>
-    setCurr((curr) => (curr === images.length - 1 ? curr : curr + 1));
+    setCurr((curr) =>
+      curr === screenshotsResults.length - 1 ? curr : curr + 1,
+    );
 
   // Fonction qui gére le clic sur le composant Thumbnail
   const handleThumbnailClick = (index) => {
@@ -29,42 +31,49 @@ export default function CarouselGameShow({ images }) {
           style={{ transform: `translateX(-${curr * 100}%)` }}
         >
           {/* Boucle qui affiche les images du jeu vidéo */}
-          {images.map((image, index) => (
-            <div key={index} className="flex h-full w-full flex-shrink-0">
-              <img
-                src={image.image}
-                alt={`Screenshot : ${image.id}`}
-                className={`m-auto h-full w-full ${
-                  image.width < 500 ? 'object-contain' : ''
-                }`}
-              />
-            </div>
-          ))}
-        </div>
-
-        <div
-          className={`absolute inset-0 flex items-center p-2 ${
-            curr === 0 ? 'justify-end' : 'justify-between'
-          }`}
-        >
-          {curr !== 0 ? (
-            <PreviousButton handleClickPrev={handleClickPrev} />
+          {isLoaded ? (
+            screenshotsResults.map((image, index) => (
+              <div key={index} className="flex h-full w-full flex-shrink-0">
+                <img
+                  src={image.image}
+                  alt={`Screenshot : ${image.id}`}
+                  className={`m-auto h-full w-full ${
+                    image.width < 500 ? 'object-contain' : ''
+                  }`}
+                />
+              </div>
+            ))
           ) : (
-            ''
-          )}
-
-          {curr !== images.length - 1 ? (
-            <NextButton handleClickNext={handleClickNext} />
-          ) : (
-            ''
+            <p>Loading...</p>
           )}
         </div>
+
+        {isLoaded && (
+          <div
+            className={`absolute inset-0 flex items-center p-2 ${
+              curr === 0 ? 'justify-end' : 'justify-between'
+            }`}
+          >
+            {curr !== 0 ? (
+              <PreviousButton handleClickPrev={handleClickPrev} />
+            ) : (
+              ''
+            )}
+
+            {curr !== screenshotsResults.length - 1 ? (
+              <NextButton handleClickNext={handleClickNext} />
+            ) : (
+              ''
+            )}
+          </div>
+        )}
       </div>
       <div className="mt-2">
         <Thumbnails
-          images={images}
+          screenshotsResults={screenshotsResults}
           curr={curr}
           handleThumbnailClick={handleThumbnailClick}
+          isLoaded={isLoaded}
         />
       </div>
     </>

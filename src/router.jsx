@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
-import Home from './components/Home';
+import Home from './components/home/Home';
 import Recommandations from './components/Recommandations';
 import News from './components/News';
 import BestSellers from './components/BestSellers';
@@ -37,7 +37,7 @@ export default createBrowserRouter([
       },
       {
         // Ajouter les routes
-        path: '/game/:gameId',
+        path: '/games/:gameId',
         element: <GameShow />,
       },
       // ajouter la route '/genres/:slug'
