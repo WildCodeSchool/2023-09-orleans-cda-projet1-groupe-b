@@ -43,7 +43,7 @@ export default function GameShow() {
 
   return (
     <>
-      <section className="w-full px-2 xs:px-5 md:px-16 lg:px-2 h-100 mb-6">
+      <section className="h-100 mb-6 w-full px-2 xs:px-5 md:px-16 lg:px-2">
         <h1 className="space-x-40 font-title text-4xl text-light">
           {isLoaded ? game.name : 'Loading...'}
         </h1>

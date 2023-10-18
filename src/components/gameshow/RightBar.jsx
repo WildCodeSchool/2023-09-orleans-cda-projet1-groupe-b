@@ -32,9 +32,7 @@ export default function RightBar({ gameId }) {
     });
     return () => controller.abort();
   }, [gameId]);
-  const platformIcons = (platformId) => {
-    return platformId === 1 ? pcLogo : platformId === 2 ? psLogo : '';
-  };
+
   // set the tooltip content element
   const targetEl = document.getElementById('tooltipContent');
   // set the element that trigger the tooltip using hover or click
@@ -48,7 +46,7 @@ export default function RightBar({ gameId }) {
   return (
     <>
       <section className="background font-text text-light">
-        <div className="rightbar w-25 border-primary container rounded-lg border p-4 bg-primary/10">
+        <div className="rightbar w-25 container rounded-lg border border-primary bg-primary/10 p-4">
           <h3 className={`text-xl font-bold`}>Metascore</h3>
           <div className="flex justify-center">
             <div>
@@ -61,7 +59,7 @@ export default function RightBar({ gameId }) {
                     {game.metacritic}
                   </p>
                 ) : (
-                  <p className="text-white m-3 rounded-lg bg-[#9E9E9E] p-5 text-4xl font-bold">
+                  <p className="m-3 rounded-lg bg-[#9E9E9E] p-5 text-4xl font-bold text-white">
                     N/A
                   </p>
                 )
@@ -71,7 +69,7 @@ export default function RightBar({ gameId }) {
             </div>
           </div>
         </div>
-        <div className="rightbar w-25 border-primary container mt-5 rounded-lg border p-4 bg-primary/10">
+        <div className="rightbar w-25 container mt-5 rounded-lg border border-primary bg-primary/10 p-4">
           <h3 className="text-m font-bold">Platforms</h3>
           <div className="grid">
             <button
@@ -100,7 +98,7 @@ export default function RightBar({ gameId }) {
             <div
               id="tooltipContent"
               role="tooltip"
-              className="text-white tooltip dark:bg-gray-700 invisible absolute z-10 inline-block rounded-lg bg-tertiary px-3 py-2 text-sm font-medium opacity-0 shadow-sm transition-opacity duration-300"
+              className="tooltip invisible absolute z-10 inline-block rounded-lg bg-tertiary px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
             >
               {isLoaded ? (
                 game.platforms && game.platforms.length > 0 ? (
@@ -119,7 +117,7 @@ export default function RightBar({ gameId }) {
               )}
             </div>
           </div>
-          <h3 className="text-m font-bold mt-3">Genres</h3>
+          <h3 className="text-m mt-3 font-bold">Genres</h3>
           <div>
             {isLoaded ? (
               game.genres && game.genres.length > 0 ? (
@@ -135,7 +133,7 @@ export default function RightBar({ gameId }) {
               <p className="text-light/80">Loading...</p>
             )}
           </div>
-          <h3 className="text-m font-bold mt-3">Release</h3>
+          <h3 className="text-m mt-3 font-bold">Release</h3>
           {isLoaded ? (
             game.released ? (
               <p className="text-light/80">{game.released}</p>
@@ -145,7 +143,7 @@ export default function RightBar({ gameId }) {
           ) : (
             <p className="text-light/80">Loading...</p>
           )}
-          <h3 className="text-m font-bold mt-3">Developer</h3>
+          <h3 className="text-m mt-3 font-bold">Developer</h3>
           {isLoaded ? (
             game.developers && game.developers.length > 0 ? (
               game.developers.map((dev) => (
@@ -159,7 +157,7 @@ export default function RightBar({ gameId }) {
           ) : (
             <p className="text-light/80">Loading...</p>
           )}
-          <h3 className="text-m font-bold mt-3">Editor</h3>
+          <h3 className="text-m mt-3 font-bold">Editor</h3>
           {isLoaded ? (
             game.publishers && game.publishers.length > 0 ? (
               game.publishers.map((pub) => (
@@ -173,7 +171,7 @@ export default function RightBar({ gameId }) {
           ) : (
             <p className="text-light/80">Loading...</p>
           )}
-          <h3 className="text-m font-bold mt-3">PEGI Rating</h3>
+          <h3 className="text-m mt-3 font-bold">PEGI Rating</h3>
           <div>
             {isLoaded ? (
               game.esrb_rating != null ? (
@@ -190,14 +188,14 @@ export default function RightBar({ gameId }) {
             )}
           </div>
           <img
-            className="mt-6 mb-5"
+            className="mb-5 mt-6"
             src="/src/assets/separator.png"
             alt="separator"
           />
-          <h3 className="text-m font-bold mt-3">Web site</h3>
+          <h3 className="text-m mt-3 font-bold">Web site</h3>
           {isLoaded ? (
             game.website && game.website.length > 0 ? (
-              <a href={game.website} target="_blank">
+              <a href={game.website} target="_blank" rel="noreferrer">
                 <p className="overflow-hidden text-ellipsis text-primary">
                   {game.website}
                 </p>
@@ -209,8 +207,8 @@ export default function RightBar({ gameId }) {
             <p className="text-light/80">Loading...</p>
           )}
         </div>
-        <div className="rightbar w-25 border-primary container mt-5 rounded-lg border p-4 bg-primary/10">
-          <h3 className="text-m font-bold mt-3">Buy {game.name}</h3>
+        <div className="rightbar w-25 container mt-5 rounded-lg border border-primary bg-primary/10 p-4">
+          <h3 className="text-m mt-3 font-bold">Buy {game.name}</h3>
           {isLoaded ? (
             game.stores && game.stores.length > 0 ? (
               game.stores.map((st) => (
@@ -239,7 +237,9 @@ export default function RightBar({ gameId }) {
             src="/src/assets/separator.png"
             alt="separator"
           />
-          <h3 className="text-m font-bold mt-3">Editions and DLC's {game.name}</h3>
+          <h3 className="text-m mt-3 font-bold">
+            Editions and DLC&apos;s {game.name}
+          </h3>
           <DlcComponent dlc={dlc} isLoaded={isLoaded} />
         </div>
       </section>

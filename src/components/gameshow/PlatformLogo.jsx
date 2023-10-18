@@ -7,6 +7,7 @@ export default function platformLogo(platform) {
   const macLogo = '/src/assets/macos.png';
   const iosLogo = '/src/assets/ios.png';
   const andLogo = '/src/assets/android.png';
+  const appLogo = '/src/assets/appstore.png';
 
   switch (platform) {
     case 'pc':
