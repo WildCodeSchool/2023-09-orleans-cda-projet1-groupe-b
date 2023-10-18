@@ -36,7 +36,7 @@ export default function Carousel({ games }) {
         <div className="absolute right-20 top-1/2 z-10 -translate-y-1/2 translate-x-[135px] transform">
           <NextButton handleClickNext={nextSlide} />
         </div>
-        <div className=" h-full w-full overflow-hidden">
+        <div className=" mx-auto h-full w-full overflow-hidden xl:w-[52vw]">
           <div
             className="h-full w-full transition-transform duration-500 ease-out lg:h-[45vw] xl:h-full xl:max-w-[52vw] "
             style={{ transform: `translateX(-${current * 100}%)` }}

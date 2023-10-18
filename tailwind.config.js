@@ -1,4 +1,6 @@
+/* eslint no-undef: "off" */
 /** @type {import('tailwindcss').Config} */
+
 export default {
   content: [
     './index.html',
@@ -34,7 +36,10 @@ export default {
         xs: '576px',
       },
       skew: {
-        50: '50deg',
+        35: '35deg',
+      },
+      width: {
+        'clamp-title': 'clamp(320px, 90vw, 500px)',
       },
     },
   },

@@ -1,7 +1,7 @@
 // import * as React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
-import Home from './components/Home';
+import Home from './components/home/Home';
 import Recommandations from './components/Recommandations';
 import News from './components/News';
 import BestSellers from './components/BestSellers';

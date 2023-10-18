@@ -11,6 +11,7 @@ function Navbar() {
   const handleClickCollapseCategories = () => {
     setIsOpenCategories(!isOpenCategories);
   };
+
   return (
     <>
       <nav className="p-5">
