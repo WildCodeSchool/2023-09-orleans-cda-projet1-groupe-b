@@ -52,7 +52,6 @@ export default function CarouselCard({ game }) {
           </div>{' '}
           <div className="flex flex-col gap-4">
             <div>
-              {/* <p className="font-text text-base text-light/80">Genres :</p> */}
               <div className="ml-2 mt-1 flex flex-wrap gap-2">
                 {game.genres.map((genre) => (
                   <div
