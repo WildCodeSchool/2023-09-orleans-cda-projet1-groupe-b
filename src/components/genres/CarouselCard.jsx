@@ -1,19 +1,18 @@
 import { useState, useEffect } from 'react';
 import { fetchGameDetails } from '../../api/api-fetch.js';
-import { gamesURL } from '../../api/api-url.js';
 
 export default function CarouselCard({ game }) {
   const [description, setDescription] = useState('');
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
 
     fetchGameDetails({
-      parameter: gamesURL,
       gameId: game.id,
       setter: setDescription,
-      property: 'description_raw',
+      setLoaded: setIsLoaded,
       signal,
     });
   }, [game.id]);
@@ -67,7 +66,9 @@ export default function CarouselCard({ game }) {
               Release : {game.released}
             </p>{' '}
             <div className="h-[9rem] overflow-auto">
-              <p className="line-clamp-4 text-light/80">{description}</p>
+              <p className="line-clamp-4 text-light/80">
+                {description.description_raw}
+              </p>
             </div>{' '}
             <div className="mr-3 mt-5 flex justify-end">
               <button className="mb-4 h-10 w-44 -skew-x-[30deg] rounded bg-primary">

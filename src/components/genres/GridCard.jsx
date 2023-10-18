@@ -1,4 +1,15 @@
-export default function GridCard({ games }) {
+import { useState } from 'react';
+
+export default function GridCard({ games, isLoaded }) {
+  const [visible, setVisible] = useState(12);
+
+  const showMoreItems = () => {
+    setVisible((prevValue) => prevValue + 12);
+  };
+
+  if (!isLoaded) {
+    return null;
+  }
   return (
     <>
       <div className="mx-auto ">
@@ -6,10 +17,10 @@ export default function GridCard({ games }) {
           Catalogue
         </h1>
         <div className="grid gap-x-10 gap-y-10 md:grid-cols-2 xl:grid-cols-4">
-          {games.map((game, index) => (
+          {games.results?.slice(0, visible).map((game, index) => (
             <div
               key={index}
-              className="m-auto  rounded border  border-primary transition-transform hover:scale-110 xl:h-96 xl:w-60"
+              className="m-auto rounded border border-primary transition-transform hover:scale-110 xl:h-96 xl:w-60"
             >
               <img
                 className="h-60 w-full rounded-t object-cover"
@@ -34,6 +45,14 @@ export default function GridCard({ games }) {
             </div>
           ))}
         </div>
+      </div>
+      <div className="mt-10 flex justify-center">
+        <button
+          className="mb-4 h-10 w-44 -skew-x-[30deg] rounded bg-primary "
+          onClick={showMoreItems}
+        >
+          Load More
+        </button>
       </div>
     </>
   );

@@ -3,8 +3,8 @@ import CarouselCard from './CarouselCard';
 import NextButton from '../gameshow/NextButton';
 import PreviousButton from '../gameshow/PreviousButton';
 
-export default function Carousel({ games }) {
-  games = games.slice(0, 10);
+export default function Carousel({ games, isLoaded }) {
+  games = games.results.slice(0, 10);
 
   let [current, setCurrent] = useState(0);
 
@@ -26,6 +26,9 @@ export default function Carousel({ games }) {
     return () => clearInterval(interval);
   }, [current, nextSlide]);
 
+  if (!isLoaded) {
+    return null;
+  }
   return (
     <>
       <h1 className="my-10 text-center font-title text-4xl text-light"></h1>
