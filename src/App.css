@@ -18,7 +18,7 @@
 
   .cube {
     transform-style: preserve-3d;
-    animation: spin 200s infinite linear;
+    animation: spin 300s infinite linear;
   }
 
   .cube:hover {

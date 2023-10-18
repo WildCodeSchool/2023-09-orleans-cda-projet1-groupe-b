@@ -3,13 +3,14 @@ import Top10List from './Top10List';
 import Cube3D from './Cube3D';
 import { useState, useEffect } from 'react';
 import { fetchGames, fetchGameElements } from '../../api/api-fetch';
-import { gamesURL, screenshotsURL } from '../../api/api-url';
+import { gamesURL, screenshotsURL, moviesURL } from '../../api/api-url';
 
 export default function RetroContainer({ genres }) {
   const [games, setGames] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [screenshots, setScreenshots] = useState(null);
-  const gamesId = [];
+  const [screenshots, setScreenshots] = useState();
+  const [movies, setMovies] = useState();
+  const gamesId = [3498];
 
   // const handleHover = (game) => {
   //   setImageSrc(`images/${game.name}.webp`);
@@ -38,6 +39,14 @@ export default function RetroContainer({ genres }) {
       signal,
     });
 
+    fetchGameElements({
+      parameter: moviesURL,
+      gameId: gamesId[0],
+      setter: setMovies,
+      setLoaded: setIsLoaded,
+      signal,
+    });
+
     return () => controller.abort();
   }, []);
 
@@ -45,7 +54,10 @@ export default function RetroContainer({ genres }) {
   //   games.results.map(game => (gamesId.push(game.id)))
   // }
 
-  console.log(gamesId);
+  // console.log(gamesId);
+  // console.log(screenshots);
+  // console.log(movies);
+  // console.log(movies.results[0]?.data[0].max);
 
   return (
     <>
@@ -60,7 +72,11 @@ export default function RetroContainer({ genres }) {
           </div>
         </div>
         <div className="h-full w-2/3">
-          <Cube3D screenshots={screenshots} />
+          <Cube3D
+            screenshots={screenshots}
+            movies={movies}
+            isLoaded={isLoaded}
+          />
         </div>
       </div>
     </>
