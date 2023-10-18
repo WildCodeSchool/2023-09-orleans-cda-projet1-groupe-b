@@ -43,6 +43,7 @@ const childVariants = {
 
 export default function Home() {
   const [imageHeader, setImageHeader] = useState();
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -51,7 +52,7 @@ export default function Home() {
     fetchCategoryDetails({
       categoryId: RANDOM_GENRES,
       setter: setImageHeader,
-      property: 'image_background',
+      setLoaded: setIsLoaded,
       signal,
     });
 
@@ -60,7 +61,7 @@ export default function Home() {
 
   return (
     <>
-      <HeaderHome imageHeader={imageHeader} />
+      <HeaderHome imageHeader={imageHeader} isLoaded={isLoaded} />
       <section className="z-50 mt-[10rem] w-full px-2 xs:px-5 md:px-16 lg:px-2">
         <div className="flex flex-col items-center md:items-start">
           <div className="w-clamp-title lg:w-[40vw]">
