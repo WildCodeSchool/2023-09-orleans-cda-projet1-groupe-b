@@ -7,7 +7,7 @@
 
 @layer utilities {
   .perspective {
-    perspective: 1300px;
+    perspective: 700px;
     perspective-origin: center center;
     transform: rotateY(25deg);
   }
@@ -48,6 +48,12 @@
 
 .bottom {
   transform: rotateX(-90deg) translateZ(100px);
+}
+
+.perspective1 {
+  perspective: 40rem;
+  perspective-origin: center center;
+  transform: rotateY(25deg);
 }
 
 @keyframes spin {

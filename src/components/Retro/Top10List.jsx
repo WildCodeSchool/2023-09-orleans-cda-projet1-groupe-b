@@ -3,59 +3,37 @@ import { gamesURL } from '../../api/api-url';
 export default function Top10List({ games, isLoaded }) {
   return (
     <>
-      <div></div>
-      <div className="perspective my-3 flex list-none items-center justify-around px-12 font-pixel">
-        <div className="rank">
-          <div className="text-rank">
-            <h2 className="pb-6 text-xl font-black">Rank</h2>
-            <ul className="flex flex-col gap-4">
-              {isLoaded ? (
-                games.results.map((_, index) => (
-                  <li className="py-[2px] font-text text-light" key={index}>
-                    {index + 1}
-                  </li>
-                ))
-              ) : (
-                <p>Loading...</p>
-              )}
-            </ul>
-          </div>
-        </div>
-        <div className="titles">
-          <div className="text-title">
-            <h2 className="pb-6 text-xl font-black">Title</h2>
-            <ul className="flex flex-col gap-4">
-              {isLoaded ? (
-                games.results.map((game, index) => (
-                  <li className="py-[2px] font-text text-light" key={index}>
-                    {game.name}
-                  </li>
-                ))
-              ) : (
-                <p>Loading...</p>
-              )}
-            </ul>
-          </div>
-        </div>
-        <div className="rank pl-12">
-          <div className="text-title p-1">
-            <h2 className="pb-6 text-xl font-black">Genre</h2>
-            <ul className="flex flex-col gap-4">
-              {isLoaded ? (
-                games.results.map((game, genres, name) => (
-                  <li className="flex py-[2px] font-text text-light">
-                    {`${game.genres[0].name}`.split('').join(' ')}
-                  </li>
-                ))
-              ) : (
-                <p>Loading...</p>
-              )}
-            </ul>
-          </div>
-        </div>
+      <div className="perspective1 list-none py-4 font-pixel text-xs text-light">
+        <table className="table-auto">
+          <thead>
+            <tr>
+              <th className="text-rank text-lg">Rank</th>
+              <th className="text-title px-10 text-lg">Title</th>
+              <th className="text-genre px-10 py-3 text-lg">Genre</th>
+            </tr>
+          </thead>
+          <tbody>
+            {isLoaded ? (
+              games.results &&
+              games.results.map((game, index) => (
+                <tr
+                  className=" hover:bg-light hover:text-dark"
+                  key={index}
+                  onMouseEnter={() => onHover(game)}
+                >
+                  <td className="px-5 py-[7px]">n°{index + 1}</td>
+                  <td className="px-2 py-[4px]">{game.name}</td>
+                  <td className="px-10 py-[4px]">{game.genres[0].name}</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="3">Loading...</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
       </div>
     </>
   );
 }
-
-// {`${game.genres}`.split('').join(', ')};

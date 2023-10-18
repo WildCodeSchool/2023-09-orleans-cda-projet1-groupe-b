@@ -1,10 +1,9 @@
 import RetroContainer from './Retro/RetroContainer';
-// import { genresURL } from '../api/api-url';
 
 export default function Home() {
   return (
     <>
-      {/* {Implémenter ici la logique de switch case pour emplir les faces du ccube en fonction du hover sur la top 10 list} */}
+      {/* {Implémenter ici la logique de switch case pour emplir les faces du cube en fonction du hover sur la top 10 list} */}
       {/* Inclure ici le composant <Top10Retro /> */}
       {/* {top10retro.map((game, index) => (
             <li className="py-[4px] font-text text-light" key={index}>

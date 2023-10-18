@@ -26,7 +26,7 @@ const fetchData = async (url, signal) => {
 export const fetchGames = async ({
   parameter,
   setter,
-  loading,
+  setLoaded,
   signal,
   queryString = null,
 }) => {
@@ -36,7 +36,7 @@ export const fetchGames = async ({
   }
   try {
     const data = await fetchData(url, signal);
-    loading(true);
+    setLoaded(true);
     setter(data);
   } catch (error) {
     throw new Error(`Unable to load video game list : ${error}`);
@@ -156,14 +156,15 @@ export const fetchGameElements = async ({
   parameter,
   gameId,
   setter,
-  property,
+  setLoaded,
   signal,
 }) => {
   const url = `${BASE_URL}games/${gameId}/${parameter}?key=${API_KEY}`;
 
   try {
     const data = await fetchData(url, signal);
-    setter(data[property]);
+    setLoaded(true);
+    setter(data);
   } catch (error) {
     console.error(`Unable to load elements : ${error}`);
   }
