@@ -10,7 +10,7 @@ export default function App() {
         {/* TODO: Import SearchBar component */}
       </section>
 
-      <main className="relative flex h-screen flex-row flex-nowrap">
+      <main className="relative flex h-fit flex-row flex-nowrap">
         <nav className="sticky z-10 hidden bg-primary/10 lg:block lg:w-1/3 xl:w-1/4">
           <Navbar />
         </nav>
