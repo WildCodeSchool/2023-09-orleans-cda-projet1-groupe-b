@@ -1,4 +1,3 @@
-RightBar.jsx;
 import { fetchGameDetails, fetchGameElements } from '../../api/api-fetch';
 import { dlcURL } from '../../api/api-url';
 import { useEffect, useState } from 'react';
@@ -45,8 +44,8 @@ export default function RightBar({ gameId }) {
   const metascoreColor = perc2color(parseInt(game.metacritic));
   return (
     <>
-      <section className="background font-text text-light">
-        <div className="rightbar w-25 container rounded-lg border border-primary bg-primary/10 p-4">
+      <section className="font-text text-light">
+        <div className="w-25 container rounded-lg border border-primary bg-primary/10 p-4">
           <h3 className={`text-xl font-bold`}>Metascore</h3>
           <div className="flex justify-center">
             <div>
@@ -59,7 +58,7 @@ export default function RightBar({ gameId }) {
                     {game.metacritic}
                   </p>
                 ) : (
-                  <p className="m-3 rounded-lg bg-[#9E9E9E] p-5 text-4xl font-bold text-white">
+                  <p className="text-white m-3 rounded-lg bg-[#9E9E9E] p-5 text-4xl font-bold">
                     N/A
                   </p>
                 )
@@ -69,7 +68,7 @@ export default function RightBar({ gameId }) {
             </div>
           </div>
         </div>
-        <div className="rightbar w-25 container mt-5 rounded-lg border border-primary bg-primary/10 p-4">
+        <div className="w-25 container mt-5 rounded-lg border border-primary bg-primary/10 p-4">
           <h3 className="text-m font-bold">Platforms</h3>
           <div className="grid">
             <button
@@ -82,7 +81,7 @@ export default function RightBar({ gameId }) {
                 game.parent_platforms && game.parent_platforms.length > 0 ? (
                   game.parent_platforms.map((ppf) => (
                     <img
-                      className="pfLogo m-auto mt-1 h-6"
+                      className="m-auto mt-1 h-6"
                       key={ppf.platform.id}
                       src={platformLogo(ppf.platform.slug)}
                       alt={ppf.platform.slug}
@@ -98,7 +97,7 @@ export default function RightBar({ gameId }) {
             <div
               id="tooltipContent"
               role="tooltip"
-              className="tooltip invisible absolute z-10 inline-block rounded-lg bg-tertiary px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
+              className="tooltip text-white dark:bg-gray-700 invisible absolute z-10 inline-block rounded-lg bg-tertiary px-3 py-2 text-sm font-medium opacity-0 shadow-sm transition-opacity duration-300"
             >
               {isLoaded ? (
                 game.platforms && game.platforms.length > 0 ? (
@@ -189,8 +188,8 @@ export default function RightBar({ gameId }) {
           </div>
           <img
             className="mb-5 mt-6"
-            src="/src/assets/separator.png"
-            alt="separator"
+            src="/separator.png"
+            alt="line-separator"
           />
           <h3 className="text-m mt-3 font-bold">Web site</h3>
           {isLoaded ? (
@@ -207,7 +206,7 @@ export default function RightBar({ gameId }) {
             <p className="text-light/80">Loading...</p>
           )}
         </div>
-        <div className="rightbar w-25 container mt-5 rounded-lg border border-primary bg-primary/10 p-4">
+        <div className="w-25 container mt-5 rounded-lg border border-primary bg-primary/10 p-4">
           <h3 className="text-m mt-3 font-bold">Buy {game.name}</h3>
           {isLoaded ? (
             game.stores && game.stores.length > 0 ? (
@@ -232,11 +231,7 @@ export default function RightBar({ gameId }) {
           ) : (
             <p className="text-light/80">Loading...</p>
           )}
-          <img
-            className="my-5"
-            src="/src/assets/separator.png"
-            alt="separator"
-          />
+          <img className="my-5" src="/separator.png" alt="separator" />
           <h3 className="text-m mt-3 font-bold">
             Editions and DLC&apos;s {game.name}
           </h3>

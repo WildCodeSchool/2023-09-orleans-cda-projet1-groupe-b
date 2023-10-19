@@ -1,13 +1,13 @@
 export default function platformLogo(platform) {
-  const pcLogo = '/src/assets/windows.png';
-  const psLogo = '/src/assets/playstation.png';
-  const xbLogo = '/src/assets/xbox.png';
-  const ntLogo = '/src/assets/nintendo.png';
-  const linLogo = '/src/assets/linux.png';
-  const macLogo = '/src/assets/macos.png';
-  const iosLogo = '/src/assets/ios.png';
-  const andLogo = '/src/assets/android.png';
-  const appLogo = '/src/assets/appstore.png';
+  const pcLogo = '/windows.png';
+  const psLogo = '/playstation.png';
+  const xbLogo = '/xbox.png';
+  const ntLogo = '/nintendo.png';
+  const linLogo = '/linux.png';
+  const macLogo = '/macos.png';
+  const iosLogo = '/ios.png';
+  const andLogo = '/android.png';
+  const appLogo = '/appstore.png';
 
   switch (platform) {
     case 'pc':

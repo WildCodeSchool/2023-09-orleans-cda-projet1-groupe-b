@@ -1,11 +1,11 @@
 export default function storeLogo(store) {
-  const steamLogo = '/src/assets/steamwh.png';
-  const playStoreLogo = '/src/assets/playstation.png';
-  const ninStoreLogo = '/src/assets/nintendo.png';
-  const micStoreLogo = '/src/assets/xbox.png';
-  const appLogo = '/src/assets/appstore.png';
-  const gogLogo = '/src/assets/gog.png';
-  const epicLogo = '/src/assets/epic-games.png';
+  const steamLogo = '/steamwh.png';
+  const playStoreLogo = '/playstation.png';
+  const ninStoreLogo = '/nintendo.png';
+  const micStoreLogo = '/xbox.png';
+  const appLogo = '/appstore.png';
+  const gogLogo = '/gog.png';
+  const epicLogo = '/epic-games.png';
 
   switch (store) {
     case 'PlayStation Store':
