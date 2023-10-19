@@ -1,8 +1,7 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 import CarouselCard from './CarouselCard';
 import NextButton from '../gameshow/NextButton';
 import PreviousButton from '../gameshow/PreviousButton';
-import HeaderGenre from './HeaderGenre';
 
 export default function Carousel({
   games,
@@ -16,7 +15,7 @@ export default function Carousel({
   // let [current, setCurrent] = useState(0);
 
   const previousSlide = useCallback(
-    (setGamesIndex) => {
+    (setGameIndex) => {
       if (gameIndex === 0) setGameIndex(games.length - 1);
       else setGameIndex(gameIndex - 1);
     },
@@ -24,7 +23,7 @@ export default function Carousel({
   );
 
   const nextSlide = useCallback(
-    (setGamesIndex) => {
+    (setGameIndex) => {
       if (gameIndex === games.length - 1) setGameIndex(0);
       else setGameIndex(gameIndex + 1);
     },
