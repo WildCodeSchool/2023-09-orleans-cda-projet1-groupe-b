@@ -33,6 +33,7 @@ module.exports = {
       },
       screens: {
         xs: '576px',
+        xxs: '360px',
       },
       skew: {
         35: '35deg',

@@ -14,11 +14,6 @@ export default function RetroContainer({ genres }) {
   const [movies, setMovies] = useState();
   const gamesId = [3498];
 
-  // const handleHover = (game) => {
-  //   setImageSrc(`images/${game.name}.webp`);
-  //   setVideoSrc(`images/${game.name}.mp4`);
-  // }
-
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
@@ -30,8 +25,6 @@ export default function RetroContainer({ genres }) {
       queryString:
         'page_size=10&ordering=rating-released.desc&dates=1990-01-01,1991-01-01.1990-01-01,1991-01-31',
     });
-
-    // for (let i = 0; i < games.results.length;)
 
     fetchGameElements({
       parameter: screenshotsURL,
@@ -52,21 +45,13 @@ export default function RetroContainer({ genres }) {
     return () => controller.abort();
   }, []);
 
-  // if (games.results.length > 0) {
-  //   games.results.map(game => (gamesId.push(game.id)))
-  // }
-
-  // console.log(gamesId);
-  // console.log(screenshots);
-  // console.log(movies);
-  // console.log(movies.results[0]?.data[0].max);
-
   return (
     <>
-      <Title title="Oldies but goodies - vintage " />
-      <div className="relative flex h-auto w-full items-center bg-dark">
-        <div className="perspective ml-10 mt-10 flex w-11/12 flex-col justify-between pl-10 pt-10 text-justify text-light">
-          <h1 className="perspective pb-3 font-pixel text-3xl font-bold uppercase text-yellow-200">
+      <Title title="Oldies & Goodies - " subTitle="Retro Store" />
+      <div></div>
+      <div className="relative flex h-auto w-full flex-col items-center bg-dark lg:flex-row">
+        <div className="perspective sm-pl-5 order-2 mt-10 flex w-11/12 flex-col justify-between pt-10 text-justify text-light sm:ml-5 md:ml-10 md:pl-10 lg:order-1">
+          <h1 className="perspective py-5 font-pixel text-3xl font-bold uppercase text-yellow-200">
             High scores
           </h1>
           <Top10List games={games} isLoaded={isLoaded} genres={genres} />
@@ -74,7 +59,7 @@ export default function RetroContainer({ genres }) {
             <a className=" rotate-360 p-2 hover:bg-light hover:text-dark">{`Enter >`}</a>
           </div>
         </div>
-        <div className="h-full w-2/3">
+        <div className="order-1 h-full w-2/3">
           <Cube3D
             screenshots={screenshots}
             movies={movies}
