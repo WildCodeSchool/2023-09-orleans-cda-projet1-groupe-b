@@ -12,8 +12,8 @@ export default function GridCard({ games, isLoaded }) {
   }
   return (
     <>
-      <div className="mx-auto ">
-        <h1 className="my-20 space-x-40 text-center font-title text-4xl text-light">
+      <div className="mx-auto">
+        <h1 className="mb-10 mt-32 space-x-40 text-center font-title text-4xl text-light">
           Catalogue
         </h1>
         <div className="grid gap-x-10 gap-y-10 md:grid-cols-2 xl:grid-cols-4">

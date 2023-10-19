@@ -2,21 +2,34 @@ import { useState, useEffect, useCallback } from 'react';
 import CarouselCard from './CarouselCard';
 import NextButton from '../gameshow/NextButton';
 import PreviousButton from '../gameshow/PreviousButton';
+import HeaderGenre from './HeaderGenre';
 
-export default function Carousel({ games, isLoaded }) {
+export default function Carousel({
+  games,
+  isLoaded,
+  gameIndex,
+  setGameIndex,
+  currentGame,
+}) {
   games = games.results.slice(0, 10);
 
-  let [current, setCurrent] = useState(0);
+  // let [current, setCurrent] = useState(0);
 
-  const previousSlide = useCallback(() => {
-    if (current === 0) setCurrent(games.length - 1);
-    else setCurrent(current - 1);
-  }, [current, games.length]);
+  const previousSlide = useCallback(
+    (setGamesIndex) => {
+      if (gameIndex === 0) setGameIndex(games.length - 1);
+      else setGameIndex(gameIndex - 1);
+    },
+    [gameIndex, games.length],
+  );
 
-  const nextSlide = useCallback(() => {
-    if (current === games.length - 1) setCurrent(0);
-    else setCurrent(current + 1);
-  }, [current, games.length]);
+  const nextSlide = useCallback(
+    (setGamesIndex) => {
+      if (gameIndex === games.length - 1) setGameIndex(0);
+      else setGameIndex(gameIndex + 1);
+    },
+    [gameIndex, games.length],
+  );
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -24,7 +37,7 @@ export default function Carousel({ games, isLoaded }) {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [current, nextSlide]);
+  }, [gameIndex, nextSlide]);
 
   if (!isLoaded) {
     return null;
@@ -39,10 +52,11 @@ export default function Carousel({ games, isLoaded }) {
         <div className="absolute right-20 top-1/2 z-10 -translate-y-1/2 translate-x-[135px] transform">
           <NextButton handleClickNext={nextSlide} />
         </div>
+
         <div className=" mx-auto h-full w-full overflow-hidden xl:w-[52vw]">
           <div
             className="h-full w-full transition-transform duration-500 ease-out lg:h-[45vw] xl:h-full xl:max-w-[52vw] "
-            style={{ transform: `translateX(-${current * 100}%)` }}
+            style={{ transform: `translateX(-${gameIndex * 100}%)` }}
           >
             <div className="flex h-full">
               {games.map((game, index) => (
@@ -56,11 +70,11 @@ export default function Carousel({ games, isLoaded }) {
             return (
               <div
                 onClick={() => {
-                  setCurrent(i);
+                  setGameIndex(i);
                 }}
                 key={'circle' + i}
                 className={`h-1 w-full -skew-x-[50deg] cursor-pointer rounded ${
-                  i === current ? 'bg-primary' : 'bg-secondary'
+                  i === gameIndex ? 'bg-primary' : 'bg-secondary'
                 }`}
               ></div>
             );

@@ -18,7 +18,7 @@ export default function CarouselCard({ game }) {
   }, [game.id]);
   return (
     <>
-      <div className="flex h-full w-full shrink-0 flex-col overflow-hidden rounded-[3px] border border-primary bg-gradient-to-l from-primary/10 to-primary/5 lg:flex-row">
+      <div className="mt-40 flex h-full w-full shrink-0 flex-col overflow-hidden rounded-[3px] border border-primary bg-gradient-to-l from-primary/10 to-primary/5 lg:flex-row">
         <div className="h-full min-h-[25vw] w-full min-w-[17vw]">
           <img
             className="h-full w-full rounded object-cover md:w-full lg:h-full xl:h-[30vw]"
@@ -62,19 +62,19 @@ export default function CarouselCard({ game }) {
                 ))}
               </div>
             </div>
-            <p className="mt-2 font-text text-base text-light/80">
-              Release : {game.released}
-            </p>{' '}
-            <div className="h-[9rem] overflow-auto">
-              <p className="line-clamp-4 text-light/80">
-                {description.description_raw}
-              </p>
-            </div>{' '}
-            <div className="mr-3 mt-5 flex justify-end">
-              <button className="mb-4 h-10 w-44 -skew-x-[30deg] rounded bg-primary">
-                Showmore
-              </button>
-            </div>
+          </div>
+          <p className="mt-2 font-text text-base text-light/80">
+            Release : {game.released}
+          </p>{' '}
+          <div className="h-[9rem] overflow-auto">
+            <p className="line-clamp-4 text-light/80">
+              {description.description_raw}
+            </p>
+          </div>{' '}
+          <div className="mr-3 mt-5 flex justify-end">
+            <button className="mb-4 h-10 w-44 -skew-x-[30deg] rounded bg-primary">
+              Showmore
+            </button>
           </div>
         </div>
       </div>

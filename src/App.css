@@ -26,4 +26,15 @@
   .title-clamp {
     font-size: clamp(24px, 2vw, 32px);
   }
+
+  .genre-mask {
+    -webkit-mask-image: radial-gradient(
+      ellipse at center,
+      black 40%,
+      transparent 70%
+    );
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
 }
