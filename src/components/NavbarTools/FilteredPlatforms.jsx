@@ -2,6 +2,7 @@ const playStationPlatforms = [];
 const nintendoPlatforms = [];
 const xboxPlatforms = [];
 const retroPlatforms = [];
+const platforms = [];
 
 platforms.filter((platform) => {
   if (platform.name.includes('Play') || platform.name.includes('PS')) {
