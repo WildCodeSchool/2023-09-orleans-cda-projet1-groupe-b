@@ -1,5 +1,3 @@
-import { gamesURL } from '../../api/api-url';
-
 export default function Top10List({ games, isLoaded }) {
   return (
     <>
@@ -19,7 +17,7 @@ export default function Top10List({ games, isLoaded }) {
                 <tr
                   className=" hover:bg-light hover:text-dark"
                   key={index}
-                  onMouseEnter={() => onHover(game)}
+                  // onMouseEnter={() => onHover(game)}
                 >
                   <td className="px-5 py-[7px]">n°{index + 1}</td>
                   <td className="px-2 py-[4px]">{game.name}</td>

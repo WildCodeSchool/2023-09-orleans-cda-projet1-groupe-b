@@ -51,7 +51,6 @@ export default function Cube3D({ screenshots, movies }) {
           </div>
         </div>
       </div>
-      //{' '}
     </div>
   );
 }
