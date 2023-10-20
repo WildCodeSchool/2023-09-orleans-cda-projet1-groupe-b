@@ -282,12 +282,16 @@ export default function Unavoidable() {
                 </div>
               </AnimatePresence>
 
-              <div className="mt-10 flex justify-center md:ml-5 md:mr-5 md:justify-end">
+              <motion.div
+                variants={childrenVariants}
+                key={currentGame && currentGame.id}
+                className="mt-10 flex justify-center md:ml-5 md:mr-5 md:justify-end"
+              >
                 <Button
                   str="Show more"
                   path={`/games/${currentGame && currentGame.slug}`}
                 />
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
