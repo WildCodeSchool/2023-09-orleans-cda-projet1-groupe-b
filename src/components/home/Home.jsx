@@ -6,6 +6,7 @@ import Logo from '../Logo';
 import Button from '../Button';
 import HeaderHome from './HeaderHome';
 import Unavoidable from './Unavoidable';
+import CarouselHome from './CarouselHome';
 
 const GENRES_ID = [4, 51, 3, 5, 10, 2, 40, 14, 7, 11, 83, 1, 14, 19];
 
@@ -97,6 +98,9 @@ export default function Home() {
         </div>
         <div>
           <Unavoidable />
+        </div>
+        <div className="mr-5 h-96">
+          <CarouselHome />
         </div>
       </section>
     </>
