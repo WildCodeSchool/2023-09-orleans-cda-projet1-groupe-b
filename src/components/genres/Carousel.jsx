@@ -4,10 +4,6 @@ import NextButton from '../gameshow/NextButton';
 import PreviousButton from '../gameshow/PreviousButton';
 
 export default function Carousel({ games, isLoaded, gameIndex, setGameIndex }) {
-  games = games.results.slice(0, 10);
-
-  // let [current, setCurrent] = useState(0);
-
   const previousSlide = useCallback(
     (setGameIndex) => {
       if (gameIndex === 0) setGameIndex(games.length - 1);
@@ -35,6 +31,8 @@ export default function Carousel({ games, isLoaded, gameIndex, setGameIndex }) {
   if (!isLoaded) {
     return null;
   }
+  games = games.results.slice(0, 10);
+
   return (
     <>
       <h1 className="my-10 text-center font-title text-4xl text-light"></h1>
