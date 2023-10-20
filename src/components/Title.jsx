@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { useRef } from 'react';
 
 const containerVariants = {
   hidden: { opacity: 0, x: -200 },
