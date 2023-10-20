@@ -2,14 +2,11 @@ import { useState, useEffect } from 'react';
 import { fetchGameDetails } from '../../api/api-fetch';
 import { ReadMore } from './ReadMore';
 import Title from '../Title';
+import nl2br from './TextFormatter';
 
 export default function GameDesc({ gameId }) {
   const [game, setGame] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
-
-  function nl2br(element) {
-    return element.split('\n').map((it, i) => <div key={'x' + i}>{it}</div>);
-  }
 
   useEffect(() => {
     const controller = new AbortController();
@@ -27,19 +24,24 @@ export default function GameDesc({ gameId }) {
 
   return (
     <>
-      <h1 className="mb-4 mt-10 text-4xl font-bold text-light">À propos de </h1>
-      {isLoaded ? <Title title={game.name} /> : 'Loading...'}
-      {isLoaded ? (
-        <div className="-mt-8 text-light">
-          {game.description_raw.length > 500 ? (
-            <ReadMore>{game.description_raw}</ReadMore>
-          ) : (
-            game.description_raw
-          )}
-        </div>
-      ) : (
-        <p>Loading...</p>
-      )}
+      <div className="mt-10">
+        {isLoaded ? (
+          <Title prefix="À propos de " title={game.name} />
+        ) : (
+          'Loading...'
+        )}
+        {isLoaded ? (
+          <div className="-mt-8 text-light">
+            {game.description_raw.length > 500 ? (
+              <ReadMore>{game.description_raw}</ReadMore>
+            ) : (
+              game.description_raw
+            )}
+          </div>
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
       {game.platforms &&
         game.platforms.map((pf, index) =>
           pf.platform.name === 'PC' ? (
