@@ -3,7 +3,7 @@ import CarouselCard from './CarouselCard';
 import NextButton from '../gameshow/NextButton';
 import PreviousButton from '../gameshow/PreviousButton';
 
-export default function Carousel({ games, gameIndex, setGameIndex, slug }) {
+export default function Carousel({ games, gameIndex, setGameIndex }) {
   games = games?.results?.slice(0, 10);
 
   const previousSlide = useCallback(() => {
