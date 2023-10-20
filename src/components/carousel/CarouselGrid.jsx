@@ -1,15 +1,21 @@
-import React, { useState, useCallback, useEffect, useRef, useMemo } from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import ArrowButton from './ArrowButton'
-import Dot from './Dot'
-import smoothscroll from 'smoothscroll-polyfill'
-import useResponsiveLayout from '../hooks/responsiveLayoutHook'
-import { addResizeHandler, removeResizeHandler } from '../utils/resizeListener'
+import React, {
+  useState,
+  useCallback,
+  useEffect,
+  useRef,
+  useMemo,
+} from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import ArrowButton from './ArrowButton';
+import Dot from './Dot';
+import smoothscroll from 'smoothscroll-polyfill';
+import useResponsiveLayout from '../hooks/responsiveLayoutHook';
+import { addResizeHandler, removeResizeHandler } from '../utils/resizeListener';
 
 const Container = styled.div`
   position: relative;
-`
+`;
 
 const RailWrapper = styled.div`
   overflow: hidden;
@@ -26,7 +32,7 @@ const RailWrapper = styled.div`
       display: none;
     }
   }
-`
+`;
 
 const Rail = styled.div`
   display: grid;
@@ -45,7 +51,7 @@ const Rail = styled.div`
       `calc(${(cols * rows - 1) * 90}% + ${cols * rows * gap}px)`};
     transform: translateX(0);
   }
-`
+`;
 
 const ItemSet = styled.div`
   display: grid;
@@ -64,7 +70,7 @@ const ItemSet = styled.div`
       margin-right: ${({ gap }) => `-${gap}px`};
     }
   }
-`
+`;
 
 const Dots = styled.div`
   position: absolute;
@@ -81,13 +87,13 @@ const Dots = styled.div`
       mobileBreakpoint}px) {
     display: none;
   }
-`
+`;
 
 const Item = styled.div`
   scroll-snap-align: ${({ scrollSnap }) => (scrollSnap ? 'center' : '')};
-`
+`;
 
-const CAROUSEL_ITEM = 'CAROUSEL_ITEM'
+const CAROUSEL_ITEM = 'CAROUSEL_ITEM';
 const Carousel = ({
   cols: colsProp = 1,
   rows: rowsProp = 1,
@@ -106,35 +112,35 @@ const Carousel = ({
   dot,
   containerClassName = '',
   containerStyle = {},
-  children
+  children,
 }) => {
-  const [currentPage, setCurrentPage] = useState(0)
-  const [isHover, setIsHover] = useState(false)
-  const [isTouch, setIsTouch] = useState(false)
-  const [cols, setCols] = useState(colsProp)
-  const [rows, setRows] = useState(rowsProp)
-  const [gap, setGap] = useState(0)
-  const [loop, setLoop] = useState(loopProp)
-  const [autoplay, setAutoplay] = useState(autoplayProp)
-  const [railWrapperWidth, setRailWrapperWidth] = useState(0)
-  const [hasSetResizeHandler, setHasSetResizeHandler] = useState(false)
-  const railWrapperRef = useRef(null)
-  const autoplayIntervalRef = useRef(null)
-  const breakpointSetting = useResponsiveLayout(responsiveLayout)
-  const randomKey = useMemo(() => `${Math.random()}-${Math.random()}`, [])
+  const [currentPage, setCurrentPage] = useState(0);
+  const [isHover, setIsHover] = useState(false);
+  const [isTouch, setIsTouch] = useState(false);
+  const [cols, setCols] = useState(colsProp);
+  const [rows, setRows] = useState(rowsProp);
+  const [gap, setGap] = useState(0);
+  const [loop, setLoop] = useState(loopProp);
+  const [autoplay, setAutoplay] = useState(autoplayProp);
+  const [railWrapperWidth, setRailWrapperWidth] = useState(0);
+  const [hasSetResizeHandler, setHasSetResizeHandler] = useState(false);
+  const railWrapperRef = useRef(null);
+  const autoplayIntervalRef = useRef(null);
+  const breakpointSetting = useResponsiveLayout(responsiveLayout);
+  const randomKey = useMemo(() => `${Math.random()}-${Math.random()}`, []);
 
   useEffect(() => {
-    smoothscroll.polyfill()
-  }, [])
+    smoothscroll.polyfill();
+  }, []);
 
   useEffect(() => {
-    const { cols, rows, gap, loop, autoplay } = breakpointSetting || {}
-    setCols(cols || colsProp)
-    setRows(rows || rowsProp)
-    setGap(parseGap(gap || gapProp))
-    setLoop(loop || loopProp)
-    setAutoplay(autoplay || autoplayProp)
-    setCurrentPage(0)
+    const { cols, rows, gap, loop, autoplay } = breakpointSetting || {};
+    setCols(cols || colsProp);
+    setRows(rows || rowsProp);
+    setGap(parseGap(gap || gapProp));
+    setLoop(loop || loopProp);
+    setAutoplay(autoplay || autoplayProp);
+    setCurrentPage(0);
   }, [
     breakpointSetting,
     colsProp,
@@ -142,76 +148,76 @@ const Carousel = ({
     gapProp,
     loopProp,
     autoplayProp,
-    parseGap
-  ])
+    parseGap,
+  ]);
 
   const handleRailWrapperResize = useCallback(() => {
     railWrapperRef.current &&
-      setRailWrapperWidth(railWrapperRef.current.offsetWidth)
-  }, [railWrapperRef])
+      setRailWrapperWidth(railWrapperRef.current.offsetWidth);
+  }, [railWrapperRef]);
 
   const setResizeHandler = useCallback(() => {
-    addResizeHandler(`gapCalculator-${randomKey}`, handleRailWrapperResize)
-    setHasSetResizeHandler(true)
-  }, [randomKey, handleRailWrapperResize])
+    addResizeHandler(`gapCalculator-${randomKey}`, handleRailWrapperResize);
+    setHasSetResizeHandler(true);
+  }, [randomKey, handleRailWrapperResize]);
 
   const rmResizeHandler = useCallback(() => {
-    removeResizeHandler(`gapCalculator-${randomKey}`)
-    setHasSetResizeHandler(false)
-  }, [randomKey])
+    removeResizeHandler(`gapCalculator-${randomKey}`);
+    setHasSetResizeHandler(false);
+  }, [randomKey]);
 
   const parseGap = useCallback(
-    gap => {
-      let parsed = gap
-      let shouldSetResizeHandler = false
+    (gap) => {
+      let parsed = gap;
+      let shouldSetResizeHandler = false;
 
       if (typeof gap !== 'number') {
         switch (/\D*$/.exec(gap)[0]) {
           case 'px': {
-            parsed = +gap.replace('px', '')
-            break
+            parsed = +gap.replace('px', '');
+            break;
           }
           case '%': {
             let wrapperWidth =
               railWrapperWidth || railWrapperRef.current
                 ? railWrapperRef.current.offsetWidth
-                : 0
+                : 0;
 
-            parsed = (wrapperWidth * gap.replace('%', '')) / 100
-            shouldSetResizeHandler = true
-            break
+            parsed = (wrapperWidth * gap.replace('%', '')) / 100;
+            shouldSetResizeHandler = true;
+            break;
           }
           default: {
-            parsed = 0
+            parsed = 0;
             console.error(
-              `Doesn't support the provided measurement unit: ${gap}`
-            )
+              `Doesn't support the provided measurement unit: ${gap}`,
+            );
           }
         }
       }
 
-      shouldSetResizeHandler && !hasSetResizeHandler && setResizeHandler()
-      !shouldSetResizeHandler && hasSetResizeHandler && rmResizeHandler()
-      return parsed
+      shouldSetResizeHandler && !hasSetResizeHandler && setResizeHandler();
+      !shouldSetResizeHandler && hasSetResizeHandler && rmResizeHandler();
+      return parsed;
     },
     [
       railWrapperWidth,
       railWrapperRef,
       hasSetResizeHandler,
       setResizeHandler,
-      rmResizeHandler
-    ]
-  )
+      rmResizeHandler,
+    ],
+  );
 
   const itemList = useMemo(
     () =>
       React.Children.toArray(children).filter(
-        child => child.type.displayName === CAROUSEL_ITEM
+        (child) => child.type.displayName === CAROUSEL_ITEM,
       ),
-    [children]
-  )
+    [children],
+  );
 
-  const itemAmountPerSet = cols * rows
+  const itemAmountPerSet = cols * rows;
   const itemSetList = useMemo(
     () =>
       itemList.reduce((result, item, i) => {
@@ -219,41 +225,41 @@ const Carousel = ({
           <Item key={i} scrollSnap={scrollSnap}>
             {item}
           </Item>
-        )
+        );
 
         if (i % itemAmountPerSet === 0) {
-          result.push([itemComponent])
+          result.push([itemComponent]);
         } else {
-          result[result.length - 1].push(itemComponent)
+          result[result.length - 1].push(itemComponent);
         }
 
-        return result
+        return result;
       }, []),
-    [itemList, itemAmountPerSet, scrollSnap]
-  )
+    [itemList, itemAmountPerSet, scrollSnap],
+  );
 
-  const page = Math.ceil(itemList.length / itemAmountPerSet)
+  const page = Math.ceil(itemList.length / itemAmountPerSet);
 
   const handlePrev = useCallback(() => {
-    setCurrentPage(p => {
-      const prevPage = p - 1
+    setCurrentPage((p) => {
+      const prevPage = p - 1;
       if (loop && prevPage < 0) {
-        return page - 1
+        return page - 1;
       }
 
-      return prevPage
-    })
-  }, [loop, page])
+      return prevPage;
+    });
+  }, [loop, page]);
 
   const handleNext = useCallback(
     (isMobile = false) => {
-      const railWrapper = railWrapperRef.current
+      const railWrapper = railWrapperRef.current;
       if (isMobile && railWrapper) {
         if (!scrollSnap) {
-          return
+          return;
         }
 
-        const { scrollLeft, offsetWidth, scrollWidth } = railWrapper
+        const { scrollLeft, offsetWidth, scrollWidth } = railWrapper;
         railWrapper.scrollBy({
           top: 0,
           left:
@@ -264,61 +270,61 @@ const Carousel = ({
                 (offsetWidth - gap) * 0.9 -
                 (offsetWidth * 0.1 - gap * 1.1) / 2
               : (offsetWidth - gap) * 0.9 + gap,
-          behavior: 'smooth'
-        })
+          behavior: 'smooth',
+        });
       } else {
-        setCurrentPage(p => {
-          const nextPage = p + 1
+        setCurrentPage((p) => {
+          const nextPage = p + 1;
           if (nextPage >= page) {
-            return loop ? 0 : p
+            return loop ? 0 : p;
           }
 
-          return nextPage
-        })
+          return nextPage;
+        });
       }
     },
-    [loop, page, gap, railWrapperRef, scrollSnap]
-  )
+    [loop, page, gap, railWrapperRef, scrollSnap],
+  );
 
   const startAutoplayInterval = useCallback(() => {
     if (autoplayIntervalRef.current === null && typeof autoplay === 'number') {
       autoplayIntervalRef.current = setInterval(() => {
-        handleNext(window.innerWidth <= mobileBreakpoint)
-      }, autoplay)
+        handleNext(window.innerWidth <= mobileBreakpoint);
+      }, autoplay);
     }
-  }, [autoplay, autoplayIntervalRef, handleNext, mobileBreakpoint])
+  }, [autoplay, autoplayIntervalRef, handleNext, mobileBreakpoint]);
 
   useEffect(() => {
-    startAutoplayInterval()
+    startAutoplayInterval();
 
     return () => {
       if (autoplayIntervalRef.current !== null) {
-        clearInterval(autoplayIntervalRef.current)
-        autoplayIntervalRef.current = null
+        clearInterval(autoplayIntervalRef.current);
+        autoplayIntervalRef.current = null;
       }
-    }
-  }, [startAutoplayInterval, autoplayIntervalRef])
+    };
+  }, [startAutoplayInterval, autoplayIntervalRef]);
 
   useEffect(() => {
     if (isHover || isTouch) {
-      clearInterval(autoplayIntervalRef.current)
-      autoplayIntervalRef.current = null
+      clearInterval(autoplayIntervalRef.current);
+      autoplayIntervalRef.current = null;
     } else {
-      startAutoplayInterval()
+      startAutoplayInterval();
     }
-  }, [isHover, isTouch, autoplayIntervalRef, startAutoplayInterval])
+  }, [isHover, isTouch, autoplayIntervalRef, startAutoplayInterval]);
 
-  const turnToPage = useCallback(page => {
-    setCurrentPage(page)
-  }, [])
+  const turnToPage = useCallback((page) => {
+    setCurrentPage(page);
+  }, []);
 
   const handleHover = useCallback(() => {
-    setIsHover(hover => !hover)
-  }, [])
+    setIsHover((hover) => !hover);
+  }, []);
 
   const handleTouch = useCallback(() => {
-    setIsTouch(touch => !touch)
-  }, [])
+    setIsTouch((touch) => !touch);
+  }, []);
 
   return (
     <Container
@@ -386,17 +392,17 @@ const Carousel = ({
         onClick={handleNext.bind(null, false)}
       />
     </Container>
-  )
-}
+  );
+};
 
 const positiveNumberValidator = (props, propName, componentName) => {
-  const prop = props[propName]
+  const prop = props[propName];
   if ((prop !== undefined && typeof prop !== 'number') || prop <= 0) {
     return new Error(
-      `Invalid prop \`${propName}\`: ${props[propName]} supplied to \`${componentName}\`. expected positive \`number\``
-    )
+      `Invalid prop \`${propName}\`: ${props[propName]} supplied to \`${componentName}\`. expected positive \`number\``,
+    );
   }
-}
+};
 
 Carousel.propTypes = {
   cols: positiveNumberValidator,
@@ -416,29 +422,29 @@ Carousel.propTypes = {
       rows: positiveNumberValidator,
       gap: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
       loop: PropTypes.bool,
-      autoplay: PropTypes.number
-    })
+      autoplay: PropTypes.number,
+    }),
   ),
   mobileBreakpoint: PropTypes.number,
   arrowLeft: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.element,
-    PropTypes.elementType
+    PropTypes.elementType,
   ]),
   arrowRight: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.element,
-    PropTypes.elementType
+    PropTypes.elementType,
   ]),
   dot: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.element,
-    PropTypes.elementType
+    PropTypes.elementType,
   ]),
   containerClassName: PropTypes.string,
-  containerStyle: PropTypes.object
-}
+  containerStyle: PropTypes.object,
+};
 
-Carousel.Item = ({ children }) => children
-Carousel.Item.displayName = CAROUSEL_ITEM
-export default Carousel
+Carousel.Item = ({ children }) => children;
+Carousel.Item.displayName = CAROUSEL_ITEM;
+export default Carousel;

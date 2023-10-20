@@ -1,19 +1,19 @@
-import React, { useCallback } from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React, { useCallback } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const DotWrapper = styled.div`
   display: flex;
   margin: 0 5px;
   cursor: pointer;
-`
+`;
 
 const DotDefault = styled.div`
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: ${({ color }) => color};
-`
+`;
 
 const Dot = ({
   index,
@@ -21,11 +21,11 @@ const Dot = ({
   dotColorInactive,
   dotColorActive,
   dot: DotCustom,
-  onClick
+  onClick,
 }) => {
   const handleClick = useCallback(() => {
-    onClick(index)
-  }, [index, onClick])
+    onClick(index);
+  }, [index, onClick]);
 
   return (
     <DotWrapper onClick={handleClick}>
@@ -35,8 +35,8 @@ const Dot = ({
         <DotDefault color={isActive ? dotColorActive : dotColorInactive} />
       )}
     </DotWrapper>
-  )
-}
+  );
+};
 
 Dot.propTypes = {
   index: PropTypes.number.isRequired,
@@ -46,9 +46,9 @@ Dot.propTypes = {
   dot: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.element,
-    PropTypes.elementType
+    PropTypes.elementType,
   ]),
-  onClick: PropTypes.func.isRequired
-}
+  onClick: PropTypes.func.isRequired,
+};
 
-export default Dot
+export default Dot;

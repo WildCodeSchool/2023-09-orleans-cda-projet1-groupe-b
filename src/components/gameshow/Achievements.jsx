@@ -50,8 +50,7 @@ export default function Achievements({ trophiesResults, isLoaded }) {
             <img src="/public/images/kratos.webp" />
           </Carousel.Item>
         ))}
-        <Carousel.Item key={23}>
-        </Carousel.Item>
+        <Carousel.Item key={23}></Carousel.Item>
       </Carousel>
     </>
   );

@@ -1,13 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const ButtonWrapper = styled.div`
   @media screen and (max-width: ${({ mobileBreakpoint }) =>
       mobileBreakpoint}px) {
     display: none;
   }
-`
+`;
 
 const Button = styled.span`
   position: absolute;
@@ -45,14 +45,14 @@ const Button = styled.span`
         ? 'translate(-25%, -50%) rotate(-135deg)'
         : 'translate(-75%, -50%) rotate(45deg)'};
   }
-`
+`;
 
 const ArrowButton = ({
   type,
   mobileBreakpoint = 1,
   hidden = false,
   CustomBtn,
-  onClick
+  onClick,
 }) => (
   <ButtonWrapper
     mobileBreakpoint={mobileBreakpoint}
@@ -69,7 +69,7 @@ const ArrowButton = ({
       <Button type={type} />
     )}
   </ButtonWrapper>
-)
+);
 
 ArrowButton.propTypes = {
   type: PropTypes.oneOf(['prev', 'next']).isRequired,
@@ -78,9 +78,9 @@ ArrowButton.propTypes = {
   CustomBtn: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.element,
-    PropTypes.elementType
+    PropTypes.elementType,
   ]),
-  onClick: PropTypes.func.isRequired
-}
+  onClick: PropTypes.func.isRequired,
+};
 
-export default ArrowButton
+export default ArrowButton;
