@@ -13,9 +13,12 @@ export default function GridCard({ games, isLoaded }) {
   return (
     <>
       <div className="mx-auto">
-        <h1 className="mb-10 mt-32 space-x-40 text-center font-title text-4xl text-light">
-          Catalogue
-        </h1>
+        <div className="my-20 ml-10 flex flex-col ">
+          <h1 className=" text-start font-title text-7xl text-light">
+            Catalogue
+          </h1>
+          <div className="mt-4 h-5 w-28 -skew-x-35 bg-primary"></div>
+        </div>
         <div className="grid gap-x-10 gap-y-10 md:grid-cols-2 xl:grid-cols-4">
           {games.results?.slice(0, visible).map((game, index) => (
             <div
@@ -28,11 +31,6 @@ export default function GridCard({ games, isLoaded }) {
               />
               <div className="flex justify-around text-center">
                 <p className="text-light">Platforms: </p>
-                {/* {game.platforms.map((platform, index) => (
-                  <p key={index} className=" text-light">
-                    {platform.platform.name}
-                  </p>
-                ))} */}
                 <p className="mx-3 my-2 h-7 w-10 rounded border-2 border-primary font-bold text-primary">
                   {game.metacritic}
                 </p>

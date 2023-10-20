@@ -3,22 +3,18 @@ import CarouselCard from './CarouselCard';
 import NextButton from '../gameshow/NextButton';
 import PreviousButton from '../gameshow/PreviousButton';
 
-export default function Carousel({ games, isLoaded, gameIndex, setGameIndex }) {
-  const previousSlide = useCallback(
-    (setGameIndex) => {
-      if (gameIndex === 0) setGameIndex(games.length - 1);
-      else setGameIndex(gameIndex - 1);
-    },
-    [gameIndex, games.length],
-  );
+export default function Carousel({ games, gameIndex, setGameIndex, slug }) {
+  games = games?.results?.slice(0, 10);
 
-  const nextSlide = useCallback(
-    (setGameIndex) => {
-      if (gameIndex === games.length - 1) setGameIndex(0);
-      else setGameIndex(gameIndex + 1);
-    },
-    [gameIndex, games.length],
-  );
+  const previousSlide = useCallback(() => {
+    if (gameIndex === 0) setGameIndex(games.length - 1);
+    else setGameIndex(gameIndex - 1);
+  }, [gameIndex, games.length]);
+
+  const nextSlide = useCallback(() => {
+    if (gameIndex === games.length - 1) setGameIndex(0);
+    else setGameIndex(gameIndex + 1);
+  }, [gameIndex, games.length]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -28,14 +24,8 @@ export default function Carousel({ games, isLoaded, gameIndex, setGameIndex }) {
     return () => clearInterval(interval);
   }, [gameIndex, nextSlide]);
 
-  if (!isLoaded) {
-    return null;
-  }
-  games = games.results.slice(0, 10);
-
   return (
     <>
-      <h1 className="my-10 text-center font-title text-4xl text-light"></h1>
       <div className="relative">
         <div className="absolute left-20 top-1/2 z-10 -translate-y-1/2 translate-x-[-135px] transform">
           <PreviousButton handleClickPrev={previousSlide} />
@@ -44,7 +34,7 @@ export default function Carousel({ games, isLoaded, gameIndex, setGameIndex }) {
           <NextButton handleClickNext={nextSlide} />
         </div>
 
-        <div className=" mx-auto h-full w-full overflow-hidden xl:w-[52vw]">
+        <div className=" mx-auto mt-0 h-full w-full overflow-hidden xl:w-[52vw]">
           <div
             className="h-full w-full transition-transform duration-500 ease-out lg:h-[45vw] xl:h-full xl:max-w-[52vw] "
             style={{ transform: `translateX(-${gameIndex * 100}%)` }}

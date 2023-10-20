@@ -27,22 +27,30 @@ export default function Categories() {
       signal,
     });
   }, [slug]);
-  //if(currentGame){
-
-  //}
 
   return (
     <>
       <HeaderGenre currentGame={currentGame} />
-      <section className="z-50 mt-[10rem] w-full px-2 xs:px-5 md:px-16 lg:px-2">
+      <section className="z-50 mt-[8rem] w-full px-2 xs:px-5 md:px-16 lg:px-2">
+        <div className="ml-10 flex flex-col ">
+          <h1 className=" text-start font-title text-7xl text-light">
+            Jeu {slug}
+          </h1>
+          <div className="mt-4 h-5 w-28 -skew-x-35 bg-primary"></div>
+        </div>
         <div className="mx-auto w-[80%] lg:max-w-[55vw]">
-          <Carousel
-            games={games}
-            isLoaded={isLoaded}
-            gameIndex={gameIndex}
-            setGameIndex={setGameIndex}
-            currentGame={currentGame}
-          />
+          {isLoaded ? (
+            <Carousel
+              games={games}
+              isLoaded={isLoaded}
+              gameIndex={gameIndex}
+              setGameIndex={setGameIndex}
+              currentGame={currentGame}
+              slug={slug}
+            />
+          ) : (
+            <p>loading...</p>
+          )}
         </div>
         <GridCard games={games} isLoaded={isLoaded} />
       </section>

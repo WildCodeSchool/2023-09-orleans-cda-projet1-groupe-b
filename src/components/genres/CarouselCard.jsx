@@ -18,7 +18,7 @@ export default function CarouselCard({ game }) {
   }, [game.id]);
   return (
     <>
-      <div className="mt-40 flex h-full w-full shrink-0 flex-col overflow-hidden rounded-[3px] border border-primary bg-gradient-to-l from-primary/10 to-primary/5 lg:flex-row">
+      <div className="mt-40 flex h-full w-full shrink-0 flex-col overflow-hidden rounded-[3px] border border-primary bg-gradient-to-l from-primary/10 to-primary/5 backdrop-blur-md lg:flex-row">
         <div className="h-full min-h-[25vw] w-full min-w-[17vw]">
           <img
             className="h-full w-full rounded object-cover md:w-full lg:h-full xl:h-[30vw]"
@@ -27,7 +27,7 @@ export default function CarouselCard({ game }) {
           />
         </div>
         <div className="flex-col px-4 xl:w-full ">
-          <div className="">
+          <div className=" ">
             <div className="flex flex-col">
               <div className="flex flex-nowrap justify-between gap-4">
                 <div className="">
@@ -51,7 +51,7 @@ export default function CarouselCard({ game }) {
           </div>{' '}
           <div className="flex flex-col gap-4">
             <div>
-              <div className="ml-2 mt-1 flex flex-wrap gap-2">
+              <div className="ml-2 mt-5 flex flex-wrap gap-2 ">
                 {game.genres.map((genre) => (
                   <div
                     key={genre.id}
@@ -63,11 +63,11 @@ export default function CarouselCard({ game }) {
               </div>
             </div>
           </div>
-          <p className="mt-2 font-text text-base text-light/80">
+          <p className="mt-5 font-text text-base text-light/80">
             Release : {game.released}
           </p>{' '}
           <div className="h-[9rem] overflow-auto">
-            <p className="line-clamp-4 text-light/80">
+            <p className="mt-5 line-clamp-4 text-light/80">
               {description.description_raw}
             </p>
           </div>{' '}
