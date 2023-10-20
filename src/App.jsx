@@ -13,12 +13,12 @@ export default function App() {
       </section>
 
       <main className="relative flex flex-row flex-nowrap">
-        <nav className="sticky z-10 hidden bg-primary/10 lg:block lg:w-1/3 xl:w-1/4">
+        <nav className="sticky z-10 hidden lg:block lg:w-1/3 xl:w-1/4">
           <Navbar />
         </nav>
         <Outlet />
         {location.pathname !== '/' && (
-          <aside className="z-10 bg-primary/10 lg:w-1/3 xl:w-1/4"></aside>
+          <aside className="z-10 lg:w-1/3 xl:w-1/4"></aside>
         )}
       </main>
       {/* Footer */}
