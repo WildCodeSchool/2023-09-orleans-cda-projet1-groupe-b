@@ -32,6 +32,7 @@ export default function CarouselGameShow({ screenshotsResults, isLoaded }) {
         >
           {/* Boucle qui affiche les images du jeu vidéo */}
           {isLoaded ? (
+            screenshotsResults &&
             screenshotsResults.map((image, index) => (
               <div key={index} className="flex h-full w-full flex-shrink-0">
                 <img

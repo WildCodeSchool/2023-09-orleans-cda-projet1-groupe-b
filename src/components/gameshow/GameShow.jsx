@@ -8,15 +8,18 @@ import CarouselGameShow from './CarouselGameShow';
 import { fetchGameDetails, fetchGameElements } from '../../api/api-fetch';
 
 // Importation des paramètres URL
-import { screenshotsURL } from '../../api/api-url';
+import { screenshotsURL, achievementsURL } from '../../api/api-url';
+import Achievements from './Achievements';
 
 export default function GameShow() {
   const { gameId } = useParams();
   const [screenshots, setScreenshots] = useState([]);
   const [game, setGame] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [trophies, setTrophies] = useState([]);
 
   const screenshotsResults = screenshots.results;
+  const trophiesResults = trophies.results;
 
   useEffect(() => {
     const controller = new AbortController();
@@ -37,6 +40,14 @@ export default function GameShow() {
       signal,
     });
 
+    fetchGameElements({
+      parameter: achievementsURL,
+      gameId,
+      setter: setTrophies,
+      setLoaded: setIsLoaded,
+      signal,
+    });
+
     return () => controller.abort();
   }, [gameId]);
 
@@ -51,6 +62,12 @@ export default function GameShow() {
             {isLoaded && (
               <CarouselGameShow
                 screenshotsResults={screenshotsResults}
+                isLoaded={isLoaded}
+              />
+            )}
+            {isLoaded && (
+              <Achievements
+                trophiesResults={trophiesResults}
                 isLoaded={isLoaded}
               />
             )}
