@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { fetchCategoryDetails } from '../../api/api-fetch';
 
 import Logo from '../Logo';
@@ -46,6 +47,7 @@ const childVariants = {
 export default function Home() {
   const [imageHeader, setImageHeader] = useState();
   const [isLoaded, setIsLoaded] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -64,7 +66,12 @@ export default function Home() {
   return (
     <>
       <HeaderHome imageHeader={imageHeader} isLoaded={isLoaded} />
-      <section className="z-50 w-full px-2 xs:px-5 md:px-16 lg:px-2">
+      <section
+        className={`z-50 w-full px-2 xs:px-5 md:px-16 ${
+          location.pathname !== '/' ? 'lg:w-[64%]' : 'lg:w-[75%] xl:w-[82%]'
+        } lg:px-2`}
+      >
+        {/* <section className="z-50 w-full min-w-fit px-2 xs:px-5 md:px-16 lg:px-2"> */}
         <div className="flex h-screen flex-col items-center md:items-start">
           <div className="mt-[10rem] w-clamp-title lg:w-[40vw]">
             <Logo />
@@ -99,7 +106,7 @@ export default function Home() {
         <div>
           <Unavoidable />
         </div>
-        <div className="mr-5 h-96">
+        <div className="w-full pr-5">
           <CarouselHome />
         </div>
       </section>

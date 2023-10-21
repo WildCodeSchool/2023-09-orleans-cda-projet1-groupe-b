@@ -134,6 +134,7 @@ export default function Unavoidable() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
+        className="overflow-hidden"
       >
         <div className="mt-1">
           <Title title="The unavoidable" />
