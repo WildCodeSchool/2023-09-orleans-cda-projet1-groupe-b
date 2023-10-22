@@ -12,8 +12,11 @@ import { screenshotsURL } from '../../api/api-url';
 
 export default function GameShow() {
   const { gameId } = useParams();
-  const [images, setImages] = useState([]);
-  const [gameName, setGameName] = useState('');
+  const [screenshots, setScreenshots] = useState([]);
+  const [game, setGame] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const screenshotsResults = screenshots.results;
 
   useEffect(() => {
     const controller = new AbortController();
@@ -21,16 +24,16 @@ export default function GameShow() {
 
     fetchGameDetails({
       gameId,
-      setter: setGameName,
-      property: 'name',
+      setter: setGame,
+      setLoaded: setIsLoaded,
       signal,
     });
 
     fetchGameElements({
       parameter: screenshotsURL,
       gameId,
-      setter: setImages,
-      property: 'results',
+      setter: setScreenshots,
+      setLoaded: setIsLoaded,
       signal,
     });
 
@@ -39,19 +42,24 @@ export default function GameShow() {
 
   return (
     <>
-      <div className="">
+      <section className="w-full px-2 xs:px-5 md:px-16 lg:px-2">
         <h1 className="space-x-40 font-title text-4xl text-light">
-          {gameName}
+          {isLoaded ? game.name : 'Loading...'}
         </h1>
         <div className="flex flex-col gap-3 md:flex-row">
           <div className="flex-1">
-            <CarouselGameShow images={images} />
+            {isLoaded && (
+              <CarouselGameShow
+                screenshotsResults={screenshotsResults}
+                isLoaded={isLoaded}
+              />
+            )}
           </div>
           <div className="w-full md:w-52 xl:w-64">
             {/* TODO importer le composant gameInformation */}
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 }

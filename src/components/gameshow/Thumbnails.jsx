@@ -1,15 +1,19 @@
-import { useState } from 'react';
-
 // Importation des composants
 import ThumbnailsPaginations from './ThumbnailsPaginations';
 
 const NUMBER_IMAGES = 5;
 
-export default function Thumbnails({ images, curr, handleThumbnailClick }) {
-  const [nbPage, setNbPage] = useState(0);
-  const [loading, setLoading] = useState(true);
+export default function Thumbnails({
+  screenshotsResults,
+  curr,
+  handleThumbnailClick,
+  isLoaded,
+}) {
+  if (!isLoaded) {
+    return null;
+  }
 
-  const totalImages = images.length;
+  const totalImages = screenshotsResults.length;
 
   // Calcule l'indice de départ
   const pageStartIndex = Math.floor(curr / NUMBER_IMAGES) * NUMBER_IMAGES;
@@ -18,7 +22,10 @@ export default function Thumbnails({ images, curr, handleThumbnailClick }) {
   const startIndex = Math.min(pageStartIndex, totalImages - NUMBER_IMAGES);
 
   // Extraction des images à partir de l'index jusqu'au nombre d'images afin d'afficher 5 images
-  const imagesThumbnails = images.slice(startIndex, startIndex + NUMBER_IMAGES);
+  const imagesThumbnails = screenshotsResults.slice(
+    startIndex,
+    startIndex + NUMBER_IMAGES,
+  );
 
   // Nombre total de paginations
   const totalPaginations = Math.ceil(totalImages / NUMBER_IMAGES);

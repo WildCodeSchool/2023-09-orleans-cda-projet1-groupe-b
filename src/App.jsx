@@ -41,10 +41,8 @@ export default function App() {
         <nav className="lg:w-1/4 xl:w-1/5">
           <Navbar genres={genres} platforms={platforms} />
         </nav>
-        <section className="w-full px-2 xs:px-5 md:px-16 lg:px-2">
-          <Outlet />
-        </section>
-        <aside className="bg-primary lg:w-1/3 xl:w-1/4"></aside>
+        <Outlet />
+        <aside className="z-10 bg-primary/10 lg:w-1/3 xl:w-1/4"></aside>
       </main>
       {/* Footer */}
       <footer className="h-14 w-screen bg-tertiary">

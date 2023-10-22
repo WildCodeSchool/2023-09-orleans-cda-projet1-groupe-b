@@ -1,4 +1,6 @@
+/* eslint no-undef: "off" */
 /** @type {import('tailwindcss').Config} */
+
 export default {
   content: [
     './index.html',
@@ -6,6 +8,7 @@ export default {
     './node_modules/flowbite/**/*.js',
   ],
   // Génèration de classe dynamique et empêche la supression de styles pendant le processus de purge
+
   safelist: [
     {
       pattern: /grid-cols-\d+/,
@@ -36,7 +39,10 @@ export default {
         xs: '576px',
       },
       skew: {
-        50: '50deg',
+        35: '35deg',
+      },
+      width: {
+        'clamp-title': 'clamp(320px, 90vw, 500px)',
       },
     },
   },
