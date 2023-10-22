@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.jsx';
 import Collapsible from './NavbarTools/Collapsible';
 import Dropdown from './NavbarTools/Dropdown';
-import { motion } from 'framer-motion';
 
 function Navbar({ genres, platforms }) {
   const [isOpenPlatform, setIsOpenPlatform] = useState(false);
@@ -53,6 +52,34 @@ function Navbar({ genres, platforms }) {
     a.name.localeCompare(b.name),
   );
 
+  const retroPlatforms = [];
+
+  platforms.filter((platform) => {
+    if (
+      platform.name.includes('Ami') ||
+      platform.name.includes('Ata') ||
+      platform.name.includes('Cla') ||
+      platform.name.includes('Com') ||
+      platform.name.includes('SEGA') ||
+      platform.name.includes('Genesis') ||
+      platform.name.includes('Dream') ||
+      platform.name.includes('Jaguar') ||
+      platform.name.includes('Game G')
+    ) {
+      retroPlatforms.push(platform);
+    }
+  });
+
+  const filteredRetro = retroPlatforms.sort((a, b) =>
+    a.name.localeCompare(b.name),
+  );
+
+  useEffect(() => {
+    if (!isDropedDown) {
+      setIsDropedDown(false);
+    }
+  }, [isDropedDown]);
+
   return (
     <>
       <nav className="p-5">
@@ -71,12 +98,14 @@ function Navbar({ genres, platforms }) {
                   fill="#EFEFEF"
                 />
               </svg>
-              <span className="font-bold text-light">Home</span>
+              <span className="font-bold text-light opacity-80 hover:opacity-100">
+                Home
+              </span>
             </Link>
           </li>
           <li>
             <Link
-              className="mb-2 flex items-center gap-3"
+              className="mb-2 flex items-center gap-3 opacity-80 hover:opacity-100"
               to="/recommandations"
             >
               <svg
@@ -106,13 +135,13 @@ function Navbar({ genres, platforms }) {
             </Link>
           </li>
           <ul className=" mb-5 pl-[38px] text-light">
-            <li className="py-[4px]">
+            <li className="py-[4px] opacity-80 hover:opacity-100">
               <Link to="/recommandations/news">News</Link>
             </li>
-            <li className="py-[4px]">
+            <li className="py-[4px] opacity-80 hover:opacity-100">
               <Link to="/recommandations/bestsellers">BestSellers</Link>
             </li>
-            <li className="py-[4px]">
+            <li className="py-[4px] opacity-80 hover:opacity-100">
               <Link to="/recommandations/offers">Offers</Link>
             </li>
           </ul>
@@ -135,44 +164,56 @@ function Navbar({ genres, platforms }) {
                   />
                 </g>
               </svg>
-              <span className="font-bold text-light">Plateforms</span>
+              <span className="font-bold text-light opacity-80 hover:opacity-100">
+                Plateforms
+              </span>
             </button>
           </li>
-          <li className=" mb-5 gap-3 font-bold text-light">
+          <li className=" mb-5 gap-3 text-light">
             {isOpenPlatform ? (
               <Collapsible>
-                <Dropdown title="PlayStation">
+                <Dropdown
+                  title="PlayStation"
+                  style="opacity-80 hover:opacity-100"
+                >
                   {filteredPlayStation.map((platform, index) => (
                     <li className="py-[4px] font-text text-light" key={index}>
                       {platform.name}
                     </li>
                   ))}
                 </Dropdown>
-                <Dropdown title="Xbox">
+                <Dropdown title="Xbox" style="opacity-80 hover:opacity-100">
                   {filteredXbox.map((platform, index) => (
                     <li className="py-[4px] font-text text-light" key={index}>
                       {platform.name}
                     </li>
                   ))}
                 </Dropdown>
-                <Dropdown title="Nintendo">
+                <Dropdown title="Nintendo" style="opacity-80 hover:opacity-100">
                   {filteredNintendo.map((platform, index) => (
+                    <li className="font-pixel py-[4px] text-light" key={index}>
+                      {platform.name}
+                    </li>
+                  ))}
+                </Dropdown>
+                <Dropdown title="Retro" style="opacity-80 hover:opacity-100">
+                  {filteredRetro.map((platform, index) => (
                     <li className="py-[4px] font-text text-light" key={index}>
                       {platform.name}
                     </li>
                   ))}
                 </Dropdown>
-                {platforms.map((platform, index) => (
-                  <>
-                    <Link className="py-[4px] font-text text-light" key={index}>
-                      {platform.name}
-                    </Link>
-                  </>
-                ))}
+                <li className="py-[4px] font-text text-light opacity-80 hover:opacity-100">
+                  PC
+                </li>
+                <li className="py-[4px] font-text text-light opacity-80 hover:opacity-100">
+                  Android
+                </li>
+                <li className="py-[4px] font-text text-light opacity-80 hover:opacity-100">
+                  iOS
+                </li>
               </Collapsible>
-            ) : (
-              ''
-            )}
+            ) : null}
           </li>
           <li className=" gap-3 font-bold text-light">
             <button
@@ -210,15 +251,20 @@ function Navbar({ genres, platforms }) {
                   </clipPath>
                 </defs>
               </svg>
-              <span className="font-bold text-light">Genres</span>
+              <span className="font-bold text-light opacity-80 hover:opacity-100">
+                Genres
+              </span>
             </button>
           </li>
-          <li className=" gap-3 font-bold text-light">
+          <li className=" w-max gap-3 text-light">
             {isOpenGenres ? (
               <Collapsible genres={genres}>
                 {genres.map((genre, index) => (
                   <>
-                    <Link className="py-[4px] font-text text-light" key={index}>
+                    <Link
+                      className="py-[4px] font-text text-light opacity-80 hover:opacity-100"
+                      key={index}
+                    >
                       {genre.name}
                     </Link>
                   </>

@@ -38,7 +38,7 @@ export default function App() {
       </section>
 
       <main className="flex h-screen flex-row flex-nowrap">
-        <nav className="lg:w-1/3 xl:w-1/4">
+        <nav className="lg:w-1/4 xl:w-1/5">
           <Navbar genres={genres} platforms={platforms} />
         </nav>
         <section className="w-full px-2 xs:px-5 md:px-16 lg:px-2">

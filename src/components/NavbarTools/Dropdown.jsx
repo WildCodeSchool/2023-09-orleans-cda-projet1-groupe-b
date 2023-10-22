@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useAnimate, stagger, motion } from 'framer-motion';
 
 const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
@@ -43,16 +43,36 @@ function useMenuAnimation(isOpen) {
 export default function Dropdown({ children, title }) {
   const [isOpen, setIsOpen] = useState(false);
   const scope = useMenuAnimation(isOpen);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
 
   return (
-    <nav className="menu" ref={scope}>
+    <nav
+      className="relative my-1 flex items-start opacity-80 hover:opacity-100"
+      ref={scope}
+      style={{ height: isOpen ? 'bg-blue' : '' }}
+    >
       <motion.button
-        className="flex items-center justify-center gap-2"
+        className="flex items-center justify-center gap-3"
         whileTap={{ scale: 0.97 }}
         onClick={() => setIsOpen(!isOpen)}
       >
         {title}
         <div
+          ref={dropdownRef}
           className="arrow fill-current text-white"
           style={{ transformOrigin: '50% 60%' }}
         >
@@ -61,12 +81,7 @@ export default function Dropdown({ children, title }) {
           </svg>
         </div>
       </motion.button>
-      <ul
-        style={{
-          pointerEvents: isOpen ? 'auto' : 'none',
-          clipPath: 'inset(10% 50% 90% 50% round 10px)',
-        }}
-      >
+      <ul className="absolute z-[100] ms-[7rem] mt-1 w-max rounded border border-solid border-primary bg-gradient-to-l from-primary/30 to-primary/20 p-4 py-2 text-start opacity-90 hover:opacity-100">
         {children}
       </ul>
     </nav>
