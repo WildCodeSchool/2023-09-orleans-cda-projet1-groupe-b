@@ -89,13 +89,17 @@ export default function HeaderHome({ imageHeader, isLoaded }) {
             />
           </motion.div>
           {/* Affichage de l'image si en dessous de 768px */}
-          <div className="block md:hidden">
-            <img
-              src={imageHeader.image_background}
-              alt=""
-              className="h-full w-full object-cover"
-            />
-          </div>
+          {isLoaded ? (
+            <div className="block md:hidden">
+              <img
+                src={imageHeader.image_background}
+                alt=""
+                className="h-full w-full object-cover"
+              />
+            </div>
+          ) : (
+            'Loading...'
+          )}
         </motion.div>
       </div>
     </>
