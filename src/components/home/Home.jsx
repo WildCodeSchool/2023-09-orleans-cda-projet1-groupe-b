@@ -67,7 +67,7 @@ export default function Home() {
     <>
       <HeaderHome imageHeader={imageHeader} isLoaded={isLoaded} />
       <section
-        className={`z-50 w-full px-2 xs:px-5 md:px-16 ${
+        className={`z-50 h-full w-full px-2 xs:px-5 md:px-16 ${
           location.pathname !== '/' ? 'lg:w-[64%]' : 'lg:w-[75%] xl:w-[82%]'
         } lg:px-2`}
       >
@@ -106,7 +106,7 @@ export default function Home() {
         <div>
           <Unavoidable />
         </div>
-        <div className="w-full pr-5">
+        <div className="w-full">
           <CarouselHome />
         </div>
       </section>

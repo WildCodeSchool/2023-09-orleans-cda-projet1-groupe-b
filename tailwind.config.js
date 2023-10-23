@@ -6,6 +6,8 @@ module.exports = {
     {
       pattern: /grid-cols-\d+/,
     },
+    'overflow-visible',
+    'bg-light',
   ],
   theme: {
     colors: {

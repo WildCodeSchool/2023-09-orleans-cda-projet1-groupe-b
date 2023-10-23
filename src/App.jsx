@@ -6,17 +6,14 @@ export default function App() {
   const location = useLocation();
 
   return (
-    <div className="bg-background">
+    <div className="bg-background bg-cover">
       {/* Search bar */}
       <section className="fixed left-0 right-0 top-0 h-14">
         {/* TODO: Import SearchBar component */}
       </section>
 
       <main className="relative flex flex-row flex-nowrap">
-        {/* <nav className="sticky z-10 hidden bg-primary/50 md:w-1/4 lg:block xl:w-1/5"> */}
-        <nav
-          className={`sticky z-10 hidden bg-primary/50 lg:block lg:w-[25%] xl:w-[18%]`}
-        >
+        <nav className={`sticky z-10 hidden lg:block lg:w-[25%] xl:w-[18%]`}>
           <Navbar />
         </nav>
         <Outlet />
