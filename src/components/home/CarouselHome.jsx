@@ -1,9 +1,9 @@
 import { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+
 import { fetchGames } from '../../api/api-fetch';
 import { gamesURL } from '../../api/api-url';
-
-import { motion } from 'framer-motion';
 
 // Importation pour Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -84,7 +84,6 @@ export default function CarrouselHome() {
         <Swiper
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
-            // console.log('swiper: ', swiper);
           }}
           onSlideChange={() => {
             setActiveIndex(swiperRef.current.activeIndex);
@@ -92,7 +91,8 @@ export default function CarrouselHome() {
           slidesPerView={1}
           grabCursor={true}
           cssMode={true}
-          spaceBetween={10}
+          // spaceBetween={5}
+          wrapperClass="!h-[95%] !mx-3"
           pagination={{
             clickable: true,
             bulletActiveClass: '!bg-primary',
@@ -116,7 +116,7 @@ export default function CarrouselHome() {
             },
           }}
           modules={[Pagination, Navigation]}
-          className="h-[30rem] w-[90%] !overflow-x-visible"
+          className="!flex h-[35rem] w-[95%] items-center !overflow-x-visible"
         >
           {/* Boutons Précédent et Suivant */}
           <div className="absolute top-[50%] z-20 flex w-full -translate-y-1/2 justify-between">
@@ -144,11 +144,11 @@ export default function CarrouselHome() {
             newGames.results.map((game, index) => (
               <SwiperSlide
                 key={index}
-                className="overflow-hidden rounded-[3px]"
+                className="block scale-[0.93] overflow-hidden rounded-[3px] transition-all duration-300 ease-in-out hover:scale-100"
               >
                 <Link
                   to={`/games/${game.slug}`}
-                  className="block h-full w-full"
+                  className="block h-full w-full transition-all duration-300 hover:p-1"
                 >
                   <motion.div
                     variants={sliderVariants}
@@ -156,7 +156,7 @@ export default function CarrouselHome() {
                     whileInView="visible"
                     className="relative h-full w-full bg-light/20"
                   >
-                    <div className="card-mask absolute bottom-0 flex h-1/2 w-full flex-col justify-end gap-2 bg-dark/50 p-2">
+                    <div className="card-mask absolute bottom-0 flex h-1/2 w-full flex-col justify-end gap-2 bg-dark/70 p-2">
                       <div>
                         {/* Importation du composant qui convertit les noms des platformes en logos */}
                         <PlatformsList game={game} isLoaded={isLoaded} />
@@ -196,12 +196,12 @@ export default function CarrouselHome() {
           <SwiperSlide className="overflow-hidden rounded-[3px]">
             <Link to="/new-games">
               <motion.div
-                initial={{ opacity: 0.5, y: 100 }}
-                whileHover={{ opacity: 1 }}
+                initial={{ opacity: 0.5, y: 100, scale: 0.93 }}
+                whileHover={{ opacity: 1, scale: 1 }}
                 transition={{
                   type: 'tween',
                   duration: 0.3,
-                  ease: 'easeOut',
+                  ease: 'easeInOut',
                 }}
                 whileInView={{
                   y: 0,
@@ -215,7 +215,7 @@ export default function CarrouselHome() {
                     stiffness: 300,
                   },
                 }}
-                className="text-black flex h-full w-full flex-col items-center justify-center gap-2 bg-gradient-to-l from-primary/30 to-primary/20 font-text text-2xl text-light"
+                className="text-black flex h-full w-full flex-col items-center justify-center gap-2 overflow-hidden rounded-[3px] bg-gradient-to-l from-primary/30 to-primary/20 font-text text-2xl text-light"
               >
                 <IconPlus />
                 Show more
@@ -225,8 +225,8 @@ export default function CarrouselHome() {
         </Swiper>
 
         {/* Pagination qui reprend les paramètres "pagination" de la balise <Swiper> */}
-        <div className="flex w-full items-center justify-center">
-          <div className="custom-pagination my-4 flex w-[90%]"></div>
+        <div className="mb-5 flex w-full items-center justify-center">
+          <div className="custom-pagination flex w-[95%]"></div>
         </div>
       </div>
     </>
