@@ -42,7 +42,13 @@ export default function GameShow() {
 
   return (
     <>
-      <section className="w-full px-2 xs:px-5 md:px-16 lg:px-2">
+      <section
+        className={`z-50 w-full px-2 xs:px-5 md:px-16 lg:px-2 ${
+          location.pathname !== '/'
+            ? 'lg:w-[50%] xl:w-[64%]'
+            : 'lg:w-[75%] xl:w-[82%]'
+        }`}
+      >
         <h1 className="space-x-40 font-title text-4xl text-light">
           {isLoaded ? game.name : 'Loading...'}
         </h1>
