@@ -13,8 +13,8 @@ export default function GridCard({ games, isLoaded }) {
   return (
     <>
       <div className="mx-auto">
-        <div className="my-20 ml-10 flex flex-col ">
-          <h1 className=" text-start font-title text-7xl text-light">
+        <div className="my-20 flex flex-col ">
+          <h1 className="text-start font-title text-7xl text-light">
             Catalogue
           </h1>
           <div className="mt-4 h-5 w-28 -skew-x-35 bg-primary"></div>

@@ -33,8 +33,7 @@ export default function Carousel({ games, gameIndex, setGameIndex }) {
         <div className="absolute right-20 top-1/2 z-10 -translate-y-1/2 translate-x-[135px] transform">
           <NextButton handleClickNext={nextSlide} />
         </div>
-
-        <div className=" mx-auto mt-0 h-full w-full overflow-hidden xl:w-[52vw]">
+        <div className=" mx-auto h-full w-full overflow-hidden xl:w-[52vw]">
           <div
             className="h-full w-full transition-transform duration-500 ease-out lg:h-[45vw] xl:h-full xl:max-w-[52vw] "
             style={{ transform: `translateX(-${gameIndex * 100}%)` }}
@@ -57,7 +56,7 @@ export default function Carousel({ games, gameIndex, setGameIndex }) {
                 className={`h-1 w-full -skew-x-[50deg] cursor-pointer rounded ${
                   i === gameIndex ? 'bg-primary' : 'bg-secondary'
                 }`}
-              ></div>
+              />
             );
           })}
         </div>

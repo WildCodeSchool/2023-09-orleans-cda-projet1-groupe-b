@@ -23,7 +23,7 @@
   .text-size {
     font-size: clamp(14px, 1vw, 16px);
   }
-  .title-clamp {
+  .title-size {
     font-size: clamp(24px, 2vw, 32px);
   }
 

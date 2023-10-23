@@ -12,7 +12,7 @@ export default function Categories() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [gameIndex, setGameIndex] = useState(0);
 
-  const currentGame = games?.results?.[gameIndex] || [];
+  const currentGame = games?.results?.[gameIndex] || {};
 
   useEffect(() => {
     const controller = new AbortController();
@@ -26,13 +26,16 @@ export default function Categories() {
       queryString: `genres=${slug} `,
       signal,
     });
+    return () => {
+      controller.abort();
+    };
   }, [slug]);
 
   return (
     <>
       <HeaderGenre currentGame={currentGame} />
       <section className="z-50 mt-[8rem] w-full px-2 xs:px-5 md:px-16 lg:px-2">
-        <div className="ml-10 flex flex-col ">
+        <div className="flex flex-col ">
           <h1 className=" text-start font-title text-7xl text-light">
             {slug} Game
           </h1>
