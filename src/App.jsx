@@ -18,11 +18,7 @@ export default function App() {
         <Outlet />
         <aside className="z-10 bg-primary/10 lg:w-1/3 xl:w-1/4"></aside>
       </main>
-      {/* Footer */}
-      <footer className="h-14 w-screen bg-dark">
-        {/* TODO: Import Footer component */}
-        <Footer />
-      </footer>
+      <Footer />
     </div>
   );
 }
