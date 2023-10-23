@@ -71,7 +71,6 @@ export default function Home() {
           location.pathname !== '/' ? 'lg:w-[64%]' : 'lg:w-[75%] xl:w-[82%]'
         } lg:px-2`}
       >
-        {/* <section className="z-50 w-full min-w-fit px-2 xs:px-5 md:px-16 lg:px-2"> */}
         <div className="flex h-screen flex-col items-center md:items-start">
           <div className="mt-[10rem] w-clamp-title lg:w-[40vw]">
             <Logo />
