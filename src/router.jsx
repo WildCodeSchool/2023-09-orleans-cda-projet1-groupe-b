@@ -7,6 +7,7 @@ import BestSellers from './components/BestSellers';
 import Offers from './components/Offers';
 import Error404 from './components/Error404';
 import GameShow from './components/gameshow/GameShow';
+import Search from './components/search/Search';
 
 export default createBrowserRouter([
   {
@@ -39,6 +40,10 @@ export default createBrowserRouter([
         // Ajouter les routes
         path: '/games/:gameId',
         element: <GameShow />,
+      },
+      {
+        path: '/search',
+        element: <Search />,
       },
       {
         path: '*',

@@ -1,6 +1,8 @@
 import { Outlet, useLocation } from 'react-router-dom';
-import Navbar from './components/Navbar';
 import './App.css';
+
+import Navbar from './components/Navbar';
+import SearchBar from './components/search/SearchBar';
 
 export default function App() {
   const location = useLocation();
@@ -8,8 +10,8 @@ export default function App() {
   return (
     <div className="bg-background">
       {/* Search bar */}
-      <section className="fixed left-0 right-0 top-0 h-14">
-        {/* TODO: Import SearchBar component */}
+      <section className="fixed left-0 right-0 top-0 z-50 h-14 bg-dark/80">
+        <SearchBar />
       </section>
 
       <main className="relative flex flex-row flex-nowrap">
