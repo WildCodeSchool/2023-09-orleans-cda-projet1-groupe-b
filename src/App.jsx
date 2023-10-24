@@ -1,5 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import ScrollTop from './components/ScrollTop';
 import './App.css';
 
 export default function App() {
@@ -7,6 +8,7 @@ export default function App() {
 
   return (
     <div className="bg-background">
+      <ScrollTop />
       {/* Search bar */}
       <section className="fixed left-0 right-0 top-0 h-14">
         {/* TODO: Import SearchBar component */}
@@ -21,6 +23,7 @@ export default function App() {
           <aside className="z-10 lg:w-1/3 xl:w-1/4"></aside>
         )}
       </main>
+
       {/* Footer */}
       <footer className="h-14 w-screen bg-tertiary">
         {/* TODO: Import Footer component */}
