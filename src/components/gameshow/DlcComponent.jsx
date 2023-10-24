@@ -33,7 +33,7 @@ export default function DlcComponent({ dlc, isLoaded }) {
         </div>
       ) : (
         <div className="mt-1">
-          <p>There are no other editions or DLCs for this game</p>
+          <p>There are no other editions or DLC{"'"}s for this game</p>
         </div>
       )}
     </>
