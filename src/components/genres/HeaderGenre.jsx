@@ -7,7 +7,7 @@ export default function HeaderHome({ currentGame }) {
             <img
               src={currentGame.background_image}
               alt=""
-              className=" h-full w-full object-cover opacity-75 "
+              className="h-full w-full object-cover opacity-75 "
             />
           </div>
         </div>
