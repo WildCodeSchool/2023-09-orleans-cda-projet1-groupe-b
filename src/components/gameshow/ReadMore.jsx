@@ -1,14 +1,13 @@
 import { useState } from 'react';
 
-export const ReadMore = ({ children }) => {
-  const text = children;
+export default function ReadMore({ descText }) {
   const [isReadMore, setIsReadMore] = useState(true);
   const toggleReadMore = () => {
     setIsReadMore(!isReadMore);
   };
   return (
     <p className="text">
-      {isReadMore ? text.slice(0, 500) + '...' : text}
+      {isReadMore ? descText.slice(0, 500) + '...' : descText}
       <span onClick={toggleReadMore} className="read-or-hide">
         {isReadMore ? (
           <>
@@ -28,4 +27,4 @@ export const ReadMore = ({ children }) => {
       </span>
     </p>
   );
-};
+}

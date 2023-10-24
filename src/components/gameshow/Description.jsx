@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { fetchGameDetails } from '../../api/api-fetch';
-import { ReadMore } from './ReadMore';
+import ReadMore from './ReadMore';
 import Title from '../Title';
-import nl2br from './TextFormatter';
+import nl2br from '../../utils/TextFormatter';
 
 export default function GameDesc({ gameId }) {
   const [game, setGame] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const descText = game.description_raw;
 
   useEffect(() => {
     const controller = new AbortController();
@@ -32,10 +33,10 @@ export default function GameDesc({ gameId }) {
         )}
         {isLoaded ? (
           <div className="-mt-8 text-light">
-            {game.description_raw.length > 500 ? (
-              <ReadMore>{game.description_raw}</ReadMore>
+            {descText.length > 500 ? (
+              <ReadMore descText={descText} />
             ) : (
-              game.description_raw
+              descText
             )}
           </div>
         ) : (
