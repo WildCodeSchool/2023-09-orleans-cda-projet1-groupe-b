@@ -7,7 +7,7 @@ export default {
     './src/**/*.{js,ts,jsx,tsx}',
     './node_modules/flowbite/**/*.js',
   ],
-  // Génèration de classe dynamique et empêche la supression de styles pendant le processus de purge
+  // Génération de classe dynamique et empêche la supression de styles pendant le processus de purge
 
   safelist: [
     {

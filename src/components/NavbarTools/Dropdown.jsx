@@ -60,7 +60,7 @@ export default function Dropdown({ children, title }) {
   }, []);
 
   return (
-    <nav
+    <div
       className="relative my-1 flex items-start opacity-80 hover:opacity-100"
       ref={scope}
       style={{ height: isOpen ? 'bg-blue' : '' }}
@@ -84,6 +84,6 @@ export default function Dropdown({ children, title }) {
       <ul className="absolute z-[100] ms-[7rem] mt-1 w-max rounded border border-solid border-primary bg-gradient-to-l from-primary/30 to-primary/20 p-4 py-2 text-start opacity-90 hover:opacity-100">
         {children}
       </ul>
-    </nav>
+    </div>
   );
 }

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import '../App.jsx';
 import Collapsible from './NavbarTools/Collapsible';
 import Dropdown from './NavbarTools/Dropdown';

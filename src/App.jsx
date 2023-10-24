@@ -8,7 +8,6 @@ import './App.css';
 export default function App() {
   const [genres, setGenres] = useState([]);
   const [platforms, setPlatforms] = useState([]);
-  const [playstationModels, setPlaystationModels] = useState([]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -36,9 +35,8 @@ export default function App() {
       <section className="fixed left-0 right-0 top-0 h-14">
         {/* TODO: Import SearchBar component */}
       </section>
-
       <main className="flex h-screen flex-row flex-nowrap">
-        <nav className="lg:w-1/4 xl:w-1/5">
+        <nav className="z-20 lg:w-1/4 xl:w-1/5">
           <Navbar genres={genres} platforms={platforms} />
         </nav>
         <Outlet />
