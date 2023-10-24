@@ -3,8 +3,11 @@ import { useState, useEffect } from 'react';
 import '../App.jsx';
 import Collapsible from './NavbarTools/Collapsible';
 import Dropdown from './NavbarTools/Dropdown';
+import { fetchGames } from '../api/api-fetch';
+import { genresURL, platformsURL } from '../api/api-url';
 
-function Navbar({ genres, platforms }) {
+function Navbar() {
+  const [isLoaded, setIsLoaded] = useState(false);
   const [isOpenPlatform, setIsOpenPlatform] = useState(false);
   const [isOpenGenres, setIsOpenGenres] = useState(false);
   const [isDropedDown, setIsDropedDown] = useState(false);
@@ -17,7 +20,35 @@ function Navbar({ genres, platforms }) {
     setIsOpenGenres(!isOpenGenres);
   };
 
+  const [genres, setGenres] = useState([]);
+  const [platforms, setPlatforms] = useState([]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+    fetchGames({
+      setter: ({ results }) => {
+        setGenres(results);
+      },
+      parameter: genresURL,
+      setLoaded: setIsLoaded,
+      signal,
+      queryString:
+        'page_size=10&ordering=rating-released.desc&dates=1990-01-01,1991-01-01.1990-01-01,1991-01-31',
+    });
+
+    fetchGames({
+      setter: ({ results }) => {
+        setPlatforms(results);
+      },
+      parameter: platformsURL,
+      setLoaded: setIsLoaded,
+      signal,
+    });
+  }, []);
+
   const playStationPlatforms = [];
+  console.log(platforms);
 
   platforms.filter((platform) => {
     if (platform.name.includes('Play') || platform.name.includes('PS')) {
@@ -83,7 +114,7 @@ function Navbar({ genres, platforms }) {
 
   return (
     <>
-      <nav className="p-5">
+      <nav className="z-10 p-5">
         <ul>
           <li className="my-5 pb-3">
             <Link className="flex items-center gap-3" to="/">
@@ -163,7 +194,7 @@ function Navbar({ genres, platforms }) {
           </li>
           <li className=" mb-5 gap-3 text-light">
             {isOpenPlatform ? (
-              <Collapsible>
+              <Collapsible style="z-50 backdrop-blur-sm">
                 <Dropdown
                   title="PlayStation"
                   style="opacity-80 hover:opacity-100"

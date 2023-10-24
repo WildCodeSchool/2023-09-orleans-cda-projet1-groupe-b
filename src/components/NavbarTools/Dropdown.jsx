@@ -81,7 +81,7 @@ export default function Dropdown({ children, title }) {
           </svg>
         </div>
       </motion.button>
-      <ul className="absolute z-[100] ms-[7rem] mt-1 w-max rounded border border-solid border-primary bg-gradient-to-l from-primary/30 to-primary/20 p-4 py-2 text-start opacity-90 hover:opacity-100">
+      <ul className="absolute ms-[7rem] mt-1 w-max rounded border border-solid border-primary bg-gradient-to-l from-primary/30 to-primary/20 p-4 py-2 text-start opacity-90 backdrop-blur-lg">
         {children}
       </ul>
     </div>
