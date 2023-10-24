@@ -1,6 +1,6 @@
 import { fetchGameDetails, fetchGameElements } from '../../api/api-fetch';
 import { dlcURL } from '../../api/api-url';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ageRating from './AgeRatingLogo';
 import { Button, Tooltip } from 'flowbite-react';
 import storeLogo from './StoreLogo';
@@ -61,7 +61,7 @@ export default function RightBar({ gameId }) {
         </div>
         <div className="w-25 container mt-5 rounded-lg border border-primary bg-primary/10 p-4">
           <h3 className="text-m font-bold">Platforms</h3>
-          <div className="grid justify-around space-around">
+          <div className="space-around grid justify-around">
             <Tooltip
               content={
                 isLoaded ? (
@@ -87,7 +87,7 @@ export default function RightBar({ gameId }) {
                   game.parent_platforms && game.parent_platforms.length > 0 ? (
                     game.parent_platforms.map((ppf) => (
                       <img
-                        className="m-auto mt-1 mx-2 h-6"
+                        className="m-auto mx-2 mt-1 h-6"
                         key={ppf.platform.id}
                         src={platformLogo(ppf.platform.slug)}
                         alt={ppf.platform.slug}
