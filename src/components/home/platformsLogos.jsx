@@ -5,8 +5,7 @@ import LogoPc from '../logos/LogoPc';
 import LogoPlaystation from '../logos/LogoPlaystation';
 import LogoXbox from '../logos/LogoXbox';
 
-export const platformsLogos = (platformData) => {
-  //   console.log(platformData);
+export const PlatformsLogos = (platformData) => {
   if (platformData.name === 'PC') {
     return (
       <div className="flex h-[1.2rem] w-[1.2rem]">
@@ -14,6 +13,7 @@ export const platformsLogos = (platformData) => {
       </div>
     );
   }
+
   if (
     platformData.name.includes('PlayStation') ||
     platformData.name.includes('PS')
@@ -24,6 +24,7 @@ export const platformsLogos = (platformData) => {
       </div>
     );
   }
+
   if (platformData.name.includes('Xbox')) {
     return (
       <div className="flex h-[1.2rem] w-[1.2rem]">
@@ -31,6 +32,7 @@ export const platformsLogos = (platformData) => {
       </div>
     );
   }
+
   if (platformData.name.includes('Nintendo')) {
     return (
       <div className="flex h-[1.2rem] w-[1.2rem]">
@@ -38,6 +40,7 @@ export const platformsLogos = (platformData) => {
       </div>
     );
   }
+
   if (platformData.name.includes('Android')) {
     return (
       <div className="flex h-[1.2rem] w-[1.2rem]">
@@ -45,6 +48,7 @@ export const platformsLogos = (platformData) => {
       </div>
     );
   }
+
   if (
     platformData.name.includes('iOS') ||
     platformData.name.includes('Apple')
@@ -55,4 +59,6 @@ export const platformsLogos = (platformData) => {
       </div>
     );
   }
+
+  return null;
 };
