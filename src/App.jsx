@@ -1,5 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import './App.css';
 
 export default function App() {
@@ -23,10 +24,7 @@ export default function App() {
           <aside className="z-10 bg-primary/50 lg:w-[25%] xl:w-[18%]"></aside>
         )}
       </main>
-      {/* Footer */}
-      <footer className="h-14 w-screen bg-tertiary">
-        {/* TODO: Import Footer component */}
-      </footer>
+      <Footer />
     </div>
   );
 }
