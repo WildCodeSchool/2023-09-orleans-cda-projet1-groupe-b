@@ -35,7 +35,7 @@ function useMenuAnimation(isOpen) {
         },
       );
     }
-  }, [isOpen]);
+  }, [isOpen, animate, scope]);
 
   return scope;
 }
