@@ -18,22 +18,25 @@ export default function Cube3D({ screenshots, movies }) {
             />
           </div>
           <div className="face cube-right border-gray-400 absolute flex h-[200px] w-[200px] items-center justify-center border-2 border-solid hover:border-primary">
-            {movies?.results[0]?.data.max ? ( // Vérifie si la vidéo est disponible
-              <video autoPlay loop muted className="h-full">
-                <source src={movies.results[0].data.max} type="video/mp4" />
-              </video>
-            ) : (
-              <img
-                src="/images/GPLogodark2.webp"
-                alt="Logo GamePulse"
-                className="h-full"
-              />
-            )}
+            <video
+              autoPlay
+              loop
+              muted
+              className="h-full"
+              poster="/images/GPLogodark2.webp"
+            >
+              <source src={movies?.results[0]?.data?.max} type="video/mp4" />
+            </video>
           </div>
           <div className="face cube-left border-gray-400 absolute flex h-[200px] w-[200px] items-center justify-center border-2 border-solid hover:border-primary">
-            <video autoPlay loop muted className="h-full">
-              <source src={movies?.results[0]?.data.max} type="video/mp4" />
-              <source src="/images/Sonic.mp4" type="video/mp4" />
+            <video
+              autoPlay
+              loop
+              muted
+              className="h-full"
+              poster="/images/GPLogodark2.webp"
+            >
+              <source src={movies?.results[3]?.data?.max} type="video/mp4" />
             </video>
           </div>
           <div className="face cube-top border-gray-400 absolute flex h-[200px] w-[200px] items-center justify-center border-2 border-solid hover:border-primary">

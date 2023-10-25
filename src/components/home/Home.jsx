@@ -97,10 +97,10 @@ export default function Home() {
           </motion.div>
         </div>
         <div>
-          <RetroContainer />
+          <Unavoidable />
         </div>
         <div>
-          <Unavoidable />
+          <RetroContainer />
         </div>
       </section>
     </>
