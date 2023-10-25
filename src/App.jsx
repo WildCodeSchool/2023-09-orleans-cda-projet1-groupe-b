@@ -1,35 +1,10 @@
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import { useState, useEffect } from 'react';
-import { fetchGames } from './api/api-fetch';
-import { genresURL, platformsURL } from './api/api-url';
+import { useState } from 'react';
 import './App.css';
 
 export default function App() {
-  const location = useLocation();
-  const [genres, setGenres] = useState([]);
   const [platforms, setPlatforms] = useState([]);
-  const [playstationModels, setPlaystationModels] = useState([]);
-
-  useEffect(() => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-    fetchGames({
-      setter: setGenres,
-      property: 'results',
-      signal,
-      parameter: genresURL,
-      pageId: 1,
-    });
-
-    fetchGames({
-      setter: setPlatforms,
-      property: 'results',
-      signal,
-      parameter: platformsURL,
-      pageId: 1,
-    });
-  }, []);
 
   return (
     <div className="bg-background">
@@ -42,9 +17,6 @@ export default function App() {
           <Navbar platforms={platforms} />
         </nav>
         <Outlet />
-        {location.pathname !== '/' && (
-          <aside className="z-10 bg-primary/10 lg:w-1/3 xl:w-1/4"></aside>
-        )}
       </main>
       {/* Footer */}
       <footer className="h-14 w-screen bg-tertiary">
