@@ -42,7 +42,7 @@ export default createBrowserRouter([
         element: <GameShow />,
       },
       {
-        path: '/search',
+        path: '/games',
         element: <Search />,
       },
       {

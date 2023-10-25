@@ -45,7 +45,7 @@ export default function SearchBar() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // setSearchParams('search', e.target.value);
-    navigate(`/search/?search=${searchValue}`);
+    navigate(`/games?search=${searchValue}`);
   };
 
   return (
