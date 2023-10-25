@@ -20,6 +20,7 @@
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
   }
+
   .text-size {
     font-size: clamp(14px, 1vw, 16px);
   }
@@ -36,5 +37,11 @@
     mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%);
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
+  }
+  .text-shadow {
+    text-shadow:
+      1px 1px 2px black,
+      0 0 1em black,
+      0 0 0.2em black;
   }
 }
