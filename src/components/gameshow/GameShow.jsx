@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import RightBar from './RightBar';
 
 // Importation des composants
 import CarouselGameShow from './CarouselGameShow';
@@ -62,7 +63,7 @@ export default function GameShow() {
             )}
           </div>
           <div className="w-full md:w-52 xl:w-64">
-            {/* TODO importer le composant gameInformation */}
+            <RightBar gameId={gameId} />
           </div>
         </div>
       </section>
