@@ -5,6 +5,7 @@ import { fetchCategoryDetails } from '../../api/api-fetch';
 import Logo from '../Logo';
 import Button from '../Button';
 import HeaderHome from './HeaderHome';
+import Unavoidable from './Unavoidable';
 import RetroContainer from '../Retro/RetroContainer';
 
 const GENRES_ID = [4, 51, 3, 5, 10, 2, 40, 14, 7, 11, 83, 1, 14, 19];
@@ -63,9 +64,9 @@ export default function Home() {
   return (
     <>
       <HeaderHome imageHeader={imageHeader} isLoaded={isLoaded} />
-      <section className="z-50 mt-[10rem] w-full px-2 xs:px-5 md:px-16 lg:px-2">
+      <section className="z-50 w-full px-2 xs:px-5 md:px-16 lg:px-2">
         <div className="flex h-screen flex-col items-center md:items-start">
-          <div className="w-clamp-title lg:w-[40vw]">
+          <div className="mt-[10rem] w-clamp-title lg:w-[40vw]">
             <Logo />
           </div>
           <motion.div
@@ -97,6 +98,9 @@ export default function Home() {
         </div>
         <div>
           <RetroContainer />
+        </div>
+        <div>
+          <Unavoidable />
         </div>
       </section>
     </>

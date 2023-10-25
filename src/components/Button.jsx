@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const btnVariants = {
   visible: {
@@ -14,12 +15,12 @@ const btnVariants = {
   },
 };
 
-export default function Button({ str }) {
+export default function Button({ str, path }) {
   return (
     <motion.div variants={btnVariants} initial="visible" whileHover="hover">
-      <a
-        href="#"
-        className="flex -skew-x-35 items-center justify-center bg-primary py-1 pl-4 pr-2 outline outline-2 outline-offset-[2px] outline-primary"
+      <Link
+        to={path}
+        className="flex -skew-x-35 items-center justify-center bg-primary/80 py-1 pl-4 pr-2 outline outline-2 outline-offset-[2px] outline-primary hover:bg-primary"
       >
         <span className="skew-x-35 font-title text-base font-medium uppercase tracking-wider">
           {str}
@@ -40,7 +41,7 @@ export default function Button({ str }) {
             <polyline points="9 18 15 12 9 6"></polyline>
           </svg>
         </div>
-      </a>
+      </Link>
     </motion.div>
   );
 }
