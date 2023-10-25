@@ -1,7 +1,13 @@
 /* eslint no-undef: "off" */
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+
+export default {
+  content: [
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
+    'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}',
+  ],
+  // Génèration de classe dynamique et empêche la supression de styles pendant le processus de purge
   safelist: [
     {
       pattern: /grid-cols-\d+/,
