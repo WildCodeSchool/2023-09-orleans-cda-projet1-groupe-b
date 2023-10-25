@@ -4,17 +4,17 @@ import NextButton from '../gameshow/NextButton';
 import PreviousButton from '../gameshow/PreviousButton';
 
 export default function Carousel({ games, gameIndex, setGameIndex }) {
-  games = games?.results?.slice(0, 10);
+  const gamesCarousel = games?.results?.slice(0, 10);
 
   const previousSlide = useCallback(() => {
-    if (gameIndex === 0) setGameIndex(games.length - 1);
+    if (gameIndex === 0) setGameIndex(gamesCarousel.length - 1);
     else setGameIndex(gameIndex - 1);
-  }, [gameIndex, games.length]);
+  }, [gameIndex, gamesCarousel.length]);
 
   const nextSlide = useCallback(() => {
-    if (gameIndex === games.length - 1) setGameIndex(0);
+    if (gameIndex === gamesCarousel.length - 1) setGameIndex(0);
     else setGameIndex(gameIndex + 1);
-  }, [gameIndex, games.length]);
+  }, [gameIndex, gamesCarousel.length]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -39,14 +39,14 @@ export default function Carousel({ games, gameIndex, setGameIndex }) {
             style={{ transform: `translateX(-${gameIndex * 100}%)` }}
           >
             <div className="flex h-full">
-              {games.map((game, index) => (
+              {gamesCarousel.map((game, index) => (
                 <CarouselCard game={game} key={index} />
               ))}
             </div>
           </div>
         </div>
         <div className="mt-2 flex justify-center gap-2 px-1">
-          {games.map((game, i) => {
+          {gamesCarousel.map((game, i) => {
             return (
               <div
                 onClick={() => {

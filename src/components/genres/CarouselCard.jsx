@@ -25,7 +25,7 @@ export default function CarouselCard({ game }) {
         <div className="h-full min-h-[25vw] w-full min-w-[17vw]">
           {isLoaded ? (
             <img
-              className="h-full w-full rounded object-cover md:w-full lg:h-full xl:h-[30vw]"
+              className="h-full w-full rounded object-cover md:w-full lg:h-full xl:h-[25vw]"
               src={game.background_image}
               alt={game.name}
             />
@@ -34,8 +34,8 @@ export default function CarouselCard({ game }) {
           )}
         </div>
         <div className="flex flex-col justify-between xl:w-full ">
-          <div className="flex flex-row justify-between">
-            <div className="h-[4vw]">
+          <div className="h-15 flex flex-row justify-between">
+            <div>
               {isLoaded ? (
                 <h5 className="clamp-title-card ml-5 mt-5 font-title uppercase tracking-wide text-light">
                   {game.name}
@@ -59,11 +59,11 @@ export default function CarouselCard({ game }) {
               )}
             </div>
           </div>
-          <div className="mt-6 border-b border-primary/50"></div>
+          <div className="border-b border-primary/50"></div>
           <div>
             <div className="flex flex-col gap-4">
               <div>
-                <div className="ml-2 mt-5 flex flex-wrap gap-2 ">
+                <div className="ml-3 mt-3 flex flex-wrap gap-2 ">
                   {isLoaded ? (
                     game.genres.map((genre) => (
                       <div
@@ -80,13 +80,13 @@ export default function CarouselCard({ game }) {
               </div>
             </div>
             {isLoaded ? (
-              <p className="mt-5 font-text text-base text-light/80">
+              <p className="ml-3 mt-5 font-text text-base text-light/80">
                 Release : {game.released}
               </p>
             ) : (
               <p>Loading...</p>
             )}
-            <div className="h-[9rem] overflow-auto">
+            <div className="ml-3 h-[9rem] overflow-auto">
               {isLoaded ? (
                 <p className="mt-5 line-clamp-4 text-light/80">
                   {description.description_raw}
@@ -96,7 +96,7 @@ export default function CarouselCard({ game }) {
               )}
             </div>
             <div className="mr-3 mt-5 flex justify-end">
-              <button className="mb-4 h-10 w-44 -skew-x-[30deg] rounded bg-primary">
+              <button className="mb-4 me-4 h-10 w-44 -skew-x-[30deg] rounded bg-primary">
                 Showmore
               </button>
             </div>
