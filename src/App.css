@@ -20,9 +20,4 @@
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
   }
-
-  .border-gradient {
-    border-image: linear-gradient(90deg, #f06, #9f4) 1;
-    border-image-slice: 1;
-  }
 }
