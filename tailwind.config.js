@@ -39,7 +39,20 @@ module.exports = {
       width: {
         'clamp-title': 'clamp(320px, 90vw, 500px)',
       },
+      animation: {
+        spin: 'spin 300s infinite linear',
+      },
+      keyframes: {
+        spin: {
+          '0%': {
+            transform: 'rotateX(0.0deg) rotateY(0.0deg) rotateZ(0.0deg)',
+          },
+          '100%': {
+            transform: 'rotateX(3600deg) rotateY(3600deg) rotateZ(3deg)',
+          },
+        },
+      },
     },
   },
-  plugins: [require('flowbite/plugin')],
+  plugins: [],
 };

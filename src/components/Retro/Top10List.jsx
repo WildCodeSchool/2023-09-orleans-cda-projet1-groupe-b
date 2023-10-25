@@ -1,7 +1,7 @@
 export default function Top10List({ games, isLoaded }) {
   return (
     <>
-      <div className="perspective1 list-none py-4 font-pixel text-xs text-light">
+      <div className="perspective-640 list-none py-4 font-pixel text-xs text-light">
         <table className="table-auto">
           <thead>
             <tr>
