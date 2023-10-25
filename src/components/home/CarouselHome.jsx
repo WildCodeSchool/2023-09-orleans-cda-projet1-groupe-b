@@ -31,7 +31,6 @@ export default function CarrouselHome({ children, path }) {
           slidesPerView={1}
           grabCursor={true}
           cssMode={true}
-          // spaceBetween={5}
           wrapperClass="!h-[95%] !mx-3"
           pagination={{
             clickable: true,
