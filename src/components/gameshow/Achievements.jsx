@@ -1,57 +1,71 @@
 // Importation des composants
-import NextButton from './NextButton';
-import PreviousButton from './PreviousButton';
 import { useState } from 'react';
-import { Carousel } from 'flowbite-react';
+import { AnimatePresence, motion } from 'framer-motion';
+import Box from './AchievementTooltip';
 
 export default function Achievements({ trophiesResults, isLoaded }) {
-  const [curr, setCurr] = useState(0);
-
-  // Fonction qui décrémente l'index
-  const handleClickPrev = () =>
-    setCurr((curr) => (curr === 0 ? curr : curr - 1));
-
-  // Fonction qui incrémente l'index
-  const handleClickNext = () =>
-    setCurr((curr) => (curr === trophiesResults.length - 1 ? curr : curr + 1));
-
-  // Fonction qui gére le clic sur le composant Thumbnail
-  const handleThumbnailClick = (index) => {
-    setCurr(index);
-  };
-
-  console.log(trophiesResults);
+  const [show, setShow] = useState(Array(trophiesResults.length).fill(false));
 
   return (
     <>
-      {/* <Carousel slide={false}>
-        {isLoaded ? (
-          trophiesResults &&
-          trophiesResults.map((trophy, index) => (
-            <div className="grid grid-cols-3">
-            <div className="flex font-bold text-light w-14">
-              <img src={trophy.image} alt={`Screenshot : ${trophy.id}`} />
-              <p>{trophy.name}</p>
-            </div>
-            </div>
-          ))
-        ) : (
-          <p>Loading...</p>
-        )}
-      </Carousel> */}
-      <Carousel
-        cols={6}
-        rows={2}
-        gap={1}
-        containerStyle={{ background: 'transparent' }}
-      >
-        {[...Array(23)].map((_, i) => (
-          <Carousel.Item key={i}>
-            <img src="/public/images/kratos.webp" />
-          </Carousel.Item>
-        ))}
-        <Carousel.Item key={23}></Carousel.Item>
-      </Carousel>
+      <h1 className="space-x-40 font-title text-4xl text-light">
+        Achievements
+      </h1>
+      <div className="w-full">
+        <div className="grid grid-cols-5 place-items-center gap-1">
+          {isLoaded ? (
+            trophiesResults &&
+            trophiesResults.map((trophy, index) => (
+              <div key={trophy.id}>
+                <div className="col-span-full text-light">
+                  <div>
+                    <div className="">
+                      <motion.button
+                        key={Math.random(index)}
+                        className="cursor-default"
+                        onHoverStart={() => {
+                          const newShow = [...show];
+                          newShow[index] = true;
+                          setShow(newShow);
+                        }}
+                        onHoverEnd={() => {
+                          const newShow = [...show];
+                          newShow[index] = false;
+                          setShow(newShow);
+                        }}
+                      >
+                        {show[index] ? (
+                          <img
+                            className="z-0 m-3 rounded-md border border-primary p-1 transition hover:opacity-20"
+                            width="65"
+                            src={trophy.image}
+                            alt=""
+                          />
+                        ) : (
+                          <img
+                            className="z-0 m-3 rounded-md border border-primary p-1"
+                            width="65"
+                            src={trophy.image}
+                            alt=""
+                          />
+                        )}
+                      </motion.button>
+                    </div>
+
+                    <AnimatePresence>
+                      {show[index] ? (
+                        <Box index={index} trophy={trophy} />
+                      ) : null}
+                    </AnimatePresence>
+                  </div>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p>Loading...</p>
+          )}
+        </div>
+      </div>
     </>
   );
 }
