@@ -5,8 +5,8 @@ import Recommandations from './components/Recommandations';
 import News from './components/News';
 import BestSellers from './components/BestSellers';
 import Offers from './components/Offers';
-import Error404 from './components/Error404';
 import GameShow from './components/gameshow/GameShow';
+import Categories from './components/genres/Categories';
 
 export default createBrowserRouter([
   {
@@ -42,8 +42,8 @@ export default createBrowserRouter([
       },
       // ajouter la route '/genres/:slug'
       {
-        path: '*',
-        element: <Error404 />,
+        path: '/genres/:slug',
+        element: <Categories />,
       },
     ],
   },
