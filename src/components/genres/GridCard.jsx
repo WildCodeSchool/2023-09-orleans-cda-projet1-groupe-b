@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function GridCard({ games, isLoaded }) {
   const [visible, setVisible] = useState(12);
@@ -19,27 +20,30 @@ export default function GridCard({ games, isLoaded }) {
           </h1>
           <div className="mt-4 h-5 w-28 -skew-x-35 bg-primary"></div>
         </div>
+
         <div className="grid gap-x-10 gap-y-10 md:grid-cols-2 xl:grid-cols-4">
           {games.results?.slice(0, visible).map((game, index) => (
             <div
               key={index}
-              className="m-auto rounded border border-primary transition-transform hover:scale-110 xl:h-96 xl:w-60"
+              className="m-auto h-[50vw] rounded border border-primary transition-transform hover:scale-110 xl:h-96 xl:w-60"
             >
-              <img
-                className="h-60 w-full rounded-t object-cover"
-                src={game.background_image}
-              />
-              <div className="flex justify-around text-center">
-                <p className="text-light">Platforms: </p>
-                <p className="mx-3 my-2 h-7 w-10 rounded border-2 border-primary font-bold text-primary">
-                  {game.metacritic}
-                </p>
-              </div>
-              <div className="h-20 px-3">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-light">
-                  {game.name}
-                </h5>
-              </div>
+              <Link to={`/games/${game.id}`}>
+                <img
+                  className="h-56 w-full rounded-t object-cover"
+                  src={game.background_image}
+                />
+                <div className="flex justify-around text-center">
+                  <p className="text-light">Platforms: </p>
+                  <p className="mx-3 my-2 h-7 w-10 rounded border-2 border-primary font-bold text-primary">
+                    {game.metacritic}
+                  </p>
+                </div>
+                <div className="h-20 px-3">
+                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-light">
+                    {game.name}
+                  </h5>
+                </div>
+              </Link>
             </div>
           ))}
         </div>
