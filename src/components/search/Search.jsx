@@ -1,65 +1,50 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
-
-// Importation de la clé API
-const API_KEY = import.meta.env.VITE_API_KEY;
 
 import Title from '../Title';
 import CardGame from './CardGame';
+import useGameSearch from './useGameSearch';
 
 export default function Search() {
-  const [games, setGames] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [page, setPage] = useState(1);
-  const [count, setCount] = useState(0);
-
+  const cardsRef = useRef(null);
   const [searchParams] = useSearchParams();
   const searchValue = searchParams.get('search');
 
+  // Fetche API pour récupérer les jeux vidéos en fonction de la valeur de la recherche
+  const { games, hasMore, count, isLoaded, page } = useGameSearch({
+    searchValue,
+  });
+
+  console.log('page :', page);
+
+  const ratio = 1;
+  const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: ratio,
+  };
+
+  const handleIntersect = (entries, observer) => {
+    const firstEntry = entries[0];
+
+    if (firstEntry.isIntersecting && hasMore) {
+      // fetchMoreGames();
+    }
+  };
+
   useEffect(() => {
-    const controller = new AbortController();
-    const signal = controller.signal;
+    const observer = new IntersectionObserver(handleIntersect, options);
 
-    const fetchAllGames = async () => {
-      try {
-        const allGames = [];
+    if (observer && cardsRef.current) {
+      observer.observe(cardsRef.current);
+    }
 
-        // Boucle qui itére sur les pages
-        const response = await fetch(
-          `https://api.rawg.io/api/games?key=${API_KEY}&search=${searchValue}&search_precise=true&page=${page}&page_size=20`,
-          signal,
-        );
-
-        if (response.ok) {
-          const data = await response.json();
-
-          if (data.results && data.results.length > 0) {
-            setCount(data.count);
-            const filteredGames = data.results.filter((dataGame) =>
-              dataGame.name.toLowerCase().includes(searchValue.toLowerCase()),
-            );
-
-            allGames.push(...filteredGames);
-          } else {
-            throw new Error(
-              `Unable to load video game list : ${response.status}`,
-            );
-          }
-        }
-
-        setIsLoaded(true);
-        setGames(allGames);
-      } catch (error) {
-        throw new Error(`Unable to load API : ${error}`);
+    return () => {
+      if (observer) {
+        observer.disconnect();
       }
     };
-
-    fetchAllGames();
-
-    return () => controller.abort();
-  }, [searchValue]);
-
-  console.log(games);
+  }, [games]);
 
   return (
     <>
@@ -71,10 +56,16 @@ export default function Search() {
         </div>
         <div className="grid grid-cols-1 gap-4 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-4">
           {isLoaded ? (
-            games.map((game) => <CardGame game={game} isLoaded={isLoaded} />)
+            games.map((game, index) => {
+              return <CardGame key={index} game={game} isLoaded={isLoaded} />;
+            })
           ) : (
             <p>Loading...</p>
           )}
+          {hasMore && <div ref={cardsRef}></div>}
+        </div>
+        <div className="flex justify-center text-light">
+          <p>{!isLoaded && 'Loading...'}</p>
         </div>
       </section>
     </>

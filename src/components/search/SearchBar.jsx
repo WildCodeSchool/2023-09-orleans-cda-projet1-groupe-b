@@ -16,9 +16,6 @@ export default function SearchBar() {
   const [games, setGames] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // const [searchParams, setSearchParams] = useSearchParams();
-  // Obtenir la valeur de 'search'
-  // const searchParamsValue = searchParams.get('search');
   let navigate = useNavigate();
 
   const { scrollYProgress } = useScroll();
@@ -44,7 +41,6 @@ export default function SearchBar() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // setSearchParams('search', e.target.value);
     navigate(`/games?search=${searchValue}`);
   };
 
@@ -69,6 +65,7 @@ export default function SearchBar() {
                 placeholder={
                   isLoaded ? `Search among the ${games.count} games` : ''
                 }
+                value={searchValue}
               />
             </form>
           </SearchProvider>

@@ -5,7 +5,7 @@ export default function PlatformsList({ game, isLoaded }) {
     <>
       <ul className="flex items-center gap-2">
         {isLoaded ? (
-          game.parent_platforms.map(({ platform }, platformIndex) => (
+          game.parent_platforms?.map(({ platform }, platformIndex) => (
             <li key={platformIndex}>{PlatformsLogos(platform)}</li>
           ))
         ) : (

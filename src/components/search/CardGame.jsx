@@ -61,7 +61,7 @@ export default function CardGame({ game, isLoaded }) {
                 </p>
               </div>
             </div>
-            <ul className="flex gap-2 font-text text-light">
+            <ul className="flex gap-2 font-text text-light/80">
               {game.genres.slice(0, 2).map((genre, index) => (
                 <li key={index}>{genre.name}</li>
               ))}

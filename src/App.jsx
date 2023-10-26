@@ -8,7 +8,7 @@ export default function App() {
   const location = useLocation();
 
   return (
-    <div className="bg-background">
+    <div className="bg-background bg-cover">
       {/* Search bar */}
       <section className="fixed left-0 right-0 top-0 z-50 h-14 bg-dark/80">
         <SearchBar />
