@@ -2,7 +2,7 @@ import { fetchGameDetails, fetchGameElements } from '../../api/api-fetch';
 import { dlcURL } from '../../api/api-url';
 import { useEffect, useState } from 'react';
 import ageRating from './AgeRatingLogo';
-import { Button, Tooltip } from 'flowbite-react';
+import { Tooltip } from 'flowbite-react';
 import storeLogo from './StoreLogo';
 import platformLogo from './PlatformLogo';
 import DlcComponent from './DlcComponent';
@@ -85,8 +85,8 @@ export default function RightBar({ gameId }) {
               <div className="flex items-center gap-2 rounded-md border-none py-2 text-sm transition-all duration-200">
                 {isLoaded ? (
                   game.parent_platforms && game.parent_platforms.length > 0 ? (
-                    game.parent_platforms.map((ppf) => (
-                      <div>
+                    game.parent_platforms.map((ppf, index) => (
+                      <div key={index}>
                         <img
                           className="mt-1 h-6 object-contain"
                           key={ppf.platform.id}
