@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import RightBar from './RightBar';
+import RatingBox from './RatingBox';
 
 // Importation des composants
 import CarouselGameShow from './CarouselGameShow';
@@ -55,6 +56,9 @@ export default function GameShow() {
                 isLoaded={isLoaded}
               />
             )}
+            <div className="pt-40">
+              <RatingBox game={game} />
+            </div>
           </div>
           <div className="w-full md:w-52 xl:w-64">
             <RightBar gameId={gameId} />
