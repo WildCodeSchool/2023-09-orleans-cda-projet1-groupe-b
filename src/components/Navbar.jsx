@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import '../App.jsx';
 import Collapsible from './NavbarTools/Collapsible';
 import Dropdown from './NavbarTools/Dropdown';
 import { fetchGames } from '../api/api-fetch';
@@ -48,48 +47,41 @@ function Navbar() {
     return () => controller.abort();
   }, []);
 
-  const playStationPlatforms = [];
-  const nintendoPlatforms = [];
-  const xboxPlatforms = [];
-  const retroPlatforms = [];
+  const playStationPlatforms = platforms
+    .filter(
+      (platform) =>
+        platform.name.includes('Play') || platform.name.includes('PS'),
+    )
+    .sort();
 
-  platforms.filter((platform) => {
-    if (platform.name.includes('Play') || platform.name.includes('PS')) {
-      playStationPlatforms.push(platform);
-    } else if (
-      platform.name.includes('Nin') ||
-      platform.name.includes('NES') ||
-      platform.name.includes('Game B') ||
-      platform.name.includes('Wii')
-    ) {
-      nintendoPlatforms.push(platform);
-    } else if (platform.name.includes('Xbox')) {
-      xboxPlatforms.push(platform);
-    } else if (
-      platform.name.includes('Ami') ||
-      platform.name.includes('Ata') ||
-      platform.name.includes('Cla') ||
-      platform.name.includes('Com') ||
-      platform.name.includes('SEGA') ||
-      platform.name.includes('Genesis') ||
-      platform.name.includes('Dream') ||
-      platform.name.includes('Jaguar') ||
-      platform.name.includes('Game G')
-    ) {
-      retroPlatforms.push(platform);
-    }
-  });
+  const nintendoPlatforms = platforms
+    .filter(
+      (platform) =>
+        platform.name.includes('Nin') ||
+        platform.name.includes('NES') ||
+        platform.name.includes('Game B') ||
+        platform.name.includes('Wii'),
+    )
+    .sort((a, b) => a.name.localeCompare(b.name));
 
-  const filteredPlayStation = playStationPlatforms.sort();
-  const filteredNintendo = nintendoPlatforms.sort((a, b) =>
-    a.name.localeCompare(b.name),
-  );
-  const filteredXbox = xboxPlatforms.sort((a, b) =>
-    a.name.localeCompare(b.name),
-  );
-  const filteredRetro = retroPlatforms.sort((a, b) =>
-    a.name.localeCompare(b.name),
-  );
+  const xboxPlatforms = platforms
+    .filter((platform) => platform.name.includes('Xbox'))
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  const retroPlatforms = platforms
+    .filter(
+      (platform) =>
+        platform.name.includes('Ami') ||
+        platform.name.includes('Ata') ||
+        platform.name.includes('Cla') ||
+        platform.name.includes('Com') ||
+        platform.name.includes('SEGA') ||
+        platform.name.includes('Genesis') ||
+        platform.name.includes('Dream') ||
+        platform.name.includes('Jaguar') ||
+        platform.name.includes('Game G'),
+    )
+    .sort((a, b) => a.name.localeCompare(b.name));
 
   useEffect(() => {
     if (!isDroppedDown) {
@@ -184,28 +176,28 @@ function Navbar() {
                   title="PlayStation"
                   style="opacity-80 hover:opacity-100"
                 >
-                  {filteredPlayStation.map((platform, index) => (
+                  {playStationPlatforms.map((platform, index) => (
                     <li className="py-[4px] font-text text-light" key={index}>
                       {platform.name}
                     </li>
                   ))}
                 </Dropdown>
                 <Dropdown title="Xbox" style="opacity-80 hover:opacity-100">
-                  {filteredXbox.map((platform, index) => (
+                  {xboxPlatforms.map((platform, index) => (
                     <li className="py-[4px] font-text text-light" key={index}>
                       {platform.name}
                     </li>
                   ))}
                 </Dropdown>
                 <Dropdown title="Nintendo" style="opacity-80 hover:opacity-100">
-                  {filteredNintendo.map((platform, index) => (
+                  {nintendoPlatforms.map((platform, index) => (
                     <li className="font-pixel py-[4px] text-light" key={index}>
                       {platform.name}
                     </li>
                   ))}
                 </Dropdown>
                 <Dropdown title="Retro" style="opacity-80 hover:opacity-100">
-                  {filteredRetro.map((platform, index) => (
+                  {retroPlatforms.map((platform, index) => (
                     <li className="py-[4px] font-text text-light" key={index}>
                       {platform.name}
                     </li>
