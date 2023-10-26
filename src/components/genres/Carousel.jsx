@@ -5,6 +5,9 @@ import PreviousButton from '../gameshow/PreviousButton';
 
 export default function Carousel({ games, gameIndex, setGameIndex }) {
   const gamesCarousel = games?.results?.slice(0, 10);
+  const sortedGamesCarousel = gamesCarousel
+    .slice()
+    .sort((a, b) => b.metacritic - a.metacritic);
 
   const previousSlide = useCallback(() => {
     if (gameIndex === 0) setGameIndex(gamesCarousel.length - 1);
@@ -39,7 +42,7 @@ export default function Carousel({ games, gameIndex, setGameIndex }) {
             style={{ transform: `translateX(-${gameIndex * 100}%)` }}
           >
             <div className="flex h-full">
-              {gamesCarousel.map((game, index) => (
+              {sortedGamesCarousel.map((game, index) => (
                 <CarouselCard game={game} key={index} />
               ))}
             </div>
