@@ -5,60 +5,46 @@ import LogoPc from '../logos/LogoPc';
 import LogoPlaystation from '../logos/LogoPlaystation';
 import LogoXbox from '../logos/LogoXbox';
 
-export const PlatformsLogos = (platformData) => {
-  if (platformData.name === 'PC') {
-    return (
-      <div className="flex h-[1.2rem] w-[1.2rem]">
-        <LogoPc />
-      </div>
-    );
-  }
+export default function PlatformsLogo({ platformData }) {
+  const { name } = platformData;
 
-  if (
-    platformData.name.includes('PlayStation') ||
-    platformData.name.includes('PS')
-  ) {
-    return (
-      <div className="flex h-[1.2rem] w-[1.2rem]">
-        <LogoPlaystation />
-      </div>
-    );
-  }
+  return (
+    <div>
+      {name.includes('PC') && (
+        <div className="flex h-[1.2rem] w-[1.2rem]">
+          <LogoPc />
+        </div>
+      )}
 
-  if (platformData.name.includes('Xbox')) {
-    return (
-      <div className="flex h-[1.2rem] w-[1.2rem]">
-        <LogoXbox />
-      </div>
-    );
-  }
+      {(name.includes('PlayStation') || name.includes('PS')) && (
+        <div className="flex h-[1.2rem] w-[1.2rem]">
+          <LogoPlaystation />
+        </div>
+      )}
 
-  if (platformData.name.includes('Nintendo')) {
-    return (
-      <div className="flex h-[1.2rem] w-[1.2rem]">
-        <LogoNintendo />
-      </div>
-    );
-  }
+      {name.includes('Xbox') && (
+        <div className="flex h-[1.2rem] w-[1.2rem]">
+          <LogoXbox />
+        </div>
+      )}
 
-  if (platformData.name.includes('Android')) {
-    return (
-      <div className="flex h-[1.2rem] w-[1.2rem]">
-        <LogoAndroid />
-      </div>
-    );
-  }
+      {name.includes('Nintendo') && (
+        <div className="flex h-[1.2rem] w-[1.2rem]">
+          <LogoNintendo />
+        </div>
+      )}
 
-  if (
-    platformData.name.includes('iOS') ||
-    platformData.name.includes('Apple')
-  ) {
-    return (
-      <div className="flex h-[1.2rem] w-[1.2rem]">
-        <LogoIos />
-      </div>
-    );
-  }
+      {name.includes('Android') && (
+        <div className="flex h-[1.2rem] w-[1.2rem]">
+          <LogoAndroid />
+        </div>
+      )}
 
-  return null;
-};
+      {(name.includes('iOS') || name.includes('Apple')) && (
+        <div className="flex h-[1.2rem] w-[1.2rem]">
+          <LogoIos />
+        </div>
+      )}
+    </div>
+  );
+}
