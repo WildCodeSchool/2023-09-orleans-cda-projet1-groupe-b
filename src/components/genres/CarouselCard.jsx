@@ -97,7 +97,7 @@ export default function CarouselCard({ game }) {
             </div>
             <div className="mr-3 mt-5 flex justify-end">
               <button className="mb-4 me-4 h-10 w-44 -skew-x-[30deg] rounded bg-primary">
-                Showmore
+                <p className="skew-x-[30deg]">Showmore</p>
               </button>
             </div>
           </div>
