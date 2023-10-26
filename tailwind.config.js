@@ -7,7 +7,7 @@ export default {
     './src/**/*.{js,ts,jsx,tsx}',
     'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}',
   ],
-  // Génèration de classe dynamique et empêche la supression de styles pendant le processus de purge
+  // Génération de classe dynamique et empêche la supression de styles pendant le processus de purge
   safelist: [
     {
       pattern: /grid-cols-\d+/,
@@ -20,8 +20,6 @@ export default {
       tertiary: '#0F0132',
       dark: '#0D0D0D',
       light: '#F5F5F5',
-      success: '#00FF00',
-      fail: '#FFFFFF',
     },
     extend: {
       fontFamily: {

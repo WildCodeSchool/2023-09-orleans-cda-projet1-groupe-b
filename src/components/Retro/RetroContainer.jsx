@@ -41,7 +41,7 @@ export default function RetroContainer({ genres }) {
     });
 
     return () => controller.abort();
-  }, []);
+  }, [gamesId]);
 
   return (
     <div className="overflow-hidden pt-20">
