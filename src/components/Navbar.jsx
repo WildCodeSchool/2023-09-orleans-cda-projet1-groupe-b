@@ -1,20 +1,90 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Collapsible from './NavbarTools/Collapsible';
+import Dropdown from './NavbarTools/Dropdown';
+import { fetchGames } from '../api/api-fetch';
+import { genresURL, platformsURL } from '../api/api-url';
 
 function Navbar() {
+  const [isLoaded, setIsLoaded] = useState(false);
   const [isOpenPlatform, setIsOpenPlatform] = useState(false);
-  const [isOpenCategories, setIsOpenCategories] = useState(false);
+  const [isOpenGenres, setIsOpenGenres] = useState(false);
 
   const handleClickCollapsePlatform = () => {
     setIsOpenPlatform(!isOpenPlatform);
   };
-  const handleClickCollapseCategories = () => {
-    setIsOpenCategories(!isOpenCategories);
+
+  const handleClickCollapseGenres = () => {
+    setIsOpenGenres(!isOpenGenres);
   };
+
+  const [genres, setGenres] = useState([]);
+  const [platforms, setPlatforms] = useState([]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+    fetchGames({
+      setter: ({ results }) => {
+        setGenres(results);
+      },
+      parameter: genresURL,
+      setLoaded: setIsLoaded,
+      signal,
+      queryString:
+        'page_size=10&ordering=rating-released.desc&dates=1990-01-01,1991-01-01.1990-01-01,1991-01-31',
+    });
+
+    fetchGames({
+      setter: ({ results }) => {
+        setPlatforms(results);
+      },
+      parameter: platformsURL,
+      setLoaded: setIsLoaded,
+      signal,
+    });
+    return () => controller.abort();
+  }, []);
+
+  const playStationPlatforms = platforms
+    .filter(
+      (platform) =>
+        platform.name.includes('Play') || platform.name.includes('PS'),
+    )
+    .sort();
+
+  const nintendoPlatforms = platforms
+    .filter(
+      (platform) =>
+        platform.name.includes('Nin') ||
+        platform.name.includes('NES') ||
+        platform.name.includes('Game B') ||
+        platform.name.includes('Wii'),
+    )
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  const xboxPlatforms = platforms
+    .filter((platform) => platform.name.includes('Xbox'))
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  const retroPlatforms = platforms
+    .filter(
+      (platform) =>
+        platform.name.includes('Ami') ||
+        platform.name.includes('Ata') ||
+        platform.name.includes('Cla') ||
+        platform.name.includes('Com') ||
+        platform.name.includes('SEGA') ||
+        platform.name.includes('Genesis') ||
+        platform.name.includes('Dream') ||
+        platform.name.includes('Jaguar') ||
+        platform.name.includes('Game G'),
+    )
+    .sort((a, b) => a.name.localeCompare(b.name));
 
   return (
     <>
-      <nav className="p-5">
+      <div className="sticky top-20 z-10 p-5">
         <ul>
           <li className="my-5 pb-3">
             <Link className="flex items-center gap-3" to="/">
@@ -30,12 +100,14 @@ function Navbar() {
                   fill="#EFEFEF"
                 />
               </svg>
-              <span className="font-bold text-light">Home</span>
+              <span className="font-bold text-light opacity-80 hover:opacity-100">
+                Home
+              </span>
             </Link>
           </li>
           <li>
             <Link
-              className="mb-2 flex items-center gap-3"
+              className="mb-2 flex items-center gap-3 opacity-80 hover:opacity-100"
               to="/recommandations"
             >
               <svg
@@ -58,14 +130,14 @@ function Navbar() {
             </Link>
           </li>
           <ul className=" mb-5 pl-[38px] text-light">
-            <li className="py-[4px]">
-              <Link to="/news">News</Link>
+            <li className="py-[4px] opacity-80 hover:opacity-100">
+              <Link to="/recommandations/news">News</Link>
             </li>
-            <li className="py-[4px]">
-              <Link to="/bestsellers">BestSellers</Link>
+            <li className="py-[4px] opacity-80 hover:opacity-100">
+              <Link to="/recommandations/bestsellers">BestSellers</Link>
             </li>
-            <li className="py-[4px]">
-              <Link to="/offers">Offers</Link>
+            <li className="py-[4px] opacity-80 hover:opacity-100">
+              <Link to="/recommandations/offers">Offers</Link>
             </li>
           </ul>
           <li>
@@ -85,45 +157,86 @@ function Navbar() {
                   fill="white"
                 />
               </svg>
-              <span className="font-bold text-light">Plateformes</span>
+              <span className="font-bold text-light opacity-80 hover:opacity-100">
+                Plateforms
+              </span>
             </button>
           </li>
-          {/* todo imporrt component collapsible */}
+          <li className=" mb-5 gap-3 text-light">
+            {isOpenPlatform ? (
+              <Collapsible style="z-50 backdrop-blur-sm">
+                <Dropdown
+                  title="PlayStation"
+                  style="opacity-80 hover:opacity-100"
+                >
+                  {playStationPlatforms.map((platform, index) => (
+                    <li className="py-[4px] font-text text-light" key={index}>
+                      {platform.name}
+                    </li>
+                  ))}
+                </Dropdown>
+                <Dropdown title="Xbox" style="opacity-80 hover:opacity-100">
+                  {xboxPlatforms.map((platform, index) => (
+                    <li className="py-[4px] font-text text-light" key={index}>
+                      {platform.name}
+                    </li>
+                  ))}
+                </Dropdown>
+                <Dropdown title="Nintendo" style="opacity-80 hover:opacity-100">
+                  {nintendoPlatforms.map((platform, index) => (
+                    <li className="font-pixel py-[4px] text-light" key={index}>
+                      {platform.name}
+                    </li>
+                  ))}
+                </Dropdown>
+                <Dropdown title="Retro" style="opacity-80 hover:opacity-100">
+                  {retroPlatforms.map((platform, index) => (
+                    <li className="py-[4px] font-text text-light" key={index}>
+                      {platform.name}
+                    </li>
+                  ))}
+                </Dropdown>
+                <li className="py-[4px] font-text text-light opacity-80 hover:opacity-100">
+                  PC
+                </li>
+                <li className="py-[4px] font-text text-light opacity-80 hover:opacity-100">
+                  Android
+                </li>
+                <li className="py-[4px] font-text text-light opacity-80 hover:opacity-100">
+                  iOS
+                </li>
+              </Collapsible>
+            ) : null}
+          </li>
           <li className=" gap-3 font-bold text-light">
             <button
               className="flex gap-3 font-text"
-              onClick={handleClickCollapseCategories}
+              onClick={handleClickCollapseGenres}
             >
-              <svg
-                width="25"
-                height="25"
-                viewBox="0 0 25 25"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M0 0.784915C0.198413 0.207506 0.613276 0 1.21753 0C4.329 0.018044 7.43146 0.00902201 10.5339 0.00902201C11.3456 0.00902201 11.7063 0.369903 11.7063 1.18188C11.7063 4.3035 11.7063 7.42512 11.7063 10.5558C11.7063 11.3677 11.3456 11.7286 10.5339 11.7286C7.43146 11.7286 4.31999 11.7196 1.21753 11.7376C0.613276 11.7376 0.198413 11.5301 0 10.9527C0 7.56045 0 4.16817 0 0.784915ZM9.74026 9.76182C9.74026 7.15446 9.74026 4.56514 9.74026 1.98484C7.13384 1.98484 4.54545 1.98484 1.96609 1.98484C1.96609 4.59221 1.96609 7.1725 1.96609 9.76182C4.56349 9.76182 7.14286 9.76182 9.74026 9.76182Z"
-                  fill="white"
-                />
-                <path
-                  d="M14.1054 25C13.8168 24.9098 13.5552 24.7745 13.4019 24.4858C13.2305 24.1429 13.2396 23.8091 13.447 23.4933C13.5191 23.3851 13.6093 23.2858 13.6995 23.1956C16.8561 20.0289 20.0217 16.8712 23.1873 13.7045C23.4578 13.4338 23.7554 13.2353 24.1523 13.2985C24.6393 13.3797 24.9459 13.7406 24.982 14.2368C24.991 14.354 24.982 14.4804 24.982 14.6067C24.982 17.6651 24.973 20.7236 24.991 23.7821C24.991 24.3865 24.7836 24.8015 24.2064 25C20.8424 25 17.4694 25 14.1054 25ZM23.0249 16.7268C20.9235 18.829 18.8132 20.9401 16.7208 23.0332C18.7951 23.0332 20.9055 23.0332 23.0249 23.0332C23.0249 20.904 23.0249 18.7929 23.0249 16.7268Z"
-                  fill="white"
-                />
-                <path
-                  d="M0 14.0653C0.036075 13.9751 0.0721501 13.8849 0.117244 13.8037C0.414863 13.2443 1.12734 13.109 1.61436 13.533C1.89394 13.7766 2.14646 14.0563 2.41703 14.3179C3.49026 15.3915 4.57251 16.4652 5.64574 17.5478C5.70887 17.611 5.75397 17.6922 5.82612 17.7824C5.92532 17.6922 5.98846 17.629 6.05159 17.5749C7.35931 16.2667 8.66703 14.9675 9.96573 13.6593C10.2453 13.3796 10.5519 13.2263 10.9488 13.3255C11.6613 13.4969 11.9408 14.3089 11.4899 14.8863C11.4268 14.9675 11.3456 15.0397 11.2734 15.1209C9.99278 16.402 8.72114 17.6741 7.44048 18.9462C7.37734 19.0094 7.29618 19.0545 7.20599 19.1176C7.30519 19.2259 7.36833 19.2891 7.42244 19.3522C8.72114 20.6514 10.0198 21.9505 11.3185 23.2497C11.6883 23.6196 11.7875 24.0166 11.6162 24.4226C11.4809 24.7384 11.2193 24.9007 10.9127 25.018C10.7864 25.018 10.6512 25.018 10.5249 25.018C10.2904 24.8556 10.0289 24.7113 9.82143 24.5128C8.54978 23.2587 7.29618 21.9957 6.04257 20.7416C5.97944 20.6784 5.91631 20.6243 5.84416 20.5521C5.77201 20.6243 5.70887 20.6784 5.64574 20.7416C4.40115 21.9776 3.15657 23.2407 1.89394 24.4857C1.68651 24.6932 1.41595 24.8286 1.17244 25C1.04618 25 0.910895 25 0.784632 25C0.387807 24.8737 0.135281 24.612 0 24.2151C0 24.0888 0 23.9534 0 23.8271C0.171356 23.5835 0.315657 23.3129 0.514069 23.1054C1.75866 21.8423 3.01227 20.5972 4.26587 19.3432C4.329 19.28 4.38312 19.2169 4.45527 19.1447C4.38312 19.0725 4.329 19.0094 4.26587 18.9462C3.02128 17.6831 1.75866 16.4381 0.514069 15.175C0.306638 14.9675 0.162338 14.6968 0 14.4533C0 14.3269 0 14.1916 0 14.0653Z"
-                  fill="white"
-                />
-                <path
-                  d="M19.1378 0.0090332C22.3575 0.0090332 24.991 2.64346 24.991 5.86432C24.991 9.08518 22.3394 11.7377 19.1198 11.7286C15.9001 11.7106 13.2666 9.07616 13.2756 5.86432C13.2846 2.63444 15.9181 0.0090332 19.1378 0.0090332ZM19.1288 1.95779C16.9913 1.95779 15.2327 3.70806 15.2327 5.8553C15.2236 8.00254 16.9913 9.77085 19.1378 9.77085C21.2752 9.77085 23.0339 8.02058 23.0339 5.87334C23.0429 3.7261 21.2752 1.95779 19.1288 1.95779Z"
-                  fill="white"
-                />
-              </svg>
-              <span className="font-bold text-light">Categories</span>
+              <img src="/images/drop_arrow.svg"></img>
+              <span className="font-bold text-light opacity-80 hover:opacity-100">
+                Genres
+              </span>
             </button>
           </li>
-          {/* todo imporrt component collapsible */}
+          <li className=" w-max gap-3 text-light">
+            {isOpenGenres ? (
+              <Collapsible genres={genres}>
+                {genres.map((genre, index) => (
+                  <Link
+                    key={index}
+                    className="py-[4px] font-text text-light opacity-80 hover:opacity-100"
+                  >
+                    {genre.name}
+                  </Link>
+                ))}
+              </Collapsible>
+            ) : (
+              ''
+            )}
+          </li>
         </ul>
-      </nav>
+      </div>
     </>
   );
 }

@@ -40,6 +40,7 @@ export default createBrowserRouter([
         path: '/games/:gameId',
         element: <GameShow />,
       },
+      // ajouter la route '/genres/:slug'
       {
         path: '/genres/:slug',
         element: <Categories />,

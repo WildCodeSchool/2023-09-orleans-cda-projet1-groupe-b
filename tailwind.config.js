@@ -20,6 +20,8 @@ export default {
       tertiary: '#0F0132',
       dark: '#0D0D0D',
       light: '#F5F5F5',
+      success: '#00FF00',
+      fail: '#FFFFFF',
     },
     extend: {
       fontFamily: {
