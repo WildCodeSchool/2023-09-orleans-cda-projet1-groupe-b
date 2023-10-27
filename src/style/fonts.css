@@ -14,6 +14,11 @@
 }
 
 @font-face {
+  font-family: 'ARCADE_N';
+  src: url('/fonts/ARCADE_N.TTF');
+}
+
+@font-face {
   font-family: 'GalakPro-Medium';
   src: url('/fonts/GalakPro-Medium.otf');
 }

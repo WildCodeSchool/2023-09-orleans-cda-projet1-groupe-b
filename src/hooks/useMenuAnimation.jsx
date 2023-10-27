@@ -16,6 +16,7 @@ export default function useMenuAnimation(isOpen) {
           clipPath: isOpen
             ? 'inset(0% 0% 0% 0% round 5px)'
             : 'inset(10% 50% 90% 50% round 5px)',
+          opacity: isOpen ? 0.9 : 0,
         },
         {
           type: 'spring',

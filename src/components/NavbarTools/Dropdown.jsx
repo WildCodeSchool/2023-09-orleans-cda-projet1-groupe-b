@@ -25,7 +25,6 @@ export default function Dropdown({ children, title }) {
     <div
       className="relative my-1 flex items-start opacity-80 hover:opacity-100"
       ref={scope}
-      style={{ height: isOpen ? 'bg-blue' : '' }}
     >
       <motion.button
         className="flex items-center justify-center gap-3"
@@ -43,7 +42,7 @@ export default function Dropdown({ children, title }) {
           </svg>
         </div>
       </motion.button>
-      <ul className="absolute ms-[7rem] mt-1 w-max rounded border border-solid border-primary bg-gradient-to-l from-primary/30 to-primary/20 p-4 py-2 text-start opacity-90 backdrop-blur-lg">
+      <ul className="absolute ms-[7rem] mt-1 w-max rounded border border-solid border-primary bg-gradient-to-l from-primary/30 to-primary/20 p-4 py-2 text-start opacity-0 backdrop-blur-lg">
         {children}
       </ul>
     </div>
