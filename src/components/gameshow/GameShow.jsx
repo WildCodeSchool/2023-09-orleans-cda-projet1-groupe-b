@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Title from '../Title';
 import RightBar from './RightBar';
 
 // Importation des composants
