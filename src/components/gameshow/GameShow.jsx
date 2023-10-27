@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Title from '../Title';
 import RightBar from './RightBar';
 
 // Importation des composants
 import CarouselGameShow from './CarouselGameShow';
+import GameDesc from './Description';
 
 // Importation des méthodes fetch
 import { fetchGameDetails, fetchGameElements } from '../../api/api-fetch';
@@ -56,10 +58,13 @@ export default function GameShow() {
         <div className="flex flex-col gap-3 md:flex-row">
           <div className="flex-1">
             {isLoaded && (
-              <CarouselGameShow
-                screenshotsResults={screenshotsResults}
-                isLoaded={isLoaded}
-              />
+              <div>
+                <CarouselGameShow
+                  screenshotsResults={screenshotsResults}
+                  isLoaded={isLoaded}
+                />
+                <GameDesc gameId={gameId} />
+              </div>
             )}
           </div>
           <div className="w-full md:w-52 xl:w-64">
