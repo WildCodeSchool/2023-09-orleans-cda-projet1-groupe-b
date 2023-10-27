@@ -9,7 +9,6 @@ function Navbar() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isOpenPlatform, setIsOpenPlatform] = useState(false);
   const [isOpenGenres, setIsOpenGenres] = useState(false);
-  const [isDroppedDown, setIsDroppedDown] = useState(false);
 
   const handleClickCollapsePlatform = () => {
     setIsOpenPlatform(!isOpenPlatform);
@@ -82,12 +81,6 @@ function Navbar() {
         platform.name.includes('Game G'),
     )
     .sort((a, b) => a.name.localeCompare(b.name));
-
-  useEffect(() => {
-    if (!isDroppedDown) {
-      setIsDroppedDown(true);
-    }
-  }, [isDroppedDown]);
 
   return (
     <>
