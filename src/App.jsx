@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from 'react-router-dom';
-// import Navbar from './components/Navbar';
+import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import './App.css';
 
@@ -14,7 +14,7 @@ export default function App() {
       </section>
       <main className="relative flex flex-row flex-nowrap">
         <nav className="sticky z-10 hidden bg-primary/10 lg:block lg:w-1/3 xl:w-1/4">
-          {/* <Navbar /> */}
+          <Navbar />
         </nav>
         <Outlet />
         {location.pathname !== '/' && (
