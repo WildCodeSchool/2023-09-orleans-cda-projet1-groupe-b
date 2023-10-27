@@ -30,6 +30,9 @@ export default {
         text: ['Roboto', 'sans-serif'],
         pixel: ['ARCADE_N', 'sans-serif'],
       },
+      fontSize: {
+        xxs: ['10px'],
+      },
       backgroundImage: {
         background: 'url(/images/background.jpg)',
       },
