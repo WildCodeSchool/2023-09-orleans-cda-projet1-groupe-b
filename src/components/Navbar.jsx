@@ -184,7 +184,7 @@ function Navbar() {
                 </Dropdown>
                 <Dropdown title="Nintendo" style="opacity-80 hover:opacity-100">
                   {nintendoPlatforms.map((platform, index) => (
-                    <li className="font-pixel py-[4px] text-light" key={index}>
+                    <li className="py-[4px] font-pixel text-light" key={index}>
                       {platform.name}
                     </li>
                   ))}
