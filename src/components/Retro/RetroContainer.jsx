@@ -10,11 +10,12 @@ export default function RetroContainer({ genres }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [screenshots, setScreenshots] = useState();
   const [movies, setMovies] = useState();
-  const gamesId = [3498];
 
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
+    const gamesId = [3498];
+
     fetchGames({
       parameter: gamesURL,
       setter: setGames,
@@ -41,7 +42,7 @@ export default function RetroContainer({ genres }) {
     });
 
     return () => controller.abort();
-  }, [gamesId]);
+  }, []);
 
   return (
     <div className="overflow-hidden pt-20">

@@ -10,14 +10,14 @@ export default function Cube3D({ screenshots, movies }) {
               className="h-full"
             />
           </div>
-          <div className="face cube-back border-gray-400 absolute flex h-[200px] w-[200px] items-center justify-center border-2 border-solid hover:border-primary">
+          <div className="cube-back border-gray-400 absolute flex h-[200px] w-[200px] items-center justify-center border-2 border-solid hover:border-primary">
             <img
               src={screenshots?.results?.[0].image}
               alt="Image 2"
               className="h-full"
             />
           </div>
-          <div className="face cube-right border-gray-400 absolute flex h-[200px] w-[200px] items-center justify-center border-2 border-solid hover:border-primary">
+          <div className="cube-right border-gray-400 absolute flex h-[200px] w-[200px] items-center justify-center border-2 border-solid hover:border-primary">
             <video
               autoPlay
               loop
@@ -28,7 +28,7 @@ export default function Cube3D({ screenshots, movies }) {
               <source src={movies?.results[0]?.data?.max} type="video/mp4" />
             </video>
           </div>
-          <div className="face cube-left border-gray-400 absolute flex h-[200px] w-[200px] items-center justify-center border-2 border-solid hover:border-primary">
+          <div className="cube-left border-gray-400 absolute flex h-[200px] w-[200px] items-center justify-center border-2 border-solid hover:border-primary">
             <video
               autoPlay
               loop
@@ -39,14 +39,14 @@ export default function Cube3D({ screenshots, movies }) {
               <source src={movies?.results[3]?.data?.max} type="video/mp4" />
             </video>
           </div>
-          <div className="face cube-top border-gray-400 absolute flex h-[200px] w-[200px] items-center justify-center border-2 border-solid hover:border-primary">
+          <div className="cube-top border-gray-400 absolute flex h-[200px] w-[200px] items-center justify-center border-2 border-solid hover:border-primary">
             <img
               src={screenshots?.results?.[3].image}
               alt="Image 3"
               className="h-full"
             />
           </div>
-          <div className="face cube-bottom border-gray-400 absolute flex h-[200px] w-[200px] items-center justify-center border-2 border-solid hover:border-primary">
+          <div className="cube-bottom border-gray-400 absolute flex h-[200px] w-[200px] items-center justify-center border-2 border-solid hover:border-primary">
             <img
               src={screenshots?.results?.[5].image}
               alt="Image 4"
