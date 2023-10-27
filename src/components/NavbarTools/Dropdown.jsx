@@ -11,7 +11,6 @@ export default function Dropdown({ children, title }) {
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setIsOpen(false);
-        console.log(e.target);
       }
     };
 
