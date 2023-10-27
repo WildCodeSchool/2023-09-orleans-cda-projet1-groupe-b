@@ -10,6 +10,7 @@ const cardsVariants = {
   },
   visible: {
     scale: 1.05,
+    boxShadow: '0px 0px 20px 5px rgba(156, 63, 232, 0.3)',
     transition: {
       type: 'tween',
       ease: 'easeOut',
@@ -26,7 +27,7 @@ export default function CardGame({ game, isLoaded }) {
         variants={cardsVariants}
         initial="hidden"
         whileHover="visible"
-        className="h-[25rem] w-full overflow-hidden rounded-[3px] border border-primary/30 bg-gradient-to-l from-primary/20 to-primary/10"
+        className="shadow- h-[25rem] w-full overflow-hidden rounded-[3px] border border-primary/30 bg-gradient-to-l from-primary/20 to-primary/10"
       >
         <Link to={`/games/${slug}`}>
           <div className="h-2/3 w-full bg-primary">
@@ -47,7 +48,7 @@ export default function CardGame({ game, isLoaded }) {
             <div className="flex gap-2">
               <div className="w-[90%]">
                 <div className="mb-2">
-                  <PlatformList game={game} isLoaded={isLoaded} />
+                  <PlatformList game={game} isLoaded={!isLoaded} />
                 </div>
 
                 <div className="h-[4.5rem] overflow-y-auto">
