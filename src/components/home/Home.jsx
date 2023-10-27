@@ -64,7 +64,7 @@ export default function Home() {
   return (
     <>
       <HeaderHome imageHeader={imageHeader} isLoaded={isLoaded} />
-      <section className="z-50 w-full px-2 xs:px-5 md:px-16 lg:px-2">
+      <section className="z-40 w-full px-2 xs:px-5 md:px-16 lg:px-2">
         <div className="flex h-screen flex-col items-center md:items-start">
           <div className="mt-[10rem] w-clamp-title lg:w-[40vw]">
             <Logo />
