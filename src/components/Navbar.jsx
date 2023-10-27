@@ -224,6 +224,7 @@ function Navbar() {
               <Collapsible genres={genres}>
                 {genres.map((genre, index) => (
                   <Link
+                    to={`/genres/${genre.slug}`}
                     key={index}
                     className="py-[4px] font-text text-light opacity-80 hover:opacity-100"
                   >
