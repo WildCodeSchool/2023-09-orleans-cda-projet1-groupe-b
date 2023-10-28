@@ -5,9 +5,10 @@ import Recommandations from './components/Recommandations';
 import News from './components/News';
 import BestSellers from './components/BestSellers';
 import Offers from './components/Offers';
-import Error404 from './components/Error404';
 import GameShow from './components/gameshow/GameShow';
 import Search from './components/search/Search';
+import Categories from './components/genres/Categories';
+import Error404 from './components/Error404';
 
 export default createBrowserRouter([
   {
@@ -37,13 +38,16 @@ export default createBrowserRouter([
         ],
       },
       {
-        // Ajouter les routes
         path: '/games/:gameId',
         element: <GameShow />,
       },
       {
         path: '/games',
         element: <Search />,
+      },
+      {
+        path: '/genres/:slug',
+        element: <Categories />,
       },
       {
         path: '*',
