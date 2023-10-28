@@ -8,9 +8,6 @@ import IconMagnifyingGlass from '../icons/IconMagnifyingGlass';
 import { fetchGames } from '../../api/api-fetch';
 import { gamesURL } from '../../api/api-url';
 
-// Importation des contextes
-import { SearchProvider } from '../contexts/SearchContext';
-
 export default function SearchBar() {
   const [searchValue, setSearchValue] = useState();
   const [games, setGames] = useState([]);
@@ -54,21 +51,19 @@ export default function SearchBar() {
           <div className="translate-x-8">
             <IconMagnifyingGlass />
           </div>
-          <SearchProvider>
-            <form onSubmit={handleSubmit} className="w-full">
-              <input
-                type="text"
-                onChange={(e) => {
-                  setSearchValue(e.target.value);
-                }}
-                className="w-full rounded-full border border-light bg-dark/0 py-1 pl-10 pr-4 font-text text-light outline-none focus:border-primary"
-                placeholder={
-                  isLoaded ? `Search among the ${games.count} games` : ''
-                }
-                value={searchValue}
-              />
-            </form>
-          </SearchProvider>
+          <form onSubmit={handleSubmit} className="w-full">
+            <input
+              type="text"
+              onChange={(e) => {
+                setSearchValue(e.target.value);
+              }}
+              className="w-full rounded-full border border-light bg-dark/0 py-1 pl-10 pr-4 font-text text-light outline-none focus:border-primary"
+              placeholder={
+                isLoaded ? `Search among the ${games.count} games` : ''
+              }
+              value={searchValue}
+            />
+          </form>
         </div>
       </div>
 
