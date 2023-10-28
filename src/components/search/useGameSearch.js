@@ -29,12 +29,7 @@ export default function useGameSearch({ searchValue }) {
           // False s'il n'y a plus de données à récupérer
           setHasMore(false);
         } else {
-          // Filtre les jeux en fonction de la valeur de la recherche et les stock dans un tableau
-          const filteredGames = data.results.filter((dataGame) =>
-            dataGame.name.toLowerCase().includes(searchValue.toLowerCase()),
-          );
-
-          allGames.push(...filteredGames);
+          allGames.push(...data.results);
         }
       } else {
         throw new Error(`Unable to load video game list : ${response.status}`);

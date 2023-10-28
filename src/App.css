@@ -21,7 +21,7 @@
     mask-repeat: no-repeat;
   }
 
-  .shadow-primary {
-    box-shadow: 0px 0px 10px rgba(156, 63, 232, 0.322);
+  .shadow-custom {
+    box-shadow: 0px 0px 10px rgb(156, 63, 232);
   }
 }

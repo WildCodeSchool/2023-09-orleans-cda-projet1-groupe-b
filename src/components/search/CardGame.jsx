@@ -1,34 +1,13 @@
-import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 // Importation des composants
 import PlatformList from '../home/PlatformList';
 
-const cardsVariants = {
-  hidden: {
-    scale: 1,
-  },
-  visible: {
-    scale: 1.05,
-    boxShadow: '0px 0px 20px 5px rgba(156, 63, 232, 0.3)',
-    transition: {
-      type: 'tween',
-      ease: 'easeOut',
-      duration: 0.3,
-    },
-  },
-};
-
 export default function CardGame({ game, isLoaded }) {
   const slug = game.slug;
   return (
     <>
-      <motion.div
-        variants={cardsVariants}
-        initial="hidden"
-        whileHover="visible"
-        className="shadow- h-[25rem] w-full overflow-hidden rounded-[3px] border border-primary/30 bg-gradient-to-l from-primary/20 to-primary/10"
-      >
+      <div className="hover:shadow-custom h-[25rem] w-full overflow-hidden rounded-[3px] border border-primary/30 bg-gradient-to-l from-primary/20 to-primary/10 transition duration-300 hover:scale-[1.05]">
         <Link to={`/games/${slug}`}>
           <div className="h-2/3 w-full bg-primary">
             {game.background_image === null ? (
@@ -69,7 +48,7 @@ export default function CardGame({ game, isLoaded }) {
             </ul>
           </div>
         </Link>
-      </motion.div>
+      </div>
     </>
   );
 }

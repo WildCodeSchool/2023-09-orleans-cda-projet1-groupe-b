@@ -1,12 +1,45 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 import Title from '../Title';
 import CardGame from './CardGame';
 import useGameSearch from './useGameSearch';
+import Spinner from '../Spinner';
+
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      when: 'beforeChildren',
+      duration: 0.5,
+    },
+  },
+};
+
+const childrenVariants = {
+  hidden: {
+    opacity: 0,
+    y: 100,
+  },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'tween',
+      ease: 'easeInOut',
+      delay: i * 0.1,
+      duration: 0.5,
+    },
+  }),
+};
 
 export default function Search() {
   const [isLoaded, setLoaded] = useState(true);
+  const [showSpinner, setShowSpinner] = useState(false);
 
   const cardsRef = useRef(null);
   const [searchParams] = useSearchParams();
@@ -24,10 +57,12 @@ export default function Search() {
     }
   }, [isLoading]);
 
+  // Fetch la suite des jeux vidéos lorsqu'on arrive en bas de la page
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
 
+    // Configuration du conteneur pour Intersection observer
     const ratio = 0.5;
     const options = {
       root: null,
@@ -35,6 +70,9 @@ export default function Search() {
       threshold: ratio,
     };
 
+    let timer = 0;
+
+    // Fetch les jeux vidéos avec un timer et un spiner lors du chargement des données
     const handleIntersect = (entries) => {
       const firstEntry = entries[0];
 
@@ -42,8 +80,14 @@ export default function Search() {
         if (isLoading) {
           return;
         } else if (hasMore) {
-          fetchAllGames({ searchValue, signal, pageNumber: page + 1 });
-          setPage((prevPage) => prevPage + 1);
+          clearTimeout(timer);
+          setShowSpinner(true);
+
+          timer = setTimeout(() => {
+            fetchAllGames({ searchValue, signal, pageNumber: page + 1 });
+            setPage((prevPage) => prevPage + 1);
+            setShowSpinner(false);
+          }, 1500);
         }
       }
     };
@@ -70,19 +114,35 @@ export default function Search() {
             title={`${count} result${count > 1 ? 's' : ''} of "${searchValue}"`}
           />
         </div>
-        <div className="grid grid-cols-1 gap-4 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-4">
-          {!isLoaded ? (
-            games.map((game, index) => {
-              return <CardGame key={index} game={game} isLoaded={isLoaded} />;
-            })
-          ) : (
-            <p>Loading...</p>
-          )}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="grid grid-cols-1 gap-4 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-4"
+        >
+          {games.map((game, index) => {
+            return (
+              <motion.div
+                key={index}
+                variants={childrenVariants}
+                custom={index % 20}
+              >
+                <CardGame key={index} game={game} isLoaded={isLoaded} />
+              </motion.div>
+            );
+          })}
+        </motion.div>
+
+        <div className="my-4 flex justify-center">
+          <Spinner showSpinner={showSpinner} />
         </div>
+
         {!isLoading && hasMore && (
-          <div ref={cardsRef} className="text-light">
-            Load More Items...
-          </div>
+          <motion.div
+            variants={childrenVariants}
+            ref={cardsRef}
+            className="text-light"
+          ></motion.div>
         )}
       </section>
     </>
