@@ -1,4 +1,4 @@
-import PlatformsLogos from './platformsLogos';
+import PlatformsLogos from './PlatformsLogos';
 
 export default function PlatformsList({ game, isLoaded }) {
   // console.log(game.parent_platforms);

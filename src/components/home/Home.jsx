@@ -8,6 +8,7 @@ import Button from '../Button';
 import HeaderHome from './HeaderHome';
 import Unavoidable from './Unavoidable';
 import HomeNewGames from './HomeNewGames';
+import RetroContainer from '../Retro/RetroContainer';
 
 const GENRES_ID = [4, 51, 3, 5, 10, 2, 40, 14, 7, 11, 83, 1, 14, 19];
 
@@ -104,6 +105,9 @@ export default function Home() {
         </div>
         <div>
           <Unavoidable />
+        </div>
+        <div>
+          <RetroContainer />
         </div>
         <div className="w-full">
           <HomeNewGames />
