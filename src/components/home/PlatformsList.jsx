@@ -1,4 +1,4 @@
-import PlatformsLogos from './PlatformsLogos';
+import PlatformsLogo from './PlatformsLogo';
 
 export default function PlatformsList({ game, isLoaded }) {
   return (
@@ -7,7 +7,7 @@ export default function PlatformsList({ game, isLoaded }) {
         {isLoaded ? (
           game.parent_platforms.map(({ platform }, platformIndex) => (
             <li key={platformIndex}>
-              <PlatformsLogos platformData={platform} />
+              <PlatformsLogo platformData={platform} />
             </li>
           ))
         ) : (
