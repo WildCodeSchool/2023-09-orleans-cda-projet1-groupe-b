@@ -1,7 +1,6 @@
 import PlatformsLogos from './PlatformsLogos';
 
 export default function PlatformsList({ game, isLoaded }) {
-  // console.log(game.parent_platforms);
   return (
     <>
       <ul className="flex items-center gap-1">
