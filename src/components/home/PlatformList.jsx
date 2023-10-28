@@ -1,4 +1,4 @@
-import PlatformsLogos from './platformsLogos';
+import PlatformsLogos from './PlatformsLogo';
 
 export default function PlatformsList({ game, isLoaded }) {
   return (
