@@ -104,6 +104,7 @@ export default function CarrouselHome({ children, path }) {
                     stiffness: 300,
                   },
                 }}
+                viewport={{ once: true }}
                 className="text-black flex h-full w-full flex-col items-center justify-center gap-2 overflow-hidden rounded-[3px] bg-gradient-to-l from-primary/30 to-primary/20 font-text text-2xl text-light"
               >
                 <IconPlus />

@@ -14,10 +14,10 @@ import 'swiper/css';
 
 // Variante
 const sliderVariants = {
-  hidden: { opacity: 0, y: 100 },
+  hidden: { y: 100, opacity: 0 },
   visible: {
-    opacity: 1,
     y: 0,
+    opacity: 1,
     transition: {
       type: 'spring',
       duration: 0.8,
@@ -74,6 +74,7 @@ export default function HomeShooter() {
                   variants={sliderVariants}
                   initial="hidden"
                   whileInView="visible"
+                  viewport={{ once: true, amount: 0.3 }}
                   className="relative h-full w-full bg-light/20"
                 >
                   <div className="card-mask absolute bottom-0 flex h-1/2 w-full flex-col justify-end gap-2 bg-dark/70 p-2">

@@ -14,7 +14,7 @@ import HomeAdventure from './HomeAdventure';
 import HomeStrategy from './HomeStrategy';
 import HomeShooter from './HomeShooter';
 import HomeSimulation from './HomeSimulation';
-import HomeRPG from './HomeRPG';
+import HomeRpg from './HomeRpg';
 import HomeRacing from './HomeRacing';
 import HomeSport from './HomeSport';
 import HomeFighting from './HomeFighting';
@@ -138,7 +138,7 @@ export default function Home() {
           <HomeRacing />
         </div>
         <div className="w-full">
-          <HomeRPG />
+          <HomeRpg />
         </div>
         <div className="w-full">
           <HomeShooter />
