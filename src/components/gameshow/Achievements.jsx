@@ -20,7 +20,7 @@ export default function Achievements({ trophiesResults, isLoaded }) {
                 <div key={trophy.id}>
                   <div className="col-span-full text-light">
                     <div>
-                      <div className="">
+                      <div>
                         <motion.button
                           key={Math.random(index)}
                           className="cursor-default"
