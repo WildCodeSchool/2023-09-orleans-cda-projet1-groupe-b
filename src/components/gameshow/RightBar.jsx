@@ -2,7 +2,7 @@ import { fetchGameDetails, fetchGameElements } from '../../api/api-fetch';
 import { dlcURL } from '../../api/api-url';
 import { useEffect, useState } from 'react';
 import ageRating from './AgeRatingLogo';
-import { Button, Tooltip } from 'flowbite-react';
+import { Tooltip } from 'flowbite-react';
 import storeLogo from './StoreLogo';
 import platformLogo from './PlatformLogo';
 import DlcComponent from './DlcComponent';
@@ -61,7 +61,7 @@ export default function RightBar({ gameId }) {
         </div>
         <div className="w-25 container mt-5 rounded-lg border border-primary bg-primary/10 p-4">
           <h3 className="text-m font-bold">Platforms</h3>
-          <div className="space-around grid justify-around">
+          <div className="flex justify-around">
             <Tooltip
               content={
                 isLoaded ? (
@@ -82,16 +82,18 @@ export default function RightBar({ gameId }) {
               }
               className="bg-tertiary/90"
             >
-              <Button className="flex flex-row border-none">
+              <div className="flex items-center gap-2 rounded-md border-none py-2 text-sm transition-all duration-200">
                 {isLoaded ? (
                   game.parent_platforms && game.parent_platforms.length > 0 ? (
-                    game.parent_platforms.map((ppf) => (
-                      <img
-                        className="m-auto mx-2 mt-1 h-6"
-                        key={ppf.platform.id}
-                        src={platformLogo(ppf.platform.slug)}
-                        alt={ppf.platform.slug}
-                      />
+                    game.parent_platforms.map((ppf, index) => (
+                      <div key={index}>
+                        <img
+                          className="mt-1 h-6 object-contain"
+                          key={ppf.platform.id}
+                          src={platformLogo(ppf.platform.slug)}
+                          alt={ppf.platform.slug}
+                        />
+                      </div>
                     ))
                   ) : (
                     <p className="text-light/80">N/A</p>
@@ -99,7 +101,7 @@ export default function RightBar({ gameId }) {
                 ) : (
                   <p className="text-light/80">Loading...</p>
                 )}
-              </Button>
+              </div>
               <div className="tooltip text-white dark:bg-gray-700 invisible absolute z-10 inline-block rounded-lg bg-tertiary px-3 py-2 text-sm font-medium opacity-0 shadow-sm transition-opacity duration-300"></div>
             </Tooltip>
           </div>
