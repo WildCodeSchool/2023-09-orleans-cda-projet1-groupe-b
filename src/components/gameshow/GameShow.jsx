@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Title from '../Title';
 import RightBar from './RightBar';
+import HeaderGameShow from './HeaderGameShow';
 
 // Importation des composants
 import CarouselGameShow from './CarouselGameShow';
@@ -45,8 +45,21 @@ export default function GameShow() {
 
   return (
     <>
-      <section className="w-full px-2 xs:px-5 md:px-16 lg:px-2">
-        {isLoaded ? <Title title={game.name} /> : 'Loading...'}
+      <HeaderGameShow isLoaded={isLoaded} imageHeader={game} />
+      <section className=" z-50 w-full px-2 xs:px-5 md:px-16 lg:px-2">
+        {isLoaded ? (
+          <div className="mb-80 mt-40">
+            <h1 className="font-title text-8xl uppercase text-light">
+              {game.name && game.name}
+            </h1>
+            <div className="flex justify-center md:justify-start">
+              <div className="ml-1 mt-6 h-5 w-28 -skew-x-35 bg-primary"></div>
+            </div>
+          </div>
+        ) : (
+          'Loading...'
+        )}
+
         <div className="flex flex-col gap-3 md:flex-row">
           <div className="flex-1">
             {isLoaded && (

@@ -13,7 +13,7 @@ export default function Thumbnails({
     return null;
   }
 
-  const totalImages = screenshotsResults.length;
+  const totalImages = screenshotsResults?.length;
 
   // Calcule l'indice de départ
   const pageStartIndex = Math.floor(curr / NUMBER_IMAGES) * NUMBER_IMAGES;
@@ -22,7 +22,7 @@ export default function Thumbnails({
   const startIndex = Math.min(pageStartIndex, totalImages - NUMBER_IMAGES);
 
   // Extraction des images à partir de l'index jusqu'au nombre d'images afin d'afficher 5 images
-  const imagesThumbnails = screenshotsResults.slice(
+  const imagesThumbnails = screenshotsResults?.slice(
     startIndex,
     startIndex + NUMBER_IMAGES,
   );
