@@ -1,31 +1,24 @@
 import { useRef, useEffect } from 'react';
-import { usePresence } from 'framer-motion';
-import { gsap } from 'gsap';
+import { usePresence, motion } from 'framer-motion';
 
 export default function Box({ trophy, index }) {
-  const ref = useRef(trophy.id);
+  const ref = useRef();
   const [isPresent, safeToRemove] = usePresence();
 
-  useEffect(() => {
-    if (!isPresent) {
-      gsap.to(ref.current, {
-        opacity: 0,
-        onComplete: () => safeToRemove?.(),
-      });
-    }
-  }, [isPresent, safeToRemove]);
-
   return trophy ? (
-    <div
+    <motion.div
       key={index}
       className="absolute z-10 rounded-md bg-tertiary/90 p-1"
       ref={ref}
+      initial={{ opacity: 0 }} // Set the initial state
+      animate={{ opacity: 1 }} // Animate when the component first appears
+      exit={isPresent ? { opacity: 1 } : { opacity: 0 }} // Animate when the component is removed
     >
-      <div className="">
+      <motion.div className="">
         <h1>{trophy.name}</h1>
         <p>{trophy.description}</p>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   ) : (
     <p>Loading...</p>
   );
