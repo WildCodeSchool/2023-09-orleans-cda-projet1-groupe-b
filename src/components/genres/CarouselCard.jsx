@@ -158,7 +158,7 @@ export default function CarouselCard({ game }) {
             </div>
             <div className="mr-3 mt-5 flex justify-end">
               <button className="mb-4 me-4 h-10 w-44 -skew-x-[30deg] rounded bg-primary">
-                <Link to={`/games/${game.id}`}>Showmore</Link>
+                <Link to={`/games/${game.slug}`}>Showmore</Link>
               </button>
             </div>
           </div>
