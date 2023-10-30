@@ -1,32 +1,3 @@
-import { motion } from 'framer-motion';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: (i) => ({
-    opacity: 1,
-    transition: {
-      when: 'beforeChildren',
-      type: 'tween',
-      ease: 'easeInOut',
-      staggerChildren: 0.1,
-      duration: i,
-    },
-  }),
-};
-
-const imageVariants = {
-  hidden: (i) => ({ opacity: 0, y: i }),
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: 'tween',
-      ease: 'easeInOut',
-      duration: 0.5,
-    },
-  },
-};
-
 export default function HeaderHome({ imageHeader, isLoaded }) {
   if (!isLoaded) {
     return null;
@@ -35,13 +6,7 @@ export default function HeaderHome({ imageHeader, isLoaded }) {
   return (
     <>
       <div className="absolute h-screen w-screen overflow-hidden">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          custom="0"
-          className="image-mask h-full w-full"
-        >
+        <div className="image-mask h-full w-full">
           <div className="absolute z-50 h-full w-full bg-gradient-to-r from-dark to-dark/0"></div>
           {/* Affichage de l'image si en dessous de 768px */}
           {isLoaded ? (
@@ -55,7 +20,7 @@ export default function HeaderHome({ imageHeader, isLoaded }) {
           ) : (
             'Loading...'
           )}
-        </motion.div>
+        </div>
       </div>
     </>
   );
