@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import { usePresence, motion } from 'framer-motion';
 
 export default function Box({ trophy, index }) {
@@ -12,7 +12,7 @@ export default function Box({ trophy, index }) {
       ref={ref}
       initial={{ opacity: 0 }} // Set the initial state
       animate={{ opacity: 1 }} // Animate when the component first appears
-      exit={isPresent ? { opacity: 1 } : { opacity: 0 }} // Animate when the component is removed
+      exit={isPresent ? { opacity: 1 } : safeToRemove} // Animate when the component is removed
     >
       <motion.div className="">
         <h1>{trophy.name}</h1>
