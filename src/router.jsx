@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import App from './App';
 import Home from './components/home/Home';
 import Recommandations from './components/Recommandations';
@@ -7,6 +7,7 @@ import BestSellers from './components/BestSellers';
 import Offers from './components/Offers';
 import GameShow from './components/gameshow/GameShow';
 import Categories from './components/genres/Categories';
+import Error404 from './components/Error404';
 
 export default createBrowserRouter([
   {
@@ -44,6 +45,14 @@ export default createBrowserRouter([
       {
         path: '/genres/:slug',
         element: <Categories />,
+      },
+      {
+        path: 'error/404',
+        element: <Error404 />,
+      },
+      {
+        path: '*',
+        element: <Navigate to="error/404" />,
       },
     ],
   },
