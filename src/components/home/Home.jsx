@@ -8,6 +8,16 @@ import Button from '../Button';
 import HeaderHome from './HeaderHome';
 import Unavoidable from './Unavoidable';
 import HomeNewGames from './HomeNewGames';
+import HomeBestGames from './HomeBestGames';
+import HomeAction from './HomeAction';
+import HomeAdventure from './HomeAdventure';
+import HomeStrategy from './HomeStrategy';
+import HomeShooter from './HomeShooter';
+import HomeSimulation from './HomeSimulation';
+import HomeRPG from './HomeRPG';
+import HomeRacing from './HomeRacing';
+import HomeSport from './HomeSport';
+import HomeFighting from './HomeFighting';
 import RetroContainer from '../Retro/RetroContainer';
 
 const GENRES_ID = [4, 51, 3, 5, 10, 2, 40, 14, 7, 11, 83, 1, 14, 19];
@@ -111,6 +121,36 @@ export default function Home() {
         </div>
         <div className="w-full">
           <HomeNewGames />
+        </div>
+        <div className="w-full">
+          <HomeBestGames />
+        </div>
+        <div className="w-full">
+          <HomeAction />
+        </div>
+        <div className="w-full">
+          <HomeAdventure />
+        </div>
+        <div className="w-full">
+          <HomeFighting />
+        </div>
+        <div className="w-full">
+          <HomeRacing />
+        </div>
+        <div className="w-full">
+          <HomeRPG />
+        </div>
+        <div className="w-full">
+          <HomeShooter />
+        </div>
+        <div className="w-full">
+          <HomeSimulation />
+        </div>
+        <div className="w-full">
+          <HomeSport />
+        </div>
+        <div className="w-full">
+          <HomeStrategy />
         </div>
       </section>
     </>

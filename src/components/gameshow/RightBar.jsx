@@ -33,6 +33,7 @@ export default function RightBar({ gameId }) {
   }, [gameId]);
 
   const metascoreColor = perc2color(parseInt(game.metacritic));
+
   return (
     <>
       <section className="font-text text-light">
@@ -41,7 +42,7 @@ export default function RightBar({ gameId }) {
           <div className="flex justify-center">
             <div>
               {isLoaded ? (
-                game.metacritic ? (
+                game.metacritic && game.metacritic ? (
                   <p
                     style={{ backgroundColor: metascoreColor }}
                     className={`m-3 rounded-lg p-5 text-5xl font-bold`}

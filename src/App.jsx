@@ -15,9 +15,7 @@ export default function App() {
         {/* TODO: Import SearchBar component */}
       </section>
       <main className="relative flex flex-row flex-nowrap">
-        <nav
-          className={`sticky z-10 hidden bg-primary/50 lg:block lg:w-[25%] xl:w-[18%]`}
-        >
+        <nav className={`sticky z-10 hidden lg:block lg:w-[25%] xl:w-[18%]`}>
           <Navbar />
         </nav>
         <Outlet />
