@@ -35,7 +35,6 @@ export const fetchGames = async ({
   if (queryString) {
     url += `&${queryString}`;
   }
-
   try {
     const data = await fetchData(url, signal);
     setLoaded(true);
