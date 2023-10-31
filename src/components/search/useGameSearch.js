@@ -36,7 +36,7 @@ export default function useGameSearch({ searchValue }) {
       }
 
       // Met à jour le state en supprimant les doublons
-      setGames((prevGames) => [...new Set([...prevGames, ...allGames])]);
+      setGames((prevGames) => new Set([...prevGames, ...allGames]));
       setLoading(false);
     } catch (error) {
       throw new Error(`Unable to load API : ${error}`);
