@@ -190,14 +190,15 @@ export default function RightBar({ gameId }) {
           <h3 className="text-m mt-3 font-bold">Web site</h3>
           {isLoaded ? (
             game.website && game.website.length > 0 ? (
-              websiteSplitted(game.website).map((w) => (
+              websiteSplitted(game.website).map((w, key) => (
                 <a
-                  className="overflow-hidden text-ellipsis text-primary transition hover:text-secondary"
+                  key={key}
+                  className="text-primary transition hover:text-secondary"
                   href={w}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {nl2br(w)}
+                  <p className="text-ellipsis overflow-hidden ...">{nl2br(w)}</p>
                 </a>
               ))
             ) : (

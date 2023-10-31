@@ -27,9 +27,9 @@ export default function storeLogo(store) {
     case 'Epic Games':
       return epicLogo;
     case 'Google Play':
-        return googlePlayLogo;
+      return googlePlayLogo;
     case 'itch.io':
-        return itchLogo;
+      return itchLogo;
 
     default:
       return <p>No store found</p>;
