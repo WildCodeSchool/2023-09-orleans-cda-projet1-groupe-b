@@ -14,14 +14,14 @@ export default {
     },
   ],
   theme: {
-    colors: {
-      primary: '#31FFE6',
-      secondary: '#9D3FE8',
-      tertiary: '#0F0132',
-      dark: '#0D0D0D',
-      light: '#F5F5F5',
-    },
     extend: {
+      colors: {
+        primary: '#31FFE6',
+        secondary: '#9D3FE8',
+        tertiary: '#0F0132',
+        dark: '#0D0D0D',
+        light: '#F5F5F5',
+      },
       fontFamily: {
         title: ['GalakPro-Bold', 'sans-serif'],
         'title-bold': ['GalakPro-Heavy', 'sans-serif'],
