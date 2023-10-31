@@ -5,7 +5,57 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .cube-front {
+    transform: translateZ(100px);
+  }
+
+  .cube-back {
+    transform: rotateY(180deg) translateZ(100px);
+  }
+
+  .cube-right {
+    transform: rotateY(90deg) translateZ(100px);
+  }
+
+  .cube-left {
+    transform: rotateY(-90deg) translateZ(100px);
+  }
+
+  .cube-top {
+    transform: rotateX(90deg) translateZ(100px);
+  }
+
+  .cube-bottom {
+    transform: rotateX(-90deg) translateZ(100px);
+  }
+}
+
 @layer utilities {
+  .perspective-700 {
+    perspective: 700px;
+    perspective-origin: center center;
+    transform: rotateY(25deg);
+  }
+
+  .perspective-640 {
+    perspective: 640px;
+    perspective-origin: center center;
+    transform: rotateY(25deg);
+  }
+
+  .cube-container {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .pause-animation {
+    animation-play-state: paused;
+  }
+
   .image-mask {
     -webkit-mask-image: linear-gradient(
       0deg,
@@ -21,11 +71,19 @@
     mask-repeat: no-repeat;
   }
 
-  .text-size {
-    font-size: clamp(14px, 1vw, 16px);
-  }
-  .title-size {
-    font-size: clamp(24px, 2vw, 32px);
+  .card-mask {
+    -webkit-mask-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0) 5%,
+      rgba(0, 0, 0, 1) 30%
+    );
+    mask-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 1) 40%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
   }
 
   .genre-mask {
@@ -38,6 +96,11 @@
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
   }
+
+  .text-size {
+    font-size: clamp(14px, 1vw, 16px);
+  }
+
   .text-shadow {
     text-shadow:
       1px 1px 2px black,
