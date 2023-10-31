@@ -82,17 +82,6 @@ function Navbar() {
     )
     .sort((a, b) => a.name.localeCompare(b.name));
 
-  const pcPlatforms = platforms
-    .filter((platform) => platform.name.includes('PC'))
-    .sort((a, b) => a.name.localeCompare(b.name));
-
-  const androidPlatforms = platforms
-    .filter((platform) => platform.name.includes('Android'))
-    .sort((a, b) => a.name.localeCompare(b.name));
-
-  const iosPlatforms = platforms
-    .filter((platform) => platform.name.includes('iOS'))
-    .sort((a, b) => a.name.localeCompare(b.name));
   return (
     <>
       <div className="sticky top-20 z-10 p-5">
@@ -180,74 +169,59 @@ function Navbar() {
                   title="PlayStation"
                   style="opacity-80 hover:opacity-100"
                 >
-                  {playStationPlatforms.map((platform, index) => (
+                  {playStationPlatforms.map((platform) => (
                     <Link to={`/platforms/${platform.id}`} key={platform.id}>
-                      <li className="py-[4px] font-text text-light" key={index}>
+                      <li className="py-[4px] font-text text-light">
                         {platform.name}
                       </li>
                     </Link>
                   ))}
                 </Dropdown>
                 <Dropdown title="Xbox" style="opacity-80 hover:opacity-100">
-                  {xboxPlatforms.map((platform, index) => (
+                  {xboxPlatforms.map((platform) => (
                     <Link to={`/platforms/${platform.id}`} key={platform.id}>
-                      <li className="py-[4px] font-text text-light" key={index}>
+                      <li className="py-[4px] font-text text-light">
                         {platform.name}
                       </li>
                     </Link>
                   ))}
                 </Dropdown>
                 <Dropdown title="Nintendo" style="opacity-80 hover:opacity-100">
-                  {nintendoPlatforms.map((platform, index) => (
+                  {nintendoPlatforms.map((platform) => (
                     <Link to={`/platforms/${platform.id}`} key={platform.id}>
-                      <li className="py-[4px] font-text text-light" key={index}>
+                      <li className="py-[4px] font-text text-light">
                         {platform.name}
                       </li>
                     </Link>
                   ))}
                 </Dropdown>
                 <Dropdown title="Retro" style="opacity-80 hover:opacity-100">
-                  {retroPlatforms.map((platform, index) => (
+                  {retroPlatforms.map((platform) => (
                     <Link to={`/platforms/${platform.id}`} key={platform.id}>
-                      <li
-                        className="py-[4px] font-pixel text-xxs text-light"
-                        key={index}
-                      >
+                      <li className="py-[4px] font-pixel text-xxs text-light">
                         {platform.name}
                       </li>
                     </Link>
                   ))}
                 </Dropdown>
-                {pcPlatforms.map((platform, index) => (
-                  <Link to={`/platforms/${platform.id}`} key={platform.id}>
-                    <li
-                      className="py-[4px] font-text text-light opacity-80 hover:opacity-100"
-                      key={index}
-                    >
-                      PC
-                    </li>
-                  </Link>
-                ))}
-                {androidPlatforms.map((platform, index) => (
-                  <Link to={`/platforms/${platform.id}`} key={platform.id}>
-                    <li
-                      className="py-[4px] font-text text-light opacity-80 hover:opacity-100"
-                      key={index}
-                    >
-                      Android
-                    </li>
-                  </Link>
-                ))}
-                {iosPlatforms.map((platform, index) => (
-                  <Link to={`/platforms/${platform.id}`} key={platform.id}>
-                    <li
-                      className="py-[4px] font-text text-light opacity-80 hover:opacity-100"
-                      key={index}
-                    >
-                      iOS
-                    </li>
-                  </Link>
-                ))}
+
+                <Link to={`/platforms/4`}>
+                  <li className="py-[4px] font-text text-light opacity-80 hover:opacity-100">
+                    PC
+                  </li>
+                </Link>
+
+                <Link to={`/platforms/21`}>
+                  <li className="py-[4px] font-text text-light opacity-80 hover:opacity-100">
+                    Android
+                  </li>
+                </Link>
+
+                <Link to={`/platforms/3`}>
+                  <li className="py-[4px] font-text text-light opacity-80 hover:opacity-100">
+                    iOS
+                  </li>
+                </Link>
               </Collapsible>
             ) : null}
           </li>
