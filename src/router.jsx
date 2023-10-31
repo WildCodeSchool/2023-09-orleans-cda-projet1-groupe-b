@@ -7,6 +7,7 @@ import BestSellers from './components/BestSellers';
 import Offers from './components/Offers';
 import GameShow from './components/gameshow/GameShow';
 import Categories from './components/genres/Categories';
+import Platforms from './components/genres/Platforms';
 
 export default createBrowserRouter([
   {
@@ -44,6 +45,10 @@ export default createBrowserRouter([
       {
         path: '/genres/:slug',
         element: <Categories />,
+      },
+      {
+        path: '/platforms/:id',
+        element: <Platforms />,
       },
     ],
   },
