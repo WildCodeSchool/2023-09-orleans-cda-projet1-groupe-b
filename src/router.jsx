@@ -47,12 +47,12 @@ export default createBrowserRouter([
         element: <Categories />,
       },
       {
-        path: 'error/404',
+        path: '/404',
         element: <Error404 />,
       },
       {
         path: '*',
-        element: <Navigate to="error/404" />,
+        element: <Navigate to="/404" />,
       },
     ],
   },
