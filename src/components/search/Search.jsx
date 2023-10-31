@@ -80,7 +80,6 @@ export default function Search() {
         if (isLoading) {
           return;
         } else if (hasMore) {
-          clearTimeout(timer);
           setShowSpinner(true);
 
           timer = setTimeout(() => {
@@ -99,12 +98,16 @@ export default function Search() {
     }
 
     return () => {
+      clearTimeout(timer);
       controller.abort();
       if (observer) {
         observer.disconnect();
       }
     };
   }, [fetchAllGames, hasMore, page, searchValue, setPage, isLoading]);
+
+  // converti set en array
+  const arrayGames = Array.from(games);
 
   return (
     <>
@@ -124,7 +127,7 @@ export default function Search() {
           animate="visible"
           className="grid grid-cols-1 gap-4 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-4"
         >
-          {games.map((game, index) => {
+          {arrayGames.map((game, index) => {
             return (
               <motion.div
                 key={index}
@@ -144,7 +147,7 @@ export default function Search() {
             variants={childrenVariants}
             ref={cardsRef}
             className="text-light"
-          ></motion.div>
+          />
         )}
       </section>
     </>

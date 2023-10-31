@@ -71,7 +71,7 @@ export default function SearchBar() {
       <motion.div
         className="let-0 right-0 top-0 h-1 origin-top-left transform bg-primary"
         style={{ scaleX }}
-      ></motion.div>
+      />
     </>
   );
 }
