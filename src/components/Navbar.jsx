@@ -220,7 +220,7 @@ function Navbar() {
             </button>
           </li>
           <li className=" w-max gap-3 text-light">
-            {isOpenGenres ? (
+            {isOpenGenres && isLoaded ? (
               <Collapsible genres={genres}>
                 {genres.map((genre, index) => (
                   <Link
