@@ -1,4 +1,3 @@
-import Title from '../Title';
 import ProgressBar from './ProgressBar';
 
 export default function RatingBox({ game }) {
