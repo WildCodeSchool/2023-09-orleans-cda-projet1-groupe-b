@@ -4,7 +4,9 @@ import NextButton from '../gameshow/NextButton';
 import PreviousButton from '../gameshow/PreviousButton';
 
 export default function Carousel({ games, gameIndex, setGameIndex }) {
-  const gamesCarousel = games?.results?.slice(0, 10);
+  const gamesCarousel = games?.results
+    ?.slice(0, 10)
+    .sort((a, b) => b.metacritic - a.metacritic);
 
   const previousSlide = useCallback(() => {
     if (gameIndex === 0) setGameIndex(gamesCarousel.length - 1);

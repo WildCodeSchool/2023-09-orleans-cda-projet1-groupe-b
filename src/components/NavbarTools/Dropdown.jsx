@@ -30,10 +30,10 @@ export default function Dropdown({ children, title }) {
         className="flex items-center justify-center gap-3"
         whileTap={{ scale: 0.97 }}
         onClick={() => setIsOpen(!isOpen)}
+        ref={dropdownRef}
       >
         {title}
         <div
-          ref={dropdownRef}
           className="arrow fill-current text-white"
           style={{ transformOrigin: '50% 60%' }}
         >
