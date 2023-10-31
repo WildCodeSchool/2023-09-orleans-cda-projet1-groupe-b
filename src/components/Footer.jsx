@@ -10,7 +10,7 @@ export default function Footer() {
               About the team
             </p>
           </Link>
-          <p className="me-10 text-[#525252]">GamePlus ® Legal Notices</p>
+          <p className="me-10 text-light/70">GamePlus ® Legal Notices</p>
         </div>
       </footer>
     </>

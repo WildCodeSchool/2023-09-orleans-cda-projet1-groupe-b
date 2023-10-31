@@ -6,9 +6,7 @@ import Button from './Button';
 export default function AboutTheTeam() {
   return (
     <>
-      {/*
-       */}
-      <section className="lg:screennofooter z-40 my-12 flex w-full flex-col justify-center px-2 xs:px-5 md:px-16 lg:px-2 xl:my-0">
+      <section className="z-40 my-12 flex w-full flex-col justify-center px-2 xs:px-5 md:px-16 lg:h-[calc(100vh-3.5rem)] lg:px-2 xl:my-0">
         <div className="">
           <Title title="About the team" />
         </div>
