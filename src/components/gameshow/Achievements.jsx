@@ -5,8 +5,7 @@ import Box from './AchievementTooltip';
 import Title from '../Title';
 
 export default function Achievements({ trophiesResults, isLoaded }) {
-  const trophyNb = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const [show, setShow] = useState(Array(trophyNb.length).fill(false));
+  const [show, setShow] = useState(Array(10).fill(false));
 
   return (
     <>
