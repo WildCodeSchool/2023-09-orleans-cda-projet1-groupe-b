@@ -12,7 +12,10 @@ export default function Categories() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [gameIndex, setGameIndex] = useState(0);
 
-  const currentGame = games?.results?.[gameIndex] || {};
+  const currentGame =
+    games?.results?.slice(0, 10).sort((a, b) => b.metacritic - a.metacritic)[
+      gameIndex
+    ] || {};
 
   useEffect(() => {
     const controller = new AbortController();
