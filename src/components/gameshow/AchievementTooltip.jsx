@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { usePresence, motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Box({ trophy, index }) {
   const ref = useRef();
