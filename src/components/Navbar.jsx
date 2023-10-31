@@ -184,14 +184,17 @@ function Navbar() {
                 </Dropdown>
                 <Dropdown title="Nintendo" style="opacity-80 hover:opacity-100">
                   {nintendoPlatforms.map((platform, index) => (
-                    <li className="py-[4px] font-pixel text-light" key={index}>
+                    <li className="py-[4px] font-text text-light" key={index}>
                       {platform.name}
                     </li>
                   ))}
                 </Dropdown>
                 <Dropdown title="Retro" style="opacity-80 hover:opacity-100">
                   {retroPlatforms.map((platform, index) => (
-                    <li className="py-[4px] font-text text-light" key={index}>
+                    <li
+                      className="py-[4px] font-pixel text-xxs text-light"
+                      key={index}
+                    >
                       {platform.name}
                     </li>
                   ))}
@@ -220,10 +223,11 @@ function Navbar() {
             </button>
           </li>
           <li className=" w-max gap-3 text-light">
-            {isOpenGenres ? (
+            {isOpenGenres && isLoaded ? (
               <Collapsible genres={genres}>
                 {genres.map((genre, index) => (
                   <Link
+                    to={`/genres/${genre.slug}`}
                     key={index}
                     className="py-[4px] font-text text-light opacity-80 hover:opacity-100"
                   >

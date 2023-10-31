@@ -1,4 +1,4 @@
-export default function HeaderHome({ currentGame }) {
+export default function HeaderGenre({ currentGame }) {
   return (
     <>
       <div className="relative">
@@ -6,7 +6,7 @@ export default function HeaderHome({ currentGame }) {
           <div className="genre-mask z-50 h-[55vw] w-[80vw] bg-dark/60 ">
             <img
               src={currentGame.background_image}
-              alt=""
+              alt={currentGame.name}
               className="h-full w-full object-cover opacity-75 "
             />
           </div>
