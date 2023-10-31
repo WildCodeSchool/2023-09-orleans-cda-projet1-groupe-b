@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import RightBar from './RightBar';
 import RatingBox from './RatingBox';
+// import RatingComments from './RatingComments';
+import Title from '../Title';
 
 // Importation des composants
 import CarouselGameShow from './CarouselGameShow';
@@ -53,7 +55,7 @@ export default function GameShow() {
         }`}
       >
         <h1 className="space-x-40 font-title text-4xl text-light">
-          {isLoaded ? game.name : 'Loading...'}
+          {isLoaded ? game?.name : 'Loading...'}
         </h1>
         <div className="flex flex-col gap-3 md:flex-row">
           <div className="flex-1">
@@ -66,8 +68,12 @@ export default function GameShow() {
                 <GameDesc gameId={gameId} />
               </div>
             )}
-            <div className="pt-40">
+            <div className="mt-1">
+              <div className="pt-40">
+                <Title title="Ratings" />
+              </div>
               <RatingBox game={game} />
+              {/* <RatingComments />   Appel du composant en cours de validation */}
             </div>
           </div>
           <div className="w-full md:w-52 xl:w-64">
