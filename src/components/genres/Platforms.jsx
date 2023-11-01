@@ -1,16 +1,17 @@
 import Carousel from './Carousel';
 import GridCard from './GridCard';
 import { useState, useEffect } from 'react';
-import { fetchGames } from '../../api/api-fetch.js';
+import { fetchGames, fetchPlatformDetails } from '../../api/api-fetch.js';
 import { gamesURL } from '../../api/api-url.js';
 import { useParams } from 'react-router-dom';
 import HeaderGenre from './HeaderGenre';
 
-export default function Categories() {
-  const { slug } = useParams();
+export default function Platforms() {
+  const { id } = useParams();
   const [games, setGames] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [gameIndex, setGameIndex] = useState(0);
+  const [platforms, setPlatforms] = useState([]);
 
   const currentGame =
     games?.results?.slice(0, 10).sort((a, b) => b.metacritic - a.metacritic)[
@@ -26,13 +27,21 @@ export default function Categories() {
       pageId: 1,
       setter: setGames,
       setLoaded: setIsLoaded,
-      queryString: `genres=${slug} `,
+      queryString: `platforms=${id}`,
       signal,
     });
+
+    fetchPlatformDetails({
+      platformId: id,
+      setter: setPlatforms,
+      setLoaded: setIsLoaded,
+      signal,
+    });
+
     return () => {
       controller.abort();
     };
-  }, [slug]);
+  }, [id]);
 
   return (
     <>
@@ -40,8 +49,9 @@ export default function Categories() {
       <section className="z-50 mt-[8rem] w-full px-2 xs:px-5 md:px-16 lg:px-2">
         <div className="flex flex-col ">
           <h1 className="text-start font-title text-7xl text-light">
-            {slug} Game
+            {platforms.name}
           </h1>
+
           <div className="mt-4 h-5 w-28 -skew-x-35 bg-primary"></div>
         </div>
         <div className="mx-auto w-[80%] lg:max-w-[55vw]">
@@ -52,7 +62,7 @@ export default function Categories() {
               gameIndex={gameIndex}
               setGameIndex={setGameIndex}
               currentGame={currentGame}
-              slug={slug}
+              slug={id}
             />
           ) : (
             <p>loading...</p>
