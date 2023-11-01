@@ -8,6 +8,7 @@ import Offers from './components/Offers';
 import GameShow from './components/gameshow/GameShow';
 import Categories from './components/genres/Categories';
 import AboutTheTeam from './components/AboutTheTeam';
+import Platforms from './components/genres/Platforms';
 
 export default createBrowserRouter([
   {
@@ -49,6 +50,10 @@ export default createBrowserRouter([
       {
         path: '/about-the-team',
         element: <AboutTheTeam />,
+      },
+      {
+        path: '/platforms/:id',
+        element: <Platforms />,
       },
     ],
   },
