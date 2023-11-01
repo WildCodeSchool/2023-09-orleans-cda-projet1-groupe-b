@@ -9,14 +9,14 @@ export default function Carousel({ games, gameIndex, setGameIndex }) {
     .sort((a, b) => b.metacritic - a.metacritic);
 
   const previousSlide = useCallback(() => {
-    if (gameIndex === 0) setGameIndex(gamesCarousel.length - 1);
+    if (gameIndex === 0) setGameIndex(gamesCarousel?.length - 1);
     else setGameIndex(gameIndex - 1);
-  }, [gameIndex, gamesCarousel.length, setGameIndex]);
+  }, [gameIndex, gamesCarousel?.length]);
 
   const nextSlide = useCallback(() => {
-    if (gameIndex === gamesCarousel.length - 1) setGameIndex(0);
+    if (gameIndex === gamesCarousel?.length - 1) setGameIndex(0);
     else setGameIndex(gameIndex + 1);
-  }, [gameIndex, gamesCarousel.length, setGameIndex]);
+  }, [gameIndex, gamesCarousel?.length]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -41,14 +41,14 @@ export default function Carousel({ games, gameIndex, setGameIndex }) {
             style={{ transform: `translateX(-${gameIndex * 100}%)` }}
           >
             <div className="flex h-full">
-              {gamesCarousel.map((game, index) => (
+              {gamesCarousel?.map((game, index) => (
                 <CarouselCard game={game} key={index} />
               ))}
             </div>
           </div>
         </div>
         <div className="mt-2 flex justify-center gap-2 px-1">
-          {gamesCarousel.map((game, i) => {
+          {gamesCarousel?.map((game, i) => {
             return (
               <div
                 onClick={() => {

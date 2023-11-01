@@ -12,7 +12,7 @@ export default function CardGame({ game, isLoaded }) {
           <div className="h-2/3 w-full bg-primary">
             {game.background_image === null ? (
               <img
-                src="/public/images/placeholder.webp"
+                src="/images/placeholder.webp"
                 className="h-full w-full object-cover"
               />
             ) : (
