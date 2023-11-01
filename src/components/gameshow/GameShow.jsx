@@ -56,9 +56,13 @@ export default function GameShow() {
       >
         {isLoaded ? (
           <div className="mb-80 mt-40">
-            <h1 className="font-title text-8xl uppercase text-light">
-              {game.name && game.name}
-            </h1>
+            {isLoaded && game.name ? (
+              <h1 className="font-title text-8xl uppercase text-light">
+                {game.name}
+              </h1>
+            ) : (
+              <p>Loading...</p>
+            )}
             <div className="flex justify-center md:justify-start">
               <div className="ml-1 mt-6 h-5 w-28 -skew-x-35 bg-primary"></div>
             </div>
