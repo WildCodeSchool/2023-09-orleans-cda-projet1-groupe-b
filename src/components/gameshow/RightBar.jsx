@@ -44,8 +44,6 @@ export default function RightBar({ gameId }) {
     return websiteArray;
   };
 
-  console.log(dlc);
-
   return (
     <>
       <section className="font-text text-light">
