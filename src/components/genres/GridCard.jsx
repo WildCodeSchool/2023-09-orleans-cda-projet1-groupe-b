@@ -76,24 +76,24 @@ export default function GridCard({ games, isLoaded }) {
           <div className="mt-4 h-5 w-28 -skew-x-35 bg-primary"></div>
         </div>
 
-        <div className="my-10 flex justify-start space-x-5">
+        <div className="mx-auto my-10 flex flex-col space-x-5 sm:flex-row md:flex-row xl:flex-row">
           <p className="my-auto text-xl text-light">Sort by</p>
           <button
-            className="w-40 -skew-x-35 rounded border border-primary text-light hover:bg-primary/50"
+            className="mt-3 w-72 -skew-x-35 rounded border border-primary text-light hover:bg-primary/50 xl:w-44"
             onClick={sortByReleaseDate}
           >
             <p className="skew-x-[35deg]">Release date</p>
           </button>
           <button
-            className="w-40 -skew-x-35 rounded border border-primary text-light hover:bg-primary/50"
+            className="mt-3 w-72 -skew-x-35 rounded border border-primary text-light hover:bg-primary/50 xl:w-44"
             onClick={sortByRating}
           >
             <p className="skew-x-[35deg]">Best rating</p>
           </button>
-          <div className="-skew-x-[35deg] rounded border border-primary hover:bg-primary/50">
+          <div className="mt-3 w-72 -skew-x-[35deg] rounded border border-primary hover:bg-primary/50 xl:w-60">
             <div className="skew-x-[35deg] ps-3">
               <select
-                className="w-44 rounded bg-dark/0 p-2 text-light"
+                className="w-60 rounded bg-dark/0 p-2 text-light xl:w-52"
                 value={selectedPlatform}
                 onChange={(e) => {
                   setSelectedPlatform(e.target.value);
@@ -109,11 +109,11 @@ export default function GridCard({ games, isLoaded }) {
             </div>
           </div>
         </div>
-        <div className="grid gap-x-10 gap-y-10 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-x-10 gap-y-10 md:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-4">
           {sortedGames.slice(0, visible).map((game, index) => (
             <div
               key={index}
-              className="m-auto rounded border border-primary transition-transform hover:scale-110 xl:h-96 xl:w-60"
+              className="m-auto rounded border border-primary transition-transform md:hover:scale-110 xl:h-96 xl:w-72 xl:hover:scale-110"
             >
               <img
                 className="h-60 w-full rounded-t object-cover"
