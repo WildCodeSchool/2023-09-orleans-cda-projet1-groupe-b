@@ -68,7 +68,7 @@ export default function GridCard({ games, isLoaded }) {
   }
   return (
     <>
-      <div className="mx-auto">
+      <div className="z-30 mx-auto">
         <div className="my-10 flex flex-col">
           <h1 className="text-start font-title text-7xl text-light">
             Catalogue
@@ -196,7 +196,7 @@ export default function GridCard({ games, isLoaded }) {
           ))}
         </div>
       </div>
-      <div className="mt-10 flex justify-center">
+      <div className="z-30 mt-10 flex justify-center">
         {visible < totalGames && (
           <button
             className="mb-4 h-10 w-44 -skew-x-[30deg] rounded bg-primary"

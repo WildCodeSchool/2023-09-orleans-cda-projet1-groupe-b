@@ -37,7 +37,7 @@ export default function Categories() {
   return (
     <>
       <HeaderGenre currentGame={currentGame} />
-      <section className="z-50 mt-[8rem] w-full px-2 xs:px-5 md:px-16 lg:px-2">
+      <section className="z-30 mt-[8rem] w-full px-2 xs:px-5 md:px-16 lg:px-2">
         <div className="flex flex-col ">
           <h1 className="text-start font-title text-7xl text-light">
             {slug} Game

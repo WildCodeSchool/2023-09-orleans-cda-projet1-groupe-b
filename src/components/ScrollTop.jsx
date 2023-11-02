@@ -6,7 +6,7 @@ export default function ScrollTop() {
     <>
       <button
         onClick={scrollToTop}
-        className="fixed bottom-0 right-0 z-50 mb-5 me-5 scale-90 rounded bg-primary/20 p-4 text-light transition-all duration-300 ease-in-out hover:scale-100 hover:bg-primary/50"
+        className="fixed z-50 sm:bottom-0 sm:right-0  sm:mb-14 sm:me-5 sm:scale-90 sm:rounded sm:bg-primary/20 sm:p-4 sm:text-light sm:transition-all sm:duration-300 sm:ease-in-out sm:hover:scale-100 sm:hover:bg-primary/50"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
