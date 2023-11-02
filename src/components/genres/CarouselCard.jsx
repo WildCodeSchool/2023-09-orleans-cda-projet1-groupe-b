@@ -129,7 +129,7 @@ export default function CarouselCard({ game }) {
                     game.genres.map((genre) => (
                       <div
                         key={genre.id}
-                        className="text-white skew-x-[-35deg] rounded-[2px] bg-primary/50 px-4 py-1 text-xs"
+                        className="skew-x-[-35deg] rounded-[2px] bg-primary/50 px-4 py-1 text-xs text-white"
                       >
                         <div className="skew-x-[35deg]">{genre.name}</div>
                       </div>
