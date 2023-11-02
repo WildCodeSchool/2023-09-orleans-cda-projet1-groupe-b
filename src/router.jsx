@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import App from './App';
 import Home from './components/home/Home';
 import Recommandations from './components/Recommandations';
@@ -8,6 +8,7 @@ import Offers from './components/Offers';
 import GameShow from './components/gameshow/GameShow';
 import Categories from './components/genres/Categories';
 import AboutTheTeam from './components/AboutTheTeam';
+import Error404 from './components/Error404';
 import Platforms from './components/genres/Platforms';
 
 export default createBrowserRouter([
@@ -50,6 +51,14 @@ export default createBrowserRouter([
       {
         path: '/about-the-team',
         element: <AboutTheTeam />,
+      },
+      {
+        path: '/404',
+        element: <Error404 />,
+      },
+      {
+        path: '*',
+        element: <Navigate to="/404" />,
       },
       {
         path: '/platforms/:id',
