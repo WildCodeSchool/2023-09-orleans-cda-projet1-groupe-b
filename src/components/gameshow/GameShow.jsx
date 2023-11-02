@@ -13,16 +13,19 @@ import GameDesc from './Description';
 import { fetchGameDetails, fetchGameElements } from '../../api/api-fetch';
 
 // Importation des paramètres URL
-import { screenshotsURL } from '../../api/api-url';
+import { screenshotsURL, achievementsURL } from '../../api/api-url';
+import Achievements from './Achievements';
 
 export default function GameShow() {
   const { gameId } = useParams();
   const [screenshots, setScreenshots] = useState([]);
   const [game, setGame] = useState();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [trophies, setTrophies] = useState([]);
   const [vote, setVote] = useState(0);
 
   const screenshotsResults = screenshots.results;
+  const trophiesResults = trophies.results;
 
   useEffect(() => {
     const controller = new AbortController();
@@ -39,6 +42,14 @@ export default function GameShow() {
       parameter: screenshotsURL,
       gameId,
       setter: setScreenshots,
+      setLoaded: setIsLoaded,
+      signal,
+    });
+
+    fetchGameElements({
+      parameter: achievementsURL,
+      gameId,
+      setter: setTrophies,
       setLoaded: setIsLoaded,
       signal,
     });
@@ -82,6 +93,12 @@ export default function GameShow() {
                 />
                 <GameDesc gameId={gameId} />
               </div>
+            )}
+            {isLoaded && (
+              <Achievements
+                trophiesResults={trophiesResults}
+                isLoaded={isLoaded}
+              />
             )}
             <div className="justify-items flex pt-40">
               <RatingBox game={game} vote={vote} />
