@@ -107,4 +107,8 @@
       0 0 1em black,
       0 0 0.2em black;
   }
+
+  .shadow-custom {
+    box-shadow: 0px 0px 10px rgb(156, 63, 232);
+  }
 }

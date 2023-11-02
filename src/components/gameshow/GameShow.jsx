@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import RightBar from './RightBar';
+import HeaderGameShow from './HeaderGameShow';
 import RatingBox from './RatingBox';
-// import RatingComments from './RatingComments';
+import RatingComments from './RatingComments';
 import Title from '../Title';
 
 // Importation des composants
@@ -13,15 +14,19 @@ import GameDesc from './Description';
 import { fetchGameDetails, fetchGameElements } from '../../api/api-fetch';
 
 // Importation des paramètres URL
-import { screenshotsURL } from '../../api/api-url';
+import { screenshotsURL, achievementsURL } from '../../api/api-url';
+import Achievements from './Achievements';
 
 export default function GameShow() {
   const { gameId } = useParams();
   const [screenshots, setScreenshots] = useState([]);
-  const [game, setGame] = useState([]);
+  const [game, setGame] = useState();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [trophies, setTrophies] = useState([]);
+  const [vote, setVote] = useState(0);
 
   const screenshotsResults = screenshots.results;
+  const trophiesResults = trophies.results;
 
   useEffect(() => {
     const controller = new AbortController();
@@ -42,11 +47,20 @@ export default function GameShow() {
       signal,
     });
 
+    fetchGameElements({
+      parameter: achievementsURL,
+      gameId,
+      setter: setTrophies,
+      setLoaded: setIsLoaded,
+      signal,
+    });
+
     return () => controller.abort();
   }, [gameId]);
 
   return (
     <>
+      <HeaderGameShow imageHeader={game} isLoaded={isLoaded} />
       <section
         className={`z-50 w-full px-2 xs:px-5 md:px-16 lg:px-2 ${
           location.pathname !== '/'
@@ -54,9 +68,22 @@ export default function GameShow() {
             : 'lg:w-[75%] xl:w-[82%]'
         }`}
       >
-        <h1 className="space-x-40 font-title text-4xl text-light">
-          {isLoaded ? game?.name : 'Loading...'}
-        </h1>
+        {isLoaded ? (
+          <div className="mb-80 mt-40">
+            {isLoaded && game?.name ? (
+              <h1 className="font-title text-8xl uppercase text-light">
+                {game.name}
+              </h1>
+            ) : (
+              <p>Loading...</p>
+            )}
+            <div className="flex justify-center md:justify-start">
+              <div className="ml-1 mt-6 h-5 w-28 -skew-x-35 bg-primary"></div>
+            </div>
+          </div>
+        ) : (
+          'Loading...'
+        )}
         <div className="flex flex-col gap-3 md:flex-row">
           <div className="flex-1">
             {isLoaded && (
@@ -69,16 +96,24 @@ export default function GameShow() {
               </div>
             )}
             <div className="mt-1">
+              {isLoaded && (
+                <Achievements
+                  trophiesResults={trophiesResults}
+                  isLoaded={isLoaded}
+                />
+              )}
               <div className="pt-40">
                 <Title title="Ratings" />
               </div>
-              <RatingBox game={game} />
-              {/* <RatingComments />   Appel du composant en cours de validation */}
             </div>
           </div>
           <div className="w-full md:w-52 xl:w-64">
             <RightBar gameId={gameId} />
           </div>
+        </div>
+        <div className="flex flex-col gap-8 lg:flex-row">
+          <RatingBox game={game} vote={vote} />
+          <RatingComments game={game} setVote={setVote} />
         </div>
       </section>
     </>
