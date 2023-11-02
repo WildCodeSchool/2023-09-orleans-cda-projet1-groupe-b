@@ -32,8 +32,8 @@
 }
 
 @layer utilities {
-  .perspective-700 {
-    perspective: 700px;
+  .perspective-900 {
+    perspective: 900px;
     perspective-origin: center center;
     transform: rotateY(25deg);
   }
