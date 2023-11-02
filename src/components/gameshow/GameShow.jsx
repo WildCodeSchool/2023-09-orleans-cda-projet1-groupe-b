@@ -70,7 +70,7 @@ export default function GameShow() {
             )}
             <div className="justify-items flex pt-40">
               <RatingBox game={game} vote={vote} />
-              <RatingComments game={game} vote={vote} setVote={setVote} />
+              <RatingComments game={game} setVote={setVote} />
             </div>
           </div>
           <div className="w-full md:w-52 xl:w-64">

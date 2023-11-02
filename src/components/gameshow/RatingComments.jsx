@@ -68,9 +68,6 @@ export default function RatingComments({
     }
 
     setRatingsCount(ratingsCount + 1);
-    setErrorRating(null);
-    setErrorPseudo(null);
-    setErrorComment(null);
     setLocalUserName('');
     setLocalUserComment('');
     setLocalVote(0);
