@@ -18,12 +18,14 @@ export default function RightBar({ gameId }) {
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
+
     fetchGameDetails({
       gameId,
       setter: setGame,
       setLoaded: setIsLoaded,
       signal,
     });
+
     fetchGameElements({
       parameter: dlcURL,
       gameId,
@@ -31,6 +33,7 @@ export default function RightBar({ gameId }) {
       setLoaded: setIsLoaded,
       signal,
     });
+
     return () => controller.abort();
   }, [gameId]);
 
@@ -40,6 +43,8 @@ export default function RightBar({ gameId }) {
     const websiteArray = splitted.split('\n');
     return websiteArray;
   };
+
+  console.log(dlc);
 
   return (
     <>
@@ -196,7 +201,7 @@ export default function RightBar({ gameId }) {
               game.stores && game.stores.length > 0 ? (
                 game.stores.map((st) => (
                   <div key={st.id}>
-                    <Link to="/">
+                    <Link to={st.url}>
                       <div className="flex w-full items-center justify-center rounded bg-[#0D4F61] font-bold text-light transition duration-150 hover:-translate-y-0.5 hover:bg-primary">
                         <div className="flex w-full items-center justify-center gap-2 px-4 py-3 text-center transition hover:translate-x-2 hover:invert">
                           {st.store.name}
