@@ -21,7 +21,7 @@ export default function Achievements({ trophiesResults, isLoaded }) {
                     <div>
                       <div>
                         <motion.button
-                          key={Math.random(index)}
+                          key={trophy.id}
                           className="cursor-default"
                           onHoverStart={() => {
                             const newShow = [...show];
