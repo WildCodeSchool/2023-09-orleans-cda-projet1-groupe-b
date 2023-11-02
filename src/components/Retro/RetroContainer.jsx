@@ -11,7 +11,7 @@ export default function RetroContainer({ genres }) {
   const [screenshots, setScreenshots] = useState();
   const [movies, setMovies] = useState();
   const [hoveringGameId, setHoveringGameId] = useState(null);
-  const [dateInputType, setDateInputType] = useState('none');
+  const [shouldShowRange, setShouldShowRange] = useState(false);
   const [date, setDate] = useState(1988);
   const [dateRange, setDateRange] = useState({ start: 1990, end: 1993 });
 
@@ -28,13 +28,7 @@ export default function RetroContainer({ genres }) {
   };
 
   const handleSelectClick = () => {
-    if (dateInputType === 'none') {
-      setDateInputType('year');
-    } else if (dateInputType === 'year') {
-      setDateInputType('period');
-    } else if (dateInputType === 'period') {
-      setDateInputType('none');
-    }
+    setShouldShowRange(!shouldShowRange);
   };
 
   useEffect(() => {
@@ -42,9 +36,21 @@ export default function RetroContainer({ genres }) {
     const signal = controller.signal;
 
     let queryString;
-    if (dateInputType === 'year') {
+    if (!shouldShowRange) {
+      if (date < 1970 || date > 1999) {
+        return;
+      }
       queryString = `page_size=10&ordering=rating-released.desc&dates=${date}-01-01,${date}-12-31`;
-    } else if (dateInputType === 'period') {
+    } else {
+      if (
+        dateRange.start < 1970 ||
+        dateRange.start > 1999 ||
+        dateRange.end < 1970 ||
+        dateRange.end > 1999 ||
+        dateRange.start > dateRange.end
+      ) {
+        return;
+      }
       queryString = `page_size=10&ordering=rating-released.desc&dates=${dateRange.start}-01-01,${dateRange.end}-12-31`;
     }
 
@@ -62,7 +68,7 @@ export default function RetroContainer({ genres }) {
     });
 
     return () => controller.abort();
-  }, [date, dateRange, dateInputType, dateRange.start, dateRange.end]);
+  }, [date, dateRange, shouldShowRange, dateRange.start, dateRange.end]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -117,7 +123,7 @@ export default function RetroContainer({ genres }) {
                 className="me-7 p-1.5 hover:bg-light hover:text-dark"
                 onClick={handleSelectClick}
               >{`Select >`}</button>
-              {dateInputType === 'year' ? (
+              {!shouldShowRange ? (
                 <div>
                   <label>
                     Year
@@ -132,7 +138,7 @@ export default function RetroContainer({ genres }) {
                     />
                   </label>
                 </div>
-              ) : dateInputType === 'period' ? (
+              ) : (
                 <div className="flex flex-col items-end">
                   <label className="text-xs">
                     Start
@@ -161,7 +167,7 @@ export default function RetroContainer({ genres }) {
                     />
                   </label>
                 </div>
-              ) : null}
+              )}
             </div>
           </div>
           <div className="order-1 h-full w-2/3">

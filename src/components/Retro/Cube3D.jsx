@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-export default function Cube3D({ screenshots, movies }) {
+export default function Cube3D({ screenshots, movies, game }) {
   const navigate = useNavigate();
 
   const handleLogoClick = () => {
@@ -8,12 +8,14 @@ export default function Cube3D({ screenshots, movies }) {
   };
 
   const handleImageClick = () => {
-    navigate('/about-the-team');
+    navigate(`/games/${game.id}`);
   };
 
   const handleFrontClick = () => {
     window.open('https://www.google.com', '_blank');
   };
+
+  // links en priorité
 
   return (
     <div className="flex items-center justify-center pt-5 md:h-[29rem] md:w-[33rem]">
