@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchGameDetails } from '../../api/api-fetch.js';
-import LogoPc from '../logos/LogoPc';
-import LogoPlaystation from '../logos/LogoPlaystation';
-import LogoNintendo from '../logos/LogoNintendo';
-import LogoIos from '../logos/LogoIos';
-import LogoXbox from '../logos/LogoXbox';
+import { Link } from 'react-router-dom';
+import PlatformsList from '../home/PlatformsList';
 
 export default function CarouselCard({ game }) {
   const [description, setDescription] = useState('');
@@ -48,67 +45,9 @@ export default function CarouselCard({ game }) {
               ) : (
                 <p>loading...</p>
               )}
-              {isLoaded ? (
-                <div className="my-5 ms-5 flex flex-row ">
-                  {game.platforms.some(
-                    (platform) => platform.platform.name === 'macOS',
-                  ) && (
-                    <div className="mx-2 w-[1.5rem]">
-                      <LogoIos />
-                    </div>
-                  )}
-
-                  {game.platforms.some(
-                    (platform) => platform.platform.name === 'PC',
-                  ) && (
-                    <div className="mx-2 w-[1.4rem]">
-                      <LogoPc />
-                    </div>
-                  )}
-
-                  {game.platforms.some((platform) =>
-                    [
-                      'Xbox 360',
-                      'Xbox One',
-                      'Xbox Series S/X',
-                      'Xbox',
-                    ].includes(platform.platform.name),
-                  ) && (
-                    <div className="mx-2 w-[1.5rem]">
-                      <LogoXbox />
-                    </div>
-                  )}
-
-                  {game.platforms.some((platform) =>
-                    [
-                      'PlayStation',
-                      'PlayStation 2',
-                      'PlayStation 3',
-                      'PlayStation 4',
-                      'PlayStation 5',
-                    ].includes(platform.platform.name),
-                  ) && (
-                    <div className="mx-2 w-[1.5rem]">
-                      <LogoPlaystation />
-                    </div>
-                  )}
-
-                  {game.platforms.some((platform) =>
-                    [
-                      'Nintendo Switch',
-                      'Nintendo 3DS',
-                      'Nintendo DS',
-                      'Nintendo DSi',
-                    ].includes(platform.platform.name),
-                  ) && (
-                    <div className="mx-2 w-[1.8rem]">
-                      <LogoNintendo />
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <p>Loading...</p>
-              )}
+              <div className="ms-5 mt-5">
+                <PlatformsList game={game} isLoaded={isLoaded} />
+              </div>
             </div>
             <div className="my-5 me-5 flex shrink-0 flex-col items-center justify-center rounded-[10px] border border-primary font-bold text-primary xl:h-[5vw] xl:w-[5vw]">
               <p className="score-size px-3 font-text">score</p>
@@ -157,7 +96,7 @@ export default function CarouselCard({ game }) {
             </div>
             <div className="mr-3 mt-5 flex justify-end">
               <button className="mb-4 me-4 h-10 w-44 -skew-x-[30deg] rounded bg-primary">
-                <p className="skew-x-[30deg]">Showmore</p>
+                <Link to={`/games/${game.slug}`}>Showmore</Link>
               </button>
             </div>
           </div>

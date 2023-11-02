@@ -11,7 +11,7 @@ export default function HeaderHome({ imageHeader, isLoaded }) {
           {isLoaded ? (
             <div className="h-full w-full">
               <img
-                src={imageHeader.background_image}
+                src={imageHeader?.background_image}
                 alt=""
                 className="h-full w-full object-cover"
               />

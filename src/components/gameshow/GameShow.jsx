@@ -69,7 +69,7 @@ export default function GameShow() {
       >
         {isLoaded ? (
           <div className="mb-80 mt-40">
-            {isLoaded && game.name ? (
+            {isLoaded && game?.name ? (
               <h1 className="font-title text-8xl uppercase text-light">
                 {game.name}
               </h1>

@@ -33,7 +33,7 @@ export default function Thumbnails({
   return (
     <>
       <div className="relative flex max-h-[12vw] min-h-full justify-center gap-1 md:max-h-[8vw] lg:max-h-[5vw] xl:h-[15vw] xl:max-h-[6vw]">
-        {imagesThumbnails.map((image, index) => (
+        {imagesThumbnails?.map((image, index) => (
           <div
             key={startIndex + index}
             className={`w-max-full relative mb-2 w-full cursor-pointer bg-dark ${
