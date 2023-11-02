@@ -10,7 +10,7 @@ export default function DlcComponent({ dlc, isLoaded }) {
             {dlc.results.map((d) => (
               <div
                 key={d.id}
-                className="border-black container relative overflow-hidden rounded-lg border opacity-50 transition duration-150 hover:-translate-y-0.5 hover:opacity-100"
+                className="container relative overflow-hidden rounded-lg border border-black opacity-50 transition duration-150 hover:-translate-y-0.5 hover:opacity-100"
               >
                 <img
                   className="z-0 aspect-[16/9] rounded-lg "

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import RightBar from './RightBar';
 import HeaderGameShow from './HeaderGameShow';
 import RatingBox from './RatingBox';
+import RatingComments from './RatingComments';
 
 // Importation des composants
 import CarouselGameShow from './CarouselGameShow';
@@ -17,8 +18,9 @@ import { screenshotsURL } from '../../api/api-url';
 export default function GameShow() {
   const { gameId } = useParams();
   const [screenshots, setScreenshots] = useState([]);
-  const [game, setGame] = useState([]);
+  const [game, setGame] = useState();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [vote, setVote] = useState(0);
 
   const screenshotsResults = screenshots.results;
 
@@ -81,8 +83,9 @@ export default function GameShow() {
                 <GameDesc gameId={gameId} />
               </div>
             )}
-            <div className="pt-40">
-              <RatingBox game={game} />
+            <div className="justify-items flex pt-40">
+              <RatingBox game={game} vote={vote} />
+              <RatingComments game={game} setVote={setVote} />
             </div>
           </div>
           <div className="w-full md:w-52 xl:w-64">
