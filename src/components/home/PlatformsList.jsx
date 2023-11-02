@@ -3,7 +3,7 @@ import PlatformsLogo from './PlatformsLogo';
 export default function PlatformsList({ game, isLoaded }) {
   return (
     <>
-      <ul className="flex items-center gap-1">
+      <ul className="flex items-center gap-2">
         {isLoaded ? (
           game.parent_platforms?.map(({ platform }, platformIndex) => (
             <li key={platformIndex}>

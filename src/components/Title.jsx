@@ -29,7 +29,7 @@ export default function Title({ title, prefix = null, subTitle = null }) {
       animate="visible"
       className="mb-20"
     >
-      <div className="flex gap-4">
+      <div>
         <motion.h1
           variants={childrenVariants}
           className="text-center font-title text-5xl uppercase tracking-wide text-light md:text-left"

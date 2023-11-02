@@ -73,9 +73,9 @@ export default function GameShow() {
         }`}
       >
         {isLoaded ? (
-          <div className="mb-80 mt-40">
+          <div className="mb-80 mt-40 text-center md:text-start">
             {isLoaded && game?.name ? (
-              <h1 className="font-title text-8xl uppercase text-light">
+              <h1 className="font-title text-5xl uppercase text-light xs:text-6xl md:text-8xl">
                 {game.name}
               </h1>
             ) : (
@@ -89,7 +89,7 @@ export default function GameShow() {
           'Loading...'
         )}
         <div className="flex flex-col gap-3 md:flex-row">
-          <div className="flex-1">
+          <div className="mr-2 flex-1">
             {isLoaded && (
               <div>
                 <CarouselGameShow
@@ -99,20 +99,20 @@ export default function GameShow() {
                 <GameDesc gameId={gameId} />
               </div>
             )}
-            <div className="mt-1">
-              {isLoaded && (
-                <Achievements
-                  trophiesResults={trophiesResults}
-                  isLoaded={isLoaded}
-                />
-              )}
-              <div className="pt-40">
-                <Title title="Ratings" />
-              </div>
-            </div>
           </div>
           <div className="w-full md:w-52 xl:w-64">
             <RightBar gameId={gameId} />
+          </div>
+        </div>
+        <div className="mt-20">
+          {isLoaded && (
+            <Achievements
+              trophiesResults={trophiesResults}
+              isLoaded={isLoaded}
+            />
+          )}
+          <div className="mt-20">
+            <Title title="Ratings" />
           </div>
         </div>
         <div className="flex flex-col gap-8 lg:flex-row">

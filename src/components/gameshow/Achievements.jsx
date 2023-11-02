@@ -9,7 +9,7 @@ export default function Achievements({ trophiesResults, isLoaded }) {
 
   return (
     <>
-      <div className="mt-10">
+      <div className="">
         <Title title="Achievements" />
         <div className="-mt-14 w-full">
           <div className="grid grid-cols-5 place-items-center gap-1">
