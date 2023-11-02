@@ -1,4 +1,3 @@
-import Title from '../Title';
 import ProgressBar from './ProgressBar';
 
 export default function RatingBox({ game, vote }) {
@@ -30,44 +29,53 @@ export default function RatingBox({ game, vote }) {
 
   return (
     <>
-      <div className="mt-1">
-        <Title title="Ratings" />
-        <div className="h-fit w-fit rounded-lg border border-solid border-primary bg-gradient-to-l from-primary/30 to-primary/20 p-4 py-2 text-start">
-          <>
-            <p
-              className={`m-3 border-b-2 border-slate-300 px-2 pb-4 text-8xl font-bold text-light`}
-            >
-              {Math.round(averagesNotes * 100) / 100}
-            </p>
-            {vote ? (
-              <span className="px-3 text-3xl text-light">
-                {game.ratings_count + 1} avis
-              </span>
-            ) : (
-              <span className="px-3 text-3xl text-light">
-                {game.ratings_count} avis
-              </span>
-            )}
-            <ul className=" px-3 pb-5 pt-10 text-3xl text-light">
-              <li className="flex items-center gap-2 py-4">
-                4 <img src="/images/star.svg" />
-                <ProgressBar percents={percent5} />
-              </li>
-              <li className="flex items-center gap-2 py-4">
-                3 <img src="/images/star.svg" />
-                <ProgressBar percents={percent4} />
-              </li>
-              <li className="flex items-center gap-2 py-4">
-                2 <img src="/images/star.svg" />
-                <ProgressBar percents={percent3} />
-              </li>
-              <li className="flex items-center gap-2 py-4">
-                1 <img src="/images/star.svg" />
-                <ProgressBar percents={percent1} />
-              </li>
-            </ul>
-          </>
-        </div>
+      <div className="mt-5 w-full rounded-lg border border-solid border-primary bg-gradient-to-l from-primary/30 to-primary/20 px-4 py-2 text-start lg:mt-0 lg:w-1/3">
+        <>
+          <p
+            className={`m-3 border-b-2 border-slate-300 pb-4 text-5xl font-bold text-light`}
+          >
+            {Math.round(averagesNotes * 100) / 100}
+          </p>
+          {vote ? (
+            <span className="px-3 text-lg text-light">
+              {game.ratings_count + 1} avis
+            </span>
+          ) : (
+            <span className="px-3 text-lg text-light">
+              {game.ratings_count} avis
+            </span>
+          )}
+          <ul className=" px-3 pt-5 text-lg text-light">
+            <li className="flex items-center gap-2 py-3">
+              4{' '}
+              <div className="h-7 w-7">
+                <img src="/images/star.svg" />
+              </div>
+              <ProgressBar percents={percent5} />
+            </li>
+            <li className="flex items-center gap-2 py-3">
+              3{' '}
+              <div className="h-7 w-7">
+                <img src="/images/star.svg" />
+              </div>
+              <ProgressBar percents={percent4} />
+            </li>
+            <li className="flex items-center gap-2 py-3">
+              2{' '}
+              <div className="h-7 w-7">
+                <img src="/images/star.svg" />
+              </div>
+              <ProgressBar percents={percent3} />
+            </li>
+            <li className="flex items-center gap-2 py-3">
+              1{' '}
+              <div className="h-7 w-7">
+                <img src="/images/star.svg" />
+              </div>
+              <ProgressBar percents={percent1} />
+            </li>
+          </ul>
+        </>
       </div>
     </>
   );

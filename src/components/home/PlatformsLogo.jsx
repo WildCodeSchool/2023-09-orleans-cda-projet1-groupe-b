@@ -52,7 +52,7 @@ export default function PlatformsLogo({ platformData }) {
 
       {(name.includes('iOS') ||
         name.includes('Apple') ||
-        name.includes('Classic Mac')) && (
+        name.includes('Classic Macintosh')) && (
         <div className="flex h-[1.2rem] w-[1.2rem]">
           <LogoIos />
         </div>
