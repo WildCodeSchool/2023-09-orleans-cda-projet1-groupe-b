@@ -29,7 +29,7 @@ export default function GridCard({ games, isLoaded }) {
           {games.results?.slice(0, visible).map((game, index) => (
             <div
               key={index}
-              className="m-auto rounded border border-primary transition-transform hover:scale-110 xl:h-96 xl:w-60"
+              className="m-auto rounded border border-primary transition-transform md:hover:scale-110 xl:h-96 xl:w-72 xl:hover:scale-110"
             >
               <Link to={`/games/${game.id}`}>
                 <img
