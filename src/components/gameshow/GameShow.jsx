@@ -29,6 +29,10 @@ export default function GameShow() {
   const trophiesResults = trophies.results;
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+  useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
 
