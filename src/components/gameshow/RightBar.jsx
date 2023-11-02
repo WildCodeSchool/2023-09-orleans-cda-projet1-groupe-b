@@ -7,7 +7,7 @@ import storeLogo from './StoreLogo';
 import platformLogo from './PlatformLogo';
 import DlcComponent from './DlcComponent';
 import perc2color from '../../utils/MetascoreColor';
-import nl2br from '/src/utils/TextFormatter';
+import nl2br from '../../utils/TextFormatter';
 
 export default function RightBar({ gameId }) {
   const [game, setGame] = useState([]);
