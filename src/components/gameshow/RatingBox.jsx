@@ -1,5 +1,4 @@
 import ProgressBar from './ProgressBar';
-import Title from '../Title';
 
 export default function RatingBox({ game, vote }) {
   if (!game) return null;
