@@ -15,7 +15,7 @@ export default function AboutTheTeam() {
             <div className="h-40 w-40 overflow-hidden rounded-full">
               <img
                 src="/images/Mike.webp"
-                alt=""
+                alt="Picture of Mike"
                 className="h-full w-full object-cover"
               />
             </div>
@@ -30,7 +30,7 @@ export default function AboutTheTeam() {
             <div className="h-40 w-40 overflow-hidden rounded-full">
               <img
                 src="/images/Melvin.webp"
-                alt=""
+                alt="Picture of Melvin"
                 className="h-full w-full object-cover"
               />
             </div>
@@ -45,7 +45,7 @@ export default function AboutTheTeam() {
             <div className="h-40 w-40 overflow-hidden rounded-full">
               <img
                 src="/images/Cedric.webp"
-                alt=""
+                alt="Picture of Cedric"
                 className="h-full w-full object-cover"
               />
             </div>
@@ -60,7 +60,7 @@ export default function AboutTheTeam() {
             <div className="h-40 w-40 overflow-hidden rounded-full">
               <img
                 src="/images/Herve.webp"
-                alt=""
+                alt="Picture of Hervé"
                 className="h-full w-full object-cover"
               />
             </div>
