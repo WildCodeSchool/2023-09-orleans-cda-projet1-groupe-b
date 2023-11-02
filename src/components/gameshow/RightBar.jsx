@@ -7,6 +7,7 @@ import storeLogo from './StoreLogo';
 import platformLogo from './PlatformLogo';
 import DlcComponent from './DlcComponent';
 import perc2color from '../../utils/MetascoreColor';
+import nl2br from '../../utils/TextFormatter';
 
 export default function RightBar({ gameId }) {
   const [game, setGame] = useState([]);
@@ -33,6 +34,12 @@ export default function RightBar({ gameId }) {
   }, [gameId]);
 
   const metascoreColor = perc2color(parseInt(game.metacritic));
+  const websiteSplitted = (website) => {
+    const splitted = website.replaceAll('http', '\nhttp');
+    const websiteArray = splitted.split('\n');
+    return websiteArray;
+  };
+
   return (
     <>
       <section className="font-text text-light">
@@ -183,11 +190,19 @@ export default function RightBar({ gameId }) {
           <h3 className="text-m mt-3 font-bold">Web site</h3>
           {isLoaded ? (
             game.website && game.website.length > 0 ? (
-              <a href={game.website} target="_blank" rel="noreferrer">
-                <p className="overflow-hidden text-ellipsis text-primary">
-                  {game.website}
-                </p>
-              </a>
+              websiteSplitted(game.website).map((w, key) => (
+                <a
+                  key={key}
+                  className="text-primary transition hover:text-secondary"
+                  href={w}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <p className="... overflow-hidden text-ellipsis">
+                    {nl2br(w)}
+                  </p>
+                </a>
+              ))
             ) : (
               <p className="text-light/80">N/A</p>
             )
@@ -202,11 +217,11 @@ export default function RightBar({ gameId }) {
               game.stores.map((st) => (
                 <div key={st.id}>
                   <button className="my-2 inline-flex w-full items-center justify-center rounded bg-[#0D4F61] text-center font-bold text-light transition duration-150 hover:-translate-y-0.5 hover:bg-primary">
-                    <div className="flex w-full flex-row justify-center px-4 py-3 hover:invert">
+                    <div className="flex w-full flex-row justify-center px-4 py-3 transition hover:translate-x-2 hover:invert">
                       {st.store.name}
                       <img
                         width="25"
-                        className="mx-1.5 text-center"
+                        className="mx-1.5"
                         src={storeLogo(st.store.name)}
                         alt={st.store.name}
                       />

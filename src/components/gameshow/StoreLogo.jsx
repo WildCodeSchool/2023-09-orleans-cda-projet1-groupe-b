@@ -6,6 +6,8 @@ export default function storeLogo(store) {
   const appLogo = '/appstore.png';
   const gogLogo = '/gog.png';
   const epicLogo = '/epic-games.png';
+  const itchLogo = '/itch-io.png';
+  const googlePlayLogo = '/googleplay.png';
 
   switch (store) {
     case 'PlayStation Store':
@@ -24,6 +26,10 @@ export default function storeLogo(store) {
       return gogLogo;
     case 'Epic Games':
       return epicLogo;
+    case 'Google Play':
+      return googlePlayLogo;
+    case 'itch.io':
+      return itchLogo;
 
     default:
       return <p>No store found</p>;
