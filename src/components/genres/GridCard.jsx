@@ -50,7 +50,7 @@ export default function GridCard({ games, isLoaded }) {
       </div>
       <div className="mt-10 flex justify-center">
         <button
-          className="mb-4 h-10 w-44 -skew-x-[30deg] rounded bg-primary "
+          className="mb-4 h-10 w-44 -skew-x-[30deg] rounded bg-primary"
           onClick={showMoreItems}
         >
           Load More
