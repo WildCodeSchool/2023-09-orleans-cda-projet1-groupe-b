@@ -1,7 +1,11 @@
-export default function Top10List({ games, isLoaded }) {
+import { useState } from 'react';
+
+export default function Top10List({ games, isLoaded, setHoveringGameId }) {
+  const [selectedGameId, setSelectedGameId] = useState(null);
+
   return (
     <>
-      <div className="perspective-640 list-none py-4 font-pixel text-xs text-light">
+      <div className="lg:perspective-640 list-none py-5 font-pixel text-xs text-light">
         <table className="table-auto">
           <thead>
             <tr>
@@ -14,10 +18,19 @@ export default function Top10List({ games, isLoaded }) {
             {isLoaded ? (
               games.results &&
               games.results.map((game, index) => (
-                <tr className=" hover:bg-light hover:text-dark" key={index}>
+                <tr
+                  className={`hover:bg-light hover:text-dark ${
+                    selectedGameId === game.id ? 'bg-light text-dark' : ''
+                  }`}
+                  key={index}
+                  onMouseEnter={() => {
+                    setHoveringGameId(game.id);
+                    setSelectedGameId(game.id);
+                  }}
+                >
                   <td className="px-5 py-[7px]">n°{index + 1}</td>
                   <td className="px-2 py-[4px]">{game.name}</td>
-                  <td className="px-10 py-[4px]">{game.genres[0].name}</td>
+                  <td className="px-10 py-[4px]">{game.genres[0]?.name}</td>
                 </tr>
               ))
             ) : (
