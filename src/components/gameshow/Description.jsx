@@ -25,7 +25,7 @@ export default function GameDesc({ gameId }) {
 
   return (
     <>
-      <div className="mt-10">
+      <div className="mt-20">
         {isLoaded ? (
           <Title prefix="À propos de " title={game.name} />
         ) : (
@@ -43,13 +43,13 @@ export default function GameDesc({ gameId }) {
           <p>Loading...</p>
         )}
       </div>
+      <div className="mt-20">
+        <Title title="Configuration requise pour PC" />
+      </div>
       {game.platforms &&
         game.platforms.map((pf, index) =>
           pf.platform.name === 'PC' ? (
             <div key={index} className="mb-32 text-light">
-              <h1 className="mb-4 mt-10 text-4xl font-bold">
-                <Title title="Configuration requise pour PC" />
-              </h1>
               <h3 className="-mt-8 mb-4 whitespace-pre-line font-bold">
                 Configuration minimum
               </h3>
