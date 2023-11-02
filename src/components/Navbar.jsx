@@ -169,45 +169,59 @@ function Navbar() {
                   title="PlayStation"
                   style="opacity-80 hover:opacity-100"
                 >
-                  {playStationPlatforms.map((platform, index) => (
-                    <li className="py-[4px] font-text text-light" key={index}>
-                      {platform.name}
-                    </li>
+                  {playStationPlatforms.map((platform) => (
+                    <Link to={`/platforms/${platform.id}`} key={platform.id}>
+                      <li className="py-[4px] font-text text-light">
+                        {platform.name}
+                      </li>
+                    </Link>
                   ))}
                 </Dropdown>
                 <Dropdown title="Xbox" style="opacity-80 hover:opacity-100">
-                  {xboxPlatforms.map((platform, index) => (
-                    <li className="py-[4px] font-text text-light" key={index}>
-                      {platform.name}
-                    </li>
+                  {xboxPlatforms.map((platform) => (
+                    <Link to={`/platforms/${platform.id}`} key={platform.id}>
+                      <li className="py-[4px] font-text text-light">
+                        {platform.name}
+                      </li>
+                    </Link>
                   ))}
                 </Dropdown>
                 <Dropdown title="Nintendo" style="opacity-80 hover:opacity-100">
-                  {nintendoPlatforms.map((platform, index) => (
-                    <li className="py-[4px] font-text text-light" key={index}>
-                      {platform.name}
-                    </li>
+                  {nintendoPlatforms.map((platform) => (
+                    <Link to={`/platforms/${platform.id}`} key={platform.id}>
+                      <li className="py-[4px] font-text text-light">
+                        {platform.name}
+                      </li>
+                    </Link>
                   ))}
                 </Dropdown>
                 <Dropdown title="Retro" style="opacity-80 hover:opacity-100">
-                  {retroPlatforms.map((platform, index) => (
-                    <li
-                      className="py-[4px] font-pixel text-xxs text-light"
-                      key={index}
-                    >
-                      {platform.name}
-                    </li>
+                  {retroPlatforms.map((platform) => (
+                    <Link to={`/platforms/${platform.id}`} key={platform.id}>
+                      <li className="py-[4px] font-pixel text-xxs text-light">
+                        {platform.name}
+                      </li>
+                    </Link>
                   ))}
                 </Dropdown>
-                <li className="py-[4px] font-text text-light opacity-80 hover:opacity-100">
-                  PC
-                </li>
-                <li className="py-[4px] font-text text-light opacity-80 hover:opacity-100">
-                  Android
-                </li>
-                <li className="py-[4px] font-text text-light opacity-80 hover:opacity-100">
-                  iOS
-                </li>
+
+                <Link to={`/platforms/4`}>
+                  <li className="py-[4px] font-text text-light opacity-80 hover:opacity-100">
+                    PC
+                  </li>
+                </Link>
+
+                <Link to={`/platforms/21`}>
+                  <li className="py-[4px] font-text text-light opacity-80 hover:opacity-100">
+                    Android
+                  </li>
+                </Link>
+
+                <Link to={`/platforms/3`}>
+                  <li className="py-[4px] font-text text-light opacity-80 hover:opacity-100">
+                    iOS
+                  </li>
+                </Link>
               </Collapsible>
             ) : null}
           </li>
