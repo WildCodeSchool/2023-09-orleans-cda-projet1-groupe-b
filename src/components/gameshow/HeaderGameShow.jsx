@@ -12,7 +12,7 @@ export default function HeaderHome({ imageHeader, isLoaded }) {
             <div className="h-full w-full">
               <img
                 src={imageHeader?.background_image}
-                alt=""
+                alt={`Picture of ${imageHeader?.name}`}
                 className="h-full w-full object-cover"
               />
             </div>
