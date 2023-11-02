@@ -86,7 +86,9 @@ export default function GameShow() {
             </div>
           </div>
         ) : (
-          'Loading...'
+          <h1 className="font-title text-5xl uppercase text-light xs:text-6xl md:text-8xl">
+            Loading...
+          </h1>
         )}
         <div className="flex flex-col gap-3 md:flex-row">
           <div className="mr-2 flex-1">

@@ -75,11 +75,9 @@ export default function RightBar({ gameId }) {
                 isLoaded ? (
                   game.platforms && game.platforms.length > 0 ? (
                     game.platforms.map((pf) => (
-                      <>
-                        <div key={pf.platform.id}>
-                          <p className="text-light/80">{pf.platform.name}</p>
-                        </div>
-                      </>
+                      <div key={pf.platform.id}>
+                        <p className="text-light/80">{pf.platform.name}</p>
+                      </div>
                     ))
                   ) : (
                     <p className="text-light/80">N/A</p>
@@ -222,7 +220,7 @@ export default function RightBar({ gameId }) {
 
           <div className="my-6 h-[1px] w-full bg-primary/50" />
           <h3 className="text-m font-bold">
-            Editions and DLC{"'"}s {game.name}
+            {`Editions and DLC's ${game.name}`}
           </h3>
           <DlcComponent dlc={dlc} isLoaded={isLoaded} />
         </div>

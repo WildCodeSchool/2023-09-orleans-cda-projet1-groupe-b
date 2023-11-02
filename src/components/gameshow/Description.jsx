@@ -26,9 +26,14 @@ export default function GameDesc({ gameId }) {
   return (
     <>
       <div className="mt-20">
-        {isLoaded ? <Title prefix="About " title={game.name} /> : 'Loading...'}
         {isLoaded ? (
-          <div className="-mt-8 text-light">
+          <Title prefix="About " title={game.name} />
+        ) : (
+          <p>Loading...</p>
+        )}
+
+        {isLoaded ? (
+          <div className="text-light">
             {descText.length > 500 ? (
               <ReadMore descText={descText} />
             ) : (
@@ -52,13 +57,13 @@ export default function GameDesc({ gameId }) {
               {pf && pf.requirements && pf.requirements.minimum ? (
                 <p>{nl2br(pf.requirements.minimum)}</p>
               ) : (
-                'N/A'
+                <p>N/A</p>
               )}
               <h3 className="mb-4 mt-10 font-bold">Recommended requirements</h3>
               {pf && pf.requirements && pf.requirements.recommended ? (
-                <div>{nl2br(pf.requirements.recommended)}</div>
+                <p>{nl2br(pf.requirements.recommended)}</p>
               ) : (
-                'N/A'
+                <p>N/A</p>
               )}
             </div>
           ) : (
