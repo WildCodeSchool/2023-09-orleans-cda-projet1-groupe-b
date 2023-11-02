@@ -49,7 +49,7 @@ export default function CarouselCard({ game }) {
                 <p>loading...</p>
               )}
               {isLoaded ? (
-                <div className="ms-5 mt-5 flex flex-row ">
+                <div className="my-5 ms-5 flex flex-row ">
                   {game.platforms.some(
                     (platform) => platform.platform.name === 'macOS',
                   ) && (
@@ -110,8 +110,8 @@ export default function CarouselCard({ game }) {
                 <p>Loading...</p>
               )}
             </div>
-            <div className="me-5 mt-5 flex shrink-0 flex-col items-center justify-center rounded-[10px] border border-primary font-bold text-primary xl:h-[5vw] xl:w-[5vw]">
-              <p className="score-size font-text">score</p>
+            <div className="my-5 me-5 flex shrink-0 flex-col items-center justify-center rounded-[10px] border border-primary font-bold text-primary xl:h-[5vw] xl:w-[5vw]">
+              <p className="score-size px-3 font-text">score</p>
               {isLoaded ? (
                 <p className="metascore-size font-black">{game.metacritic}</p>
               ) : (
