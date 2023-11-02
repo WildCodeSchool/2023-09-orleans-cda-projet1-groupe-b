@@ -43,7 +43,7 @@ export default function SearchBar() {
 
   return (
     <>
-      <div className="mx-auto flex h-full w-2/3 items-center justify-center gap-6">
+      <div className="mx-auto flex h-full w-11/12 items-center justify-center gap-6 md:w-2/3">
         <Link to="/">
           <MiniLogo />
         </Link>
