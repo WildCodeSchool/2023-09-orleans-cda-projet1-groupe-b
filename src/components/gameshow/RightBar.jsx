@@ -49,7 +49,7 @@ export default function RightBar({ gameId }) {
                     {game.metacritic}
                   </p>
                 ) : (
-                  <p className="text-white m-3 rounded-lg bg-[#9E9E9E] p-5 text-4xl font-bold">
+                  <p className="m-3 rounded-lg bg-[#9E9E9E] p-5 text-4xl font-bold text-white">
                     N/A
                   </p>
                 )
@@ -102,7 +102,7 @@ export default function RightBar({ gameId }) {
                   <p className="text-light/80">Loading...</p>
                 )}
               </div>
-              <div className="tooltip text-white dark:bg-gray-700 invisible absolute z-10 inline-block rounded-lg bg-tertiary px-3 py-2 text-sm font-medium opacity-0 shadow-sm transition-opacity duration-300"></div>
+              <div className="tooltip invisible absolute z-10 inline-block rounded-lg bg-tertiary px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"></div>
             </Tooltip>
           </div>
           <h3 className="text-m mt-3 font-bold">Genres</h3>
