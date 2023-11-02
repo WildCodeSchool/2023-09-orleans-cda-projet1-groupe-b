@@ -43,7 +43,7 @@ export default function Spinner({ showSpinner }) {
             <svg
               aria-hidden="true"
               role="status"
-              className="text-white mr-3 inline h-4 w-4 animate-spin"
+              className="mr-3 inline h-4 w-4 animate-spin text-white"
               viewBox="0 0 100 101"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"

@@ -8,6 +8,7 @@ import Offers from './components/Offers';
 import GameShow from './components/gameshow/GameShow';
 import Categories from './components/genres/Categories';
 import Search from './components/search/Search';
+import AboutTheTeam from './components/AboutTheTeam';
 import Error404 from './components/Error404';
 import Platforms from './components/genres/Platforms';
 
@@ -49,6 +50,10 @@ export default createBrowserRouter([
       {
         path: '/games',
         element: <Search />,
+      },
+      {
+        path: '/about-the-team',
+        element: <AboutTheTeam />,
       },
       {
         path: '/404',
