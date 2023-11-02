@@ -108,7 +108,7 @@ export default function RetroContainer({ genres }) {
         </div>
         <div className="relative flex h-auto w-full flex-col items-center bg-dark xl:flex-row">
           <div className="xl:perspective-900 xl-pl-5 order-2 mt-10 flex w-11/12 flex-col justify-between pt-10 text-justify text-light sm:ml-5 md:ml-10 xl:order-1 xl:pl-10">
-            <h1 className="xl:perspective-900 text-yellow-200 py-7 font-pixel text-3xl font-bold uppercase">
+            <h1 className="xl:perspective-900 py-7 font-pixel text-3xl font-bold uppercase text-yellow-200">
               High scores
             </h1>
             <Top10List
