@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 import Title from '../Title';
 import CardGame from './CardGame';
-import useGameSearch from './useGameSearch';
+import useGameSearch from '../../hooks/useGameSearch';
 import Spinner from '../Spinner';
 
 const containerVariants = {
