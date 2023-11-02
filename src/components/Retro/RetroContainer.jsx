@@ -28,7 +28,7 @@ export default function RetroContainer({ genres }) {
   };
 
   const handleSelectClick = () => {
-    setShouldShowRange(!shouldShowRange);
+    setShouldShowRange((prev) => !prev);
   };
 
   useEffect(() => {
@@ -56,9 +56,7 @@ export default function RetroContainer({ genres }) {
 
     fetchGames({
       parameter: gamesURL,
-      setter: (games) => {
-        setGames(games);
-      },
+      setter: setGames,
       setLoaded: setIsLoaded,
       signal,
       queryString,
