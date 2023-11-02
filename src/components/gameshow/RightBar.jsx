@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react';
 import ageRating from './AgeRatingLogo';
 import { Tooltip } from 'flowbite-react';
 import storeLogo from './StoreLogo';
-import platformLogo from './PlatformLogo';
 import DlcComponent from './DlcComponent';
 import perc2color from '../../utils/MetascoreColor';
+import PlatformsList from '../home/PlatformsList';
 
 export default function RightBar({ gameId }) {
   const [game, setGame] = useState([]);
@@ -83,24 +83,7 @@ export default function RightBar({ gameId }) {
               className="bg-tertiary/90"
             >
               <div className="flex items-center gap-2 rounded-md border-none py-2 text-sm transition-all duration-200">
-                {isLoaded ? (
-                  game.parent_platforms && game.parent_platforms.length > 0 ? (
-                    game.parent_platforms.map((ppf, index) => (
-                      <div key={index}>
-                        <img
-                          className="mt-1 h-6 object-contain"
-                          key={ppf.platform.id}
-                          src={platformLogo(ppf.platform.slug)}
-                          alt={ppf.platform.slug}
-                        />
-                      </div>
-                    ))
-                  ) : (
-                    <p className="text-light/80">N/A</p>
-                  )
-                ) : (
-                  <p className="text-light/80">Loading...</p>
-                )}
+                <PlatformsList game={game} isLoaded={isLoaded} />
               </div>
               <div className="tooltip invisible absolute z-10 inline-block rounded-lg bg-tertiary px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"></div>
             </Tooltip>

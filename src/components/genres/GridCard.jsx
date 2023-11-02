@@ -1,10 +1,6 @@
 import { useState } from 'react';
-import LogoPc from '../logos/LogoPc';
-import LogoPlaystation from '../logos/LogoPlaystation';
-import LogoNintendo from '../logos/LogoNintendo';
-import LogoIos from '../logos/LogoIos';
-import LogoXbox from '../logos/LogoXbox';
 import { Link } from 'react-router-dom';
+import PlatformsList from '../home/PlatformsList';
 
 export default function GridCard({ games, isLoaded }) {
   const [visible, setVisible] = useState(12);
@@ -36,69 +32,8 @@ export default function GridCard({ games, isLoaded }) {
                   className="h-60 w-full rounded-t object-cover"
                   src={game.background_image}
                 />
-                <div className="flex justify-between text-center">
-                  {isLoaded ? (
-                    <div className="ms-2 mt-2 flex flex-row justify-between">
-                      {game.platforms.some(
-                        (platform) => platform.platform.name === 'macOS',
-                      ) && (
-                        <div className="mx-1 w-[1.5rem]">
-                          <LogoIos />
-                        </div>
-                      )}
-
-                      {game.platforms.some(
-                        (platform) => platform.platform.name === 'PC',
-                      ) && (
-                        <div className="mx-1 w-[1.4rem]">
-                          <LogoPc />
-                        </div>
-                      )}
-
-                      {game.platforms.some((platform) =>
-                        [
-                          'Xbox 360',
-                          'Xbox One',
-                          'Xbox Series S/X',
-                          'Xbox',
-                        ].includes(platform.platform.name),
-                      ) && (
-                        <div className="mx-1 w-[1.5rem]">
-                          <LogoXbox />
-                        </div>
-                      )}
-
-                      {game.platforms.some((platform) =>
-                        [
-                          'PlayStation',
-                          'PlayStation 2',
-                          'PlayStation 3',
-                          'PlayStation 4',
-                          'PlayStation 5',
-                        ].includes(platform.platform.name),
-                      ) && (
-                        <div className="mx-1 w-[1.5rem]">
-                          <LogoPlaystation />
-                        </div>
-                      )}
-
-                      {game.platforms.some((platform) =>
-                        [
-                          'Nintendo Switch',
-                          'Nintendo 3DS',
-                          'Nintendo DS',
-                          'Nintendo DSi',
-                        ].includes(platform.platform.name),
-                      ) && (
-                        <div className="mx-1 w-[1.8rem]">
-                          <LogoNintendo />
-                        </div>
-                      )}
-                    </div>
-                  ) : (
-                    <p>Loading...</p>
-                  )}
-
+                <div className="ms-2 flex justify-between text-center">
+                  <PlatformsList game={game} isLoaded={isLoaded} />
                   <p className="mx-3 my-2 h-7 w-10 rounded border-2 border-primary font-bold text-primary">
                     {game.metacritic}
                   </p>
