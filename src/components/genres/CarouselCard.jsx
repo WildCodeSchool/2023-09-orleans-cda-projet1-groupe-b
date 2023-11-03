@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { fetchGameDetails } from '../../api/api-fetch.js';
-import { Link } from 'react-router-dom';
 import PlatformsList from '../home/PlatformsList';
 import Button from '../Button';
 
