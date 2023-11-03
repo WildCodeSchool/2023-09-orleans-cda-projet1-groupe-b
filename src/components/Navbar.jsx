@@ -84,7 +84,7 @@ function Navbar() {
 
   return (
     <>
-      <div className="sticky top-20 z-10 p-5">
+      <div className="sticky top-10 z-10 p-5">
         <ul>
           <li className="my-5 pb-3">
             <Link className="flex items-center gap-3" to="/">
@@ -105,41 +105,6 @@ function Navbar() {
               </span>
             </Link>
           </li>
-          <li>
-            <Link
-              className="mb-2 flex items-center gap-3 opacity-80 hover:opacity-100"
-              to="/recommandations"
-            >
-              <svg
-                width="25"
-                height="25"
-                viewBox="0 0 25 25"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12.5 2.36111C18.0556 2.36111 22.6389 6.94444 22.6389 12.5C22.6389 18.0556 18.0556 22.6389 12.5 22.6389C6.94444 22.6389 2.36111 18.1944 2.36111 12.5C2.36111 6.80556 6.94444 2.36111 12.5 2.36111ZM9.72222 0C4.30556 0 0 4.30556 0 9.72222V15.2778C0 20.6944 4.30556 25 9.72222 25H15.2778C20.6944 25 25 20.6944 25 15.2778V9.72222C25 4.30556 20.6944 0 15.2778 0H9.72222Z"
-                  fill="white"
-                />
-                <path
-                  d="M15.9721 17.6389L12.4999 15.8333L9.02767 17.5L9.58323 13.75L6.94434 10.9722L10.6943 10.2778L12.4999 6.80554L14.3054 10.2778L18.1943 10.9722L15.4166 13.75L15.9721 17.6389Z"
-                  fill="white"
-                />
-              </svg>
-              <span className="font-bold text-light">Recommandations</span>
-            </Link>
-          </li>
-          <ul className=" mb-5 pl-[38px] text-light">
-            <li className="py-[4px] opacity-80 hover:opacity-100">
-              <Link to="/recommandations/news">News</Link>
-            </li>
-            <li className="py-[4px] opacity-80 hover:opacity-100">
-              <Link to="/recommandations/bestsellers">BestSellers</Link>
-            </li>
-            <li className="py-[4px] opacity-80 hover:opacity-100">
-              <Link to="/recommandations/offers">Offers</Link>
-            </li>
-          </ul>
           <li>
             <button
               className="flex gap-3 font-text"
