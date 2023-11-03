@@ -1,8 +1,8 @@
 export default function ageRating(rating) {
-  const pegi18 = '/196px-PEGI_18.svg.png';
-  const pegi16 = '/197px-PEGI_16.svg.png';
-  const pegi12 = '/197px-PEGI_12.svg.png';
-  const pegi3 = '/197px-PEGI_3.svg.png';
+  const pegi18 = '/pegi-18.png';
+  const pegi16 = '/pegi-16.png';
+  const pegi12 = '/pegi-12.png';
+  const pegi3 = '/pegi-3.png';
 
   switch (rating) {
     case 'Mature' || 'Adult':

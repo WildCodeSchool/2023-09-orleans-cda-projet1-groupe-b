@@ -195,7 +195,7 @@ function Navbar() {
               className="flex gap-3 font-text"
               onClick={handleClickCollapseGenres}
             >
-              <img src="/images/drop_arrow.svg"></img>
+              <img src="/images/drop-arrow.svg"></img>
               <span className="font-bold text-light opacity-80 hover:opacity-100">
                 Genres
               </span>

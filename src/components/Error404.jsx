@@ -10,7 +10,7 @@ export default function Error404() {
         </span>
       </div>
       <div className="flex justify-center">
-        <img className="w-52" src="/link404.png" alt="404" />
+        <img className="w-52" src="/link-404.png" alt="404" />
       </div>
     </div>
   );
