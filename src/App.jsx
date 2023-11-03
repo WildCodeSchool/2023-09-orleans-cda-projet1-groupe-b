@@ -16,7 +16,7 @@ export default function App() {
         <SearchBar />
       </section>
       <main className="relative flex flex-row flex-nowrap pb-20">
-        <nav className={`sticky z-10 hidden lg:block lg:w-[25%] xl:w-[18%]`}>
+        <nav className={`sticky z-[90] hidden lg:block lg:w-[25%] xl:w-[18%]`}>
           <Navbar />
         </nav>
         <Outlet />
