@@ -6,7 +6,7 @@ import News from './components/News';
 import BestSellers from './components/BestSellers';
 import Offers from './components/Offers';
 import GameShow from './components/gameshow/GameShow';
-import Categories from './components/genres/Categories';
+import Genres from './components/genres/Genres';
 import Search from './components/search/Search';
 import AboutTheTeam from './components/AboutTheTeam';
 import Error404 from './components/Error404';
@@ -46,7 +46,7 @@ export default createBrowserRouter(
         },
         {
           path: '/genres/:slug',
-          element: <Categories />,
+          element: <Genres />,
         },
         {
           path: '/games',
