@@ -11,12 +11,12 @@ export default function Carousel({ games, gameIndex, setGameIndex }) {
   const previousSlide = useCallback(() => {
     if (gameIndex === 0) setGameIndex(gamesCarousel?.length - 1);
     else setGameIndex(gameIndex - 1);
-  }, [gameIndex, gamesCarousel?.length]);
+  }, [gameIndex, gamesCarousel?.length, setGameIndex]);
 
   const nextSlide = useCallback(() => {
     if (gameIndex === gamesCarousel?.length - 1) setGameIndex(0);
     else setGameIndex(gameIndex + 1);
-  }, [gameIndex, gamesCarousel?.length]);
+  }, [gameIndex, gamesCarousel?.length, setGameIndex]);
 
   useEffect(() => {
     const interval = setInterval(() => {

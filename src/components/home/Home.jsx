@@ -4,7 +4,6 @@ import { useLocation } from 'react-router-dom';
 import { fetchCategoryDetails } from '../../api/api-fetch';
 
 import Logo from '../Logo';
-import Button from '../Button';
 import HeaderHome from './HeaderHome';
 import Unavoidable from './Unavoidable';
 import HomeNewGames from './HomeNewGames';
@@ -95,12 +94,6 @@ export default function Home() {
               platforms, your go-to source for exploring a world rich in virtual
               entertainment.
             </motion.p>
-            <motion.div
-              className="mt-20 flex justify-center md:ml-5 md:justify-start"
-              variants={childVariants}
-            >
-              <Button str="Show all games" />
-            </motion.div>
           </motion.div>
         </div>
         <div>

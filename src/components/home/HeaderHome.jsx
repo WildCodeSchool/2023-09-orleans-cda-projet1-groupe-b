@@ -51,7 +51,7 @@ export default function HeaderHome({ imageHeader, isLoaded }) {
             {/* Affichage des images si au dessus de 768px */}
             <img
               src="/images/mario.webp"
-              alt=""
+              alt="Picture of Mario"
               className="h-full w-full object-cover"
             />
           </motion.div>
@@ -62,7 +62,7 @@ export default function HeaderHome({ imageHeader, isLoaded }) {
           >
             <img
               src="/images/masterchief.webp"
-              alt=""
+              alt="Picture of Master Chief"
               className="h-full w-full object-cover"
             />
           </motion.div>
@@ -73,7 +73,7 @@ export default function HeaderHome({ imageHeader, isLoaded }) {
           >
             <img
               src="/images/kratos.webp"
-              alt=""
+              alt="Picture of Kratos"
               className="h-full w-full object-cover"
             />
           </motion.div>
@@ -84,7 +84,7 @@ export default function HeaderHome({ imageHeader, isLoaded }) {
           >
             <img
               src="/images/jinx.webp"
-              alt=""
+              alt="Picture of Jinx"
               className="h-full w-full object-cover"
             />
           </motion.div>
@@ -93,7 +93,7 @@ export default function HeaderHome({ imageHeader, isLoaded }) {
             <div className="block md:hidden">
               <img
                 src={imageHeader.image_background}
-                alt=""
+                alt={`Picture of ${imageHeader?.name}`}
                 className="h-full w-full object-cover"
               />
             </div>
