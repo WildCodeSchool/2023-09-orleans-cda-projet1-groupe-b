@@ -30,9 +30,9 @@ export default function ProgressBar({
       animate="animate"
       exit="enter"
       variants={variants}
-      className="pl-3"
+      className="flex-grow pl-3"
     >
-      <motion.div className="z-50 h-4 w-[350px] -skew-x-35 rounded bg-tertiary/50">
+      <motion.div className="z-50 h-4 w-full -skew-x-35 rounded bg-tertiary/50">
         <motion.div className="h-full rounded bg-primary" variants={variants} />
       </motion.div>
     </motion.div>

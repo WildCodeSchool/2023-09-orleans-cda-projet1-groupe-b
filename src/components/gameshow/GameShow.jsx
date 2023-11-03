@@ -4,6 +4,7 @@ import RightBar from './RightBar';
 import HeaderGameShow from './HeaderGameShow';
 import RatingBox from './RatingBox';
 import RatingComments from './RatingComments';
+import Title from '../Title';
 
 // Importation des composants
 import CarouselGameShow from './CarouselGameShow';
@@ -94,20 +95,25 @@ export default function GameShow() {
                 <GameDesc gameId={gameId} />
               </div>
             )}
-            {isLoaded && (
-              <Achievements
-                trophiesResults={trophiesResults}
-                isLoaded={isLoaded}
-              />
-            )}
-            <div className="justify-items flex pt-40">
-              <RatingBox game={game} vote={vote} />
-              <RatingComments game={game} setVote={setVote} />
+            <div className="mt-1">
+              {isLoaded && (
+                <Achievements
+                  trophiesResults={trophiesResults}
+                  isLoaded={isLoaded}
+                />
+              )}
+              <div className="pt-40">
+                <Title title="Ratings" />
+              </div>
             </div>
           </div>
           <div className="w-full md:w-52 xl:w-64">
             <RightBar gameId={gameId} />
           </div>
+        </div>
+        <div className="flex flex-col gap-8 lg:flex-row">
+          <RatingBox game={game} vote={vote} />
+          <RatingComments game={game} setVote={setVote} />
         </div>
       </section>
     </>

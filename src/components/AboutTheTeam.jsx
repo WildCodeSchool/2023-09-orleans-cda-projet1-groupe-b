@@ -50,7 +50,7 @@ export default function AboutTheTeam() {
               />
             </div>
             <h2 className="text-center font-title text-xl text-light">
-              Cédric <span className="block uppercase">Marie</span>
+              Cédrick <span className="block uppercase">Marie</span>
             </h2>
             <Link to="https://www.linkedin.com/in/c%C3%A9drick-marie/">
               <LogoLinkedin />
