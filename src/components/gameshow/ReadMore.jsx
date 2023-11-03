@@ -6,7 +6,7 @@ export default function ReadMore({ descText }) {
     setIsReadMore(!isReadMore);
   };
   return (
-    <p className="text">
+    <div className="text">
       {isReadMore ? descText.slice(0, 500) + '...' : descText}
       <span onClick={toggleReadMore} className="read-or-hide">
         {isReadMore ? (
@@ -25,6 +25,6 @@ export default function ReadMore({ descText }) {
           </>
         )}
       </span>
-    </p>
+    </div>
   );
 }

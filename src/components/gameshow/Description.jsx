@@ -27,12 +27,13 @@ export default function GameDesc({ gameId }) {
     <>
       <div className="mt-20">
         {isLoaded ? (
-          <Title prefix="À propos de " title={game.name} />
+          <Title prefix="About " title={game.name} />
         ) : (
-          'Loading...'
+          <p>Loading...</p>
         )}
+
         {isLoaded ? (
-          <div className="-mt-8 text-light">
+          <div className="text-light">
             {descText.length > 500 ? (
               <ReadMore descText={descText} />
             ) : (
@@ -44,27 +45,25 @@ export default function GameDesc({ gameId }) {
         )}
       </div>
       <div className="mt-20">
-        <Title title="Configuration requise pour PC" />
+        <Title title="Pc system requirements" />
       </div>
       {game.platforms &&
         game.platforms.map((pf, index) =>
           pf.platform.name === 'PC' ? (
-            <div key={index} className="mb-32 text-light">
+            <div key={index} className="text-light">
               <h3 className="-mt-8 mb-4 whitespace-pre-line font-bold">
-                Configuration minimum
+                Minimum requirements
               </h3>
               {pf && pf.requirements && pf.requirements.minimum ? (
                 <p>{nl2br(pf.requirements.minimum)}</p>
               ) : (
-                'N/A'
+                <p>N/A</p>
               )}
-              <h3 className="mb-4 mt-10 font-bold">
-                Configuration recommandée
-              </h3>
+              <h3 className="mb-4 mt-10 font-bold">Recommended requirements</h3>
               {pf && pf.requirements && pf.requirements.recommended ? (
-                <div>{nl2br(pf.requirements.recommended)}</div>
+                <p>{nl2br(pf.requirements.recommended)}</p>
               ) : (
-                'N/A'
+                <p>N/A</p>
               )}
             </div>
           ) : (
