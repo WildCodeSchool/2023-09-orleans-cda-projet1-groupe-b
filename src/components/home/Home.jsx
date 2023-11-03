@@ -95,12 +95,6 @@ export default function Home() {
               platforms, your go-to source for exploring a world rich in virtual
               entertainment.
             </motion.p>
-            <motion.div
-              className="mt-20 flex justify-center md:ml-5 md:justify-start"
-              variants={childVariants}
-            >
-              <Button str="Show all games" />
-            </motion.div>
           </motion.div>
         </div>
         <div>
