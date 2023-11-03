@@ -32,7 +32,7 @@ export default function Title({ title, prefix = null, subTitle = null }) {
       <div>
         <motion.h1
           variants={childrenVariants}
-          className="text-center font-title text-5xl uppercase tracking-wide text-light md:text-left"
+          className="flex flex-col gap-4 text-center font-title text-5xl uppercase tracking-wide text-light md:flex-row md:text-left md:text-start"
           whileInView="visible"
           initial="hidden"
           custom={0}
@@ -45,26 +45,26 @@ export default function Title({ title, prefix = null, subTitle = null }) {
             ''
           )}
           {title}
+          <motion.span
+            className="text-font pt-0.5 text-center font-pixel text-[40px]/10 text-secondary"
+            viewport={{ once: true }}
+            initial={{ opacity: 0, scale: -100 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 1.8,
+              delay: 0.2,
+              ease: [0, 0.71, 0.2, 1.01],
+              scale: {
+                type: 'spring',
+                damping: 6,
+                stiffness: 15,
+                restDelta: 0.001,
+              },
+            }}
+          >
+            {subTitle}
+          </motion.span>
         </motion.h1>
-        <motion.div
-          className="text-font pt-0.5 font-pixel text-[40px]/10 text-secondary"
-          viewport={{ once: true }}
-          initial={{ opacity: 0, scale: -100 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{
-            duration: 1.8,
-            delay: 0.2,
-            ease: [0, 0.71, 0.2, 1.01],
-            scale: {
-              type: 'spring',
-              damping: 6,
-              stiffness: 15,
-              restDelta: 0.001,
-            },
-          }}
-        >
-          {subTitle}
-        </motion.div>
       </div>
       <motion.div
         className="flex justify-center md:justify-start"
