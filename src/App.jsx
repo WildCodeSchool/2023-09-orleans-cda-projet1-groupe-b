@@ -3,7 +3,6 @@ import Navbar from './components/Navbar';
 import ScrollTop from './components/ScrollTop';
 import Footer from './components/Footer';
 import SearchBar from './components/search/SearchBar';
-import './main.css';
 
 export default function App() {
   const location = useLocation();

@@ -119,12 +119,17 @@ export default function Unavoidable() {
   });
 
   // Fonction pour ajouter des valeurs personnalisées pour l'animation au scroll avec le useScroll et useTranform
-  const TransformX = (val) =>
-    useTransform(scrollYProgress, [0, 1], [val, 0], {
-      transition: {
-        type: 'spring',
-      },
-    });
+  const transformX1 = useTransform(scrollYProgress, [0, 1], [-300, 0], {
+    transition: {
+      type: 'spring',
+    },
+  });
+
+  const transformX2 = useTransform(scrollYProgress, [0, 1], [300, 0], {
+    transition: {
+      type: 'spring',
+    },
+  });
 
   return (
     <>
@@ -140,9 +145,9 @@ export default function Unavoidable() {
           <Title title="The unavoidable" />
         </div>
         <div className="relative z-20 ml-auto flex flex-col rounded-[3px] object-left-top lg:mr-5 lg:flex-row">
-          {/* Conteneur image qui utilise la fonction TransformX pour déclencher une animation au scroll venant de la gauche */}
+          {/* Conteneur image qui utilise la fonction transformX pour déclencher une animation au scroll venant de la gauche */}
           <motion.div
-            style={{ x: TransformX(-300), opacity: scrollYProgress }}
+            style={{ x: transformX1, opacity: scrollYProgress }}
             className="top-[-50px] z-20 mb-1 h-[70vw] sm:h-[60vw] md:absolute md:h-full md:w-[45%]"
           >
             <div className="relative min-h-full min-w-full overflow-hidden rounded-[3px] shadow-xl md:rounded-br-[50px] md:rounded-tl-[50px]">
@@ -167,9 +172,9 @@ export default function Unavoidable() {
             </div>
           </motion.div>
 
-          {/* Conteneur image qui utilise la fonction TransformX pour déclencher une animation au scroll venant de la droite */}
+          {/* Conteneur image qui utilise la fonction transformX pour déclencher une animation au scroll venant de la droite */}
           <motion.div
-            style={{ x: TransformX(300), opacity: scrollYProgress }}
+            style={{ x: transformX2, opacity: scrollYProgress }}
             className="z-10 rounded-[3px] bg-gradient-to-l from-primary/20 to-primary/10 p-5 md:ml-auto md:w-[95%]"
           >
             <div className="my-10 ml-auto flex flex-col justify-between px-5 md:w-[55%]">
