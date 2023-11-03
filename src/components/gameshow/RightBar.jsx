@@ -199,7 +199,11 @@ export default function RightBar({ gameId }) {
               game.stores && game.stores.length > 0 ? (
                 game.stores.map((st) => (
                   <div key={st.id}>
-                    <Link to={st.url}>
+                    <Link
+                      rel="noopener noreferrer"
+                      to={st.url ? st.url : 'http://www.duckduckgo.com/'}
+                      target="_blank"
+                    >
                       <div className="flex w-full items-center justify-center rounded bg-[#0D4F61] font-bold text-light transition duration-150 hover:-translate-y-0.5 hover:bg-primary">
                         <div className="flex w-full items-center justify-center gap-2 px-4 py-3 text-center transition hover:translate-x-2 hover:invert">
                           {st.store.name}
