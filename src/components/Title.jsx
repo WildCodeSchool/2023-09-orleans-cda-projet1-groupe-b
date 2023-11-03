@@ -32,17 +32,15 @@ export default function Title({ title, prefix = null, subTitle = null }) {
       <div>
         <motion.h1
           variants={childrenVariants}
-          className="flex flex-col gap-4 text-center font-title text-5xl uppercase tracking-wide text-light md:flex-row md:text-left md:text-start"
+          className="flex flex-col gap-4 text-center font-title text-5xl uppercase tracking-wide text-light md:text-left xl:flex-row"
           whileInView="visible"
           initial="hidden"
           custom={0}
         >
-          {prefix ? (
-            <span className="mb-4 mt-10 text-5xl font-bold text-light">
+          {prefix && (
+            <span className="mb-4 mt-10 inline text-5xl font-bold text-light md:mt-0">
               {prefix}
             </span>
-          ) : (
-            ''
           )}
           {title}
           <motion.span
