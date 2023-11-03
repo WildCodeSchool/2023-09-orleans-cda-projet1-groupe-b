@@ -17,7 +17,7 @@ export default function Error404() {
       <div className="flex justify-center">
         <img
           className="w-52"
-          src={`${import.meta.env.BASE_URL}link404.png`}
+          src={`${import.meta.env.BASE_URL}link-404.png`}
           alt="404"
         />
       </div>
