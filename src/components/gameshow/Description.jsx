@@ -54,7 +54,7 @@ export default function GameDesc({ gameId }) {
                 Configuration minimum
               </h3>
               {pf && pf.requirements && pf.requirements.minimum ? (
-                <p>{nl2br(pf.requirements.minimum)}</p>
+                <div>{nl2br(pf.requirements.minimum)}</div>
               ) : (
                 'N/A'
               )}

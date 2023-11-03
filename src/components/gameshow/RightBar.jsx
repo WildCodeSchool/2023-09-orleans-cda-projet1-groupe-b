@@ -74,11 +74,9 @@ export default function RightBar({ gameId }) {
                 isLoaded ? (
                   game.platforms && game.platforms.length > 0 ? (
                     game.platforms.map((pf) => (
-                      <>
-                        <div key={pf.platform.id}>
-                          <p className="text-light/80">{pf.platform.name}</p>
-                        </div>
-                      </>
+                      <div key={pf.platform.id}>
+                        <p className="text-light/80">{pf.platform.name}</p>
+                      </div>
                     ))
                   ) : (
                     <p className="text-light/80">N/A</p>
@@ -181,9 +179,9 @@ export default function RightBar({ gameId }) {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <p className="... overflow-hidden text-ellipsis">
+                  <div className="... overflow-hidden text-ellipsis">
                     {nl2br(w)}
-                  </p>
+                  </div>
                 </a>
               ))
             ) : (
