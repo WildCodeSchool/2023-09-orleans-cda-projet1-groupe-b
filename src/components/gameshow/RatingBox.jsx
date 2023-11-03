@@ -49,28 +49,28 @@ export default function RatingBox({ game, vote }) {
             <li className="flex items-center gap-2 py-3">
               4{' '}
               <div className="h-7 w-7">
-                <img src="/images/star.svg" />
+                <img src={`${import.meta.env.BASE_URL}images/star.svg`} />
               </div>
               <ProgressBar percents={percent5} />
             </li>
             <li className="flex items-center gap-2 py-3">
               3{' '}
               <div className="h-7 w-7">
-                <img src="/images/star.svg" />
+                <img src={`${import.meta.env.BASE_URL}images/star.svg`} />
               </div>
               <ProgressBar percents={percent4} />
             </li>
             <li className="flex items-center gap-2 py-3">
               2{' '}
               <div className="h-7 w-7">
-                <img src="/images/star.svg" />
+                <img src={`${import.meta.env.BASE_URL}images/star.svg`} />
               </div>
               <ProgressBar percents={percent3} />
             </li>
             <li className="flex items-center gap-2 py-3">
               1{' '}
               <div className="h-7 w-7">
-                <img src="/images/star.svg" />
+                <img src={`${import.meta.env.BASE_URL}images/star.svg`} />
               </div>
               <ProgressBar percents={percent1} />
             </li>

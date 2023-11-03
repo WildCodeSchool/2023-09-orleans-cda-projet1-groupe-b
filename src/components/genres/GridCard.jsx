@@ -68,7 +68,7 @@ export default function GridCard({ games, isLoaded }) {
   return (
     <>
       <div className="z-30 mx-auto">
-        <div className="flex flex-col">
+        <div className="mt-20 flex flex-col">
           <Title title="Catalogue" />
         </div>
         <div className="mx-auto mb-10 flex flex-col space-x-5 sm:flex-row md:flex-row xl:flex-row">

@@ -14,7 +14,7 @@ export default function AboutTheTeam() {
           <div className="flex flex-col items-center justify-center gap-4">
             <div className="h-40 w-40 overflow-hidden rounded-full">
               <img
-                src="/images/Mike.webp"
+                src={`${import.meta.env.BASE_URL}images/Mike.webp`}
                 alt="Picture of Mike"
                 className="h-full w-full object-cover"
               />
@@ -29,7 +29,7 @@ export default function AboutTheTeam() {
           <div className="flex flex-col items-center justify-center gap-4">
             <div className="h-40 w-40 overflow-hidden rounded-full">
               <img
-                src="/images/melvin.webp"
+                src={`${import.meta.env.BASE_URL}images/melvin.webp`}
                 alt="Picture of Melvin"
                 className="h-full w-full object-cover"
               />
@@ -44,8 +44,8 @@ export default function AboutTheTeam() {
           <div className="flex flex-col items-center justify-center gap-4">
             <div className="h-40 w-40 overflow-hidden rounded-full">
               <img
-                src="/images/cedrick.webp"
-                alt="Picture of Cedrick"
+                src={`${import.meta.env.BASE_URL}images/cedrick.webp`}
+                alt="Picture of Cédrick"
                 className="h-full w-full object-cover"
               />
             </div>
@@ -59,7 +59,7 @@ export default function AboutTheTeam() {
           <div className="flex flex-col items-center justify-center gap-4">
             <div className="h-40 w-40 overflow-hidden rounded-full">
               <img
-                src="/images/herve.webp"
+                src={`${import.meta.env.BASE_URL}images/herve.webp`}
                 alt="Picture of Hervé"
                 className="h-full w-full object-cover"
               />

@@ -50,7 +50,7 @@ export default function HeaderHome({ imageHeader, isLoaded }) {
           >
             {/* Affichage des images si au dessus de 768px */}
             <img
-              src="/images/mario.webp"
+              src={`${import.meta.env.BASE_URL}images/mario.webp`}
               alt="Picture of Mario"
               className="h-full w-full object-cover"
             />
@@ -61,7 +61,7 @@ export default function HeaderHome({ imageHeader, isLoaded }) {
             custom={200}
           >
             <img
-              src="/images/masterchief.webp"
+              src={`${import.meta.env.BASE_URL}images/masterchief.webp`}
               alt="Picture of Master Chief"
               className="h-full w-full object-cover"
             />
@@ -72,7 +72,7 @@ export default function HeaderHome({ imageHeader, isLoaded }) {
             custom={-200}
           >
             <img
-              src="/images/kratos.webp"
+              src={`${import.meta.env.BASE_URL}images/kratos.webp`}
               alt="Picture of Kratos"
               className="h-full w-full object-cover"
             />
@@ -83,7 +83,7 @@ export default function HeaderHome({ imageHeader, isLoaded }) {
             custom={200}
           >
             <img
-              src="/images/jinx.webp"
+              src={`${import.meta.env.BASE_URL}images/jinx.webp`}
               alt="Picture of Jinx"
               className="h-full w-full object-cover"
             />

@@ -6,11 +6,20 @@ export default function Error404() {
           Error 404 - The page wasn{"'"}t found
         </h1>
         <span>
-          <img width="30" className="mx-3" src="/sad.png" alt="sad" />
+          <img
+            width="30"
+            className="mx-3"
+            src={`${import.meta.env.BASE_URL}sad.png`}
+            alt="sad"
+          />
         </span>
       </div>
       <div className="flex justify-center">
-        <img className="w-52" src="/link-404.png" alt="404" />
+        <img
+          className="w-52"
+          src={`${import.meta.env.BASE_URL}link-404.png`}
+          alt="404"
+        />
       </div>
     </div>
   );
