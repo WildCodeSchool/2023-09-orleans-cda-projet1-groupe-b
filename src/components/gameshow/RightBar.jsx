@@ -5,7 +5,7 @@ import ageRating from './AgeRatingLogo';
 import { Tooltip } from 'flowbite-react';
 import storeLogo from './StoreLogo';
 import DlcComponent from './DlcComponent';
-import perc2color from '../../utils/MetascoreColor';
+import perc2color from '../../utils/metascorecolor';
 import PlatformsList from '../home/PlatformsList';
 import nl2br from '../../utils/TextFormatter';
 import { Link } from 'react-router-dom';

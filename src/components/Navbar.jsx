@@ -196,7 +196,7 @@ function Navbar() {
               onClick={handleClickCollapseGenres}
             >
               <img
-                src={`${import.meta.env.BASE_URL}images/drop_arrow.svg`}
+                src={`${import.meta.env.BASE_URL}images/drop-arrow.svg`}
               ></img>
               <span className="font-bold text-light opacity-80 hover:opacity-100">
                 Genres
