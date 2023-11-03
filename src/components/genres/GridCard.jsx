@@ -110,7 +110,7 @@ export default function GridCard({ games, isLoaded }) {
               key={index}
               className="m-auto rounded border border-primary transition-transform md:hover:scale-[1.05] xl:h-96 xl:w-72 xl:hover:scale-[1.05]"
             >
-              <Link to={`/games/${game.id}`}>
+              <Link to={`/games/${game.slug}`}>
                 <img
                   className="h-60 w-full rounded-t object-cover"
                   src={game.background_image}
@@ -134,12 +134,6 @@ export default function GridCard({ games, isLoaded }) {
 
       <div className="z-30 my-10 flex justify-center">
         {visible < totalGames && (
-          // <button
-          //   className="mb-4 h-10 w-44 -skew-x-[30deg] rounded bg-primary"
-          //   onClick={showMoreItems}
-          // >
-          //   Load More
-          // </button>
           <Button handleClick={showMoreItems} str="Show More" />
         )}
       </div>
