@@ -4,7 +4,6 @@ import { useLocation } from 'react-router-dom';
 import { fetchCategoryDetails } from '../../api/api-fetch';
 
 import Logo from '../Logo';
-import Button from '../Button';
 import HeaderHome from './HeaderHome';
 import Unavoidable from './Unavoidable';
 import HomeNewGames from './HomeNewGames';
