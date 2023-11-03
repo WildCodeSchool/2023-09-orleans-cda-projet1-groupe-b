@@ -14,7 +14,7 @@ export default function AboutTheTeam() {
           <div className="flex flex-col items-center justify-center gap-4">
             <div className="h-40 w-40 overflow-hidden rounded-full">
               <img
-                src={`${import.meta.env.BASE_URL}images/Mike.webp`}
+                src={`${import.meta.env.BASE_URL}images/mike.webp`}
                 alt="Picture of Mike"
                 className="h-full w-full object-cover"
               />
