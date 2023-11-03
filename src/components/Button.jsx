@@ -15,9 +15,14 @@ const btnVariants = {
   },
 };
 
-export default function Button({ str, path }) {
+export default function Button({ str, path, handleClick = null }) {
   return (
-    <motion.div variants={btnVariants} initial="visible" whileHover="hover">
+    <motion.div
+      variants={btnVariants}
+      initial="visible"
+      whileHover="hover"
+      onClick={handleClick}
+    >
       <Link
         to={path}
         className="flex -skew-x-35 items-center justify-center bg-primary/80 py-1 pl-4 pr-2 outline outline-2 outline-offset-[2px] outline-primary hover:bg-primary"

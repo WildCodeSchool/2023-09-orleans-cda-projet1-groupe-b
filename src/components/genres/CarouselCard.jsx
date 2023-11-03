@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchGameDetails } from '../../api/api-fetch.js';
-import { Link } from 'react-router-dom';
 import PlatformsList from '../home/PlatformsList';
+import Button from '../Button';
 
 export default function CarouselCard({ game }) {
   const [description, setDescription] = useState('');
@@ -59,7 +59,7 @@ export default function CarouselCard({ game }) {
             </div>
           </div>
           <div className="border-b border-primary/50"></div>
-          <div>
+          <div className="m-5">
             <div className="flex flex-col gap-4">
               <div>
                 <div className="ml-3 mt-3 flex flex-wrap gap-2 ">
@@ -94,10 +94,8 @@ export default function CarouselCard({ game }) {
                 <p>Loading...</p>
               )}
             </div>
-            <div className="mr-3 mt-5 flex justify-end">
-              <button className="mb-4 me-4 h-10 w-44 -skew-x-[30deg] rounded bg-primary">
-                <Link to={`/games/${game.slug}`}>Showmore</Link>
-              </button>
+            <div className="my-5 mr-10 flex justify-end">
+              <Button str="Showmore" path={`/games/${game.slug}`} />
             </div>
           </div>
         </div>
