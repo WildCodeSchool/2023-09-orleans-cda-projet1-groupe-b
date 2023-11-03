@@ -1,10 +1,6 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import App from './App';
 import Home from './components/home/Home';
-import Recommandations from './components/Recommandations';
-import News from './components/News';
-import BestSellers from './components/BestSellers';
-import Offers from './components/Offers';
 import GameShow from './components/gameshow/GameShow';
 import Genres from './components/genres/Genres';
 import Search from './components/search/Search';
@@ -21,24 +17,6 @@ export default createBrowserRouter(
         {
           path: '/',
           element: <Home />,
-        },
-        {
-          path: 'recommandations',
-          element: <Recommandations />,
-          children: [
-            {
-              path: 'news',
-              element: <News />,
-            },
-            {
-              path: 'bestsellers',
-              element: <BestSellers />,
-            },
-            {
-              path: 'offers',
-              element: <Offers />,
-            },
-          ],
         },
         {
           path: '/games/:gameId',
