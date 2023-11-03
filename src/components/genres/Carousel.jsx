@@ -47,7 +47,7 @@ export default function Carousel({ games, gameIndex, setGameIndex }) {
             </div>
           </div>
         </div>
-        <div className="mt-2 flex justify-center gap-2 px-1">
+        <div className="mx-6 mt-2 flex justify-center gap-2 px-1">
           {gamesCarousel?.map((game, i) => {
             return (
               <div
