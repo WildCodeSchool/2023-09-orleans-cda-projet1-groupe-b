@@ -180,9 +180,9 @@ export default function RightBar({ gameId }) {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <p className="... overflow-hidden text-ellipsis">
+                  <div className="... overflow-hidden text-ellipsis">
                     {nl2br(w)}
-                  </p>
+                  </div>
                 </a>
               ))
             ) : (

@@ -55,13 +55,13 @@ export default function GameDesc({ gameId }) {
                 Minimum requirements
               </h3>
               {pf && pf.requirements && pf.requirements.minimum ? (
-                <p>{nl2br(pf.requirements.minimum)}</p>
+                <div>{nl2br(pf.requirements.minimum)}</div>
               ) : (
                 <p>N/A</p>
               )}
               <h3 className="mb-4 mt-10 font-bold">Recommended requirements</h3>
               {pf && pf.requirements && pf.requirements.recommended ? (
-                <p>{nl2br(pf.requirements.recommended)}</p>
+                <div>{nl2br(pf.requirements.recommended)}</div>
               ) : (
                 <p>N/A</p>
               )}
