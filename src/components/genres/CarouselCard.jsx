@@ -94,7 +94,7 @@ export default function CarouselCard({ game }) {
                 <p>Loading...</p>
               )}
             </div>
-            <div className="my-5 mr-10 flex justify-end">
+            <div className="mr-10 flex justify-end">
               <Button str="Showmore" path={`/games/${game.slug}`} />
             </div>
           </div>
